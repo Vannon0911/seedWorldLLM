@@ -15,7 +15,7 @@
             </div>
             <div class="header-right">
                 <button id="openPatcher" class="mode-toggle">
-                    <span class="toggle-text">Open Patch Control</span>
+                    <span class="toggle-text">Open Main Menu</span>
                 </button>
                 <div class="connection-status" id="connectionStatus">
                     <span class="status-dot offline"></span>
@@ -38,7 +38,7 @@
         const statusText = statusElement.querySelector('.status-text');
 
         openPatcher.addEventListener('click', () => {
-            window.location.href = './patch';
+            window.location.href = './menu';
         });
 
         function initializeWebSocket() {

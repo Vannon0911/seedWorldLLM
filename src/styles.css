@@ -23,6 +23,47 @@ body {
   min-height: 100vh;
 }
 
+.menu-shell {
+  width: min(980px, 100%);
+  margin: 0 auto;
+  padding: 1rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.menu-hero {
+  background: radial-gradient(circle at top right, #fef9e6, #f0f8ef 65%);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.2rem;
+}
+
+.menu-grid {
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.menu-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1rem;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.menu-link-button {
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 12px;
+  padding: 0.8rem 1rem;
+  background: linear-gradient(90deg, var(--accent), #248a66);
+  color: #fff;
+  font-weight: 700;
+}
+
 .app-shell {
   width: min(980px, 100%);
   margin: 0 auto;
@@ -284,6 +325,10 @@ dd {
 }
 
 @media (max-width: 900px) {
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
+
   .game-layout {
     grid-template-columns: 1fr;
   }

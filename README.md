@@ -14,6 +14,7 @@ npm run server
 ```
 
 - Game UI: `http://127.0.0.1:3000/`
+- Main Menu: `http://127.0.0.1:3000/menu`
 - Patch Control: `http://127.0.0.1:3000/patch`
 - Popup: `http://127.0.0.1:3000/popup`
 
@@ -36,6 +37,11 @@ Die Browser-UI darf nur:
 - Session beobachten
 - Logs und Summary lesen
 - Cancel anfordern
+
+Runtime-only Browser Update-Check:
+- Endpoint: `POST /api/runtime-patch-check`
+- Input: `multipart/form-data` mit Datei-Feld `input` (`.zip` oder `.json`)
+- Verhalten: nur In-Memory-Validierung mit Debug-Ausgabe, keine Repo-Schreiboperation.
 
 Die Browser-UI darf nicht:
 - `llm:*` Gates direkt ausfuehren

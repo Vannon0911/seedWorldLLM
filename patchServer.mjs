@@ -4,6 +4,8 @@ import { randomUUID } from 'node:crypto';
 import { existsSync } from 'node:fs';
 import { mkdir, readFile, stat, writeFile } from 'node:fs/promises';
 import { basename, extname, join, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import JSZip from 'jszip';
 import { SESSION_POLL_MS } from './tools/patch/lib/constants.mjs';
 import {
   createSessionId,
@@ -38,6 +40,18 @@ const contentTypes = {
 };
 
 const activeProcesses = new Map();
+const runtimeChecks = new Map();
+
+const FORBIDDEN_RUNTIME_PATTERNS = [
+  'Math.random',
+  'Date.now',
+  'performance.now',
+  'crypto.getRandomValues',
+  'fetch(',
+  'indexedDB',
+  'Worker(',
+  'SharedWorker('
+];
 
 function json(res, status, payload) {
   res.writeHead(status, { 'Content-Type': 'application/json; charset=utf-8' });
@@ -71,6 +85,9 @@ function isPathInside(parentDir, candidatePath) {
 }
 
 function resolveStaticPath(pathname) {
+  if (pathname === '/menu') {
+    return resolve(ROOT_DIR, 'menu.html');
+  }
   if (pathname === '/') {
     return resolve(ROOT_DIR, 'index.html');
   }
@@ -177,6 +194,205 @@ function parseMultipart(buffer, boundary) {
   };
 }
 
+function parseJsonFromBuffer(buffer, fallbackName = 'input.json') {
+  try {
+    return {
+      ok: true,
+      manifest: JSON.parse(buffer.toString('utf8')),
+      source: fallbackName,
+      files: [fallbackName]
+    };
+  } catch (error) {
+    return {
+      ok: false,
+      error: {
+        code: 'RUNTIME_JSON_INVALID',
+        message: 'JSON konnte nicht geparst werden.',
+        details: String(error?.message || error)
+      }
+    };
+  }
+}
+
+async function parseRuntimeManifest(inputFile) {
+  const name = inputFile.filename || 'input';
+  const extension = extname(name).toLowerCase();
+
+  if (extension === '.json') {
+    return parseJsonFromBuffer(inputFile.content, name);
+  }
+
+  if (extension !== '.zip') {
+    return {
+      ok: false,
+      error: {
+        code: 'RUNTIME_INPUT_UNSUPPORTED',
+        message: 'Nur .zip oder .json werden unterstuetzt.',
+        details: `Datei: ${name}`
+      }
+    };
+  }
+
+  let zip;
+  try {
+    zip = await JSZip.loadAsync(inputFile.content);
+  } catch (error) {
+    return {
+      ok: false,
+      error: {
+        code: 'RUNTIME_ZIP_INVALID',
+        message: 'ZIP konnte nicht gelesen werden.',
+        details: String(error?.message || error)
+      }
+    };
+  }
+
+  const files = Object.keys(zip.files).filter((fileName) => !zip.files[fileName].dir);
+  const jsonFiles = files.filter((fileName) => fileName.toLowerCase().endsWith('.json'));
+  const preferred = jsonFiles.filter((fileName) => /^patches.*\.json$/i.test(fileName.split('/').pop() || ''));
+
+  let selected = null;
+  if (preferred.length === 1) {
+    selected = preferred[0];
+  } else if (preferred.length > 1) {
+    return {
+      ok: false,
+      error: {
+        code: 'RUNTIME_MANIFEST_AMBIGUOUS',
+        message: 'Mehrere patches*.json Dateien gefunden.',
+        details: preferred,
+        fileList: files
+      }
+    };
+  } else if (jsonFiles.length === 1) {
+    selected = jsonFiles[0];
+  } else {
+    return {
+      ok: false,
+      error: {
+        code: 'RUNTIME_MANIFEST_NOT_FOUND',
+        message: 'Kein eindeutiges Manifest in ZIP gefunden.',
+        details: jsonFiles,
+        fileList: files
+      }
+    };
+  }
+
+  const content = await zip.file(selected).async('string');
+  try {
+    return {
+      ok: true,
+      manifest: JSON.parse(content),
+      source: selected,
+      files
+    };
+  } catch (error) {
+    return {
+      ok: false,
+      error: {
+        code: 'RUNTIME_MANIFEST_INVALID',
+        message: 'Manifest-JSON in ZIP ist ungueltig.',
+        details: String(error?.message || error),
+        source: selected
+      }
+    };
+  }
+}
+
+function normalizePatches(manifest) {
+  if (manifest && Array.isArray(manifest.patches)) {
+    return manifest.patches;
+  }
+  if (manifest && typeof manifest === 'object') {
+    return [manifest];
+  }
+  return [];
+}
+
+function validateRuntimePatchSet(manifest) {
+  const patches = normalizePatches(manifest);
+  const debug = [];
+  const problems = [];
+  let denied = false;
+
+  if (!patches.length) {
+    return {
+      ok: false,
+      llmGate: {
+        decision: 'deny',
+        reasons: ['Manifest enthaelt keine Patches.'],
+        policyVersion: 'runtime-v1'
+      },
+      debug: ['Leeres Manifest. Erwartet: Objekt oder { patches: [] }.'],
+      summary: 'Runtime-Check fehlgeschlagen: keine Patches.'
+    };
+  }
+
+  patches.forEach((patch, index) => {
+    const patchId = patch?.id || `patch-${index + 1}`;
+    if (patch?.kind === 'file') {
+      denied = true;
+      problems.push(`Patch ${patchId}: file-Patches sind im runtime-only Modus gesperrt.`);
+      return;
+    }
+
+    if (!patch?.hooks || typeof patch.hooks !== 'object') {
+      denied = true;
+      problems.push(`Patch ${patchId}: hooks fehlen.`);
+      return;
+    }
+
+    for (const [hookName, hookConfig] of Object.entries(patch.hooks)) {
+      const code = typeof hookConfig?.code === 'string' ? hookConfig.code : '';
+      if (!code.trim()) {
+        denied = true;
+        problems.push(`Patch ${patchId}, Hook ${hookName}: code fehlt.`);
+        continue;
+      }
+
+      for (const pattern of FORBIDDEN_RUNTIME_PATTERNS) {
+        if (code.includes(pattern)) {
+          denied = true;
+          problems.push(`Patch ${patchId}, Hook ${hookName}: verbotene API ${pattern}.`);
+        }
+      }
+
+      try {
+        new Function('state', 'kernel', 'rng', code);
+      } catch (error) {
+        denied = true;
+        problems.push(`Patch ${patchId}, Hook ${hookName}: Syntaxfehler (${String(error?.message || error)}).`);
+      }
+    }
+
+    debug.push(`Patch ${patchId}: ${Object.keys(patch.hooks).length} Hook(s) geprueft.`);
+  });
+
+  if (denied) {
+    return {
+      ok: false,
+      llmGate: {
+        decision: 'deny',
+        reasons: problems,
+        policyVersion: 'runtime-v1'
+      },
+      debug,
+      summary: 'Runtime-Check: abgelehnt. Siehe Gruende.'
+    };
+  }
+
+  return {
+    ok: true,
+    llmGate: {
+      decision: 'pass',
+      reasons: ['Alle Patches entsprechen runtime-v1 Regeln.'],
+      policyVersion: 'runtime-v1'
+    },
+    debug,
+    summary: `Runtime-Check bestanden: ${patches.length} Patch(es), keine verbotenen Muster gefunden.`
+  };
+}
+
 async function handleCreateSession(req, res) {
   const contentType = req.headers['content-type'] || '';
   const boundaryMatch = contentType.match(/boundary=([^;]+)/i);
@@ -243,6 +459,53 @@ async function handleCreateSession(req, res) {
     statusPath: paths.statusPath,
     cancelToken
   });
+}
+
+async function handleRuntimePatchCheck(req, res) {
+  const contentType = req.headers['content-type'] || '';
+  const boundaryMatch = contentType.match(/boundary=([^;]+)/i);
+  if (!boundaryMatch) {
+    json(res, 400, { error: 'multipart/form-data with boundary required' });
+    return;
+  }
+
+  const rawBody = await collectBody(req);
+  const { files } = parseMultipart(rawBody, boundaryMatch[1]);
+  const inputFile = files.input;
+  if (!inputFile) {
+    json(res, 400, { error: 'input file is required' });
+    return;
+  }
+
+  const parsed = await parseRuntimeManifest(inputFile);
+  if (!parsed.ok) {
+    json(res, 422, {
+      ok: false,
+      error: parsed.error,
+      llmGate: {
+        decision: 'deny',
+        reasons: [parsed.error.message],
+        policyVersion: 'runtime-v1'
+      }
+    });
+    return;
+  }
+
+  const validation = validateRuntimePatchSet(parsed.manifest);
+  const checkId = `runtime-${Date.now().toString(36)}`;
+  const result = {
+    checkId,
+    ok: validation.ok,
+    mode: 'runtime-only',
+    source: parsed.source,
+    files: parsed.files,
+    llmGate: validation.llmGate,
+    debug: validation.debug,
+    summary: validation.summary
+  };
+
+  runtimeChecks.set(checkId, result);
+  json(res, validation.ok ? 200 : 422, result);
 }
 
 async function handleStatus(res, sessionId) {
@@ -439,6 +702,11 @@ async function routeRequest(req, res) {
     return;
   }
 
+  if (pathname === '/api/runtime-patch-check' && req.method === 'POST') {
+    await handleRuntimePatchCheck(req, res);
+    return;
+  }
+
   const sessionMatch = pathname.match(/^\/api\/patch-sessions\/([^/]+)(?:\/(events|logs|result|cancel))?$/);
   if (sessionMatch) {
     const sessionId = sessionMatch[1];
@@ -517,7 +785,18 @@ export class PatchServer {
   }
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+const isDirectRun = (() => {
+  if (!process.argv[1]) {
+    return false;
+  }
+  try {
+    return resolve(fileURLToPath(import.meta.url)) === resolve(process.argv[1]);
+  } catch {
+    return false;
+  }
+})();
+
+if (isDirectRun) {
   const server = new PatchServer(Number(process.env.PORT || 3000));
   await server.listen();
 

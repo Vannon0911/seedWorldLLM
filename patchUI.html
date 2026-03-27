@@ -19,14 +19,14 @@
           <button class="patch-button secondary" id="openPopup" type="button" disabled>Popup oeffnen</button>
         </div>
       </div>
-      <p class="patch-copy">Browser startet nur orchestrierte Sessions. Schreiben, Gates, Locking und Rollback bleiben im terminalseitigen Orchestrator.</p>
+      <p class="patch-copy">Runtime-only Modus: Browser prueft Patches sicher im Speicher (ohne Repo-Write) und zeigt dir direkt Debug-Hinweise.</p>
     </section>
 
     <div class="patch-grid">
       <section class="patch-card">
         <div class="patch-card-inner">
           <h2>Intake</h2>
-          <p class="patch-subtle">ZIP oder JSON hochladen. Danach gibt es genau einen Startknopf und keinen direkten Gate-Quatsch.</p>
+          <p class="patch-subtle">ZIP oder JSON hochladen. Danach laeuft ein runtime-seitiger Sicherheits- und Syntax-Check mit Debug-Ausgabe.</p>
           <div class="patch-drop">
             <strong>Datei fuer den Patch-Lauf</strong>
             <div class="patch-drop-meta">
@@ -37,8 +37,8 @@
             <div class="patch-inline-actions">
               <label class="patch-file-button patch-link" for="patchInput">Datei auswaehlen</label>
               <input class="patch-hidden-input" id="patchInput" type="file" accept=".zip,.json,application/zip,application/json">
-              <button class="patch-button" id="startPatch" type="button" disabled>Patch starten</button>
-              <button class="patch-button secondary" id="cancelPatch" type="button" disabled>Cancel anfordern</button>
+              <button class="patch-button" id="startPatch" type="button" disabled>Runtime-Check starten</button>
+              <button class="patch-button secondary" id="cancelPatch" type="button" disabled>Cancel (runtime n/a)</button>
             </div>
           </div>
 
@@ -48,7 +48,7 @@
             <div class="patch-metrics">
               <div class="patch-metric"><small>Session</small><span id="sessionId">-</span></div>
               <div class="patch-metric"><small>Phase</small><span id="phaseValue">-</span></div>
-              <div class="patch-metric"><small>Lock</small><span id="lockValue">frei</span></div>
+              <div class="patch-metric"><small>Mode</small><span id="lockValue">runtime-only</span></div>
               <div class="patch-metric"><small>Risk</small><span id="riskValue">-</span></div>
               <div class="patch-metric"><small>Datei</small><span id="fileValue">-</span></div>
               <div class="patch-metric"><small>Patch</small><span id="patchValue">-</span></div>
@@ -95,7 +95,7 @@
   </div>
 
   <script type="module">
-    const phases = ['intake', 'unpack', 'manifest-validate', 'normalize', 'risk-classify', 'acquire-lock', 'policy-gates', 'backup', 'apply', 'verify', 'test', 'finalize', 'release-lock'];
+    const phases = ['intake', 'runtime-check', 'result'];
 
     const state = {
       selectedFile: null,
@@ -145,13 +145,13 @@
       state.lastStatus = status;
       sessionId.textContent = status.sessionId || '-';
       phaseValue.textContent = status.phase || '-';
-      lockValue.textContent = status.lock ? `locked by ${status.lock.sessionId}` : 'frei';
+      lockValue.textContent = status.lock ? `locked by ${status.lock.sessionId}` : 'runtime-only';
       riskValue.textContent = status.risk?.risk || '-';
       fileValue.textContent = status.currentFile || '-';
       patchValue.textContent = status.currentPatchId || '-';
       progressBar.style.width = `${status.progress || 0}%`;
       renderStages(status.phase);
-      cancelPatch.disabled = !status.sessionId || Boolean(status.finalStatus);
+      cancelPatch.disabled = true;
       openPopup.disabled = !status.sessionId;
       startPatch.disabled = Boolean(status.sessionId && !status.finalStatus) || !state.selectedFile;
       resultBadge.textContent = status.finalStatus || status.state || 'running';
@@ -172,23 +172,7 @@
       }
     }
 
-    async function refreshLogs() {
-      if (!state.sessionId) return;
-      const response = await fetch(`/api/patch-sessions/${state.sessionId}/logs`);
-      if (!response.ok) return;
-      const payload = await response.json();
-      const items = payload.lines || [];
-      if (!items.length) {
-        logList.innerHTML = '<div class="patch-empty">Noch keine Logeintraege.</div>';
-      } else {
-        logList.innerHTML = items.map((item) => {
-          const phase = item.phase ? `<strong>${item.phase}</strong> ` : '';
-          const body = item.error ? JSON.stringify(item.error) : JSON.stringify(item);
-          return `<div class="patch-log-item">${phase}${body}</div>`;
-        }).join('');
-      }
-      summaryBox.textContent = payload.summary || 'Noch keine Summary.';
-    }
+    async function refreshLogs() {}
 
     async function refreshResult() {
       if (!state.sessionId) return;
@@ -198,21 +182,7 @@
       summaryBox.textContent = payload.summary || 'Noch keine Summary.';
     }
 
-    function bindEventSource(session) {
-      state.eventSource?.close();
-      state.eventSource = new EventSource(`/api/patch-sessions/${session}/events`);
-      state.eventSource.addEventListener('status', async (event) => {
-        const payload = JSON.parse(event.data);
-        renderStatus(payload);
-        await refreshLogs();
-        if (payload.finalStatus) {
-          await refreshResult();
-        }
-      });
-      state.eventSource.addEventListener('result', async () => {
-        await refreshResult();
-      });
-    }
+    function bindEventSource() {}
 
     patchInput.addEventListener('change', () => {
       state.selectedFile = patchInput.files?.[0] || null;
@@ -225,44 +195,55 @@
 
       const form = new FormData();
       form.append('input', state.selectedFile);
-      form.append('actor', 'browser-ui');
-
       startPatch.disabled = true;
-      const response = await fetch('/api/patch-sessions', {
+      const response = await fetch('/api/runtime-patch-check', {
         method: 'POST',
         body: form
       });
       const payload = await response.json();
       if (!response.ok) {
         errorBanner.classList.add('visible');
-        errorMessage.textContent = payload.error || 'Session konnte nicht gestartet werden.';
+        const err = payload.error || {};
+        errorMessage.textContent = err.message || payload.error || 'Runtime-Check fehlgeschlagen.';
+        errorCode.textContent = `code:${err.code || '-'}`;
+        errorPhase.textContent = 'phase:runtime-check';
+        errorFile.textContent = `file:${err.source || '-'}`;
+        errorPatch.textContent = 'patch:-';
+        errorFix.textContent = 'Manifest/Hooks pruefen und erneut starten.';
         startPatch.disabled = !state.selectedFile;
         return;
       }
 
-      state.sessionId = payload.sessionId;
-      state.cancelToken = payload.cancelToken || null;
-      localStorage.setItem('seedworld:lastPatchSession', payload.sessionId);
+      state.sessionId = payload.checkId;
       renderStatus({
-        sessionId: payload.sessionId,
-        phase: 'intake',
-        progress: 0,
-        state: 'queued'
+        sessionId: payload.checkId,
+        phase: 'result',
+        progress: 100,
+        state: payload.ok ? 'succeeded' : 'failed_partial',
+        finalStatus: payload.ok ? 'succeeded' : 'failed_partial',
+        llmGate: payload.llmGate || null
       });
-      bindEventSource(payload.sessionId);
-      openPopup.disabled = false;
+
+      const lines = [];
+      lines.push(`mode=runtime-only source=${payload.source || '-'}`);
+      if (Array.isArray(payload.debug)) {
+        lines.push(...payload.debug);
+      }
+      if (payload.llmGate?.decision === 'deny') {
+        for (const reason of payload.llmGate.reasons || []) {
+          lines.push(`DENY: ${reason}`);
+        }
+      }
+      logList.innerHTML = lines.map((line) => `<div class="patch-log-item">${line}</div>`).join('');
+      summaryBox.textContent = payload.summary || 'Keine Summary';
+      resultBadge.textContent = payload.ok ? 'succeeded' : 'failed_partial';
+      resultBadge.className = payload.ok ? 'patch-result-badge' : 'patch-result-badge fail';
+      openPopup.disabled = true;
+      startPatch.disabled = !state.selectedFile;
     });
 
     cancelPatch.addEventListener('click', async () => {
-      if (!state.sessionId) return;
-      await fetch(`/api/patch-sessions/${state.sessionId}/cancel`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          ...(state.cancelToken ? { 'X-Patch-Cancel-Token': state.cancelToken } : {})
-        },
-        body: JSON.stringify({ cancelToken: state.cancelToken })
-      });
+      return;
     });
 
     openPopup.addEventListener('click', () => {
