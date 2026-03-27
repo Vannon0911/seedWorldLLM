@@ -68,7 +68,13 @@ export async function detectManifest({ workingDir, files }) {
   if (preferred.length === 1) {
     manifestFile = preferred[0];
   } else if (preferred.length > 1) {
-    manifestFile = preferred.sort(compareNames)[0];
+    const error = new Error('Manifest auto-detect found multiple preferred manifests');
+    error.code = 'MANIFEST_AMBIGUOUS';
+    error.details = {
+      files,
+      preferredFiles: preferred.sort(compareNames)
+    };
+    throw error;
   } else if (jsonFiles.length === 1) {
     manifestFile = jsonFiles[0];
   }

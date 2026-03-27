@@ -1,6 +1,7 @@
 import { copyFile, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
+import { resolveRepoPath } from './normalize.mjs';
 import { writeJson } from './session-store.mjs';
 
 function backupName(index, filePath) {
@@ -13,7 +14,7 @@ export async function createBackups({ rootDir, backupManifestPath, backupsDir, s
   await mkdir(sessionBackupDir, { recursive: true });
 
   for (const [index, patch] of patches.entries()) {
-    const absolutePath = join(rootDir, patch.targetFile);
+    const absolutePath = resolveRepoPath(rootDir, patch.targetFile);
     const existed = existsSync(absolutePath);
     const backupPath = join(sessionBackupDir, backupName(index, patch.targetFile));
 
@@ -38,7 +39,7 @@ export async function applyNormalizedManifest({ rootDir, patches }) {
   const applied = [];
 
   for (const patch of patches) {
-    const absolutePath = join(rootDir, patch.targetFile);
+    const absolutePath = resolveRepoPath(rootDir, patch.targetFile);
     if (patch.operation === 'delete') {
       if (existsSync(absolutePath)) {
         await rm(absolutePath, { force: true });
@@ -65,7 +66,7 @@ export async function rollbackBackups({ rootDir, backupManifest }) {
   const failed = [];
 
   for (const entry of backupManifest) {
-    const targetPath = join(rootDir, entry.targetFile);
+    const targetPath = resolveRepoPath(rootDir, entry.targetFile);
     try {
       if (entry.existed && entry.backupPath) {
         const content = await readFile(entry.backupPath);

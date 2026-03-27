@@ -17,7 +17,7 @@ import {
   writeJson,
   writeSummary
 } from './session-store.mjs';
-import { classifyRisk, normalizeManifest } from './normalize.mjs';
+import { classifyRisk, normalizeManifest, resolveRepoPath } from './normalize.mjs';
 
 function isoNow() {
   return new Date().toISOString();
@@ -143,7 +143,7 @@ async function runCommand(command, args, cwd) {
 
 async function verifyOutputs(rootDir, normalizedManifest) {
   for (const patch of normalizedManifest.patches) {
-    const target = resolve(rootDir, patch.targetFile);
+    const target = resolveRepoPath(rootDir, patch.targetFile);
     if (patch.operation === 'delete') {
       continue;
     }
@@ -336,8 +336,12 @@ export async function runPatchSession({
       details: error.details || null,
       suggestedFix: error.code === 'MANIFEST_NOT_FOUND'
         ? 'Provide a zip or json input containing patches*.json or one unambiguous manifest json.'
+        : error.code === 'MANIFEST_AMBIGUOUS'
+          ? 'Keep exactly one preferred patches*.json manifest in the input or rename the extras.'
         : error.code === 'LOCK_HELD'
           ? 'Wait for the active session to finish or let the lock expire before retrying.'
+          : error.code === 'PATCH_PATH_INVALID'
+            ? 'Use only repo-relative target paths without .. segments, absolute roots, or drive prefixes.'
           : error.code === 'SESSION_CANCELLED'
             ? 'Retry with a fresh session if you still want to apply the patch.'
             : 'Inspect the session logs and summary for the failing file or patch.'

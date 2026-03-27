@@ -1,5 +1,5 @@
 import { strict as assert } from 'node:assert';
-import { mkdtemp, mkdir, readFile, writeFile } from 'node:fs/promises';
+import { mkdtemp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import JSZip from 'jszip';
@@ -72,7 +72,8 @@ async function testLocking() {
 
   await releaseLock({
     lockPath: paths.lockPath,
-    heartbeat: first.heartbeat
+    heartbeat: first.heartbeat,
+    ownership: first.ownership
   });
 
   await writeJson(paths.lockPath, {
@@ -81,7 +82,8 @@ async function testLocking() {
     heartbeatAt: new Date(0).toISOString(),
     expiresAt: new Date(0).toISOString(),
     sessionId: 'stale',
-    actor: 'old'
+    actor: 'old',
+    ownerNonce: 'old-owner'
   });
 
   const second = await acquireLock({
@@ -91,10 +93,43 @@ async function testLocking() {
     actor: 'tester'
   });
   assert.equal(second.lock.sessionId, 'fresh');
+
   await releaseLock({
     lockPath: paths.lockPath,
-    heartbeat: second.heartbeat
+    ownership: {
+      sessionId: 'stale',
+      ownerNonce: 'old-owner'
+    }
   });
+  const currentLock = JSON.parse(await readFile(paths.lockPath, 'utf8'));
+  assert.equal(currentLock.sessionId, 'fresh');
+
+  await releaseLock({
+    lockPath: paths.lockPath,
+    heartbeat: second.heartbeat,
+    ownership: second.ownership
+  });
+}
+
+async function testManifestAmbiguityFailsClosed() {
+  const repo = await createTempRepo();
+  const workingDir = join(repo, 'session');
+  await mkdir(workingDir, { recursive: true });
+  await writeJson(join(workingDir, 'patches-a.json'), { patches: [] });
+  await writeJson(join(workingDir, 'patches-b.json'), { patches: [] });
+
+  let thrown = null;
+  try {
+    await detectManifest({
+      workingDir,
+      files: ['patches-a.json', 'patches-b.json']
+    });
+  } catch (error) {
+    thrown = error;
+  }
+
+  assert.equal(thrown?.code, 'MANIFEST_AMBIGUOUS');
+  assert.deepEqual(thrown?.details?.preferredFiles, ['patches-a.json', 'patches-b.json']);
 }
 
 async function testZipSessionSuccess() {
@@ -173,6 +208,50 @@ async function testRollbackAfterFailingTests() {
   assert.equal(await readFile(join(repo, 'notes.txt'), 'utf8'), 'original');
 }
 
+async function testPathTraversalIsRejected() {
+  const repo = await createTempRepo();
+  await writeJson(join(repo, 'package.json'), {
+    name: 'temp-repo',
+    private: true,
+    scripts: {
+      test: 'node -e "process.exit(0)"'
+    }
+  });
+
+  const escapedPath = join(repo, '..', 'escaped.txt');
+  await rm(escapedPath, { force: true });
+
+  const inputPath = join(repo, 'patches.json');
+  await writeJson(inputPath, {
+    patches: [
+      {
+        id: 'escape-attempt',
+        path: '../escaped.txt',
+        operation: 'write',
+        content: 'nope'
+      }
+    ]
+  });
+
+  const status = await runPatchSession({
+    rootDir: repo,
+    inputPath,
+    actor: 'test',
+    sessionId: 'path-traversal',
+    runTests: true
+  });
+
+  assert.equal(status.finalStatus, 'failed_rolled_back');
+  assert.equal(status.error?.code, 'PATCH_PATH_INVALID');
+  let escapedExists = true;
+  try {
+    await readFile(escapedPath, 'utf8');
+  } catch {
+    escapedExists = false;
+  }
+  assert.equal(escapedExists, false);
+}
+
 async function testPatchServerLegacyApisRemoved() {
   const server = new PatchServer(0);
   await server.listen();
@@ -181,19 +260,27 @@ async function testPatchServerLegacyApisRemoved() {
   const removed = await fetch(`http://127.0.0.1:${port}/api/patches`);
   const removedHooks = await fetch(`http://127.0.0.1:${port}/api/hooks`);
   const patchUi = await fetch(`http://127.0.0.1:${port}/patch`);
+  const dotGit = await fetch(`http://127.0.0.1:${port}/.git/config`);
+  const readme = await fetch(`http://127.0.0.1:${port}/README.md`);
+  const styles = await fetch(`http://127.0.0.1:${port}/src/styles.css`);
 
   assert.equal(removed.status, 404);
   assert.equal(removedHooks.status, 404);
   assert.equal(patchUi.status, 200);
+  assert.equal(dotGit.status, 404);
+  assert.equal(readme.status, 404);
+  assert.equal(styles.status, 200);
 
   await server.close();
 }
 
 await testManifestDetectionError();
+await testManifestAmbiguityFailsClosed();
 await testNormalizationDeterminism();
 await testLocking();
 await testZipSessionSuccess();
 await testRollbackAfterFailingTests();
+await testPathTraversalIsRejected();
 await testPatchServerLegacyApisRemoved();
 
 console.log('[patch-flow-test] ok');

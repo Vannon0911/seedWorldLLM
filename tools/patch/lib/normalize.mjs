@@ -1,11 +1,53 @@
-import { posix as pathPosix } from 'node:path';
+import { isAbsolute, posix as pathPosix, resolve, sep } from 'node:path';
 
 function clone(value) {
   return JSON.parse(JSON.stringify(value));
 }
 
-function normalizeFilePath(filePath) {
-  return pathPosix.normalize(String(filePath || '').replaceAll('\\', '/')).replace(/^\/+/, '');
+function invalidPatchPath(filePath, message) {
+  const error = new Error(message);
+  error.code = 'PATCH_PATH_INVALID';
+  error.details = {
+    file: String(filePath || '')
+  };
+  return error;
+}
+
+function normalizeCaseForCompare(value) {
+  return process.platform === 'win32' ? value.toLowerCase() : value;
+}
+
+export function normalizeFilePath(filePath) {
+  const raw = String(filePath || '').trim();
+  if (!raw) {
+    throw invalidPatchPath(filePath, 'Patch path must not be empty');
+  }
+
+  if (raw.startsWith('/') || raw.startsWith('\\') || isAbsolute(raw) || /^[a-zA-Z]:[\\/]/.test(raw)) {
+    throw invalidPatchPath(filePath, 'Patch path must stay inside the repository');
+  }
+
+  const normalized = pathPosix.normalize(raw.replaceAll('\\', '/'));
+  if (normalized === '.' || normalized === '..' || normalized.startsWith('../') || normalized.includes('/../')) {
+    throw invalidPatchPath(filePath, 'Patch path traversal is not allowed');
+  }
+
+  return normalized.replace(/^\/+/, '');
+}
+
+export function resolveRepoPath(rootDir, filePath) {
+  const normalizedPath = normalizeFilePath(filePath);
+  const resolvedRoot = resolve(rootDir);
+  const resolvedTarget = resolve(resolvedRoot, normalizedPath);
+  const compareRoot = normalizeCaseForCompare(resolvedRoot);
+  const compareTarget = normalizeCaseForCompare(resolvedTarget);
+  const compareRootPrefix = normalizeCaseForCompare(`${resolvedRoot}${sep}`);
+
+  if (compareTarget === compareRoot || !compareTarget.startsWith(compareRootPrefix)) {
+    throw invalidPatchPath(filePath, 'Patch path resolved outside the repository');
+  }
+
+  return resolvedTarget;
 }
 
 function stablePatchId(patch, index) {

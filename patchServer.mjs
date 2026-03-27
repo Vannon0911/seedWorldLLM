@@ -2,21 +2,23 @@ import { createServer } from 'node:http';
 import { spawn } from 'node:child_process';
 import { existsSync } from 'node:fs';
 import { mkdir, readFile, stat, writeFile } from 'node:fs/promises';
-import { basename, extname, join, normalize, resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { basename, extname, join, resolve } from 'node:path';
 import { SESSION_POLL_MS } from './tools/patch/lib/constants.mjs';
 import {
   createSessionId,
   ensureSessionFilesystem,
   getSessionPaths,
-  readJson,
   writeJson
 } from './tools/patch/lib/session-store.mjs';
 import { readSessionLogs, readSessionStatus } from './tools/patch/lib/orchestrator.mjs';
 
-const __filename = fileURLToPath(import.meta.url);
 const ROOT_DIR = process.cwd();
 const MAX_UPLOAD_BYTES = 10 * 1024 * 1024;
+const SRC_DIR = resolve(ROOT_DIR, 'src');
+const PATCH_SCHEMA_PATHS = new Set([
+  '/patches/patch-schema.json',
+  '/patches/patch-matrix.json'
+]);
 
 const contentTypes = {
   '.html': 'text/html; charset=utf-8',
@@ -42,9 +44,43 @@ function text(res, status, body) {
   res.end(body);
 }
 
-function safePath(urlPath) {
-  const candidate = normalize(urlPath).replace(/^(\.\.(\/|\\|$))+/, '');
-  return resolve(ROOT_DIR, `.${candidate.startsWith('/') ? candidate : `/${candidate}`}`);
+function hasHiddenSegment(pathname) {
+  return pathname
+    .split('/')
+    .filter(Boolean)
+    .some((segment) => segment.startsWith('.'));
+}
+
+function isPathInside(parentDir, candidatePath) {
+  const parent = resolve(parentDir);
+  return candidatePath.startsWith(`${parent}\\`) || candidatePath.startsWith(`${parent}/`);
+}
+
+function resolveStaticPath(pathname) {
+  if (pathname === '/') {
+    return resolve(ROOT_DIR, 'index.html');
+  }
+  if (pathname === '/patch') {
+    return resolve(ROOT_DIR, 'patchUI.html');
+  }
+  if (pathname === '/popup') {
+    return resolve(ROOT_DIR, 'patch-popup.html');
+  }
+  if (hasHiddenSegment(pathname)) {
+    return null;
+  }
+  if (pathname.startsWith('/src/')) {
+    const candidate = resolve(ROOT_DIR, `.${pathname}`);
+    const extension = extname(candidate).toLowerCase();
+    if (!isPathInside(SRC_DIR, candidate) || !new Set(['.js', '.css']).has(extension)) {
+      return null;
+    }
+    return candidate;
+  }
+  if (PATCH_SCHEMA_PATHS.has(pathname)) {
+    return resolve(ROOT_DIR, `.${pathname}`);
+  }
+  return null;
 }
 
 async function serveFile(res, filePath) {
@@ -333,15 +369,8 @@ async function routeRequest(req, res) {
     return;
   }
 
-  const routeFile = pathname === '/'
-    ? resolve(ROOT_DIR, 'index.html')
-    : pathname === '/patch'
-      ? resolve(ROOT_DIR, 'patchUI.html')
-      : pathname === '/popup'
-        ? resolve(ROOT_DIR, 'patch-popup.html')
-        : safePath(pathname);
-
-  if (routeFile.includes(`${ROOT_DIR}\\.patch-manager`) || routeFile.includes(`${ROOT_DIR}/.patch-manager`)) {
+  const routeFile = resolveStaticPath(pathname);
+  if (!routeFile) {
     text(res, 404, 'Not found');
     return;
   }

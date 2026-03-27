@@ -1,3 +1,4 @@
+import { randomUUID } from 'node:crypto';
 import { readFile, rm } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { LOCK_HEARTBEAT_MS, LOCK_TTL_MS } from './constants.mjs';
@@ -15,21 +16,50 @@ function parseLock(raw) {
   }
 }
 
+async function readCurrentLock(lockPath) {
+  if (!existsSync(lockPath)) {
+    return null;
+  }
+  return parseLock(await readFile(lockPath, 'utf8'));
+}
+
+function ownsLock(currentLock, ownership) {
+  return Boolean(
+    currentLock
+    && ownership
+    && currentLock.sessionId === ownership.sessionId
+    && currentLock.ownerNonce === ownership.ownerNonce
+  );
+}
+
+function toPublicLock(lock) {
+  if (!lock) {
+    return null;
+  }
+  const { ownerNonce, ...publicLock } = lock;
+  return publicLock;
+}
+
 export async function acquireLock({ rootDir, lockPath, sessionId, actor }) {
   const now = Date.now();
   const startedAt = nowIso();
   const expiresAt = new Date(now + LOCK_TTL_MS).toISOString();
-  const lock = {
+  let lock = {
     pid: process.pid,
     startedAt,
     heartbeatAt: startedAt,
     expiresAt,
     sessionId,
-    actor
+    actor,
+    ownerNonce: randomUUID()
+  };
+  const ownership = {
+    sessionId,
+    ownerNonce: lock.ownerNonce
   };
 
   if (existsSync(lockPath)) {
-    const existing = parseLock(await readFile(lockPath, 'utf8'));
+    const existing = await readCurrentLock(lockPath);
     if (existing) {
       const expiry = Date.parse(existing.expiresAt || '');
       if (Number.isFinite(expiry) && expiry > now) {
@@ -51,27 +81,35 @@ export async function acquireLock({ rootDir, lockPath, sessionId, actor }) {
 
   await writeJson(lockPath, lock);
   const interval = setInterval(async () => {
+    const current = await readCurrentLock(lockPath);
+    if (!ownsLock(current, ownership)) {
+      clearInterval(interval);
+      return;
+    }
+
     const heartbeatAt = nowIso();
-    const nextLock = {
+    lock = {
       ...lock,
       heartbeatAt,
       expiresAt: new Date(Date.now() + LOCK_TTL_MS).toISOString()
     };
-    await writeJson(lockPath, nextLock);
+    await writeJson(lockPath, lock);
   }, LOCK_HEARTBEAT_MS);
 
   return {
-    lock,
-    heartbeat: interval
+    lock: toPublicLock(lock),
+    heartbeat: interval,
+    ownership
   };
 }
 
-export async function releaseLock({ lockPath, heartbeat }) {
+export async function releaseLock({ lockPath, heartbeat, ownership }) {
   if (heartbeat) {
     clearInterval(heartbeat);
   }
 
-  if (existsSync(lockPath)) {
+  const current = await readCurrentLock(lockPath);
+  if (ownsLock(current, ownership)) {
     await rm(lockPath, { force: true });
   }
 }
