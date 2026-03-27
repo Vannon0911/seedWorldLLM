@@ -1,0 +1,167 @@
+:root {
+  --bg-top: #f7f3e8;
+  --bg-bottom: #d2e6d4;
+  --panel: #fffdf6;
+  --ink: #1f2a26;
+  --ink-soft: #4c5f58;
+  --accent: #1f7a5a;
+  --accent-2: #d99a2b;
+  --border: #c8d4ca;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: linear-gradient(170deg, var(--bg-top), var(--bg-bottom));
+  min-height: 100vh;
+}
+
+.app-shell {
+  width: min(980px, 100%);
+  margin: 0 auto;
+  padding: 1rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.hero {
+  background: radial-gradient(circle at top right, #fef9e6, #f0f8ef 65%);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.2rem;
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+h1,
+h2 {
+  margin: 0;
+}
+
+.subtitle {
+  margin: 0.6rem 0 0;
+  color: var(--ink-soft);
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 6px 18px rgb(31 42 38 / 6%);
+}
+
+.form-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.button-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+label {
+  display: grid;
+  gap: 0.35rem;
+  font-weight: 600;
+}
+
+input,
+textarea,
+button {
+  font: inherit;
+  border-radius: 12px;
+  touch-action: manipulation;
+}
+
+input {
+  width: 100%;
+  border: 1px solid var(--border);
+  padding: 0.7rem 0.85rem;
+}
+
+textarea {
+  width: 100%;
+  resize: vertical;
+  border: 1px solid var(--border);
+  padding: 0.8rem 0.9rem;
+  background: #fffef9;
+  color: var(--ink);
+  line-height: 1.45;
+}
+
+button {
+  border: 0;
+  padding: 0.8rem 1rem;
+  background: linear-gradient(90deg, var(--accent), #248a66);
+  color: #fff;
+  font-weight: 700;
+}
+
+button:disabled {
+  opacity: 0.72;
+  cursor: progress;
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+.results dl {
+  margin: 0.5rem 0 0;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.results div {
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  padding: 0.65rem;
+}
+
+dt {
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+}
+
+dd {
+  margin: 0.25rem 0 0;
+  font-family: ui-monospace, "Cascadia Code", monospace;
+  word-break: break-all;
+  white-space: pre-wrap;
+}
+
+.hash-ok {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.hash-fail {
+  color: #b33a2f;
+  font-weight: 700;
+}
+
+@media (min-width: 720px) {
+  .app-shell {
+    padding: 1.5rem;
+    gap: 1.2rem;
+  }
+
+  .card,
+  .hero {
+    padding: 1.25rem;
+  }
+}
