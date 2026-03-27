@@ -9,6 +9,7 @@ import {
   createSessionId,
   ensureSessionFilesystem,
   getSessionPaths,
+  readJson,
   writeJson
 } from './tools/patch/lib/session-store.mjs';
 import { readSessionLogs, readSessionStatus } from './tools/patch/lib/orchestrator.mjs';
@@ -37,7 +38,6 @@ const contentTypes = {
 };
 
 const activeProcesses = new Map();
-const cancelRate = new Map();
 
 function json(res, status, payload) {
   res.writeHead(status, { 'Content-Type': 'application/json; charset=utf-8' });
@@ -47,6 +47,15 @@ function json(res, status, payload) {
 function text(res, status, body) {
   res.writeHead(status, { 'Content-Type': 'text/plain; charset=utf-8' });
   res.end(body);
+}
+
+function sanitizeStatusForClient(status) {
+  if (!status || typeof status !== 'object') {
+    return status;
+  }
+  const next = { ...status };
+  delete next.cancelToken;
+  return next;
 }
 
 function hasHiddenSegment(pathname) {
@@ -211,7 +220,12 @@ async function handleCreateSession(req, res) {
     currentPatchId: null,
     risk: null,
     llmGate: null,
-    cancelToken
+    cancelToken,
+    cancelControl: {
+      windowStartedAt: null,
+      count: 0,
+      lastRequestedAt: null
+    }
   });
 
   const child = spawn(process.execPath, ['tools/patch/apply.mjs', '--input', uploadPath, '--actor', actor, '--session-id', sessionId], {
@@ -237,7 +251,7 @@ async function handleStatus(res, sessionId) {
     json(res, 404, { error: 'session not found' });
     return;
   }
-  json(res, 200, status);
+  json(res, 200, sanitizeStatusForClient(status));
 }
 
 async function handleLogs(res, sessionId) {
@@ -278,16 +292,30 @@ async function handleResult(res, sessionId) {
   });
 }
 
-function consumeCancelBudget(sessionId) {
+async function consumeCancelBudget(statusPath) {
   const now = Date.now();
-  const current = cancelRate.get(sessionId) || { ts: now, count: 0 };
-  if (now - current.ts > CANCEL_RATE_WINDOW_MS) {
-    current.ts = now;
-    current.count = 0;
-  }
-  current.count += 1;
-  cancelRate.set(sessionId, current);
-  return current.count <= CANCEL_RATE_MAX;
+  const nowIso = new Date(now).toISOString();
+  const status = await readJson(statusPath, {});
+  const current = status.cancelControl || {
+    windowStartedAt: nowIso,
+    count: 0,
+    lastRequestedAt: null
+  };
+  const windowStartMs = Date.parse(current.windowStartedAt || '');
+  const resetWindow = !Number.isFinite(windowStartMs) || (now - windowStartMs > CANCEL_RATE_WINDOW_MS);
+  const next = resetWindow
+    ? { windowStartedAt: nowIso, count: 1, lastRequestedAt: nowIso }
+    : { windowStartedAt: current.windowStartedAt, count: (current.count || 0) + 1, lastRequestedAt: nowIso };
+
+  await writeJson(statusPath, {
+    ...status,
+    cancelControl: next
+  });
+
+  return {
+    allowed: next.count <= CANCEL_RATE_MAX,
+    cancelControl: next
+  };
 }
 
 async function parseCancelTokenFromRequest(req) {
@@ -322,7 +350,9 @@ async function handleCancel(req, res, sessionId) {
     json(res, 404, { error: 'session not found' });
     return;
   }
-  if (!consumeCancelBudget(sessionId)) {
+  const paths = getSessionPaths(ROOT_DIR, sessionId);
+  const budget = await consumeCancelBudget(paths.statusPath);
+  if (!budget.allowed) {
     json(res, 429, { error: 'cancel rate limit exceeded' });
     return;
   }
@@ -333,12 +363,12 @@ async function handleCancel(req, res, sessionId) {
     return;
   }
 
-  const paths = getSessionPaths(ROOT_DIR, sessionId);
   if (existsSync(paths.cancelPath)) {
     json(res, 202, {
       sessionId,
       cancelRequested: true,
-      alreadyRequested: true
+      alreadyRequested: true,
+      cancelControl: budget.cancelControl
     });
     return;
   }
@@ -348,7 +378,8 @@ async function handleCancel(req, res, sessionId) {
   json(res, 202, {
     sessionId,
     cancelRequested: true,
-    alreadyRequested: false
+    alreadyRequested: false,
+    cancelControl: budget.cancelControl
   });
 }
 
@@ -372,7 +403,7 @@ async function handleEvents(req, res, sessionId) {
     if (!nextStatus) {
       return;
     }
-    const serialized = JSON.stringify(nextStatus);
+    const serialized = JSON.stringify(sanitizeStatusForClient(nextStatus));
     if (serialized !== lastStatus) {
       lastStatus = serialized;
       res.write(`event: status\n`);

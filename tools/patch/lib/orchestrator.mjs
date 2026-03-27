@@ -329,22 +329,22 @@ export async function runPatchSession({
     });
     await updateStatus(paths.statusPath, { lock: lockHandle.lock });
 
-    await setPhase(paths, 'llm-gates');
+    await setPhase(paths, 'policy-gates');
     const gatePolicy = await loadLlmGatePolicy(rootDir);
     const llmGate = evaluateLlmGates(normalizedManifest, risk, gatePolicy);
     await updateStatus(paths.statusPath, { llmGate });
     await writeLog(paths.logPath, {
-      type: 'llm-gates',
+      type: 'policy-gates',
       llmGate
     });
     if (llmGate.decision === 'deny') {
       const error = new Error('LLM gate denied the patch session');
       error.code = 'LLM_GATE_DENIED';
-      error.phase = 'llm-gates';
+      error.phase = 'policy-gates';
       error.details = llmGate;
       throw error;
     }
-    await checkCancelled(paths, 'llm-gates');
+    await checkCancelled(paths, 'policy-gates');
 
     await setPhase(paths, 'backup');
     backupManifest = await createBackups({

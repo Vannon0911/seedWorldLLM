@@ -397,6 +397,7 @@ async function testPatchServerCancelAuthAndRateLimit() {
   assert.equal(idempotent.status, 202);
   const idempotentPayload = await idempotent.json();
   assert.equal(idempotentPayload.alreadyRequested, true);
+  assert.equal(typeof idempotentPayload.cancelControl?.count, 'number');
 
   const rateSession = `cancel-rate-${Date.now().toString(36)}`;
   const ratePaths = getSessionPaths(rootDir, rateSession);
@@ -411,8 +412,22 @@ async function testPatchServerCancelAuthAndRateLimit() {
   await rm(ratePaths.cancelPath, { force: true });
 
   let lastStatus = 0;
-  for (let i = 0; i < 5; i += 1) {
+  for (let i = 0; i < 2; i += 1) {
     const response = await fetch(`http://127.0.0.1:${port}/api/patch-sessions/${rateSession}/cancel`, {
+      method: 'POST',
+      headers: { 'X-Patch-Cancel-Token': 'wrong' }
+    });
+    lastStatus = response.status;
+  }
+  assert.equal(lastStatus, 403);
+
+  await server.close();
+  const restartedServer = new PatchServer(0);
+  await restartedServer.listen();
+  const restartedPort = restartedServer.server.address().port;
+
+  for (let i = 0; i < 3; i += 1) {
+    const response = await fetch(`http://127.0.0.1:${restartedPort}/api/patch-sessions/${rateSession}/cancel`, {
       method: 'POST',
       headers: { 'X-Patch-Cancel-Token': 'wrong' }
     });
@@ -420,7 +435,7 @@ async function testPatchServerCancelAuthAndRateLimit() {
   }
   assert.equal(lastStatus, 429);
 
-  await server.close();
+  await restartedServer.close();
   await rm(paths.statusPath, { force: true });
   await rm(paths.cancelPath, { force: true });
   await rm(ratePaths.statusPath, { force: true });

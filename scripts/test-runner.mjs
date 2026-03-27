@@ -1,5 +1,5 @@
 import { spawn, spawnSync } from 'node:child_process';
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { runDeterministicKernel } from '../src/kernel/deterministicKernel.js';
@@ -41,6 +41,17 @@ function getCurrentCommit() {
   return result.status === 0 ? result.stdout.trim() : null;
 }
 
+async function loadGatePolicyVersion() {
+  const policyPath = resolve(process.cwd(), 'docs', 'llm-gate-policy.json');
+  try {
+    const raw = await readFile(policyPath, 'utf8');
+    const parsed = JSON.parse(raw);
+    return typeof parsed.policyVersion === 'string' ? parsed.policyVersion : 'unknown';
+  } catch {
+    return 'unknown';
+  }
+}
+
 async function buildDeterminismEvidence() {
   const sampleSeed = 'test-runner-seed';
   const expectedSeedHash = await sha256Hex(sampleSeed);
@@ -62,7 +73,7 @@ function validateEvidenceShape(evidence) {
   if (!evidence || typeof evidence !== 'object') {
     throw new Error('evidence must be an object');
   }
-  const required = ['timestamp', 'commit', 'status', 'durationMs', 'tests'];
+  const required = ['artifactSchemaVersion', 'timestamp', 'commit', 'status', 'durationMs', 'tests', 'policyVersion', 'gateDecision'];
   for (const key of required) {
     if (!(key in evidence)) {
       throw new Error(`missing evidence field: ${key}`);
@@ -105,11 +116,16 @@ for (const scriptPath of ['scripts/smoke-test.mjs', 'scripts/runtime-guards-test
 }
 
 const evidence = {
+  artifactSchemaVersion: '1.0.0',
   timestamp: new Date().toISOString(),
   commit: getCurrentCommit(),
   status,
   durationMs: Date.now() - startedAt,
   tests,
+  policyVersion: await loadGatePolicyVersion(),
+  gateDecision: tests.some((item) => item.script === 'scripts/patch-flow-test.mjs' && item.status === 'passed')
+    ? 'pass_and_deny_paths_verified'
+    : 'not_verified',
   determinism: await buildDeterminismEvidence()
 };
 

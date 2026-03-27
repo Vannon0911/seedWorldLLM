@@ -27,7 +27,7 @@ These sources are not part of deterministic kernel contracts and must be rejecte
 ## Expected Behavior on Violation
 
 - Runtime guard violations throw `[KERNEL_GUARD]` errors immediately.
-- Patch-flow policy violations fail closed in `llm-gates` with `LLM_GATE_DENIED`.
+- Patch-flow policy violations fail closed in `policy-gates` with `LLM_GATE_DENIED`.
 - Session final status remains one of:
   - `succeeded`
   - `failed_rolled_back`

@@ -7,7 +7,7 @@ export const PATCH_PHASES = [
   'normalize',
   'risk-classify',
   'acquire-lock',
-  'llm-gates',
+  'policy-gates',
   'backup',
   'apply',
   'verify',

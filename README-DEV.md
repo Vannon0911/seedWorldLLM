@@ -14,7 +14,7 @@ Der neue Flow ist absichtlich linear:
 2. Normalize
 3. Risk-Classify
 4. Lock + Deadman
-5. Terminal-only `llm-gates`
+5. Terminal-only `policy-gates`
 6. Backup
 7. Apply
 8. Verify
@@ -43,6 +43,6 @@ Entfernt:
 - Manifest-Autofind bevorzugt `patches*.json`.
 - Session-Statusdatei ist die Wahrheit fuer UI und Popup.
 - Browser startet nur orchestrierte Sessions und fuehrt nie selbst Gates aus.
-- `llm-gates` verwenden die statische Policy in `docs/llm-gate-policy.json`.
+- `policy-gates` verwenden die statische Policy in `docs/llm-gate-policy.json`.
 - Typed constraints fuer Mutationen liegen in `src/game/contracts/mutationMatrixConstraints.js`.
 - `npm test` erzeugt ein maschinenlesbares Evidence-Artefakt unter `.patch-manager/logs/`.

@@ -27,7 +27,7 @@ npm run patch:apply -- --input <pfad> --actor <name>
 
 Phasen:
 
-`intake -> unpack -> manifest-validate -> normalize -> risk-classify -> acquire-lock -> llm-gates -> backup -> apply -> verify -> test -> finalize -> release-lock`
+`intake -> unpack -> manifest-validate -> normalize -> risk-classify -> acquire-lock -> policy-gates -> backup -> apply -> verify -> test -> finalize -> release-lock`
 
 ## Browser Control Plane
 
