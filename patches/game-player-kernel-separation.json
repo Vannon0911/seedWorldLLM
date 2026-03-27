@@ -1,0 +1,36 @@
+{
+  "patches": [
+    {
+      "id": "game-player-kernel-separation",
+      "version": "1.0.0",
+      "description": "Trennt Game und Player klar - nur durch Kernel verbunden. UI und Runtime werden getrennt.",
+      "kind": "kernel-patch",
+      "author": "System",
+      "enabled": true,
+      "dependencies": [],
+      "schema": {
+        "version": "1.0.0",
+        "type": "system"
+      },
+      "validation": {
+        "deterministic": true
+      },
+      "hooks": {
+        "advanceTick": {
+          "id": "kernel-game-bridge",
+          "priority": 1,
+          "enabled": true,
+          "phase": "pre-update",
+          "code": "if(!state.__kernelBridge){state.__kernelBridge={gameDomain:null,playerDomain:null,runtimeIsolation:true,messageQueue:[]}};if(state.__pendingGameAction){const action=state.__pendingGameAction;state.__pendingGameAction=null;if(action.domain==='game'){state.__kernelBridge.gameDomain=processGameAction(action,state,kernel)}else if(action.domain==='player'){state.__kernelBridge.playerDomain=processPlayerAction(action,state,kernel)}}state.__kernelBridge.uiSnapshot={tick:state.clock?.tick||0,resources:{...state.resources||{}},structures:state.structures?[...state.structures]:[],meta:{...state.meta||{}},_readonly:true};return state;function processGameAction(action,state,kernel){switch(action.type){case'advance':return{tick:(state.clock?.tick||0)+1,domain:'game'};case'mine':return{ore:(state.resources?.ore||0)+1,domain:'game'};case'smelt':if((state.resources?.ore||0)>=1){return{ore:state.resources.ore-1,iron:(state.resources?.iron||0)+1,domain:'game'}}return null;default:return null}}function processPlayerAction(action,state,kernel){switch(action.type){case'build':return{built:action.structure,at:{x:action.x,y:action.y},domain:'player'};case'select':return{selected:action.target,domain:'player'};default:return null}}"
+        },
+        "placeStructure": {
+          "id": "kernel-player-bridge",
+          "priority": 1,
+          "enabled": true,
+          "phase": "pre-update",
+          "code": "const x=args[0];const y=args[1];const type=args[2];if(!state.__playerActions){state.__playerActions=[]}state.__playerActions.push({type:'placeStructure',playerId:state.__currentPlayerId||'local',target:{x,y},structureType:type,timestamp:state.clock?.tick||0,routed:true});return{...state,__uiConfirmation:{action:'placeStructure',status:'pending',kernelRouted:true}}"
+        }
+      }
+    }
+  ]
+}

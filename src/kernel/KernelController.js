@@ -1,5 +1,7 @@
 import { withDeterminismGuards } from "./runtimeGuards.js";
 import { UIPluginController } from "./UIPluginController.js";
+import { KernelRouter } from "./KernelRouter.js";
+import { PatchOrchestrator } from "./PatchOrchestrator.js";
 
 const DEFAULT_CONFIRMATION_PREFIX = "KERNEL-CONFIRM";
 
@@ -13,7 +15,22 @@ export class KernelController {
       typeof options.confirmationPrefix === "string" && options.confirmationPrefix.trim().length > 0
         ? options.confirmationPrefix.trim()
         : DEFAULT_CONFIRMATION_PREFIX;
-    
+
+    // Domain boundary router - enforces separation
+    this.router = new KernelRouter();
+
+    // Register domain handlers
+    this.router.registerHandler('game', this.#handleGameAction.bind(this));
+    this.router.registerHandler('patch', this.#handlePatchAction.bind(this));
+    this.router.registerHandler('ui', this.#handleUIAction.bind(this));
+    this.router.registerHandler('kernel', this.#handleKernelAction.bind(this));
+
+    // Patch Orchestrator - only receives kernel acknowledgements
+    this.patchOrchestrator = new PatchOrchestrator(this);
+
+    // UI Plugin Controller for deterministic UI management
+    this.uiPluginController = new UIPluginController(this);
+
     // Patch system state
     this.patches = new Map(); // patchId -> patchData
     this.hooks = {
@@ -24,9 +41,6 @@ export class KernelController {
     };
     this.patchValidation = new Map(); // patchId -> validationResult
     this.rollbackStates = new Map(); // patchId -> rollbackData
-    
-    // UI Plugin Controller for deterministic UI management
-    this.uiPluginController = new UIPluginController(this);
     
     // Kernel state
     this.currentTick = 0;
@@ -54,17 +68,9 @@ export class KernelController {
     const domain = this.#readString(input, "domain", "[KERNEL_CONTROLLER] domain fehlt.");
     const action = this.#readPlainObject(input, "action", "[KERNEL_CONTROLLER] action fehlt.");
 
+    // Use router for domain boundary enforcement
     return withDeterminismGuards(() => {
-      switch (domain) {
-        case "game":
-          return this.#handleGameAction(action);
-        case "ui":
-          return this.#handleUIAction(action);
-        case "kernel":
-          return this.#handleKernelAction(action);
-        default:
-          throw new Error(`[KERNEL_CONTROLLER] Unbekannter domain: ${domain}`);
-      }
+      return this.router.route({ domain, action });
     });
   }
 
@@ -89,7 +95,7 @@ export class KernelController {
 
   #handleUIAction(action) {
     const type = this.#readString(action, "type", "[UI] type fehlt.");
-    
+
     switch (type) {
       case "render":
         return { success: true, message: "UI render action handled" };
@@ -97,6 +103,25 @@ export class KernelController {
         return { success: true, message: "UI update action handled" };
       default:
         throw new Error(`[UI] Unbekannter action type: ${type}`);
+    }
+  }
+
+  #handlePatchAction(action) {
+    const type = this.#readString(action, "type", "[PATCH] type fehlt.");
+
+    // Patch domain only receives acknowledgements - no direct game state access
+    switch (type) {
+      case "startSession":
+        return { success: true, sessionId: action.config?.sessionId || 'default' };
+      case "endSession":
+        return { success: true, ended: true };
+      case "applyPatch":
+        // Patch application is routed through kernel - never touches game state directly
+        return { success: true, applied: action.patchId, acknowledgement: true };
+      case "getStatus":
+        return { success: true, status: this.patchOrchestrator.sessionState };
+      default:
+        throw new Error(`[PATCH] Unbekannter action type: ${type}`);
     }
   }
 
