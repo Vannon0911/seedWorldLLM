@@ -1,51 +1,52 @@
 # SeedWorld
 
-SeedWorld nutzt einen terminal-exklusiven, einheitlichen Patch-Flow.
-
-## Schnellstart
-
-```bash
-npm install
-npm start
-```
-
-Spiel: `http://localhost:8080`
-
-## Patch-Flow (kanonisch)
-
-Einziger Write-Einstieg:
+SeedWorld nutzt einen einheitlichen Patch-Flow mit Terminal-Authority. Es gibt genau einen kanonischen Write-Einstieg:
 
 ```bash
 npm run patch:apply -- --input <pfad-zur-zip-oder-json>
 ```
 
-Optional:
+## Schnellstart
+
+```bash
+npm install
+npm run server
+```
+
+- Game UI: `http://127.0.0.1:3000/`
+- Patch Control: `http://127.0.0.1:3000/patch`
+- Popup: `http://127.0.0.1:3000/popup`
+
+## Patch-Flow
+
+Optionaler Actor:
 
 ```bash
 npm run patch:apply -- --input <pfad> --actor <name>
 ```
 
-Der Lauf folgt strikt den Phasen:
+Phasen:
 
 `intake -> unpack -> manifest-validate -> normalize -> risk-classify -> acquire-lock -> llm-gates -> backup -> apply -> verify -> test -> finalize -> release-lock`
 
 ## Browser Control Plane
 
-```bash
-npm run patch:server
-```
-
-UI: `http://localhost:3000`
-Popup: `http://localhost:3000/popup`
-
 Die Browser-UI darf nur:
 - Session starten
-- Session beobachten (Status/SSE/Logs/Result)
-- Session stoppen
+- Session beobachten
+- Logs und Summary lesen
+- Cancel anfordern
 
 Die Browser-UI darf nicht:
 - `llm:*` Gates direkt ausfuehren
-- direkte Execute/Freigabe-Pfade triggern
+- direkte Execute-/Apply-/Validate-Endpunkte triggern
+- Locking umgehen
+
+Entfernte Legacy-Endpunkte:
+- `GET /api/patches`
+- `POST /api/patches`
+- `DELETE /api/patches/:id`
+- `GET /api/hooks`
 
 ## Session-Artefakte
 

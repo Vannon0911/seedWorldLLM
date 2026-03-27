@@ -1,0 +1,352 @@
+:root {
+  --patch-bg: #efe8d7;
+  --patch-bg-2: #dbe8db;
+  --patch-panel: rgba(255, 252, 244, 0.92);
+  --patch-ink: #1c241f;
+  --patch-soft: #5f6f66;
+  --patch-accent: #135e4a;
+  --patch-accent-2: #c67d29;
+  --patch-danger: #b44938;
+  --patch-border: rgba(28, 36, 31, 0.14);
+  --patch-shadow: 0 22px 50px rgba(32, 39, 33, 0.12);
+}
+
+body.patch-control-body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--patch-ink);
+  font-family: Georgia, "Segoe UI", serif;
+  background:
+    radial-gradient(circle at top right, rgba(255, 243, 205, 0.9), transparent 32%),
+    radial-gradient(circle at left center, rgba(19, 94, 74, 0.16), transparent 30%),
+    linear-gradient(160deg, var(--patch-bg), var(--patch-bg-2));
+}
+
+.patch-shell {
+  width: min(1180px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 1.5rem 0 2rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.patch-hero {
+  display: grid;
+  gap: 0.8rem;
+  padding: 1.2rem 1.3rem;
+  border: 1px solid var(--patch-border);
+  border-radius: 24px;
+  background: linear-gradient(145deg, rgba(255, 249, 238, 0.95), rgba(242, 247, 240, 0.92));
+  box-shadow: var(--patch-shadow);
+}
+
+.patch-hero-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 1rem;
+}
+
+.patch-kicker {
+  margin: 0;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--patch-accent);
+}
+
+.patch-hero h1 {
+  margin: 0.15rem 0 0;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  line-height: 0.96;
+  letter-spacing: -0.04em;
+}
+
+.patch-copy {
+  max-width: 60ch;
+  margin: 0;
+  color: var(--patch-soft);
+}
+
+.patch-nav {
+  display: flex;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+
+.patch-link,
+.patch-button,
+.patch-file-button {
+  appearance: none;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.85rem 1.2rem;
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 120ms ease, opacity 120ms ease, box-shadow 120ms ease;
+}
+
+.patch-link {
+  background: rgba(19, 94, 74, 0.1);
+  color: var(--patch-accent);
+}
+
+.patch-button {
+  background: linear-gradient(90deg, var(--patch-accent), #228267);
+  color: #fff;
+  box-shadow: 0 10px 20px rgba(19, 94, 74, 0.22);
+}
+
+.patch-button.secondary {
+  background: rgba(28, 36, 31, 0.08);
+  color: var(--patch-ink);
+  box-shadow: none;
+}
+
+.patch-button.warn {
+  background: linear-gradient(90deg, var(--patch-danger), #cf6757);
+}
+
+.patch-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.patch-link:hover,
+.patch-button:hover,
+.patch-file-button:hover {
+  transform: translateY(-1px);
+}
+
+.patch-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 1rem;
+}
+
+.patch-card {
+  background: var(--patch-panel);
+  border: 1px solid var(--patch-border);
+  border-radius: 22px;
+  box-shadow: var(--patch-shadow);
+  overflow: hidden;
+}
+
+.patch-card-inner {
+  padding: 1.1rem 1.2rem 1.2rem;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.patch-card h2,
+.patch-card h3,
+.patch-card h4 {
+  margin: 0;
+}
+
+.patch-subtle {
+  color: var(--patch-soft);
+  margin: 0;
+}
+
+.patch-drop {
+  display: grid;
+  gap: 0.75rem;
+  border: 1px dashed rgba(19, 94, 74, 0.36);
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 18px;
+  padding: 1.1rem;
+}
+
+.patch-drop strong {
+  font-size: 1.05rem;
+}
+
+.patch-drop-meta {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  color: var(--patch-soft);
+  font-size: 0.94rem;
+}
+
+.patch-hidden-input {
+  display: none;
+}
+
+.patch-filename {
+  font-family: ui-monospace, "Cascadia Code", monospace;
+  font-size: 0.94rem;
+  color: var(--patch-accent);
+}
+
+.patch-stage-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.patch-stage {
+  padding: 0.75rem 0.85rem;
+  border-radius: 16px;
+  background: rgba(19, 94, 74, 0.06);
+  border: 1px solid rgba(19, 94, 74, 0.08);
+  color: var(--patch-soft);
+  font-size: 0.9rem;
+}
+
+.patch-stage.active {
+  background: rgba(19, 94, 74, 0.16);
+  color: var(--patch-ink);
+  border-color: rgba(19, 94, 74, 0.2);
+}
+
+.patch-progress {
+  height: 12px;
+  border-radius: 999px;
+  background: rgba(28, 36, 31, 0.08);
+  overflow: hidden;
+}
+
+.patch-progress > div {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--patch-accent), var(--patch-accent-2));
+}
+
+.patch-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.patch-metric {
+  padding: 0.8rem 0.9rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid var(--patch-border);
+}
+
+.patch-metric small {
+  display: block;
+  color: var(--patch-soft);
+  margin-bottom: 0.25rem;
+}
+
+.patch-banner {
+  display: none;
+  gap: 0.4rem;
+  padding: 0.95rem 1rem;
+  border-radius: 18px;
+  border: 1px solid rgba(180, 73, 56, 0.2);
+  background: rgba(180, 73, 56, 0.08);
+}
+
+.patch-banner.visible {
+  display: grid;
+}
+
+.patch-banner strong {
+  color: var(--patch-danger);
+}
+
+.patch-error-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  color: var(--patch-soft);
+  font-size: 0.9rem;
+}
+
+.patch-inline-actions {
+  display: flex;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+
+.patch-log-list {
+  display: grid;
+  gap: 0.55rem;
+  max-height: 380px;
+  overflow: auto;
+}
+
+.patch-log-item {
+  border-radius: 16px;
+  background: rgba(16, 27, 22, 0.88);
+  color: #ecf1ed;
+  padding: 0.8rem 0.9rem;
+  font-family: ui-monospace, "Cascadia Code", monospace;
+  font-size: 0.84rem;
+}
+
+.patch-log-item strong {
+  color: #f4ca84;
+}
+
+.patch-summary {
+  white-space: pre-wrap;
+  font-family: ui-monospace, "Cascadia Code", monospace;
+  font-size: 0.88rem;
+  padding: 1rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid var(--patch-border);
+  max-height: 280px;
+  overflow: auto;
+}
+
+.patch-result-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 999px;
+  padding: 0.45rem 0.8rem;
+  font-size: 0.86rem;
+  font-weight: 700;
+  background: rgba(19, 94, 74, 0.1);
+  color: var(--patch-accent);
+}
+
+.patch-result-badge.fail {
+  background: rgba(180, 73, 56, 0.12);
+  color: var(--patch-danger);
+}
+
+.patch-empty {
+  color: var(--patch-soft);
+  padding: 0.4rem 0;
+}
+
+.patch-popup-shell {
+  width: min(560px, calc(100% - 1.5rem));
+}
+
+@media (max-width: 920px) {
+  .patch-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .patch-shell {
+    width: min(100% - 1rem, 100%);
+    padding-top: 1rem;
+  }
+
+  .patch-hero-top,
+  .patch-nav,
+  .patch-inline-actions,
+  .patch-drop-meta {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .patch-stage-list,
+  .patch-metrics {
+    grid-template-columns: 1fr;
+  }
+}

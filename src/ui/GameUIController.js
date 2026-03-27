@@ -27,6 +27,9 @@ export class GameUIController extends BaseUIController {
   }
 
   createBaseStructure() {
+    // Ensure the mode container is clean before (re)rendering this controller
+    this.elementRoot.innerHTML = '';
+
     // Create main game layout
     const layout = this.createElement('div', { className: 'game-layout' });
     
@@ -44,6 +47,7 @@ export class GameUIController extends BaseUIController {
     layout.appendChild(main);
     
     this.elementRoot.appendChild(layout);
+    this.rootNode = layout;
     
     // Store element references
     this.elements = {

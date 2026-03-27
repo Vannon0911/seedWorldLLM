@@ -15,6 +15,8 @@ export class BaseUIController {
     this.state = {};
     this.elements = {};
     this.isActive = false;
+    this.rootNode = null;
+    this.boundListeners = [];
   }
 
   /**
@@ -96,6 +98,11 @@ export class BaseUIController {
     
     // Create base UI structure
     this.createBaseStructure();
+
+    // Fallback ownership if subclass did not set rootNode explicitly
+    if (!this.rootNode && this.elementRoot && this.elementRoot.firstElementChild) {
+      this.rootNode = this.elementRoot.firstElementChild;
+    }
     
     // Execute after render hooks
     await this.executeHooks('afterRender', this);
@@ -116,6 +123,23 @@ export class BaseUIController {
     for (const [pluginId] of this.plugins) {
       this.unregisterPlugin(pluginId);
     }
+
+    // Remove event listeners registered through addEventListener
+    for (const { element, eventType, wrappedHandler } of this.boundListeners) {
+      try {
+        element.removeEventListener(eventType, wrappedHandler);
+      } catch (error) {
+        console.warn('[UI_CONTROLLER] Failed to remove event listener:', error);
+      }
+    }
+    this.boundListeners = [];
+
+    // Remove owned DOM root from container
+    if (this.rootNode && this.rootNode.parentNode) {
+      this.rootNode.parentNode.removeChild(this.rootNode);
+    }
+    this.rootNode = null;
+    this.elements = {};
     
     console.log(`[UI_CONTROLLER] Destroyed: ${this.constructor.name}`);
   }
@@ -192,12 +216,17 @@ export class BaseUIController {
    * Add event listener with plugin support
    */
   addEventListener(element, eventType, handler) {
+    if (!element) {
+      return null;
+    }
+
     const wrappedHandler = async (event) => {
       await this.handleEvent(eventType, event);
       if (handler) handler(event);
     };
     
     element.addEventListener(eventType, wrappedHandler);
+    this.boundListeners.push({ element, eventType, wrappedHandler });
     return wrappedHandler;
   }
 

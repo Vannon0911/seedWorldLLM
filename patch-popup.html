@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SeedWorld - Patch Popup</title>
+  <link rel="stylesheet" href="/src/patch-control.css">
+</head>
+<body class="patch-control-body">
+  <div class="patch-shell patch-popup-shell">
+    <section class="patch-card">
+      <div class="patch-card-inner">
+        <p class="patch-kicker">Live Status</p>
+        <h1 style="font-size:2rem; margin:0;">Patch Popup</h1>
+        <div class="patch-metrics">
+          <div class="patch-metric"><small>Session</small><span id="sessionId">-</span></div>
+          <div class="patch-metric"><small>Phase</small><span id="phaseValue">-</span></div>
+          <div class="patch-metric"><small>Progress</small><span id="progressValue">0%</span></div>
+          <div class="patch-metric"><small>Result</small><span id="resultValue">wartet</span></div>
+        </div>
+        <div class="patch-progress"><div id="progressBar"></div></div>
+        <div class="patch-banner" id="errorBanner">
+          <strong>Fehler</strong>
+          <div id="errorMessage">-</div>
+        </div>
+        <div class="patch-summary" id="summaryBox">Noch keine Summary.</div>
+      </div>
+    </section>
+  </div>
+
+  <script type="module">
+    const params = new URLSearchParams(window.location.search);
+    const fallbackSession = localStorage.getItem('seedworld:lastPatchSession');
+    const session = params.get('sessionId') || fallbackSession;
+    const sessionId = document.getElementById('sessionId');
+    const phaseValue = document.getElementById('phaseValue');
+    const progressValue = document.getElementById('progressValue');
+    const resultValue = document.getElementById('resultValue');
+    const progressBar = document.getElementById('progressBar');
+    const errorBanner = document.getElementById('errorBanner');
+    const errorMessage = document.getElementById('errorMessage');
+    const summaryBox = document.getElementById('summaryBox');
+
+    if (!session) {
+      summaryBox.textContent = 'Keine Session-ID vorhanden.';
+    } else {
+      sessionId.textContent = session;
+      const source = new EventSource(`/api/patch-sessions/${session}/events`);
+      source.addEventListener('status', async (event) => {
+        const payload = JSON.parse(event.data);
+        phaseValue.textContent = payload.phase || '-';
+        progressValue.textContent = `${payload.progress || 0}%`;
+        resultValue.textContent = payload.finalStatus || payload.state || 'running';
+        progressBar.style.width = `${payload.progress || 0}%`;
+
+        if (payload.error) {
+          errorBanner.classList.add('visible');
+          errorMessage.textContent = payload.error.message || '-';
+        } else {
+          errorBanner.classList.remove('visible');
+        }
+
+        const logsResponse = await fetch(`/api/patch-sessions/${session}/logs`);
+        if (logsResponse.ok) {
+          const logs = await logsResponse.json();
+          summaryBox.textContent = logs.summary || 'Noch keine Summary.';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

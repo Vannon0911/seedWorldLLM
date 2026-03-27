@@ -13,8 +13,12 @@ RUN npm ci --only=production
 # Copy application source
 COPY src/ ./src/
 COPY index.html ./
-COPY styles.css ./
-COPY simple-patch-ui.html ./
+COPY patchUI.html ./
+COPY patch-popup.html ./
+COPY patchServer.mjs ./
+COPY patches/ ./patches/
+COPY tools/ ./tools/
+COPY scripts/ ./scripts/
 COPY start-server.js ./
 
 # Create non-root user for security
@@ -26,7 +30,7 @@ RUN chown -R nodejs:nodejs /app
 USER nodejs
 
 # Expose ports
-EXPOSE 3000 8080
+EXPOSE 3000
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \

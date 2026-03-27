@@ -17,6 +17,8 @@ Thumbs.db
 
 # Patch manager runtime state
 .patch-manager/
+output/
+.windsurf/
 
 # Dependencies
 node_modules/

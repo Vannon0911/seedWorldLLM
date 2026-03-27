@@ -1,4 +1,5 @@
 {
+  "kind": "kernel-patch",
   "id": "deterministic-ui-plugin",
   "version": "1.0.0",
   "description": "Kernel-controlled deterministic UI plugin that demonstrates SEED=SAME ACTIONS behavior",

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SeedWorld - Patch Control</title>
+  <link rel="stylesheet" href="/src/patch-control.css">
+</head>
+<body class="patch-control-body">
+  <div class="patch-shell">
+    <section class="patch-hero">
+      <div class="patch-hero-top">
+        <div>
+          <p class="patch-kicker">Terminal Authority</p>
+          <h1>Ein Einstieg. Ein Lauf. Ein Ergebnis.</h1>
+        </div>
+        <div class="patch-nav">
+          <a class="patch-link" href="/">Game UI</a>
+          <button class="patch-button secondary" id="openPopup" type="button" disabled>Popup oeffnen</button>
+        </div>
+      </div>
+      <p class="patch-copy">Browser startet nur orchestrierte Sessions. Schreiben, Gates, Locking und Rollback bleiben im terminalseitigen Orchestrator.</p>
+    </section>
+
+    <div class="patch-grid">
+      <section class="patch-card">
+        <div class="patch-card-inner">
+          <h2>Intake</h2>
+          <p class="patch-subtle">ZIP oder JSON hochladen. Danach gibt es genau einen Startknopf und keinen direkten Gate-Quatsch.</p>
+          <div class="patch-drop">
+            <strong>Datei fuer den Patch-Lauf</strong>
+            <div class="patch-drop-meta">
+              <span>Akzeptiert: ZIP, JSON</span>
+              <span>Actor: browser-ui</span>
+            </div>
+            <div class="patch-filename" id="selectedFile">Noch keine Datei gewaehlt</div>
+            <div class="patch-inline-actions">
+              <label class="patch-file-button patch-link" for="patchInput">Datei auswaehlen</label>
+              <input class="patch-hidden-input" id="patchInput" type="file" accept=".zip,.json,application/zip,application/json">
+              <button class="patch-button" id="startPatch" type="button" disabled>Patch starten</button>
+              <button class="patch-button secondary" id="cancelPatch" type="button" disabled>Cancel anfordern</button>
+            </div>
+          </div>
+
+          <div>
+            <h3>Session Status</h3>
+            <div class="patch-progress" aria-hidden="true"><div id="progressBar"></div></div>
+            <div class="patch-metrics">
+              <div class="patch-metric"><small>Session</small><span id="sessionId">-</span></div>
+              <div class="patch-metric"><small>Phase</small><span id="phaseValue">-</span></div>
+              <div class="patch-metric"><small>Lock</small><span id="lockValue">frei</span></div>
+              <div class="patch-metric"><small>Risk</small><span id="riskValue">-</span></div>
+              <div class="patch-metric"><small>Datei</small><span id="fileValue">-</span></div>
+              <div class="patch-metric"><small>Patch</small><span id="patchValue">-</span></div>
+            </div>
+          </div>
+
+          <div class="patch-stage-list" id="stageList"></div>
+        </div>
+      </section>
+
+      <section class="patch-card">
+        <div class="patch-card-inner">
+          <div class="patch-banner" id="errorBanner">
+            <strong id="errorTitle">Fehler</strong>
+            <div id="errorMessage">-</div>
+            <div class="patch-error-meta">
+              <span id="errorCode">code:-</span>
+              <span id="errorPhase">phase:-</span>
+              <span id="errorFile">file:-</span>
+              <span id="errorPatch">patch:-</span>
+            </div>
+            <div id="errorFix">-</div>
+            <div class="patch-inline-actions">
+              <button class="patch-button secondary" id="showLogs" type="button">Log-Details</button>
+              <button class="patch-button secondary" id="showSummary" type="button">Summary oeffnen</button>
+            </div>
+          </div>
+
+          <div>
+            <h2>Logs</h2>
+            <div class="patch-log-list" id="logList">
+              <div class="patch-empty">Noch keine Logeintraege.</div>
+            </div>
+          </div>
+
+          <div>
+            <h2>Result</h2>
+            <div class="patch-result-badge" id="resultBadge">wartet</div>
+            <div class="patch-summary" id="summaryBox">Noch keine Summary.</div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script type="module">
+    const phases = ['intake', 'unpack', 'manifest-validate', 'normalize', 'risk-classify', 'acquire-lock', 'llm-gates', 'backup', 'apply', 'verify', 'test', 'finalize', 'release-lock'];
+
+    const state = {
+      selectedFile: null,
+      sessionId: null,
+      eventSource: null,
+      lastStatus: null
+    };
+
+    const selectedFile = document.getElementById('selectedFile');
+    const patchInput = document.getElementById('patchInput');
+    const startPatch = document.getElementById('startPatch');
+    const cancelPatch = document.getElementById('cancelPatch');
+    const openPopup = document.getElementById('openPopup');
+    const progressBar = document.getElementById('progressBar');
+    const sessionId = document.getElementById('sessionId');
+    const phaseValue = document.getElementById('phaseValue');
+    const lockValue = document.getElementById('lockValue');
+    const riskValue = document.getElementById('riskValue');
+    const fileValue = document.getElementById('fileValue');
+    const patchValue = document.getElementById('patchValue');
+    const stageList = document.getElementById('stageList');
+    const errorBanner = document.getElementById('errorBanner');
+    const errorMessage = document.getElementById('errorMessage');
+    const errorCode = document.getElementById('errorCode');
+    const errorPhase = document.getElementById('errorPhase');
+    const errorFile = document.getElementById('errorFile');
+    const errorPatch = document.getElementById('errorPatch');
+    const errorFix = document.getElementById('errorFix');
+    const logList = document.getElementById('logList');
+    const resultBadge = document.getElementById('resultBadge');
+    const summaryBox = document.getElementById('summaryBox');
+
+    function renderStages(currentPhase) {
+      stageList.innerHTML = phases.map((phase) => {
+        const active = phase === currentPhase ? 'patch-stage active' : 'patch-stage';
+        return `<div class="${active}">${phase}</div>`;
+      }).join('');
+    }
+
+    function setIdle() {
+      renderStages(null);
+      progressBar.style.width = '0%';
+    }
+
+    function renderStatus(status) {
+      state.lastStatus = status;
+      sessionId.textContent = status.sessionId || '-';
+      phaseValue.textContent = status.phase || '-';
+      lockValue.textContent = status.lock ? `locked by ${status.lock.sessionId}` : 'frei';
+      riskValue.textContent = status.risk?.risk || '-';
+      fileValue.textContent = status.currentFile || '-';
+      patchValue.textContent = status.currentPatchId || '-';
+      progressBar.style.width = `${status.progress || 0}%`;
+      renderStages(status.phase);
+      cancelPatch.disabled = !status.sessionId || Boolean(status.finalStatus);
+      openPopup.disabled = !status.sessionId;
+      startPatch.disabled = Boolean(status.sessionId && !status.finalStatus) || !state.selectedFile;
+      resultBadge.textContent = status.finalStatus || status.state || 'running';
+      resultBadge.className = status.finalStatus && status.finalStatus !== 'succeeded'
+        ? 'patch-result-badge fail'
+        : 'patch-result-badge';
+
+      if (status.error) {
+        errorBanner.classList.add('visible');
+        errorMessage.textContent = status.error.message || '-';
+        errorCode.textContent = `code:${status.error.code || '-'}`;
+        errorPhase.textContent = `phase:${status.error.phase || '-'}`;
+        errorFile.textContent = `file:${status.error.file || '-'}`;
+        errorPatch.textContent = `patch:${status.error.patchId || '-'}`;
+        errorFix.textContent = status.error.suggestedFix || '-';
+      } else {
+        errorBanner.classList.remove('visible');
+      }
+    }
+
+    async function refreshLogs() {
+      if (!state.sessionId) return;
+      const response = await fetch(`/api/patch-sessions/${state.sessionId}/logs`);
+      if (!response.ok) return;
+      const payload = await response.json();
+      const items = payload.lines || [];
+      if (!items.length) {
+        logList.innerHTML = '<div class="patch-empty">Noch keine Logeintraege.</div>';
+      } else {
+        logList.innerHTML = items.map((item) => {
+          const phase = item.phase ? `<strong>${item.phase}</strong> ` : '';
+          const body = item.error ? JSON.stringify(item.error) : JSON.stringify(item);
+          return `<div class="patch-log-item">${phase}${body}</div>`;
+        }).join('');
+      }
+      summaryBox.textContent = payload.summary || 'Noch keine Summary.';
+    }
+
+    async function refreshResult() {
+      if (!state.sessionId) return;
+      const response = await fetch(`/api/patch-sessions/${state.sessionId}/result`);
+      if (!response.ok) return;
+      const payload = await response.json();
+      summaryBox.textContent = payload.summary || 'Noch keine Summary.';
+    }
+
+    function bindEventSource(session) {
+      state.eventSource?.close();
+      state.eventSource = new EventSource(`/api/patch-sessions/${session}/events`);
+      state.eventSource.addEventListener('status', async (event) => {
+        const payload = JSON.parse(event.data);
+        renderStatus(payload);
+        await refreshLogs();
+        if (payload.finalStatus) {
+          await refreshResult();
+        }
+      });
+      state.eventSource.addEventListener('result', async () => {
+        await refreshResult();
+      });
+    }
+
+    patchInput.addEventListener('change', () => {
+      state.selectedFile = patchInput.files?.[0] || null;
+      selectedFile.textContent = state.selectedFile ? state.selectedFile.name : 'Noch keine Datei gewaehlt';
+      startPatch.disabled = !state.selectedFile;
+    });
+
+    startPatch.addEventListener('click', async () => {
+      if (!state.selectedFile) return;
+
+      const form = new FormData();
+      form.append('input', state.selectedFile);
+      form.append('actor', 'browser-ui');
+
+      startPatch.disabled = true;
+      const response = await fetch('/api/patch-sessions', {
+        method: 'POST',
+        body: form
+      });
+      const payload = await response.json();
+      if (!response.ok) {
+        errorBanner.classList.add('visible');
+        errorMessage.textContent = payload.error || 'Session konnte nicht gestartet werden.';
+        startPatch.disabled = !state.selectedFile;
+        return;
+      }
+
+      state.sessionId = payload.sessionId;
+      localStorage.setItem('seedworld:lastPatchSession', payload.sessionId);
+      renderStatus({
+        sessionId: payload.sessionId,
+        phase: 'intake',
+        progress: 0,
+        state: 'queued'
+      });
+      bindEventSource(payload.sessionId);
+      openPopup.disabled = false;
+    });
+
+    cancelPatch.addEventListener('click', async () => {
+      if (!state.sessionId) return;
+      await fetch(`/api/patch-sessions/${state.sessionId}/cancel`, { method: 'POST' });
+    });
+
+    openPopup.addEventListener('click', () => {
+      if (!state.sessionId) return;
+      window.open(`/popup?sessionId=${encodeURIComponent(state.sessionId)}`, 'seedworld-patch-popup', 'width=520,height=720');
+    });
+
+    document.getElementById('showLogs').addEventListener('click', () => {
+      logList.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    document.getElementById('showSummary').addEventListener('click', () => {
+      summaryBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    setIdle();
+  </script>
+</body>
+</html>

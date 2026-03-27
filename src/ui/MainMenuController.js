@@ -42,11 +42,11 @@ export class MainMenuController extends BaseUIController {
     });
 
     this.modes.set('patcher', {
-      name: 'Patcher Mode',
+      name: 'Patch Control',
       icon: '📦', 
-      description: 'Create and manage patches',
-      controller: 'SimplePatchUIController',
-      requires: ['kernelInterface'],
+      description: 'Open the terminal-authority patch control plane',
+      controller: 'ExternalPatchControl',
+      requires: [],
       kernelGate: 'patcher.access'
     });
   }
@@ -199,6 +199,11 @@ export class MainMenuController extends BaseUIController {
     }
 
     try {
+      if (modeConfig.controller === 'ExternalPatchControl') {
+        window.location.href = '/patch';
+        return;
+      }
+
       // Execute before mode switch hooks
       await this.executeKernelGate('beforeModeSwitch', {
         from: this.currentMode,
@@ -249,8 +254,7 @@ export class MainMenuController extends BaseUIController {
   async loadModeController(controllerName) {
     const controllerMap = {
       'GameUIController': () => import('./GameUIController.js').then(m => m.GameUIController),
-      'DevUIController': () => import('./DevUIController.js').then(m => m.DevUIController),
-      'SimplePatchUIController': () => import('./SimplePatchUIController.js').then(m => m.SimplePatchUIController)
+      'DevUIController': () => import('./DevUIController.js').then(m => m.DevUIController)
     };
 
     const controllerLoader = controllerMap[controllerName];

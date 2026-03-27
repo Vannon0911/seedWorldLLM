@@ -1,13 +1,15 @@
 // Simple server starter
-import { MainServer } from './src/mainServer.js';
+import { PatchServer } from './patchServer.mjs';
 
 console.log('[START] Starting SeedWorld Development Server...');
 
-const server = new MainServer();
+const server = new PatchServer();
+
+await server.listen();
 
 console.log('[START] Server started successfully!');
 console.log('[HTTP] Open browser: http://localhost:3000');
-console.log('[WS] WebSocket: ws://localhost:8080');
+console.log('[PATCH] Control Plane: http://localhost:3000/patch');
 console.log('[INFO] Press Ctrl+C to stop server');
 
 // Keep process alive

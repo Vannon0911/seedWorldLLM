@@ -294,30 +294,35 @@ export class DevUIController extends BaseUIController {
     
     content.innerHTML = `
       <div class="patch-debug-header">
-        <h2>Patch Debug & Testing</h2>
+        <h2>Patch Control Plane</h2>
         <div class="patch-debug-controls">
-          <button class="patch-btn" id="loadTestPatch">Load Test Patch</button>
-          <button class="patch-btn" id="validatePatch">Validate</button>
-          <button class="patch-btn" id="dryRunPatch">Dry Run</button>
+          <button class="patch-btn" id="openPatchControl">Open Patch Control</button>
+          <button class="patch-btn" id="openPatchPopup">Open Popup</button>
         </div>
       </div>
       
       <div class="patch-debug-grid">
         <div class="patch-editor-panel">
-          <h3>Patch Editor</h3>
+          <h3>Authority Model</h3>
           <div class="patch-editor">
-            <textarea id="patchCodeEditor" placeholder="// Enter patch code for testing..."></textarea>
-            <div class="editor-actions">
-              <button class="editor-btn" id="formatPatch">Format</button>
-              <button class="editor-btn" id="syntaxCheck">Syntax Check</button>
-            </div>
+            <textarea id="patchCodeEditor" readonly>Browser UI is now read/write blind for patch gates.
+
+Write authority lives in:
+- npm run patch:apply -- --input <zip|json>
+
+Browser may only:
+- start orchestrated sessions
+- watch status/logs/result
+- request cancel
+
+No direct validate/apply/execute endpoints remain.</textarea>
           </div>
         </div>
         
         <div class="patch-test-panel">
-          <h3>Test Results</h3>
+          <h3>Session Notes</h3>
           <div class="test-results" id="patchTestResults">
-            <div class="no-results">No tests run yet</div>
+            <div class="no-results">Use the patch control plane to upload a ZIP or JSON manifest and monitor the run.</div>
           </div>
         </div>
       </div>
@@ -666,7 +671,20 @@ export class DevUIController extends BaseUIController {
 
   // Additional methods for other tabs...
   setupPatchDebug(content) {
-    // Implementation for patch debugging
+    const openPatchControl = content.querySelector('#openPatchControl');
+    const openPatchPopup = content.querySelector('#openPatchPopup');
+
+    if (openPatchControl) {
+      this.addEventListener(openPatchControl, 'click', () => {
+        window.location.href = '/patch';
+      });
+    }
+
+    if (openPatchPopup) {
+      this.addEventListener(openPatchPopup, 'click', () => {
+        window.open('/popup', 'seedworld-patch-popup', 'width=520,height=720');
+      });
+    }
   }
 
   setupPerformanceMonitoring(content) {

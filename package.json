@@ -5,17 +5,25 @@
   "type": "module",
   "description": "SeedWorld - Pure Kernel-Based RTS Game (No Server Patching)",
   "scripts": {
-    "start": "node src/main.js",
+    "start": "node patchServer.mjs",
     "kernel": "node src/mainKernel.js",
-    "server": "node src/mainServer.js",
-    "test": "node tests/MainTest.mjs",
-    "preflight": "node tools/runtime/preflight.mjs"
+    "server": "node patchServer.mjs",
+    "patch:server": "node patchServer.mjs",
+    "patch:apply": "node tools/patch/apply.mjs",
+    "test": "node scripts/test-runner.mjs",
+    "preflight": "node scripts/test-runner.mjs"
   },
   "dependencies": {
     "jszip": "^3.10.1",
-    "ws": "^8.14.2"
+    "playwright": "^1.58.2"
   },
-  "keywords": ["deterministic", "browser-game", "rts", "kernel", "no-patching"],
+  "keywords": [
+    "deterministic",
+    "browser-game",
+    "rts",
+    "kernel",
+    "no-patching"
+  ],
   "author": "SeedWorld Team",
   "license": "MIT"
 }

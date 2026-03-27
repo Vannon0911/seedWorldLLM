@@ -162,19 +162,20 @@ export class UIPluginController {
     
     // Simple deterministic RNG (same seed = same sequence)
     let currentSeed = this.hashCode(seed);
+    const nextRandom = () => {
+      currentSeed = (currentSeed * 9301 + 49297) % 233280;
+      return currentSeed / 233280;
+    };
     
     return {
-      random: () => {
-        currentSeed = (currentSeed * 9301 + 49297) % 233280;
-        return currentSeed / 233280;
-      },
+      random: () => nextRandom(),
       
       randint: (min, max) => {
-        return Math.floor(this.random() * (max - min + 1)) + min;
+        return Math.floor(nextRandom() * (max - min + 1)) + min;
       },
       
       choice: (array) => {
-        return array[this.randint(0, array.length - 1)];
+        return array[Math.floor(nextRandom() * array.length)];
       }
     };
   }

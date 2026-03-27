@@ -1,4 +1,5 @@
 {
+  "kind": "kernel-patch",
   "id": "example-structure-cost-modifier",
   "version": "1.0.0",
   "description": "Reduces structure costs based on total structures built (bulk discount)",
