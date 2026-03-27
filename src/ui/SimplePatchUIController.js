@@ -11,6 +11,7 @@ export class SimplePatchUIController extends BaseUIController {
     this.modules = new Map();
     this.uploadQueue = [];
     this.validationResults = new Map();
+    this.kernelInterface = options.kernelInterface || null;
   }
 
   createBaseStructure() {
@@ -191,7 +192,7 @@ export class SimplePatchUIController extends BaseUIController {
         this.uploadQueue.push({
           file: file.name,
           data: patchData,
-          uploadedAt: Date.now()
+          uploadedAt: this.getCurrentTick()
         });
         
         // Validate immediately
@@ -234,7 +235,7 @@ export class SimplePatchUIController extends BaseUIController {
         valid: result.valid,
         errors: result.errors || [],
         warnings: result.warnings || [],
-        validatedAt: Date.now(),
+        validatedAt: this.getCurrentTick(),
         patchData: patchData
       });
       
@@ -243,7 +244,7 @@ export class SimplePatchUIController extends BaseUIController {
         this.patches.set(fileName, {
           ...patchData,
           fileName,
-          validatedAt: Date.now()
+          validatedAt: this.getCurrentTick()
         });
       }
       
@@ -455,5 +456,14 @@ export class SimplePatchUIController extends BaseUIController {
       this.modules.get(moduleType).push({ fileName, patchData });
     }
     this.updateModuleList();
+  }
+
+  getCurrentTick() {
+    if (this.kernelInterface && this.kernelInterface.getCurrentTick) {
+      return this.kernelInterface.getCurrentTick();
+    }
+    // Fallback to Date.now() if kernel interface not available (non-deterministic fallback)
+    console.warn('[SIMPLE_PATCH] Kernel interface not available, using non-deterministic timestamp');
+    return Date.now();
   }
 }

@@ -12,6 +12,8 @@ export class UIPluginController {
     this.allowedMutations = new Set([
       'ui_update', 'plugin_state_change', 'event_trigger', 'visual_effect'
     ]);
+    // Track current plugin execution context
+    this.currentPluginId = null;
   }
 
   /**
@@ -168,7 +170,7 @@ export class UIPluginController {
       },
       
       randint: (min, max) => {
-        return Math.floor(rng.random() * (max - min + 1)) + min;
+        return Math.floor(this.random() * (max - min + 1)) + min;
       },
       
       choice: (array) => {
@@ -335,6 +337,9 @@ export class UIPluginController {
     return (...args) => {
       const executionId = `${pluginId}-${this.kernel.getCurrentTick()}`;
       
+      // Set plugin execution context
+      this.setCurrentPluginId(pluginId);
+      
       try {
         // Log hook execution
         this.logMutation(pluginId, 'hook_execution', { 
@@ -356,6 +361,9 @@ export class UIPluginController {
         console.error(`[KERNEL_UI] Hook execution failed for plugin ${pluginId}:`, error);
         this.logMutation(pluginId, 'hook_error', { error: error.message });
         return null;
+      } finally {
+        // Clear plugin execution context
+        this.clearCurrentPluginId();
       }
     };
   }
@@ -369,25 +377,43 @@ export class UIPluginController {
       throw new Error(`[KERNEL_UI] Plugin ${pluginId} not found`);
     }
 
-    // Validate action is deterministic
-    this.validateDeterministicAction(pluginId, action, args);
-    
-    // Execute with mutation tracking
-    const startTime = this.kernel.getCurrentTick();
-    const result = plugin.instance.execute(action, ...args);
-    const endTime = this.kernel.getCurrentTick();
-    
-    // Log execution for reproducibility
-    this.logMutation(pluginId, 'plugin_action', {
-      action,
-      args: this.sanitizeArgs(args),
-      result: this.sanitizeResult(result),
-      startTick: startTime,
-      endTick: endTime,
-      seed: this.deterministicSeed
-    });
-    
-    return result;
+    // Set plugin execution context
+    this.setCurrentPluginId(pluginId);
+
+    try {
+      // Validate action is deterministic
+      this.validateDeterministicAction(pluginId, action, args);
+      
+      // Execute with mutation tracking
+      const startTime = this.kernel.getCurrentTick();
+      const result = plugin.instance.execute(action, ...args);
+      const endTime = this.kernel.getCurrentTick();
+      
+      // Log execution for reproducibility
+      this.logMutation(pluginId, 'plugin_action', {
+        action,
+        args: this.sanitizeArgs(args),
+        result: this.sanitizeResult(result),
+        startTick: startTime,
+        endTick: endTime,
+        seed: this.deterministicSeed
+      });
+      
+      return result;
+    } catch (error) {
+      // Log execution error
+      this.logMutation(pluginId, 'plugin_action_error', {
+        action,
+        error: error.message,
+        tick: this.kernel.getCurrentTick()
+      });
+      
+      console.error(`[KERNEL_UI] Plugin action execution failed for ${pluginId}:`, error);
+      throw error;
+    } finally {
+      // Clear plugin execution context
+      this.clearCurrentPluginId();
+    }
   }
 
   /**
@@ -600,8 +626,21 @@ export class UIPluginController {
    * Get current plugin ID (from execution context)
    */
   getCurrentPluginId() {
-    // This would be set during plugin execution
-    return 'current-plugin';
+    return this.currentPluginId || 'unknown-plugin';
+  }
+
+  /**
+   * Set current plugin execution context
+   */
+  setCurrentPluginId(pluginId) {
+    this.currentPluginId = pluginId;
+  }
+
+  /**
+   * Clear current plugin execution context
+   */
+  clearCurrentPluginId() {
+    this.currentPluginId = null;
   }
 
   /**

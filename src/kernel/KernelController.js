@@ -147,6 +147,7 @@ export class KernelController {
     const ticks = this.#readNumber(action, "ticks", 1);
 
     // Execute advanceTick hooks before processing
+    // Hooks are sorted by priority: lower numbers execute first (higher priority)
     let modifiedState = state;
     for (const hook of this.hooks.advanceTick.sort((a, b) => a.priority - b.priority)) {
       if (hook.enabled) {

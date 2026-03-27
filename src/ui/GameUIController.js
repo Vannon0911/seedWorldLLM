@@ -106,7 +106,7 @@ export class GameUIController extends BaseUIController {
   createGameWorld() {
     const gameWorld = this.createElement('div', { className: 'game-world', id: 'gameWorld' });
     
-    // Initialize tile grid renderer
+    // Initialize tile grid renderer - pass the container element directly
     const world = this.currentState.world;
     this.tileGridRenderer = new TileGridRenderer(gameWorld, world.width, world.height, 84);
     
@@ -115,7 +115,6 @@ export class GameUIController extends BaseUIController {
       this.handleTileSelection();
     });
     
-    gameWorld.appendChild(this.tileGridRenderer.element);
     return gameWorld;
   }
 

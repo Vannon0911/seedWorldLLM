@@ -20,6 +20,10 @@ export class WebSocketPatchServer {
     this.fileWatchers = new Map();
     this.kernelInterface = null;
     
+    // Debouncing mechanism to prevent race conditions
+    this.reloadTimeouts = new Map();
+    this.reloadDelay = 500; // 500ms debounce delay
+    
     this.server = new WebSocketServer({ port });
     this.setupServer();
     this.loadPatches();
@@ -91,7 +95,7 @@ export class WebSocketPatchServer {
           
           // Add metadata
           patch.filename = file;
-          patch.lastModified = Date.now();
+          patch.lastModified = this.getCurrentTick();
           patch.active = false;
           
           this.patches.set(patch.id, patch);
@@ -117,15 +121,41 @@ export class WebSocketPatchServer {
   watchPatchFile(filePath, patchId) {
     // Remove existing watcher if any
     if (this.fileWatchers.has(patchId)) {
-      unwatchFile(filePath);
+      try {
+        unwatchFile(this.fileWatchers.get(patchId));
+      } catch (error) {
+        console.error(`[WS] Failed to remove file watcher for ${patchId}:`, error);
+      }
     }
 
-    watchFile(filePath, (curr, prev) => {
-      console.log(`[WS] Patch file changed: ${patchId}`);
-      this.reloadPatch(patchId);
-    });
+    try {
+      watchFile(filePath, (curr, prev) => {
+        console.log(`[WS] Patch file changed: ${patchId}`);
+        this.debouncedReloadPatch(patchId);
+      });
 
-    this.fileWatchers.set(patchId, filePath);
+      this.fileWatchers.set(patchId, filePath);
+    } catch (error) {
+      console.error(`[WS] Failed to setup file watcher for ${patchId}:`, error);
+    }
+  }
+
+  /**
+   * Debounced patch reload to prevent race conditions
+   */
+  debouncedReloadPatch(patchId) {
+    // Clear existing timeout for this patch
+    if (this.reloadTimeouts.has(patchId)) {
+      clearTimeout(this.reloadTimeouts.get(patchId));
+    }
+
+    // Set new timeout
+    const timeout = setTimeout(() => {
+      this.reloadPatch(patchId);
+      this.reloadTimeouts.delete(patchId);
+    }, this.reloadDelay);
+
+    this.reloadTimeouts.set(patchId, timeout);
   }
 
   reloadPatch(patchId) {
@@ -139,7 +169,7 @@ export class WebSocketPatchServer {
       
       // Preserve metadata
       updatedPatch.filename = patch.filename;
-      updatedPatch.lastModified = Date.now();
+      updatedPatch.lastModified = this.getCurrentTick();
       updatedPatch.active = patch.active;
       
       this.patches.set(patchId, updatedPatch);
@@ -318,10 +348,29 @@ export class WebSocketPatchServer {
     }
   }
 
+  getCurrentTick() {
+    if (this.kernelInterface && this.kernelInterface.getCurrentTick) {
+      return this.kernelInterface.getCurrentTick();
+    }
+    // Fallback to Date.now() if kernel interface not available (non-deterministic fallback)
+    console.warn('[WS] Kernel interface not available, using non-deterministic timestamp');
+    return Date.now();
+  }
+
   close() {
+    // Clear all debounce timeouts
+    for (const [patchId, timeout] of this.reloadTimeouts) {
+      clearTimeout(timeout);
+    }
+    this.reloadTimeouts.clear();
+
     // Clean up file watchers
-    for (const filePath of this.fileWatchers.values()) {
-      unwatchFile(filePath);
+    for (const [patchId, filePath] of this.fileWatchers) {
+      try {
+        unwatchFile(filePath);
+      } catch (error) {
+        console.error(`[WS] Failed to cleanup file watcher for ${patchId}:`, error);
+      }
     }
     this.fileWatchers.clear();
 

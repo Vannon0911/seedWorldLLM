@@ -27,6 +27,16 @@ class MainServer {
     // Connect WebSocket server to kernel interface
     this.wsServer.setKernelInterface(this.kernelInterface);
     
+    // Security settings
+    this.maxRequestSize = 5 * 1024 * 1024; // 5MB limit
+    this.requestTimeout = 30000; // 30 seconds
+    this.allowedOrigins = [
+      'http://localhost:3000',
+      'http://127.0.0.1:3000',
+      'http://localhost:8080',
+      'http://127.0.0.1:8080'
+    ];
+    
     this.setupHTTPServer();
   }
 
@@ -44,9 +54,12 @@ class MainServer {
 
   handleRequest(req, res) {
     const url = req.url;
+    const origin = req.headers.origin;
 
-    // Enable CORS
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    // Enable CORS for specific origins only
+    if (this.allowedOrigins.includes(origin) || !origin) {
+      res.setHeader('Access-Control-Allow-Origin', origin || '*');
+    }
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 
@@ -88,8 +101,27 @@ class MainServer {
       if (url === '/api/patches' && req.method === 'POST') {
         // Create/update patch
         let body = '';
-        req.on('data', chunk => body += chunk);
+        let contentLength = 0;
+        
+        // Set request timeout
+        const timeout = setTimeout(() => {
+          res.writeHead(408, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ success: false, error: 'Request timeout' }));
+        }, this.requestTimeout);
+        
+        req.on('data', chunk => {
+          contentLength += chunk.length;
+          if (contentLength > this.maxRequestSize) {
+            clearTimeout(timeout);
+            res.writeHead(413, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ success: false, error: 'Request entity too large' }));
+            return;
+          }
+          body += chunk;
+        });
+        
         req.on('end', () => {
+          clearTimeout(timeout);
           try {
             const patch = JSON.parse(body);
             const result = this.kernelInterface('patch.apply', {
@@ -103,6 +135,14 @@ class MainServer {
             res.end(JSON.stringify({ success: false, error: error.message }));
           }
         });
+        
+        req.on('error', (error) => {
+          clearTimeout(timeout);
+          console.error('[API] Request error:', error);
+          res.writeHead(500, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ success: false, error: 'Request failed' }));
+        });
+        
         return;
       }
 
