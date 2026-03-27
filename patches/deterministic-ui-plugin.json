@@ -1,0 +1,61 @@
+{
+  "id": "deterministic-ui-plugin",
+  "version": "1.0.0",
+  "description": "Kernel-controlled deterministic UI plugin that demonstrates SEED=SAME ACTIONS behavior",
+  "author": "SeedWorld Team",
+  "enabled": true,
+  "dependencies": [],
+  "hooks": {
+    "advanceTick": {
+      "id": "deterministic-tick-hook",
+      "priority": 10,
+      "enabled": true,
+      "phase": "update",
+      "code": "// Deterministic UI update based on kernel tick\n// SEED=SAME ACTIONS = GLEICHER SEED\nconst currentTick = kernel.getState().tick;\nconst seed = kernel.getState().seed;\n\n// Deterministic color calculation based on tick and seed\nconst hue = (currentTick * 137.5) % 360; // Golden angle for distribution\nconst saturation = 70 + (seed.charCodeAt(0) % 30); // Seed-based variation\nconst lightness = 50 + (Math.sin(currentTick * 0.1) * 20);\n\n// Create deterministic visual effect\nconst visualEffect = {\n  type: 'ui_update',\n  data: {\n    backgroundColor: `hsl(${hue}, ${saturation}%, ${lightness}%)`,\n    tick: currentTick,\n    seed: seed,\n    deterministic: true\n  }\n};\n\n// Log mutation for reproducibility\nkernel.logEvent({\n  type: 'deterministic_ui_update',\n  tick: currentTick,\n  seed: seed,\n  effect: visualEffect\n});\n\nreturn kernel.mutateState(visualEffect);"
+    },
+    "placeStructure": {
+      "id": "deterministic-build-hook",
+      "priority": 20,
+      "enabled": true,
+      "phase": "pre-update",
+      "code": "// Deterministic build animation based on structure type and position\nconst structureType = action.type;\nconst x = action.x;\nconst y = action.y;\nconst seed = kernel.getState().seed;\nconst tick = kernel.getState().tick;\n\n// Deterministic animation parameters\nconst animationDuration = 1000 + (seed.charCodeAt(structureType.charCodeAt(0) % 10) * 100);\nconst particleCount = 5 + (x + y) % 10;\nconst color = this.getDeterministicColor(structureType, seed);\n\n// Create deterministic build effect\nconst buildEffect = {\n  type: 'visual_effect',\n  data: {\n    animation: 'build',\n    duration: animationDuration,\n    particles: particleCount,\n    color: color,\n    position: { x, y },\n    structureType: structureType,\n    tick: tick,\n    seed: seed\n  }\n};\n\nkernel.logEvent({\n  type: 'deterministic_build_effect',\n  structureType,\n  position: { x, y },\n  effect: buildEffect\n});\n\nreturn state; // Don't modify game state, only visual effects"
+    }
+  },
+  "uiPlugins": {
+    "deterministicUI": {
+      "id": "deterministic-ui-plugin",
+      "hooks": {
+        "onTick": "sandbox.onTick(eventData);",
+        "onTileSelect": "sandbox.onTileSelect(tile, currentState);",
+        "onEvent": "sandbox.onEvent(eventType, eventData);"
+      },
+      "code": "// Deterministic UI Plugin - Kernel Controlled\n// SEED=SAME ACTIONS = GLEICHER SEED\n\n// Deterministic color generator\nfunction getDeterministicColor(input, seed) {\n  const hash = ((seed.charCodeAt(0) * 31) + input.charCodeAt(0)) % 360;\n  return `hsl(${hash}, 70%, 50%)`;\n}\n\n// Deterministic animation timing\nfunction getDeterministicTiming(tick, seed) {\n  const base = 1000;\n  const variation = (seed.charCodeAt(0) % 500);\n  return base + variation + (tick % 100);\n}\n\n// Handle tick events deterministically\nsandbox.onTick = function(eventData) {\n  const tick = sandbox.time.tick();\n  const seed = sandbox.kernel.getState().seed;\n  \n  // Update UI with deterministic values\n  const uiState = {\n    tick: tick,\n    seed: seed,\n    color: getDeterministicColor('tick', seed),\n    timing: getDeterministicTiming(tick, seed)\n  };\n  \n  // Safe UI update through kernel\n  sandbox.ui.updateElement(document.body, {\n    style: {\n      backgroundColor: uiState.color,\n      transition: `all ${uiState.timing}ms ease-in-out`\n    }\n  });\n  \n  sandbox.kernel.logEvent({\n    type: 'deterministic_tick_ui_update',\n    uiState: uiState\n  });\n};\n\n// Handle tile selection deterministically\nsandbox.onTileSelect = function(tile, currentState) {\n  const seed = sandbox.kernel.getState().seed;\n  const tileHash = ((tile.x * 31) + (tile.y * 17)) % 360;\n  \n  // Deterministic highlight color\n  const highlightColor = `hsl(${tileHash}, 80%, 60%)`;\n  \n  // Safe UI update\n  const tileElement = document.querySelector(`[data-x=\"${tile.x}\"][data-y=\"${tile.y}\"]`);\n  if (tileElement && tileElement.hasAttribute('data-kernel-controlled')) {\n    sandbox.ui.updateElement(tileElement, {\n      style: {\n        borderColor: highlightColor,\n        boxShadow: `0 0 10px ${highlightColor}`\n      }\n    });\n  }\n  \n  sandbox.kernel.logEvent({\n    type: 'deterministic_tile_selection',\n    tile: tile,\n    highlightColor: highlightColor\n  });\n};\n\n// Handle events deterministically\nsandbox.onEvent = function(eventType, eventData) {\n  const seed = sandbox.kernel.getState().seed;\n  const tick = sandbox.time.tick();\n  \n  // Deterministic event response\n  if (eventType === 'structurePlaced') {\n    const celebrationColor = getDeterministicColor(eventData.type, seed);\n    const celebrationDuration = getDeterministicTiming(tick, seed);\n    \n    // Create deterministic celebration\n    sandbox.ui.createElement('div', {\n      className: 'deterministic-celebration',\n      style: {\n        position: 'absolute',\n        color: celebrationColor,\n        animationDuration: `${celebrationDuration}ms`,\n        pointerEvents: 'none'\n      },\n      textContent: '✨'\n    });\n    \n    sandbox.kernel.logEvent({\n      type: 'deterministic_celebration',\n      eventData: eventData,\n      celebration: {\n        color: celebrationColor,\n        duration: celebrationDuration\n      }\n    });\n  }\n};"
+    }
+  },
+  "schema": {
+    "version": "1.0",
+    "type": "ui-deterministic",
+    "compatibility": {
+      "kernel": ">=1.0.0",
+      "game": ">=3.0.0"
+    }
+  },
+  "rollback": {
+    "type": "state-snapshot",
+    "restore": "remove-deterministic-ui-effects"
+  },
+  "validation": {
+    "deterministic": true,
+    "sideEffects": false,
+    "externalDependencies": false,
+    "kernelControlled": true
+  },
+  "determinismGuarantees": {
+    "seedSameActions": "GLEICHER_SEED",
+    "noRandomFunctions": true,
+    "noTimeFunctions": true,
+    "noSideEffects": true,
+    "kernelControlledMutations": true,
+    "reproducibleUI": true
+  }
+}

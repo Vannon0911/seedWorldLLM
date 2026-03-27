@@ -1,106 +1,305 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SeedWorld Launcher</title>
-    <style>
-      :root {
-        --bg: #030704;
-        --panel: #06140b;
-        --ink: #d3ffe2;
-        --accent: #2cff88;
-        --accent-2: #0ea75b;
-        --border: #174428;
-      }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeedWorld - Deterministic Kernel Interface</title>
+    <link rel="stylesheet" href="src/styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Header with Mode Toggle -->
+        <header class="app-header">
+            <div class="header-left">
+                <h1>SeedWorld</h1>
+                <span class="mode-indicator" id="modeIndicator">GAME MODE</span>
+            </div>
+            <div class="header-right">
+                <button id="modeToggle" class="mode-toggle">
+                    <span class="toggle-text">Switch to Patcher</span>
+                </button>
+                <div class="connection-status" id="connectionStatus">
+                    <span class="status-dot offline"></span>
+                    <span class="status-text">Offline</span>
+                </div>
+            </div>
+        </header>
 
-      * { box-sizing: border-box; }
-      body {
-        margin: 0;
-        min-height: 100vh;
-        display: grid;
-        place-items: center;
-        background: radial-gradient(circle at top, #0a1a10, var(--bg) 58%);
-        color: var(--ink);
-        font-family: "Trebuchet MS", "Segoe UI", sans-serif;
-      }
+        <!-- Game Mode Interface -->
+        <main id="gameMode" class="mode-content game-mode">
+            <div class="game-layout">
+                <aside class="game-sidebar">
+                    <div class="hud-panel">
+                        <h3>Ressourcen</h3>
+                        <div class="resource-display">
+                            <div class="resource">
+                                <span class="resource-icon">⛏️</span>
+                                <span class="resource-value" id="oreCount">0</span>
+                            </div>
+                            <div class="resource">
+                                <span class="resource-icon">🔧</span>
+                                <span class="resource-value" id="ironCount">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hud-panel">
+                        <h3>Statistiken</h3>
+                        <div class="stats-display">
+                            <div class="stat">
+                                <span class="stat-label">Tick:</span>
+                                <span class="stat-value" id="tickCount">0</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Abbauer:</span>
+                                <span class="stat-value" id="minerCount">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+                <div class="game-main">
+                    <div class="game-world" id="gameWorld">
+                        <!-- Tile grid will be rendered here -->
+                    </div>
+                    <div class="game-status" id="gameStatus">
+                        <p>Bereit für den ersten Abbauer.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
 
-      .shell {
-        width: min(980px, 96vw);
-        background: linear-gradient(180deg, #071a0d, var(--panel));
-        border: 1px solid var(--border);
-        border-radius: 18px;
-        padding: 1.4rem;
-      }
+        <!-- Patcher Mode Interface -->
+        <main id="patcherMode" class="mode-content patcher-mode" style="display: none;">
+            <div class="patcher-layout">
+                <aside class="patcher-sidebar">
+                    <div class="patcher-panel">
+                        <h3>Patch Management</h3>
+                        <div class="patch-controls">
+                            <button id="refreshPatches" class="patch-btn">Refresh Patches</button>
+                            <button id="validateAll" class="patch-btn">Validate All</button>
+                        </div>
+                    </div>
+                    <div class="patcher-panel">
+                        <h3>Active Patches</h3>
+                        <div class="patch-list" id="activePatches">
+                            <!-- Active patches will be listed here -->
+                        </div>
+                    </div>
+                </aside>
+                <div class="patcher-main">
+                    <div class="patch-editor">
+                        <div class="editor-header">
+                            <h3>Patch Editor</h3>
+                            <div class="editor-actions">
+                                <button id="newPatch" class="editor-btn">New Patch</button>
+                                <button id="savePatch" class="editor-btn">Save</button>
+                                <button id="applyPatch" class="editor-btn">Apply</button>
+                            </div>
+                        </div>
+                        <div class="editor-content">
+                            <div class="patch-form">
+                                <div class="form-group">
+                                    <label for="patchId">Patch ID:</label>
+                                    <input type="text" id="patchId" placeholder="example-patch">
+                                </div>
+                                <div class="form-group">
+                                    <label for="patchVersion">Version:</label>
+                                    <input type="text" id="patchVersion" placeholder="1.0.0">
+                                </div>
+                                <div class="form-group">
+                                    <label for="patchDescription">Description:</label>
+                                    <textarea id="patchDescription" placeholder="Patch description..."></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="patchHook">Hook Point:</label>
+                                    <select id="patchHook">
+                                        <option value="advanceTick">advanceTick</option>
+                                        <option value="placeStructure">placeStructure</option>
+                                        <option value="inspectTile">inspectTile</option>
+                                        <option value="getBuildOptions">getBuildOptions</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="patchPriority">Priority:</label>
+                                    <input type="number" id="patchPriority" value="100" min="1" max="1000">
+                                </div>
+                                <div class="form-group">
+                                    <label for="patchCode">Patch Code:</label>
+                                    <textarea id="patchCode" placeholder="// Deterministic patch code..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="patch-output">
+                        <h3>Validation Output</h3>
+                        <div class="output-console" id="validationOutput">
+                            <div class="console-line">Ready for patch validation...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
 
-      h1 {
-        margin: 0 0 1rem;
-        font-size: clamp(1.4rem, 3.8vw, 2rem);
-        letter-spacing: 0.04em;
-      }
+    <!-- Kernel Bridge Script -->
+    <script type="module">
+        import { KernelController } from './src/kernel/KernelController.js';
+        import { GameLogicController } from './src/game/GameLogicController.js';
+        import { GameUIController } from './src/ui/GameUIController.js';
+        import { PatcherUIController } from './src/ui/PatcherUIController.js';
 
-      .menu {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 1rem;
-      }
+        // Global application state
+        window.appState = {
+            mode: 'game', // 'game' or 'patcher'
+            kernel: new KernelController(),
+            gameController: new GameLogicController(),
+            gameUIController: null,
+            patcherUIController: null,
+            wsConnection: null,
+            activePatches: new Map()
+        };
 
-      .menu button {
-        border: 1px solid var(--border);
-        background: linear-gradient(180deg, #0a2d18, #06140b);
-        color: var(--ink);
-        padding: 1.2rem;
-        border-radius: 14px;
-        font-size: clamp(1rem, 2.8vw, 1.25rem);
-        font-weight: 700;
-        cursor: pointer;
-      }
+        // Mode toggle functionality
+        const modeToggle = document.getElementById('modeToggle');
+        const modeIndicator = document.getElementById('modeIndicator');
+        const gameMode = document.getElementById('gameMode');
+        const patcherMode = document.getElementById('patcherMode');
 
-      .menu button strong {
-        display: block;
-        font-size: 1.15em;
-        margin-bottom: 0.35rem;
-        color: var(--accent);
-      }
+        modeToggle.addEventListener('click', async () => {
+            const currentMode = window.appState.mode;
+            const newMode = currentMode === 'game' ? 'patcher' : 'game';
+            
+            // Destroy current UI controller
+            if (currentMode === 'game' && window.appState.gameUIController) {
+                await window.appState.gameUIController.destroy();
+                window.appState.gameUIController = null;
+            } else if (currentMode === 'patcher' && window.appState.patcherUIController) {
+                await window.appState.patcherUIController.destroy();
+                window.appState.patcherUIController = null;
+            }
+            
+            // Update UI visibility
+            if (newMode === 'patcher') {
+                gameMode.style.display = 'none';
+                patcherMode.style.display = 'block';
+                modeIndicator.textContent = 'PATCHER MODE';
+                modeToggle.querySelector('.toggle-text').textContent = 'Switch to Game';
+                document.body.classList.add('patcher-mode-active');
+                
+                // Initialize patcher UI controller
+                window.appState.patcherUIController = new PatcherUIController();
+                await window.appState.patcherUIController.initialize(patcherMode);
+                
+            } else {
+                patcherMode.style.display = 'none';
+                gameMode.style.display = 'block';
+                modeIndicator.textContent = 'GAME MODE';
+                modeToggle.querySelector('.toggle-text').textContent = 'Switch to Patcher';
+                document.body.classList.remove('patcher-mode-active');
+                
+                // Initialize game UI controller
+                window.appState.gameUIController = new GameUIController(window.appState.gameController);
+                await window.appState.gameUIController.initialize(gameMode);
+            }
+            
+            window.appState.mode = newMode;
+        });
 
-      .menu button:active { transform: translateY(1px); }
-      .menu button:hover { border-color: var(--accent-2); }
+        // WebSocket connection for live updates
+        function initializeWebSocket() {
+            const ws = new WebSocket('ws://localhost:8080');
+            const statusElement = document.getElementById('connectionStatus');
+            const statusDot = statusElement.querySelector('.status-dot');
+            const statusText = statusElement.querySelector('.status-text');
 
-      .hint {
-        margin: 1rem 0 0;
-        font-size: 0.92rem;
-        opacity: 0.88;
-      }
+            ws.onopen = () => {
+                statusDot.classList.remove('offline');
+                statusDot.classList.add('online');
+                statusText.textContent = 'Connected';
+                window.appState.wsConnection = ws;
+            };
 
-      @media (max-width: 680px) {
-        .menu { grid-template-columns: 1fr; }
-      }
-    </style>
-  </head>
-  <body>
-    <main class="shell">
-      <h1>SeedWorld</h1>
-      <section class="menu" aria-label="Startmenue">
-        <button id="start-game" type="button">
-          <strong>🎮 START GAME</strong>
-          Spieloberflaeche oeffnen
-        </button>
-        <button id="start-patches" type="button">
-          <strong>🔧 PATCH MANAGER</strong>
-          Update-Pakete laden und ausfuehren
-        </button>
-      </section>
-      <p class="hint">Steuerung und Ausgabe laufen ueber Browser-UI. Keine Terminal-Eingabe noetig.</p>
-    </main>
+            ws.onclose = () => {
+                statusDot.classList.remove('online');
+                statusDot.classList.add('offline');
+                statusText.textContent = 'Offline';
+                window.appState.wsConnection = null;
+            };
 
-    <script>
-      document.getElementById("start-game").addEventListener("click", () => {
-        window.location.href = "./game.html";
-      });
+            ws.onmessage = (event) => {
+                const data = JSON.parse(event.data);
+                handleWebSocketMessage(data);
+            };
+        }
 
-      document.getElementById("start-patches").addEventListener("click", () => {
-        window.location.href = "./patchUI.html";
-      });
+        function handleWebSocketMessage(data) {
+            switch (data.type) {
+                case 'patchUpdate':
+                    updatePatchList(data.patches);
+                    break;
+                case 'validationResult':
+                    displayValidationResult(data.result);
+                    break;
+                case 'kernelState':
+                    updateGameState(data.state);
+                    break;
+            }
+        }
+
+        function initializeGameMode() {
+            // Game mode is now handled by GameUIController
+            // This is kept for backward compatibility
+        }
+
+        function initializePatcherMode() {
+            // Patcher mode is now handled by PatcherUIController
+            // This is kept for backward compatibility
+        }
+
+        function setupPatcherEventListeners() {
+            // Event listeners are now handled by PatcherUIController
+            // This is kept for backward compatibility
+        }
+
+        function loadPatchList() {
+            // Load patches from /patches/ directory
+            fetch('/api/patches')
+                .then(response => response.json())
+                .then(patches => updatePatchList(patches))
+                .catch(error => console.error('Failed to load patches:', error));
+        }
+
+        function updatePatchList(patches) {
+            // This is now handled by PatcherUIController
+            if (window.appState.patcherUIController) {
+                window.appState.patcherUIController.patches = patches;
+                window.appState.patcherUIController.renderPatchList();
+            }
+        }
+
+        function displayValidationResult(result) {
+            // This is now handled by PatcherUIController
+            if (window.appState.patcherUIController) {
+                const message = result.valid ? 'Validation passed' : `Validation failed: ${result.errors.join(', ')}`;
+                const type = result.valid ? 'success' : 'error';
+                window.appState.patcherUIController.showValidationResult(message, type);
+            }
+        }
+
+        function updateGameState(state) {
+            // This is now handled by GameUIController
+            if (window.appState.gameUIController) {
+                window.appState.gameUIController.updateState(state);
+            }
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', async () => {
+            initializeWebSocket();
+            
+            // Start with game mode
+            window.appState.gameUIController = new GameUIController(window.appState.gameController);
+            await window.appState.gameUIController.initialize(gameMode);
+        });
     </script>
-  </body>
+</body>
 </html>

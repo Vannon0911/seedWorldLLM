@@ -1,0 +1,143 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SeedWorld Patch Manifest Schema",
+  "description": "Schema for deterministic kernel patch manifests",
+  "type": "object",
+  "required": ["id", "version", "description", "hooks", "schema"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$",
+      "description": "Unique patch identifier (lowercase, numbers, hyphens only)"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Semantic version (e.g., 1.0.0)"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 200,
+      "description": "Human-readable description of patch functionality"
+    },
+    "author": {
+      "type": "string",
+      "description": "Patch author (optional)"
+    },
+    "enabled": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether patch is initially enabled"
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": [],
+      "description": "List of patch IDs this patch depends on"
+    },
+    "hooks": {
+      "type": "object",
+      "description": "Hook definitions for kernel integration points",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["code"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique hook identifier within patch"
+          },
+          "priority": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1000,
+            "default": 100,
+            "description": "Execution priority (lower = earlier)"
+          },
+          "enabled": {
+            "type": "boolean",
+            "default": true,
+            "description": "Whether this hook is enabled"
+          },
+          "phase": {
+            "type": "string",
+            "enum": ["pre-update", "update", "post-update"],
+            "default": "update",
+            "description": "When this hook executes in the tick cycle"
+          },
+          "code": {
+            "type": "string",
+            "minLength": 10,
+            "description": "Deterministic JavaScript code for the hook"
+          }
+        }
+      }
+    },
+    "schema": {
+      "type": "object",
+      "required": ["version", "type"],
+      "properties": {
+        "version": {
+          "type": "string",
+          "description": "Patch schema version"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["gameplay", "economy", "ui", "system", "debug"],
+          "description": "Patch category"
+        },
+        "compatibility": {
+          "type": "object",
+          "properties": {
+            "kernel": {
+              "type": "string",
+              "description": "Minimum kernel version"
+            },
+            "game": {
+              "type": "string",
+              "description": "Minimum game version"
+            }
+          }
+        }
+      }
+    },
+    "rollback": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["state-snapshot", "revert-function", "no-rollback"],
+          "description": "Rollback strategy"
+        },
+        "restore": {
+          "type": "string",
+          "description": "Rollback function or metadata key"
+        }
+      }
+    },
+    "validation": {
+      "type": "object",
+      "properties": {
+        "deterministic": {
+          "type": "boolean",
+          "default": true,
+          "description": "Patch is deterministic (no random/time functions)"
+        },
+        "sideEffects": {
+          "type": "boolean",
+          "default": false,
+          "description": "Patch has no external side effects"
+        },
+        "externalDependencies": {
+          "type": "boolean",
+          "default": false,
+          "description": "Patch doesn't depend on external APIs"
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

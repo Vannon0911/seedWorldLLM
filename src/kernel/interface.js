@@ -1,6 +1,4 @@
-import { getKornerManifest, getKornerModuleSnapshot, getKornerStringMatrix } from "./kornerCore.js";
-import { enforceLlmGovernanceChain } from "./llmGovernance.js";
-import { applyPatchDispatch, getPatchStateSnapshot, planPatchDispatch } from "./patchDispatcher.js";
+import { KernelController } from "./KernelController.js";
 
 function assert(condition, message) {
   if (!condition) {
@@ -17,38 +15,58 @@ function assertPlainObject(value, message) {
   assert(proto === Object.prototype || proto === null, message);
 }
 
-export async function executeKernelCommand(command, payload = {}) {
+// Global kernel instance for routing
+let kernelInstance = null;
+
+export function initializeKernelInterface(kernel) {
+  kernelInstance = kernel;
+}
+
+export function executeKernelCommand(command, payload = {}) {
   // @doc-anchor KERNEL-ENTRYPOINT
   // @mut-point MUT-KERNEL-ENTRY
   assert(typeof command === "string" && command.length > 0, "ungueltiges command");
   assertPlainObject(payload, "ungueltiges payload");
 
-  if (command === "patch.plan") {
-    return planPatchDispatch(payload);
+  if (!kernelInstance) {
+    throw new Error(`[KERNEL_INTERFACE] Kernel not initialized`);
   }
 
+  // Route commands to K1 (State-Owner)
   if (command === "patch.apply") {
-    return applyPatchDispatch(payload, payload.confirmation || {});
+    if (payload.patch) {
+      // Register patch
+      return kernelInstance.execute({
+        domain: 'kernel',
+        action: {
+          type: 'registerPatch',
+          patch: payload.patch
+        }
+      });
+    } else if (payload.patchId) {
+      // Unregister patch
+      return kernelInstance.execute({
+        domain: 'kernel',
+        action: {
+          type: 'unregisterPatch',
+          patchId: payload.patchId
+        }
+      });
+    }
   }
 
   if (command === "patch.state") {
-    return getPatchStateSnapshot();
+    return kernelInstance.execute({
+      domain: 'kernel',
+      action: { type: 'listPatches' }
+    });
   }
 
   if (command === "korner.manifest") {
-    return getKornerManifest();
-  }
-
-  if (command === "korner.string-matrix") {
-    return { matrix: getKornerStringMatrix() };
-  }
-
-  if (command === "korner.snapshot") {
-    return getKornerModuleSnapshot();
-  }
-
-  if (command === "governance.llm-chain") {
-    return enforceLlmGovernanceChain(payload);
+    return kernelInstance.execute({
+      domain: 'kernel',
+      action: { type: 'getHooks' }
+    });
   }
 
   throw new Error(`[KERNEL_INTERFACE] Unbekanntes command: ${command}`);

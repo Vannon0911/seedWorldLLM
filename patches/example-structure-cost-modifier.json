@@ -1,0 +1,41 @@
+{
+  "id": "example-structure-cost-modifier",
+  "version": "1.0.0",
+  "description": "Reduces structure costs based on total structures built (bulk discount)",
+  "author": "SeedWorld Team",
+  "enabled": true,
+  "dependencies": [],
+  "hooks": {
+    "getBuildOptions": {
+      "id": "bulk-discount-calculator",
+      "priority": 25,
+      "enabled": true,
+      "phase": "pre-update",
+      "code": "// Apply bulk discount based on structure count\nconst totalStructures = state.structures?.length || 0;\nconst discountTier = Math.floor(totalStructures / 5); // 5 structures = 1 tier\ndiscountMultiplier = Math.max(0.5, 1 - (discountTier * 0.1)); // Max 50% discount\n\n// Return modified build options with discount applied\n// This would modify the actual build options in a real implementation\nreturn {\n  ...state,\n  buildCostModifier: discountMultiplier,\n  discountTier: discountTier\n};"
+    },
+    "placeStructure": {
+      "id": "cost-calculator",
+      "priority": 75,
+      "enabled": true,
+      "phase": "update",
+      "code": "// Apply discount to structure placement\nconst discountMultiplier = state.buildCostModifier || 1;\nif (discountMultiplier < 1) {\n  // Calculate discounted cost\n  const originalCost = action.price || { iron: 5 };\n  const discountedCost = {\n    iron: Math.ceil((originalCost.iron || 0) * discountMultiplier)\n  };\n  \n  return kernel.mutateState({\n    ...state,\n    lastAppliedDiscount: discountMultiplier,\n    originalCost,\n    discountedCost\n  });\n}\nreturn state;"
+    }
+  },
+  "schema": {
+    "version": "1.0",
+    "type": "economy",
+    "compatibility": {
+      "kernel": ">=1.0.0",
+      "game": ">=3.0.0"
+    }
+  },
+  "rollback": {
+    "type": "state-snapshot",
+    "restore": "remove-discount-metadata"
+  },
+  "validation": {
+    "deterministic": true,
+    "sideEffects": false,
+    "externalDependencies": false
+  }
+}

@@ -1,25 +1,21 @@
 {
   "name": "seedworld",
-  "version": "2.7.1",
+  "version": "3.0.0",
   "private": true,
   "type": "module",
+  "description": "SeedWorld - Pure Kernel-Based RTS Game (No Server Patching)",
   "scripts": {
-    "preflight": "node tools/runtime/preflight.mjs",
-    "patch:server": "node patchServer.mjs",
-    "patch:apply": "node tools/patch/apply.mjs",
-    "llm:classify": "node tools/llm-preflight.mjs classify",
-    "llm:entry": "node tools/llm-preflight.mjs entry",
-    "llm:ack": "node tools/llm-preflight.mjs ack",
-    "llm:check": "node tools/llm-preflight.mjs check",
-    "llm:update-lock": "node tools/llm-preflight.mjs update-lock",
-    "sync:function-sot": "node tools/runtime/updateFunctionSot.mjs",
-    "sync:docs": "node tools/runtime/syncDocs.mjs",
+    "start": "node src/main.js",
+    "kernel": "node src/mainKernel.js",
+    "server": "node src/mainServer.js",
     "test": "node tests/MainTest.mjs",
-    "test:all": "npm test",
-    "start": "npm run preflight && python3 -m http.server 8080",
-    "patch:dispatch": "node tools/patch/import-dispatch.mjs"
+    "preflight": "node tools/runtime/preflight.mjs"
   },
   "dependencies": {
-    "jszip": "^3.10.1"
-  }
+    "jszip": "^3.10.1",
+    "ws": "^8.14.2"
+  },
+  "keywords": ["deterministic", "browser-game", "rts", "kernel", "no-patching"],
+  "author": "SeedWorld Team",
+  "license": "MIT"
 }
