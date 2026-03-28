@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-28T22:31:58.696Z",
+  "generatedAt": "2026-03-28T22:47:15.903Z",
   "entrypoints": [
     "src/main.js",
     "server/patchServer.mjs",
@@ -71,10 +71,16 @@
     }
   ],
   "fileCounts": {
-    "allFiles": 88,
+    "allFiles": 94,
     "codeFiles": 81
   },
   "unownedFiles": [
+    "src/llm/llm-gate-policy.json",
+    "src/sot/FUNCTION_SOT.json",
+    "src/sot/REPO_HYGIENE_MAP.json",
+    "src/sot/patches.schema.json",
+    "src/sot/release-manifest.json",
+    "src/sot/repo-boundaries.json",
     "start-server.js"
   ],
   "unreachableCode": [

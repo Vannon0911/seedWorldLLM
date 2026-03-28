@@ -42,7 +42,7 @@ function getCurrentCommit() {
 }
 
 async function loadGatePolicyVersion() {
-  const policyPath = resolve(process.cwd(), 'docs', 'llm-gate-policy.json');
+  const policyPath = resolve(process.cwd(), 'src', 'llm', 'llm-gate-policy.json');
   try {
     const raw = await readFile(policyPath, 'utf8');
     const parsed = JSON.parse(raw);

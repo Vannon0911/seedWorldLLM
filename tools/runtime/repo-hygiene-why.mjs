@@ -2,8 +2,8 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 
 const root = process.cwd();
-const mapPath = path.join(root, "docs", "REPO_HYGIENE_MAP.json");
-const boundariesPath = path.join(root, "docs", "repo-boundaries.json");
+const mapPath = path.join(root, "src", "sot", "REPO_HYGIENE_MAP.json");
+const boundariesPath = path.join(root, "src", "sot", "repo-boundaries.json");
 const targetArg = process.argv[2];
 
 function normalize(relPath) {

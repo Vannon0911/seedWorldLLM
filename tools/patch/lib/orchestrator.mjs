@@ -39,7 +39,7 @@ const DEFAULT_LLM_GATE_POLICY = Object.freeze({
 });
 
 async function loadLlmGatePolicy(rootDir) {
-  const policyPath = resolve(rootDir, 'docs', 'llm-gate-policy.json');
+  const policyPath = resolve(rootDir, 'src', 'llm', 'llm-gate-policy.json');
   try {
     const raw = await readFile(policyPath, 'utf8');
     const parsed = JSON.parse(raw);
@@ -443,7 +443,7 @@ export async function runPatchSession({
           : error.code === 'PATCH_RANGE_INVALID'
             ? 'Adjust mutation values to fit min/max ranges in the typed mutation matrix.'
           : error.code === 'LLM_GATE_DENIED'
-            ? 'Review docs/llm-gate-policy.json and remove denied operations before retry.'
+            ? 'Review src/llm/llm-gate-policy.json and remove denied operations before retry.'
           : error.code === 'SESSION_CANCELLED'
             ? 'Retry with a fresh session if you still want to apply the patch.'
             : 'Inspect the session logs and summary for the failing file or patch.'

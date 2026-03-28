@@ -23,7 +23,7 @@ const BACKUP_DIR = path.join(STATE_DIR, "backups");
 const STATE_FILE = path.join(STATE_DIR, "state.json");
 const LOG_FILE = path.join(STATE_DIR, "log.jsonl");
 const SESSION_FILE = path.join(STATE_DIR, "active-session.json");
-const MANIFEST_SCHEMA_FILE = path.join(ROOT, "docs", "patches.schema.json");
+const MANIFEST_SCHEMA_FILE = path.join(ROOT, "src", "sot", "patches.schema.json");
 const SAFE_PATCH_ROOT = ROOT;
 const STATIC_TYPES = new Map([
   [".html", "text/html; charset=utf-8"],
@@ -44,6 +44,8 @@ const FORBIDDEN_COMMAND_CHARS = /[;|`&<>$()]/;
 const DEFAULT_ALLOWED_FILE_PREFIXES = [
   "src/",
   "docs/",
+  "src/sot/",
+  "src/llm/",
   "tests/",
   "tools/",
   "public/",
@@ -59,10 +61,7 @@ const PROTECTED_GATE_FILES = new Set([
   "src/kernel/llmGovernance.js",
   "tools/runtime/preflight.mjs",
   "tools/llm-preflight.mjs",
-  "docs/llm/ENTRY.md",
-  "docs/llm/OPERATING_PROTOCOL.md",
-  "docs/llm/TASK_ENTRY_MATRIX.json",
-  "docs/llm/entry/LLM_ENTRY_LOCK.json",
+  "src/llm/llm-gate-policy.json",
   "server/patchUtils.js"
 ]);
 

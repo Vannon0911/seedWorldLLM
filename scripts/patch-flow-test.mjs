@@ -16,8 +16,8 @@ async function createTempRepo() {
 }
 
 async function ensureGatePolicy(repo) {
-  await mkdir(join(repo, 'docs'), { recursive: true });
-  await writeJson(join(repo, 'docs', 'llm-gate-policy.json'), {
+  await mkdir(join(repo, 'src', 'llm'), { recursive: true });
+  await writeJson(join(repo, 'src', 'llm', 'llm-gate-policy.json'), {
     policyVersion: '1.0.0-test',
     allowedPatchKinds: ['kernel-patch', 'file'],
     allowedFileWritePrefixes: ['patches/'],

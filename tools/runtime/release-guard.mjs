@@ -47,15 +47,15 @@ function expectedTags(version) {
 
 function readReleaseManifest() {
   try {
-    const raw = readFileSync("docs/release-manifest.json", "utf8");
+    const raw = readFileSync("src/sot/release-manifest.json", "utf8");
     const parsed = JSON.parse(raw);
     if (!parsed || typeof parsed !== "object") {
-      throw new Error("docs/release-manifest.json must be an object");
+      throw new Error("src/sot/release-manifest.json must be an object");
     }
     const releaseTag = String(parsed.releaseTag || "").trim();
     const packageVersion = String(parsed.packageVersion || "").trim();
     if (!releaseTag || !packageVersion) {
-      throw new Error("docs/release-manifest.json requires releaseTag and packageVersion");
+      throw new Error("src/sot/release-manifest.json requires releaseTag and packageVersion");
     }
     return { releaseTag, packageVersion };
   } catch (error) {
@@ -180,7 +180,7 @@ async function main() {
       );
     }
     if (tag !== manifest.releaseTag) {
-      throw new Error(`tag ${tag} does not match docs/release-manifest.json releaseTag ${manifest.releaseTag}`);
+      throw new Error(`tag ${tag} does not match src/sot/release-manifest.json releaseTag ${manifest.releaseTag}`);
     }
   } else {
     const allowed = expectedTags(version);

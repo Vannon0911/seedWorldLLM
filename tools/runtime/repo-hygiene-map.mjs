@@ -2,9 +2,9 @@ import { readdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 const root = process.cwd();
-const boundaryConfigPath = path.join(root, "docs", "repo-boundaries.json");
-const reportPath = path.join(root, "docs", "REPO_HYGIENE_MAP.md");
-const reportJsonPath = path.join(root, "docs", "REPO_HYGIENE_MAP.json");
+const boundaryConfigPath = path.join(root, "src", "sot", "repo-boundaries.json");
+const reportPath = path.join(root, "docs", "SOT", "REPO_HYGIENE_MAP.md");
+const reportJsonPath = path.join(root, "src", "sot", "REPO_HYGIENE_MAP.json");
 
 function normalize(relPath) {
   return relPath.replace(/\\/g, "/");
@@ -157,7 +157,7 @@ function toMarkdown(report) {
   lines.push("## Notes");
   lines.push("- Unreachable/zero-inbound are candidates, not auto-delete orders.");
   lines.push("- Dynamic imports built from runtime strings are not fully discoverable.");
-  lines.push("- Ownership comes from docs/repo-boundaries.json.");
+  lines.push("- Ownership comes from src/sot/repo-boundaries.json.");
   lines.push("");
   return lines.join("\n");
 }
