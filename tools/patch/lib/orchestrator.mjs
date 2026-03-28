@@ -51,7 +51,9 @@ async function loadLlmGatePolicy(rootDir) {
     return parsed;
   } catch (error) {
     if (error?.code === 'ENOENT') {
-      return DEFAULT_LLM_GATE_POLICY;
+      const missing = new Error('llm-gate-policy.json fehlt');
+      missing.code = 'LLM_GATE_POLICY_MISSING';
+      throw missing;
     }
     throw error;
   }

@@ -32,27 +32,11 @@ export function executeKernelCommand(command, payload = {}) {
     throw new Error(`[KERNEL_INTERFACE] Kernel not initialized`);
   }
 
-  // Route commands to K1 (State-Owner)
-  if (command === "patch.apply") {
-    if (payload.patch) {
-      // Register patch
-      return kernelInstance.execute({
-        domain: 'kernel',
-        action: {
-          type: 'registerPatch',
-          patch: payload.patch
-        }
-      });
-    } else if (payload.patchId) {
-      // Unregister patch
-      return kernelInstance.execute({
-        domain: 'kernel',
-        action: {
-          type: 'unregisterPatch',
-          patchId: payload.patchId
-        }
-      });
-    }
+  // Fail-closed: direct patch writes are blocked in browser/server call path.
+  if (command === "patch.apply" || command === "patch.plan") {
+    throw new Error(
+      "[KERNEL_INTERFACE] Direkte patch.plan/patch.apply Aufrufe sind blockiert. Nutze terminalseitig `npm run patch:apply -- --input <zip|json>`."
+    );
   }
 
   if (command === "patch.state") {

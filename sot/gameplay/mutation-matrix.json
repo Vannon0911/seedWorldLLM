@@ -1,0 +1,25 @@
+{
+  "version": "1.0.0",
+  "domain": "game",
+  "allowedPaths": [
+    "resources.ore",
+    "resources.copper",
+    "resources.iron",
+    "resources.gears",
+    "machines.miners",
+    "machines.conveyors",
+    "machines.assemblers",
+    "logistics.storageA",
+    "logistics.storageB",
+    "world.seed",
+    "world.size",
+    "world.meta",
+    "world.tiles",
+    "meta.lastAction",
+    "meta.revision"
+  ],
+  "constraints": {
+    "meta.revision": { "type": "uint32", "min": 0, "max": 4294967295, "integer": true }
+  },
+  "forbiddenFields": ["stateValues", "history", "externalPath"]
+}

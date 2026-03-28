@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0",
+  "blockedApis": [
+    "Math.random",
+    "Date.now",
+    "Date()",
+    "new Date()",
+    "performance.now",
+    "crypto.getRandomValues",
+    "crypto.randomUUID"
+  ],
+  "blockedSources": ["fetch", "indexedDB", "Worker", "SharedWorker"],
+  "violationBehavior": "fail-closed",
+  "restoreInvariantChecks": ["Math.random-restored-after-scope"],
+  "forbiddenFields": ["policyBypass", "softFail"]
+}

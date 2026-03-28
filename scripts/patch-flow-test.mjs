@@ -15,6 +15,19 @@ async function createTempRepo() {
   return mkdtemp(join(tmpdir(), 'seedworld-patch-'));
 }
 
+async function ensureGatePolicy(repo) {
+  await mkdir(join(repo, 'docs'), { recursive: true });
+  await writeJson(join(repo, 'docs', 'llm-gate-policy.json'), {
+    policyVersion: '1.0.0-test',
+    allowedPatchKinds: ['kernel-patch', 'file'],
+    allowedFileWritePrefixes: ['patches/'],
+    forbiddenOperations: ['delete'],
+    forbiddenKernelSchemaTypes: ['debug'],
+    maxRisk: 'medium',
+    requiredKernelValidationFlags: ['deterministic']
+  });
+}
+
 async function testManifestDetectionError() {
   const repo = await createTempRepo();
   const workingDir = join(repo, 'session');
@@ -162,6 +175,7 @@ async function testManifestAmbiguityFailsClosed() {
 async function testZipSessionSuccess() {
   const repo = await createTempRepo();
   await mkdir(join(repo, 'patches'), { recursive: true });
+  await ensureGatePolicy(repo);
   await writeJson(join(repo, 'package.json'), {
     name: 'temp-repo',
     private: true,
@@ -207,6 +221,7 @@ async function testZipSessionSuccess() {
 async function testRollbackAfterFailingTests() {
   const repo = await createTempRepo();
   await mkdir(join(repo, 'patches'), { recursive: true });
+  await ensureGatePolicy(repo);
   await writeJson(join(repo, 'package.json'), {
     name: 'temp-repo',
     private: true,
@@ -250,6 +265,7 @@ async function testRollbackAfterFailingTests() {
 
 async function testPathTraversalIsRejected() {
   const repo = await createTempRepo();
+  await ensureGatePolicy(repo);
   await writeJson(join(repo, 'package.json'), {
     name: 'temp-repo',
     private: true,
@@ -294,6 +310,7 @@ async function testPathTraversalIsRejected() {
 
 async function testLlmGateDeny() {
   const repo = await createTempRepo();
+  await ensureGatePolicy(repo);
   await writeJson(join(repo, 'package.json'), {
     name: 'temp-repo',
     private: true,

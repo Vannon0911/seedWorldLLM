@@ -1,0 +1,10 @@
+{
+  "policyVersion": "1.0.0",
+  "allowedPatchKinds": ["kernel-patch", "file"],
+  "allowedFileWritePrefixes": ["patches/"],
+  "forbiddenOperations": ["delete"],
+  "forbiddenKernelSchemaTypes": ["debug"],
+  "maxRisk": "medium",
+  "requiredKernelValidationFlags": ["deterministic"],
+  "forbiddenFields": ["sessionState", "auditLog", "runResult"]
+}

@@ -174,7 +174,7 @@ export class KernelController {
             modifiedState = result;
           }
         } catch (error) {
-          console.error(`[KERNEL] Hook ${hook.patchId}:${hook.hookId} failed:`, error);
+          throw new Error(`[KERNEL] Hook ${hook.patchId}:${hook.hookId} failed: ${String(error?.message || error)}`);
         }
       }
     }
@@ -389,7 +389,18 @@ export class KernelController {
     }
 
     // Check for forbidden patterns
-    const forbiddenPatterns = ['Math.random', 'Date.now', 'performance.now', 'setTimeout', 'setInterval'];
+    const forbiddenPatterns = [
+      'Math.random',
+      'Date.now',
+      'performance.now',
+      'setTimeout',
+      'setInterval',
+      'fetch(',
+      'XMLHttpRequest',
+      'indexedDB',
+      'Worker(',
+      'SharedWorker('
+    ];
     const patchCode = JSON.stringify(patch);
     for (const pattern of forbiddenPatterns) {
       if (patchCode.includes(pattern)) {

@@ -115,7 +115,7 @@ async function main() {
       if (/(it\.only|test\.only|describe\.only|it\.skip|test\.skip|describe\.skip)/.test(line)) {
         findings.testFocusOrSkip.push(`${rel}:${i + 1}`);
       }
-      if (/(TODO|FIXME)/.test(line)) {
+      if (/(TODO|FIXME|NOTE|XXX|@todo|@fixme)/i.test(line)) {
         findings.todoFixme.push(`${rel}:${i + 1}`);
       }
     }

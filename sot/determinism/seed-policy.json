@@ -1,0 +1,7 @@
+{
+  "version": "1.0.0",
+  "hashAlgorithm": "SHA-256",
+  "expectedHashFormat": "hex-64",
+  "comparisonMode": "exact",
+  "forbiddenFields": ["seedValues", "runSpecificHashes", "runtimeSnapshots"]
+}
