@@ -21,8 +21,8 @@ npm run patch:apply -- --input <zip|json>
 
 ## References
 
-- Workflow: [WORKFLOW](https://github.com/Vannon0911/seedWorldLLM/blob/main/docs/WORKFLOW.md)
-- Gate policy: [llm-gate-policy.json](https://github.com/Vannon0911/seedWorldLLM/blob/main/docs/llm-gate-policy.json)
+- Workflow: [WORKFLOW](https://github.com/Vannon0911/seedWorldLLM/blob/main/docs/MANUEL/WORKFLOW.md)
+- Gate policy: [llm-gate-policy.json](https://github.com/Vannon0911/seedWorldLLM/blob/main/src/llm/llm-gate-policy.json)
 
 ## Related Pages
 

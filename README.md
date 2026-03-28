@@ -55,11 +55,11 @@ npm run hygiene:why -- src/ui/TileAnimationSDK.js
 Detailed docs:
 
 - Docs Index: [docs/INDEX.md](./docs/INDEX.md)
-- Orientation: [docs/ORIENTATION.md](./docs/ORIENTATION.md)
-- Workflow: [docs/WORKFLOW.md](./docs/WORKFLOW.md)
-- Determinism inventory: [docs/DETERMINISM_INVENTORY.md](./docs/DETERMINISM_INVENTORY.md)
-- Repo hygiene map: [docs/REPO_HYGIENE_MAP.md](./docs/REPO_HYGIENE_MAP.md)
-- Deployment guide: [docs/deployment/DEPLOYMENT.md](./docs/deployment/DEPLOYMENT.md)
+- Orientation: [docs/SOT/ORIENTATION.md](./docs/SOT/ORIENTATION.md)
+- Workflow: [docs/MANUEL/WORKFLOW.md](./docs/MANUEL/WORKFLOW.md)
+- Determinism inventory: [docs/SOT/DETERMINISM_INVENTORY.md](./docs/SOT/DETERMINISM_INVENTORY.md)
+- Repo hygiene map: [docs/SOT/REPO_HYGIENE_MAP.md](./docs/SOT/REPO_HYGIENE_MAP.md)
+- Deployment guide: [docs/MANUEL/deployment/DEPLOYMENT.md](./docs/MANUEL/deployment/DEPLOYMENT.md)
 
 ## Governance & safety guarantees
 
@@ -78,12 +78,12 @@ npm run patch:apply -- --input <zip|json>
 
 Project wiki pages:
 
-- [Home](./docs/wiki/Home.md)
-- [Architecture](./docs/wiki/Architecture.md)
-- [Kernel Governance](./docs/wiki/Kernel-Governance.md)
-- [Patch Flow](./docs/wiki/Patch-Flow.md)
-- [Developer Onboarding](./docs/wiki/Developer-Onboarding.md)
-- [Cleanup & Removal Playbook](./docs/wiki/Cleanup-and-Removal-Playbook.md)
+- [Home](./docs/MANUEL/wiki/Home.md)
+- [Architecture](./docs/MANUEL/wiki/Architecture.md)
+- [Kernel Governance](./docs/MANUEL/wiki/Kernel-Governance.md)
+- [Patch Flow](./docs/MANUEL/wiki/Patch-Flow.md)
+- [Developer Onboarding](./docs/MANUEL/wiki/Developer-Onboarding.md)
+- [Cleanup & Removal Playbook](./docs/MANUEL/wiki/Cleanup-and-Removal-Playbook.md)
 
 ## Contributing
 

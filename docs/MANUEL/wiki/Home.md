@@ -24,8 +24,8 @@ SeedWorld LLM combines:
 
 - Root README: [README](https://github.com/Vannon0911/seedWorldLLM/blob/main/README.md)
 - Docs Index: [INDEX](https://github.com/Vannon0911/seedWorldLLM/blob/main/docs/INDEX.md)
-- Orientation: [ORIENTATION](https://github.com/Vannon0911/seedWorldLLM/blob/main/docs/ORIENTATION.md)
-- Workflow: [WORKFLOW](https://github.com/Vannon0911/seedWorldLLM/blob/main/docs/WORKFLOW.md)
+- Orientation: [ORIENTATION](https://github.com/Vannon0911/seedWorldLLM/blob/main/docs/SOT/ORIENTATION.md)
+- Workflow: [WORKFLOW](https://github.com/Vannon0911/seedWorldLLM/blob/main/docs/MANUEL/WORKFLOW.md)
 
 ## Related Pages
 

@@ -78,7 +78,7 @@ async function main() {
     if (rel === 'scripts/repo-cleanup-baseline.mjs') {
       return false;
     }
-    if (rel.startsWith('docs/cleanup-reports/')) {
+    if (rel.startsWith('docs/IN PLANUNG/cleanup-reports/')) {
       return false;
     }
     return true;
@@ -174,7 +174,7 @@ async function main() {
 
   const write = process.argv.includes('--write');
   if (write) {
-    const reportDir = path.join(repoRoot, 'docs', 'cleanup-reports');
+    const reportDir = path.join(repoRoot, 'docs', 'IN PLANUNG', 'cleanup-reports');
     await fs.mkdir(reportDir, { recursive: true });
     const reportPath = path.join(reportDir, `REPO_CLEANUP_BASELINE_${today}.md`);
     await fs.writeFile(reportPath, `${report}\n`, 'utf8');

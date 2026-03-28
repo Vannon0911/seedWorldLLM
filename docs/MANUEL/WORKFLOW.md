@@ -29,6 +29,6 @@ npm run patch:apply -- --input <zip|json> [--actor <name>]
 - Lock-Bypass ist verboten.
 - Fehler laufen fail-closed.
 - Finalstatus ist nur `succeeded`, `failed_rolled_back` oder `failed_partial`.
-- `policy-gates` muessen mit `docs/llm-gate-policy.json` deterministisch auswerten.
+- `policy-gates` muessen mit `src/llm/llm-gate-policy.json` deterministisch auswerten.
 - Cancel braucht Session-Token (`X-Patch-Cancel-Token`) und ist idempotent + rate-limitiert.
 - Testlaeufe schreiben Evidence-Artefakte nach `.patch-manager/logs/test-run-<timestamp>.json`.

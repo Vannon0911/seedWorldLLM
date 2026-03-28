@@ -20,8 +20,8 @@ Tags: `architecture` `kernel` `ui` `boundaries`
 
 ## Ownership and boundaries
 
-- Ownership config: [repo-boundaries.json](https://github.com/Vannon0911/seedWorldLLM/blob/main/docs/repo-boundaries.json)
-- Hygiene graph: [REPO_HYGIENE_MAP](https://github.com/Vannon0911/seedWorldLLM/blob/main/docs/REPO_HYGIENE_MAP.md)
+- Ownership config: [repo-boundaries.json](https://github.com/Vannon0911/seedWorldLLM/blob/main/src/sot/repo-boundaries.json)
+- Hygiene graph: [REPO_HYGIENE_MAP](https://github.com/Vannon0911/seedWorldLLM/blob/main/docs/SOT/REPO_HYGIENE_MAP.md)
 
 ## Related Pages
 

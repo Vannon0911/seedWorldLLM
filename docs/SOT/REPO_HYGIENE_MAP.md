@@ -24,6 +24,12 @@
 - tests/MainTest.mjs
 
 ## Unowned Files
+- src/llm/llm-gate-policy.json
+- src/sot/FUNCTION_SOT.json
+- src/sot/REPO_HYGIENE_MAP.json
+- src/sot/patches.schema.json
+- src/sot/release-manifest.json
+- src/sot/repo-boundaries.json
 - start-server.js
 
 ## Unreachable Code Files (from configured entrypoints)
@@ -137,5 +143,5 @@
 ## Notes
 - Unreachable/zero-inbound are candidates, not auto-delete orders.
 - Dynamic imports built from runtime strings are not fully discoverable.
-- Ownership comes from docs/repo-boundaries.json.
+- Ownership comes from src/sot/repo-boundaries.json.
 

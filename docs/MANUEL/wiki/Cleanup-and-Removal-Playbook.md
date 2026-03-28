@@ -12,8 +12,8 @@ npm run hygiene:map
 
 Review:
 
-- [../REPO_HYGIENE_MAP.md](../REPO_HYGIENE_MAP.md)
-- [../REPO_HYGIENE_MAP.json](../REPO_HYGIENE_MAP.json)
+- [../../SOT/REPO_HYGIENE_MAP.md](../../SOT/REPO_HYGIENE_MAP.md)
+- [../../../src/sot/REPO_HYGIENE_MAP.json](../../../src/sot/REPO_HYGIENE_MAP.json)
 
 ## Step 2: Inspect one candidate
 

@@ -4,5 +4,5 @@ set -e
 echo "[hook:pre-commit] signing config + sync docs + preflight"
 npm run signing:guard -- --config-only
 npm run sync:docs
-git add docs/ORIENTATION.md
+git add docs/INDEX.md docs/SOT/ORIENTATION.md
 npm run preflight
