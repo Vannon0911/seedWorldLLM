@@ -15,6 +15,8 @@
     "llm:update-lock": "node tools/llm-preflight.mjs update-lock",
     "sync:function-sot": "node tools/runtime/updateFunctionSot.mjs",
     "sync:docs": "node tools/runtime/syncDocs.mjs",
+    "check:required": "npm run sync:docs && npm run preflight && npm test",
+    "hooks:install": "node tools/runtime/installGitHooks.mjs",
     "test": "node tests/MainTest.mjs",
     "test:all": "npm test",
     "start": "npm run preflight && python3 -m http.server 8080",

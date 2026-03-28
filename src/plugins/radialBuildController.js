@@ -1,6 +1,27 @@
 const RESOURCE_TYPES = ["mine", "storage", "factory", "clear"];
 const DRAW_TYPES = new Set(["mine", "storage", "factory"]);
 
+export function getWorldTile(world, x, y) {
+  if (!world || typeof world !== "object" || !Array.isArray(world.tiles)) {
+    return null;
+  }
+
+  const tx = Number(x);
+  const ty = Number(y);
+  if (!Number.isFinite(tx) || !Number.isFinite(ty)) {
+    return null;
+  }
+
+  const width = Number.isInteger(world?.size?.width) ? world.size.width : 0;
+  const index = width > 0 ? ty * width + tx : -1;
+  const indexed = index >= 0 && index < world.tiles.length ? world.tiles[index] : null;
+  if (indexed && Number(indexed.x) === tx && Number(indexed.y) === ty) {
+    return indexed;
+  }
+
+  return world.tiles.find((tile) => Number(tile?.x) === tx && Number(tile?.y) === ty) || null;
+}
+
 function resourceLabel(type) {
   if (type === "mine") return "Erz";
   if (type === "storage") return "Lager";
@@ -275,15 +296,18 @@ export function installRadialBuildController() {
         ui.currentState = structuredClone(ui.displayState);
       }
 
-      tileEl.className = `tile tile--${normalized}`;
-      if (!isClear) {
-        tileEl.classList.add("tile--active");
+      if (ui.tileGridRenderer && typeof ui.tileGridRenderer.render === "function") {
+        ui.tileGridRenderer.render(ui.displayState, ui.currentTick || 0);
+      } else {
+        tileEl.className = `tile tile--${normalized}`;
+        if (!isClear) {
+          tileEl.classList.add("tile--active");
+        }
+        const icon = tileEl.querySelector(".icon");
+        const out = tileEl.querySelector(".tile-output");
+        if (icon) icon.textContent = iconLabel(normalized);
+        if (out) out.textContent = resourceLabel(normalized);
       }
-
-      const icon = tileEl.querySelector(".icon");
-      const out = tileEl.querySelector(".tile-output");
-      if (icon) icon.textContent = iconLabel(normalized);
-      if (out) out.textContent = resourceLabel(normalized);
 
       const tiles = redrawConnections();
       const links = buildLinks(tiles);

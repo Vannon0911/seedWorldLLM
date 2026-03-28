@@ -3,9 +3,18 @@ import path from "node:path";
 import { createHash, randomUUID } from "node:crypto";
 import { promises as fs } from "node:fs";
 import { spawn } from "node:child_process";
-import { URL } from "node:url";
+import { URL, fileURLToPath } from "node:url";
 import { executeKernelCommand } from "./src/kernel/interface.js";
 import { classifyPatchRisk, parseUniversalPatch, snapshotFiles, validateAgainstLocks } from "./patchUtils.js";
+import { handleStaticRequest } from "./server/staticHandler.mjs";
+import {
+  handleCancel,
+  handleCreateSession,
+  handleEvents,
+  handleLogs,
+  handleResult,
+  handleStatus
+} from "./server/sessionRoutes.mjs";
 
 const ROOT = process.cwd();
 const PORT = Number(process.env.PATCH_PORT || 3000);
@@ -1369,21 +1378,117 @@ async function handle(req, res) {
   }
 }
 
-await ensureDirs();
-await loadState();
-await activateServerSession();
+export class PatchServer {
+  constructor(port = PORT) {
+    this.port = Number.isFinite(port) ? port : PORT;
+    this.server = http.createServer((req, res) => {
+      this.#route(req, res).catch((error) => {
+        sendError(res, 500, "Server error", String(error?.message || error));
+      });
+    });
+  }
 
-const server = http.createServer((req, res) => {
-  handle(req, res);
-});
+  async listen() {
+    await new Promise((resolve) => {
+      this.server.listen(this.port, resolve);
+    });
+    return this.server;
+  }
 
-server.listen(PORT, () => {
+  async close() {
+    await new Promise((resolve) => this.server.close(() => resolve()));
+  }
+
+  async #route(req, res) {
+    const urlObj = new URL(req.url || "/", `http://${req.headers.host || "localhost"}`);
+    const pathname = urlObj.pathname || "/";
+
+    if (pathname === "/api/patches" || pathname === "/api/hooks") {
+      sendError(res, 404, "API endpoint not found");
+      return;
+    }
+
+    const sessionMatch = pathname.match(/^\/api\/patch-sessions\/([^/]+)\/([^/]+)$/);
+    if (sessionMatch) {
+      const sessionId = decodeURIComponent(sessionMatch[1]);
+      const action = sessionMatch[2];
+
+      if (req.method === "POST" && action === "cancel") {
+        await handleCancel(req, res, sessionId, json);
+        return;
+      }
+      if (req.method === "GET" && action === "status") {
+        await handleStatus(res, sessionId, json);
+        return;
+      }
+      if (req.method === "GET" && action === "logs") {
+        await handleLogs(res, sessionId, json);
+        return;
+      }
+      if (req.method === "GET" && action === "result") {
+        await handleResult(res, sessionId, json);
+        return;
+      }
+      if (req.method === "GET" && action === "events") {
+        await handleEvents(req, res, sessionId, json);
+        return;
+      }
+    }
+
+    if (pathname === "/api/patch-sessions" && req.method === "POST") {
+      await handleCreateSession(req, res, json);
+      return;
+    }
+
+    if (pathname.startsWith("/api/")) {
+      sendError(res, 404, "API endpoint not found");
+      return;
+    }
+
+    if (await handleStaticRequest(res, pathname)) {
+      return;
+    }
+
+    sendError(res, 404, "Not found");
+  }
+}
+
+let patchServerInstance = null;
+
+export async function startPatchServer() {
+  if (patchServerInstance) {
+    return patchServerInstance.server;
+  }
+
+  await ensureDirs();
+  await loadState();
+  await activateServerSession();
+
+  patchServerInstance = new PatchServer(PORT);
+  await patchServerInstance.listen();
   console.log(`[PATCH_SERVER] listening on http://localhost:${PORT}`);
-});
 
-for (const sig of ["SIGINT", "SIGTERM"]) {
-  process.on(sig, async () => {
-    await clearServerSession();
-    process.exit(0);
-  });
+  for (const sig of ["SIGINT", "SIGTERM"]) {
+    process.on(sig, async () => {
+      await stopPatchServer();
+      process.exit(0);
+    });
+  }
+
+  return patchServerInstance.server;
+}
+
+export async function stopPatchServer() {
+  if (!patchServerInstance) {
+    return;
+  }
+  const active = patchServerInstance;
+  patchServerInstance = null;
+  await active.close();
+  await clearServerSession();
+}
+
+const isDirectRun = process.argv[1] && path.resolve(process.argv[1]) === path.resolve(fileURLToPath(import.meta.url));
+if (isDirectRun) {
+  await startPatchServer();
 }

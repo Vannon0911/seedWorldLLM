@@ -1,0 +1,7 @@
+#!/bin/sh
+set -e
+
+echo "[hook:pre-commit] sync docs + preflight"
+npm run sync:docs
+git add docs/ORIENTATION.md
+npm run preflight

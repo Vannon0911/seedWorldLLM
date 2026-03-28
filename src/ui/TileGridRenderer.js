@@ -1,4 +1,4 @@
-import { IconAnimations } from "./IconAnimations.js";
+import { IconAnimations } from "./IconAnimations.js?rev=20260328";
 
 const TILE_TYPES = new Set(["empty", "mine", "factory", "connector", "storage"]);
 const DEFAULT_OUTPUT_TEXT = "-";
@@ -106,6 +106,18 @@ export class TileGridRenderer {
       tileLookup.set(this.#key(tile.x, tile.y), tile);
     }
 
+    // Pass 1: grid/base layer first.
+    for (const tile of tiles) {
+      const key = this.#key(tile.x, tile.y);
+      const entry = this.tileEntries.get(key);
+      if (!entry) {
+        continue;
+      }
+      entry.data = tile;
+      this.#drawGrid(entry, tile);
+    }
+
+    // Pass 2: tile content/effects on top of grid layer.
     for (const tile of tiles) {
       const key = this.#key(tile.x, tile.y);
       const entry = this.tileEntries.get(key);
@@ -113,8 +125,7 @@ export class TileGridRenderer {
         continue;
       }
 
-      entry.data = tile;
-      this.#renderTile(entry, tile, this.currentTick, tileLookup);
+      this.#drawTile(entry, tile, this.currentTick, tileLookup);
     }
   }
 
@@ -248,8 +259,8 @@ export class TileGridRenderer {
     return DEFAULT_OUTPUT_TEXT;
   }
 
-  #renderTile(entry, tile, currentTick, tileLookup) {
-    const { element, icon, fx, output } = entry;
+  #drawGrid(entry, tile) {
+    const { element } = entry;
     const resourceKind = this.#readResourceKind(tile);
     const biomeKind = this.#readBiomeKind(tile);
 
@@ -261,6 +272,11 @@ export class TileGridRenderer {
     element.dataset.effect = tile.type;
     element.dataset.wobble = "off";
     element.style.filter = "none";
+  }
+
+  #drawTile(entry, tile, currentTick, tileLookup) {
+    const { element, icon, fx, output } = entry;
+    const biomeKind = this.#readBiomeKind(tile);
 
     icon.textContent = this.#iconForType(tile.type);
     icon.style.opacity = tile.type === "empty" ? "0" : "1";

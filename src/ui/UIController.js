@@ -92,6 +92,9 @@ export class UIController {
     this.busy = false;
     this.currentTick = 0;
     this.tickTimer = null;
+    this.tickDrainTimer = null;
+    this.renderFrameHandle = null;
+    this.pendingTicks = 0;
     this.tickRateMs = Number.isFinite(elements.tickRateMs) ? elements.tickRateMs : MS_PER_TICK;
     this.tileGridRenderer = null;
   }
@@ -101,7 +104,8 @@ export class UIController {
     this.#ensureTileGrid();
     this.#ensureWorldState();
     this.#renderGrid();
-    this.#startTickLoop();
+    this.#startTickScheduler();
+    this.#startRenderLoop();
     this.refresh();
   }
 
@@ -257,7 +261,7 @@ export class UIController {
       return;
     }
 
-    this.tileGridRenderer = new TileGridRenderer(container, 16, 12, 200);
+    this.tileGridRenderer = new TileGridRenderer(container, 16, 12, 84);
     this.tileGridRenderer.onTileClick(({ tile, x, y }) => {
       this.#renderStatus(`tile:${x},${y}`);
       this.#renderSummary({
@@ -329,18 +333,40 @@ export class UIController {
     }
   }
 
-  #startTickLoop() {
-    if (this.tickTimer !== null || typeof window === "undefined" || typeof window.setTimeout !== "function") {
+  #startTickScheduler() {
+    if (this.tickTimer !== null || typeof window === "undefined" || typeof window.setInterval !== "function") {
       return;
     }
 
-    const loop = () => {
-      this.currentTick += 1;
+    this.tickTimer = window.setInterval(() => {
+      this.pendingTicks += 1;
+    }, this.tickRateMs);
+
+    this.tickDrainTimer = window.setInterval(() => {
+      if (this.pendingTicks <= 0) {
+        return;
+      }
+      const batch = Math.min(this.pendingTicks, 5);
+      this.pendingTicks -= batch;
+      this.currentTick += batch;
+    }, 4);
+  }
+
+  #startRenderLoop() {
+    if (
+      this.renderFrameHandle !== null ||
+      typeof window === "undefined" ||
+      typeof window.requestAnimationFrame !== "function"
+    ) {
+      return;
+    }
+
+    const frame = () => {
       this.#renderGrid();
-      this.tickTimer = window.setTimeout(loop, this.tickRateMs);
+      this.renderFrameHandle = window.requestAnimationFrame(frame);
     };
 
-    this.tickTimer = window.setTimeout(loop, this.tickRateMs);
+    this.renderFrameHandle = window.requestAnimationFrame(frame);
   }
 
   #renderStatus(value) {

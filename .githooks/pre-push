@@ -1,0 +1,5 @@
+#!/bin/sh
+set -e
+
+echo "[hook:pre-push] running tests"
+npm test

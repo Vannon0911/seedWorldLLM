@@ -3,7 +3,7 @@ import { pathToFileURL } from "node:url";
 
 export const id = "15-worldgen-deterministic-and-shape";
 
-export async function run({ assert, root }) {
+export async function test({ assert, root }) {
   const worldGen = await import(pathToFileURL(path.join(root, "src/game/worldGen.js")));
   const gameLogicModule = await import(pathToFileURL(path.join(root, "src/game/GameLogicController.js")));
 
@@ -44,3 +44,5 @@ export async function run({ assert, root }) {
   assert(paths.includes("world.meta"), "generate_world muss world.meta patchen.");
   assert(paths.includes("world.tiles"), "generate_world muss world.tiles patchen.");
 }
+
+export const run = test;
