@@ -218,7 +218,7 @@ function updateDebug(selected, tile, linksCount) {
   }
 }
 
-export function installRadialBuildController() {
+export function installRadialBuildController({ viewportManager = null } = {}) {
   waitForGridRoot().then(({ root, ui }) => {
     const width = Number(ui?.tileGridRenderer?.width) || Number(root.style.getPropertyValue("--grid-width")) || 8;
     const height =
@@ -338,14 +338,25 @@ export function installRadialBuildController() {
       updateDebug(selectedType, { x, y }, 0);
     });
 
-    window.addEventListener(
-      "resize",
-      () => {
-        resizeSvg();
-        redrawConnections();
-      },
-      { passive: true }
-    );
+    const viewport = viewportManager || window.seedWorldViewportManager;
+    if (viewport && typeof viewport.subscribe === "function") {
+      viewport.subscribe(
+        () => {
+          resizeSvg();
+          redrawConnections();
+        },
+        { immediate: false }
+      );
+    } else {
+      window.addEventListener(
+        "resize",
+        () => {
+          resizeSvg();
+          redrawConnections();
+        },
+        { passive: true }
+      );
+    }
 
     setActive("mine");
     resizeSvg();

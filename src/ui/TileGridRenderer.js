@@ -63,11 +63,7 @@ export class TileGridRenderer {
     this.root = document.createElement("div");
     this.root.className = "tile-grid";
     this.root.setAttribute("role", "grid");
-    this.root.style.gridTemplateColumns = `repeat(${this.width}, ${this.tileSize}px)`;
-    this.root.style.gridTemplateRows = `repeat(${this.height}, ${this.tileSize}px)`;
-    this.root.style.setProperty("--tile-size", `${this.tileSize}px`);
-    this.root.style.setProperty("--grid-width", String(this.width));
-    this.root.style.setProperty("--grid-height", String(this.height));
+    this.#syncLayout();
 
     this.root.addEventListener("click", (event) => {
       if (typeof this.clickCallback !== "function") {
@@ -137,6 +133,22 @@ export class TileGridRenderer {
 
   onTileClick(callback) {
     this.clickCallback = typeof callback === "function" ? callback : null;
+  }
+
+  onViewportChange(viewport) {
+    const width = Number(viewport?.width) || 0;
+    const height = Number(viewport?.height) || 0;
+    this.root.style.setProperty("--viewport-width", `${Math.max(0, Math.round(width))}px`);
+    this.root.style.setProperty("--viewport-height", `${Math.max(0, Math.round(height))}px`);
+    this.#syncLayout();
+  }
+
+  #syncLayout() {
+    this.root.style.gridTemplateColumns = `repeat(${this.width}, ${this.tileSize}px)`;
+    this.root.style.gridTemplateRows = `repeat(${this.height}, ${this.tileSize}px)`;
+    this.root.style.setProperty("--tile-size", `${this.tileSize}px`);
+    this.root.style.setProperty("--grid-width", String(this.width));
+    this.root.style.setProperty("--grid-height", String(this.height));
   }
 
   #buildGrid() {

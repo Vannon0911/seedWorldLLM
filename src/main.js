@@ -2,15 +2,18 @@ import { KernelController } from "./kernel/KernelController.js";
 import { initializeKernelInterface, executeKernelCommand } from "./kernel/interface.js";
 import { GameLogicController } from "./game/GameLogicController.js";
 import { UIController } from "./ui/UIController.js";
+import { ViewportManager } from "./ui/ViewportManager.js";
 
 const kernel = new KernelController({ seed: "seedworld-v1" });
 initializeKernelInterface(kernel);
 
 const gameLogic = new GameLogicController(kernel, { domain: "game" });
+const viewportManager = new ViewportManager().start();
 
 const ui = new UIController({
   kernel,
   gameLogic,
+  viewportManager,
   kernelCommand: executeKernelCommand,
   elements: {
     tileGridContainer: document.querySelector("#tile-grid-container"),
@@ -30,6 +33,7 @@ const ui = new UIController({
 
 if (typeof window !== "undefined") {
   window.seedWorldUI = ui;
+  window.seedWorldViewportManager = viewportManager;
 }
 
 ui.bootstrap();

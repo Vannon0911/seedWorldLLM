@@ -67,7 +67,7 @@ function setDisabled(elements, disabled) {
 }
 
 export class UIController {
-  constructor({ kernel, gameLogic, kernelCommand, elements = {} } = {}) {
+  constructor({ kernel, gameLogic, kernelCommand, viewportManager = null, elements = {} } = {}) {
     if (!kernel || typeof kernel.plan !== "function" || typeof kernel.apply !== "function") {
       throw new Error("[UI_CONTROLLER] kernel mit plan/apply erforderlich.");
     }
@@ -83,6 +83,8 @@ export class UIController {
     this.kernel = kernel;
     this.gameLogic = gameLogic;
     this.kernelCommand = kernelCommand;
+    this.viewportManager = viewportManager && typeof viewportManager.subscribe === "function" ? viewportManager : null;
+    this.unsubscribeViewport = null;
     this.elements = elements;
     this.currentState = clone(DEFAULT_STATE);
     this.displayState = clone(DEFAULT_STATE);
@@ -102,6 +104,7 @@ export class UIController {
   bootstrap() {
     this.#ensureDefaultInputs();
     this.#ensureTileGrid();
+    this.#bindViewport();
     this.#ensureWorldState();
     this.#renderGrid();
     this.#startTickScheduler();
@@ -268,6 +271,19 @@ export class UIController {
         mode: "tile-click",
         tile
       });
+    });
+  }
+
+  #bindViewport() {
+    if (!this.viewportManager || this.unsubscribeViewport) {
+      return;
+    }
+
+    this.unsubscribeViewport = this.viewportManager.subscribe((viewport) => {
+      if (this.tileGridRenderer && typeof this.tileGridRenderer.onViewportChange === "function") {
+        this.tileGridRenderer.onViewportChange(viewport);
+      }
+      this.#renderGrid();
     });
   }
 

@@ -322,25 +322,36 @@
         });
       }
 
-      async function renderWorldTerrain() {
+      async function renderWorldTerrain({ viewportManager = null } = {}) {
         const worldContainer = document.getElementById("world-container");
         if (!worldContainer) {
           return;
         }
 
         const ui = await waitForUi();
-        const width = Number(ui?.tileGridRenderer?.width) || 16;
-        const height = Number(ui?.tileGridRenderer?.height) || 12;
-        const tileSize = Number(ui?.tileGridRenderer?.tileSize) || 84;
-        const worldSeed =
-          typeof ui?.currentState?.world?.seed === "string" && ui.currentState.world.seed.trim()
-            ? ui.currentState.world.seed.trim()
-            : Date.now();
-        const options = {
-          biome: "mountain",
-          scale: 0.1,
-          octaves: 5,
-          seed: worldSeed
+        let activeWorker = null;
+        let resizeTimer = null;
+
+        const readTerrainParams = () => {
+          const width = Number(ui?.tileGridRenderer?.width) || 16;
+          const height = Number(ui?.tileGridRenderer?.height) || 12;
+          const tileSize = Number(ui?.tileGridRenderer?.tileSize) || 84;
+          const worldSeed =
+            typeof ui?.currentState?.world?.seed === "string" && ui.currentState.world.seed.trim()
+              ? ui.currentState.world.seed.trim()
+              : Date.now();
+
+          return {
+            width,
+            height,
+            tileSize,
+            options: {
+              biome: "mountain",
+              scale: 0.1,
+              octaves: 5,
+              seed: worldSeed
+            }
+          };
         };
 
         const mountBitmap = (bitmap) => {
@@ -349,6 +360,8 @@
           canvas.height = bitmap.height;
           canvas.style.width = `${bitmap.width}px`;
           canvas.style.height = `${bitmap.height}px`;
+          canvas.style.maxWidth = "100%";
+          canvas.style.maxHeight = "100%";
           canvas.style.imageRendering = "crisp-edges";
           const ctx = canvas.getContext("2d");
           if (ctx) {
@@ -358,31 +371,66 @@
           worldContainer.replaceChildren(canvas);
         };
 
-        if (typeof Worker === "function" && typeof OffscreenCanvas === "function") {
-          const worker = new Worker("./src/workers/worldRenderWorker.js?rev=20260328b", { type: "module" });
-          worker.onmessage = (event) => {
-            const message = event?.data || {};
-            if (message.type === "world-ready" && message.bitmap) {
-              mountBitmap(message.bitmap);
-              worker.terminate();
-              return;
-            }
-            if (message.type === "world-error") {
-              worker.terminate();
-              const fallbackGen = new IsometricWorldGen(width, height, options);
-              worldContainer.replaceChildren(fallbackGen.render());
-            }
-          };
-          worker.postMessage({ type: "render-world", width, height, tileSize, options });
-          return;
-        }
+        const renderOnce = () => {
+          const { width, height, tileSize, options } = readTerrainParams();
 
-        const fallbackGen = new IsometricWorldGen(width, height, options);
-        worldContainer.replaceChildren(fallbackGen.render());
+          if (activeWorker) {
+            activeWorker.terminate();
+            activeWorker = null;
+          }
+
+          if (typeof Worker === "function" && typeof OffscreenCanvas === "function") {
+            const worker = new Worker("./src/workers/worldRenderWorker.js?rev=20260328b", { type: "module" });
+            activeWorker = worker;
+            worker.onmessage = (event) => {
+              const message = event?.data || {};
+              if (message.type === "world-ready" && message.bitmap) {
+                mountBitmap(message.bitmap);
+                worker.terminate();
+                if (activeWorker === worker) {
+                  activeWorker = null;
+                }
+                return;
+              }
+              if (message.type === "world-error") {
+                worker.terminate();
+                if (activeWorker === worker) {
+                  activeWorker = null;
+                }
+                const fallbackGen = new IsometricWorldGen(width, height, options);
+                worldContainer.replaceChildren(fallbackGen.render());
+              }
+            };
+            worker.postMessage({ type: "render-world", width, height, tileSize, options });
+            return;
+          }
+
+          const fallbackGen = new IsometricWorldGen(width, height, options);
+          worldContainer.replaceChildren(fallbackGen.render());
+        };
+
+        renderOnce();
+
+        if (viewportManager && typeof viewportManager.subscribe === "function") {
+          viewportManager.subscribe(
+            () => {
+              if (resizeTimer) {
+                window.clearTimeout(resizeTimer);
+              }
+              resizeTimer = window.setTimeout(() => {
+                resizeTimer = null;
+                renderOnce();
+              }, 120);
+            },
+            { immediate: false }
+          );
+        }
       }
 
-      await renderWorldTerrain();
-      installRadialBuildController();
+      const viewportManager = window.seedWorldViewportManager || null;
+
+      await renderWorldTerrain({ viewportManager });
+      installRadialBuildController({ viewportManager });
     </script>
   </body>
 </html>
