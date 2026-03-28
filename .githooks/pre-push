@@ -1,6 +1,7 @@
 #!/bin/sh
 set -e
 
-echo "[hook:pre-push] signing config + run tests"
+echo "[hook:pre-push] signing config + llm guard + run tests"
 npm run signing:guard -- --config-only
+npm run llm:guard
 npm test

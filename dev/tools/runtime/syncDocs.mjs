@@ -67,7 +67,9 @@ Dieser Ordner enthaelt nur dieses Mapping plus Bereichsordner.
   - [Deployment](./MANUEL/deployment/DEPLOYMENT.md)
   - [Wiki Home](./MANUEL/wiki/Home.md)
 - LLM:
-  - [Policy Doku](./LLM/)
+  - [LLM Index](./LLM/INDEX.md)
+  - [LLM Entry](./LLM/ENTRY.md)
+  - [LLM Policy](./LLM/POLICY.md)
 - Source SoT (Runtime/LLM):
   - [app/src/sot/repo-boundaries.json](../app/src/sot/repo-boundaries.json)
   - [app/src/sot/release-manifest.json](../app/src/sot/release-manifest.json)

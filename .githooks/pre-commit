@@ -1,8 +1,9 @@
 #!/bin/sh
 set -e
 
-echo "[hook:pre-commit] signing config + sync docs + preflight"
+echo "[hook:pre-commit] signing config + llm guard + sync docs + preflight"
 npm run signing:guard -- --config-only
+npm run llm:guard
 npm run sync:docs
 git add docs/INDEX.md docs/SOT/ORIENTATION.md
 npm run preflight
