@@ -16,10 +16,15 @@
     "sync:function-sot": "node tools/runtime/updateFunctionSot.mjs",
     "sync:docs": "node tools/runtime/syncDocs.mjs",
     "check:required": "npm run sync:docs && npm run preflight && npm test",
+    "test:playwright:fulltiles": "node scripts/playwright-tiles-full.mjs",
+    "test:full": "npm run check:required && npm run test:playwright:fulltiles",
     "hooks:install": "node tools/runtime/installGitHooks.mjs",
     "test": "node tests/MainTest.mjs",
     "test:all": "npm test",
     "start": "npm run preflight && python3 -m http.server 8080",
     "patch:dispatch": "node tools/patch/import-dispatch.mjs"
+    ,
+    "evidence:verify": "node scripts/verify-evidence.mjs",
+    "evidence:bundle": "node scripts/build-evidence-bundle.mjs --ensure-strict=10 --max-pull-runs=4"
   }
 }

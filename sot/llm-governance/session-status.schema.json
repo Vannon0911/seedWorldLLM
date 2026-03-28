@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PatchSessionStatus",
+  "type": "object",
+  "required": [
+    "sessionId",
+    "phase",
+    "state",
+    "finalStatus",
+    "updatedAt"
+  ],
+  "properties": {
+    "sessionId": { "type": "string", "minLength": 1 },
+    "phase": {
+      "type": "string",
+      "enum": [
+        "intake",
+        "unpack",
+        "manifest-validate",
+        "normalize",
+        "risk-classify",
+        "acquire-lock",
+        "policy-gates",
+        "backup",
+        "apply",
+        "verify",
+        "test",
+        "finalize",
+        "release-lock"
+      ]
+    },
+    "state": { "type": "string", "enum": ["queued", "running", "finished"] },
+    "finalStatus": { "type": ["string", "null"], "enum": ["succeeded", "failed_rolled_back", "failed_partial", null] },
+    "updatedAt": { "type": "string" }
+  },
+  "additionalProperties": true
+}

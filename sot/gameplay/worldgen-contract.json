@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "generatorId": "seedworld.worldgen.v1",
+  "seedRules": {
+    "seedType": "string",
+    "required": true
+  },
+  "sizeBounds": {
+    "width": { "min": 4, "max": 256 },
+    "height": { "min": 4, "max": 256 }
+  },
+  "chunkSizeBounds": {
+    "min": 1,
+    "max": 64
+  },
+  "requiredWorldKeys": ["seed", "size", "meta", "tiles"],
+  "forbiddenFields": ["generatedTilesSnapshot", "runtimeStampInstances"]
+}

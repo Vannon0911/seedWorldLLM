@@ -1,0 +1,14 @@
+{
+  "version": "1.0.0",
+  "domain": "game",
+  "actions": {
+    "produce": { "required": ["resource", "amount"], "optional": [] },
+    "consume": { "required": ["resource", "amount"], "optional": [] },
+    "transport": { "required": ["from", "to", "amount"], "optional": [] },
+    "build": { "required": ["machine", "count"], "optional": [] },
+    "inspect": { "required": [], "optional": [] },
+    "generate_world": { "required": ["seed"], "optional": ["width", "height"] },
+    "regenerate_world": { "required": ["seed"], "optional": ["width", "height"] }
+  },
+  "forbiddenFields": ["runtimeStatus", "uiText", "businessFormula"]
+}

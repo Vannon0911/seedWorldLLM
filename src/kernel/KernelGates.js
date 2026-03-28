@@ -119,8 +119,7 @@ export class KernelGates {
 
   async executeHooks(hooks, context, phase) {
     for (const hookName of hooks) {
-      try { await this.executeHook(hookName, context, phase); } 
-      catch (error) { /* Continue with other hooks */ }
+      await this.executeHook(hookName, context, phase);
     }
   }
 

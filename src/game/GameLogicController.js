@@ -1,4 +1,6 @@
 import { generateWorld } from "./worldGen.js";
+import { buildTransportPatches } from "./actions/transportAction.js";
+import { buildBuildPatches } from "./actions/buildAction.js";
 
 const DEFAULT_DOMAIN = "game";
 
@@ -428,13 +430,13 @@ function buildPatches(action, state) {
       const amount = coercePositiveInteger(action.payload.amount, "transport.amount");
       const fromPath = getStoragePath(from);
       const toPath = getStoragePath(to);
-      if (fromPath === toPath) {
-        return [];
-      }
-
-      const nextFrom = Math.max(0, getCountAtPath(state, fromPath) - amount);
-      const nextTo = getCountAtPath(state, toPath) + amount;
-      return [setCountPatch(fromPath, nextFrom), setCountPatch(toPath, nextTo)];
+      return buildTransportPatches({
+        domain: DEFAULT_DOMAIN,
+        fromPath,
+        toPath,
+        amount,
+        state
+      });
     }
 
     case "build": {
@@ -448,10 +450,14 @@ function buildPatches(action, state) {
       }
 
       const orePath = "resources.ore";
-      const nextMachines = getCountAtPath(state, machinePath) + count;
-      const nextOre = Math.max(0, getCountAtPath(state, orePath) - costPerUnit * count);
-
-      return [setCountPatch(machinePath, nextMachines), setCountPatch(orePath, nextOre)];
+      return buildBuildPatches({
+        domain: DEFAULT_DOMAIN,
+        machinePath,
+        orePath,
+        costPerUnit,
+        count,
+        state
+      });
     }
 
     case "inspect":
