@@ -7,7 +7,7 @@ Diese Matrix beschreibt, welche State-Pfade der `GameLogicController` fuer die D
 
 | Domain | Erlaubte Pfade |
 |---|---|
-| `game` | `resources.ore`, `resources.copper`, `resources.iron`, `resources.gears`, `machines.miners`, `machines.conveyors`, `machines.assemblers`, `logistics.storageA`, `logistics.storageB`, `meta.lastAction`, `meta.revision` |
+| `game` | `resources.ore`, `resources.copper`, `resources.iron`, `resources.gears`, `machines.miners`, `machines.conveyors`, `machines.assemblers`, `logistics.storageA`, `logistics.storageB`, `world.seed`, `world.size`, `world.meta`, `world.tiles`, `meta.lastAction`, `meta.revision` |
 
 ## Typed Constraints
 
@@ -22,6 +22,11 @@ Diese Matrix beschreibt, welche State-Pfade der `GameLogicController` fuer die D
 | `machines.assemblers` | `uint16` | `0` | `1024` | `true` |
 | `logistics.storageA` | `uint32` | `0` | `1000000` | `true` |
 | `logistics.storageB` | `uint32` | `0` | `1000000` | `true` |
+| `world.seed` | `string` | `1` | `128` | `n/a` |
+| `world.size.width` | `uint16` | `1` | `1024` | `true` |
+| `world.size.height` | `uint16` | `1` | `1024` | `true` |
+| `world.meta` | `object` | `n/a` | `n/a` | `n/a` |
+| `world.tiles` | `array` | `n/a` | `n/a` | `n/a` |
 | `meta.lastAction` | `string` | `0` | `128` | `n/a` |
 | `meta.revision` | `uint32` | `0` | `4294967295` | `true` |
 

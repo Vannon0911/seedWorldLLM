@@ -19,5 +19,6 @@ function runNodeScript(scriptPath) {
 
 await runNodeScript("scripts/smoke-test.mjs");
 await runNodeScript("scripts/runtime-guards-test.mjs");
+await runNodeScript("tools/runtime/governance-verify.mjs");
 await runNodeScript("tools/runtime/syncDocs.mjs");
 console.log("[PREFLIGHT] OK");

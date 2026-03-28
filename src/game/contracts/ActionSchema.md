@@ -12,6 +12,8 @@ Dieses Schema beschreibt die Aktionen, die der `GameLogicController` in SeedWorl
 | `transport` | `from`, `to`, `amount` | Verschiebt Menge zwischen zwei Lager-Slots. |
 | `build` | `machine`, `count` | Erhoeht eine Maschinenanzahl und bucht Kosten ab. |
 | `inspect` | keine | Reine Analyse, keine State-Aenderung. |
+| `generate_world` | `seed` | Generiert deterministische World-Daten (seed/size/meta/tiles). |
+| `regenerate_world` | `seed` | Regeneriert die World-Daten mit neuem/gleichbleibendem Seed. |
 
 ## Payload-Regeln
 - `action` ist immer ein Plain-Object.

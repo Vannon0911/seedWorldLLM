@@ -8,6 +8,11 @@ export const mutationMatrixConstraints = Object.freeze({
   'machines.assemblers': Object.freeze({ type: 'uint16', min: 0, max: 1024, integer: true }),
   'logistics.storageA': Object.freeze({ type: 'uint32', min: 0, max: 1000000, integer: true }),
   'logistics.storageB': Object.freeze({ type: 'uint32', min: 0, max: 1000000, integer: true }),
+  'world.seed': Object.freeze({ type: 'string', minLength: 1, maxLength: 128 }),
+  'world.size.width': Object.freeze({ type: 'uint16', min: 1, max: 1024, integer: true }),
+  'world.size.height': Object.freeze({ type: 'uint16', min: 1, max: 1024, integer: true }),
+  'world.meta': Object.freeze({ type: 'object' }),
+  'world.tiles': Object.freeze({ type: 'array' }),
   'meta.lastAction': Object.freeze({ type: 'string', minLength: 0, maxLength: 128 }),
   'meta.revision': Object.freeze({ type: 'uint32', min: 0, max: 4294967295, integer: true })
 });
