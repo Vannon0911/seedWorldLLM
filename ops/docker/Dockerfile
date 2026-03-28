@@ -12,10 +12,9 @@ RUN npm ci --only=production
 
 # Copy application source
 COPY src/ ./src/
-COPY index.html ./
-COPY patchUI.html ./
-COPY patch-popup.html ./
+COPY public/ ./public/
 COPY patchServer.mjs ./
+COPY server/ ./server/
 COPY patches/ ./patches/
 COPY tools/ ./tools/
 COPY scripts/ ./scripts/

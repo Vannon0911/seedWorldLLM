@@ -10,7 +10,7 @@
       "beforeCommands": [],
       "afterCommands": [],
       "allowedFilePrefixes": [
-        "patchUI.html"
+        "public/patchUI.html"
       ]
     }
   },
@@ -19,73 +19,73 @@
       "id": "ui-01-theme-refresh",
       "name": "Theme-Farben modernisieren",
       "type": "string-replace",
-      "file": "patchUI.html",
+      "file": "public/patchUI.html",
       "find": "      :root {\n        --bg: #040907;\n        --panel: #0a1610;\n        --ink: #d7ffe6;\n        --soft: #94c8ab;\n        --ok: #2aff88;\n        --err: #ff5d5d;\n        --warn: #ffbf47;\n        --run: #56d4ff;\n        --border: #1f4c33;\n      }",
       "replace": "      :root {\n        --bg: #070c10;\n        --panel: #0d1720;\n        --ink: #e8f4ff;\n        --soft: #9db3c7;\n        --ok: #37e18a;\n        --err: #ff6d6d;\n        --warn: #ffc45d;\n        --run: #65c9ff;\n        --border: #2a435b;\n      }",
-      "verify": { "type": "contains", "file": "patchUI.html", "text": "--panel: #0d1720;" }
+      "verify": { "type": "contains", "file": "public/patchUI.html", "text": "--panel: #0d1720;" }
     },
     {
       "id": "ui-02-body-refresh",
       "name": "Hintergrund und Schriftbild modernisieren",
       "type": "string-replace",
-      "file": "patchUI.html",
+      "file": "public/patchUI.html",
       "find": "      body {\n        margin: 0;\n        background:\n          radial-gradient(circle at 0% 0%, #11271d 0%, transparent 42%),\n          radial-gradient(circle at 100% 100%, #0b1712 0%, transparent 46%),\n          var(--bg);\n        color: var(--ink);\n        font-family: \"Trebuchet MS\", \"Segoe UI\", sans-serif;\n      }",
       "replace": "      body {\n        margin: 0;\n        background:\n          radial-gradient(circle at 10% 0%, #1b2f44 0%, transparent 45%),\n          radial-gradient(circle at 100% 100%, #111a24 0%, transparent 55%),\n          var(--bg);\n        color: var(--ink);\n        font-family: \"Verdana\", \"Segoe UI\", sans-serif;\n      }",
-      "verify": { "type": "contains", "file": "patchUI.html", "text": "radial-gradient(circle at 10% 0%, #1b2f44" }
+      "verify": { "type": "contains", "file": "public/patchUI.html", "text": "radial-gradient(circle at 10% 0%, #1b2f44" }
     },
     {
       "id": "ui-03-layout-compact",
       "name": "Container kompakter und breiter",
       "type": "string-replace",
-      "file": "patchUI.html",
+      "file": "public/patchUI.html",
       "find": "      .app {\n        width: min(1080px, 96vw);\n        margin: 0 auto;\n        padding: 0.55rem;\n        display: grid;\n        gap: 0.65rem;\n      }",
       "replace": "      .app {\n        width: min(1220px, 97vw);\n        margin: 0 auto;\n        padding: 0.45rem;\n        display: grid;\n        gap: 0.5rem;\n      }",
-      "verify": { "type": "contains", "file": "patchUI.html", "text": "width: min(1220px, 97vw);" }
+      "verify": { "type": "contains", "file": "public/patchUI.html", "text": "width: min(1220px, 97vw);" }
     },
     {
       "id": "ui-04-card-polish",
       "name": "Cards moderner mit mehr Tiefe",
       "type": "string-replace",
-      "file": "patchUI.html",
+      "file": "public/patchUI.html",
       "find": "      .card {\n        background: linear-gradient(180deg, #0a1b12, var(--panel));\n        border: 1px solid var(--border);\n        border-radius: 10px;\n        padding: 0.65rem;\n        box-shadow: 0 8px 20px rgb(0 0 0 / 20%);\n      }",
       "replace": "      .card {\n        background: linear-gradient(180deg, #122131, var(--panel));\n        border: 1px solid var(--border);\n        border-radius: 12px;\n        padding: 0.6rem;\n        box-shadow: 0 12px 28px rgb(0 0 0 / 26%);\n      }",
-      "verify": { "type": "contains", "file": "patchUI.html", "text": "border-radius: 12px;" }
+      "verify": { "type": "contains", "file": "public/patchUI.html", "text": "border-radius: 12px;" }
     },
     {
       "id": "ui-05-button-polish",
       "name": "Buttons klarer und konsistent",
       "type": "string-replace",
-      "file": "patchUI.html",
+      "file": "public/patchUI.html",
       "find": "      button {\n        border: 1px solid var(--border);\n        background: #0b2417;\n        color: var(--ink);\n        border-radius: 7px;\n        padding: 0.5rem 0.78rem;\n        font-weight: 700;\n        cursor: pointer;\n      }",
       "replace": "      button {\n        border: 1px solid var(--border);\n        background: linear-gradient(180deg, #163047, #102639);\n        color: var(--ink);\n        border-radius: 8px;\n        padding: 0.48rem 0.72rem;\n        font-weight: 700;\n        letter-spacing: 0.01em;\n        cursor: pointer;\n      }",
-      "verify": { "type": "contains", "file": "patchUI.html", "text": "background: linear-gradient(180deg, #163047, #102639);" }
+      "verify": { "type": "contains", "file": "public/patchUI.html", "text": "background: linear-gradient(180deg, #163047, #102639);" }
     },
     {
       "id": "ui-06-output-focus",
       "name": "Output-Fenster besser lesbar",
       "type": "string-replace",
-      "file": "patchUI.html",
+      "file": "public/patchUI.html",
       "find": "      .output-box {\n        border: 1px solid #2a4f3d;\n        border-radius: 8px;\n        background: #06110c;\n        padding: 0.5rem;\n      }",
       "replace": "      .output-box {\n        border: 1px solid #34556f;\n        border-radius: 10px;\n        background: #0b1722;\n        padding: 0.55rem;\n      }",
-      "verify": { "type": "contains", "file": "patchUI.html", "text": "background: #0b1722;" }
+      "verify": { "type": "contains", "file": "public/patchUI.html", "text": "background: #0b1722;" }
     },
     {
       "id": "ui-07-log-compact",
       "name": "Log kompakter und laenger sichtbar",
       "type": "string-replace",
-      "file": "patchUI.html",
+      "file": "public/patchUI.html",
       "find": "      .log {\n        background: #050b08;\n        border: 1px solid #1d3c2b;\n        border-radius: 7px;\n        padding: 0.5rem;\n        max-height: 180px;\n        overflow: auto;\n      }",
       "replace": "      .log {\n        background: #09121a;\n        border: 1px solid #294660;\n        border-radius: 8px;\n        padding: 0.45rem;\n        max-height: 260px;\n        overflow: auto;\n      }",
-      "verify": { "type": "contains", "file": "patchUI.html", "text": "max-height: 260px;" }
+      "verify": { "type": "contains", "file": "public/patchUI.html", "text": "max-height: 260px;" }
     },
     {
       "id": "ui-08-heading-text",
       "name": "Dashboard-Text auf Live-Setup Fokus",
       "type": "string-replace",
-      "file": "patchUI.html",
+      "file": "public/patchUI.html",
       "find": "        <p class=\"meta tight\">Kompaktes Dashboard fuer Patch-Dispatch, Verifikation und Live-Fehlerausgabe.</p>",
       "replace": "        <p class=\"meta tight\">Live Setup Dashboard: klarer Ablauf, bessere Fehlertexte, schnelleres Patchen im Browser.</p>",
-      "verify": { "type": "contains", "file": "patchUI.html", "text": "Live Setup Dashboard" }
+      "verify": { "type": "contains", "file": "public/patchUI.html", "text": "Live Setup Dashboard" }
     }
   ]
 }

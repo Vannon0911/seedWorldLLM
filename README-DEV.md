@@ -63,7 +63,7 @@ Entfernt:
 
 - `src/ui/ViewportManager.js` ist die zentrale Resize-Quelle (Single-Listener auf `window`).
 - `src/main.js` erstellt den `ViewportManager` und exposed ihn als `window.seedWorldViewportManager`.
-- `game.html` (World-Layer), `radialBuildController` (SVG-Layer) und `UIController/TileGridRenderer` (DOM-Grid) beziehen Resize-Updates aus dieser einen Quelle.
+- `public/game.html` (World-Layer), `radialBuildController` (SVG-Layer) und `UIController/TileGridRenderer` (DOM-Grid) beziehen Resize-Updates aus dieser einen Quelle.
 - Der Worker-basierte World-Canvas wird mit `max-width: 100%` + `max-height: 100%` gemountet und bei Viewport-Änderungen debounce-t neu gerendert.
 
 ## TileAnimationSDK Status

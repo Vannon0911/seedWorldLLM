@@ -8,7 +8,7 @@
 - **UI Layer**: Rendering, input and browser-side orchestration
   prefixes: src/ui/, src/plugins/, src/workers/, src/browser/, src/main.js, src/styles.css, src/patch-control.css, src/SeedWorld_WorldGen.mjs
 - **Patch Runtime**: Terminal patch flow and browser control-plane API
-  prefixes: tools/patch/, patchServer.mjs, patchUI.html, patch-popup.html
+  prefixes: tools/patch/, patchServer.mjs, public/patchUI.html, public/patch-popup.html, public/index.html, public/menu.html, public/game.html, server/patchUtils.js
 - **Runtime Tooling**: Verification, docs sync, server handlers and regression harnesses
   prefixes: tools/runtime/, scripts/, tests/, server/
 - **Documentation**: Contracts, orientation, audit and operational notes

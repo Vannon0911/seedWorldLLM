@@ -2,6 +2,10 @@
 
 # SeedWorld Deployment Script
 set -e
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT_DIR="$(cd "${SCRIPT_DIR}/../.." && pwd)"
+COMPOSE_FILE="${ROOT_DIR}/ops/docker/docker-compose.yml"
+COMPOSE="docker compose -f ${COMPOSE_FILE}"
 
 echo "🚀 Deploying SeedWorld Application..."
 
@@ -19,26 +23,26 @@ fi
 
 # Build and start the application
 echo "📦 Building Docker image..."
-docker-compose build
+${COMPOSE} build
 
 echo "🔄 Starting application..."
-docker-compose up -d
+${COMPOSE} up -d
 
 echo "⏳ Waiting for application to be healthy..."
 sleep 10
 
 # Check if application is running
-if docker-compose ps | grep -q "Up"; then
+if ${COMPOSE} ps | grep -q "Up"; then
     echo "✅ Application deployed successfully!"
     echo "🌐 Application is available at: http://localhost:3000"
     echo "🔧 WebSocket endpoint: ws://localhost:8080"
     echo "📊 Traefik dashboard: http://localhost:8080 (if enabled)"
 else
-    echo "❌ Application failed to start. Check logs with: docker-compose logs"
+    echo "❌ Application failed to start. Check logs with: ${COMPOSE} logs"
     exit 1
 fi
 
 echo "📝 Useful commands:"
-echo "  View logs: docker-compose logs -f"
-echo "  Stop app: docker-compose down"
-echo "  Restart app: docker-compose restart"
+echo "  View logs: ${COMPOSE} logs -f"
+echo "  Stop app: ${COMPOSE} down"
+echo "  Restart app: ${COMPOSE} restart"

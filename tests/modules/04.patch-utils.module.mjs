@@ -6,7 +6,7 @@ import { pathToFileURL } from "node:url";
 export const id = "04-patch-utils";
 
 export async function test({ assert, root }) {
-  const patchUtils = await import(pathToFileURL(path.join(root, "patchUtils.js")).href);
+  const patchUtils = await import(pathToFileURL(path.join(root, "server", "patchUtils.js")).href);
   const {
     parseUniversalPatch,
     snapshotFiles,

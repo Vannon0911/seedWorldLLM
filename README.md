@@ -58,6 +58,7 @@ Detailed docs:
 - Workflow: [docs/WORKFLOW.md](./docs/WORKFLOW.md)
 - Determinism inventory: [docs/DETERMINISM_INVENTORY.md](./docs/DETERMINISM_INVENTORY.md)
 - Repo hygiene map: [docs/REPO_HYGIENE_MAP.md](./docs/REPO_HYGIENE_MAP.md)
+- Deployment guide: [docs/deployment/DEPLOYMENT.md](./docs/deployment/DEPLOYMENT.md)
 
 ## Governance & safety guarantees
 

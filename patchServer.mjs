@@ -5,7 +5,7 @@ import { promises as fs } from "node:fs";
 import { spawn } from "node:child_process";
 import { URL, fileURLToPath } from "node:url";
 import { executeKernelCommand } from "./src/kernel/interface.js";
-import { classifyPatchRisk, parseUniversalPatch, snapshotFiles, validateAgainstLocks } from "./patchUtils.js";
+import { classifyPatchRisk, parseUniversalPatch, snapshotFiles, validateAgainstLocks } from "./server/patchUtils.js";
 import { handleStaticRequest } from "./server/staticHandler.mjs";
 import {
   handleCancel,
@@ -46,13 +46,11 @@ const DEFAULT_ALLOWED_FILE_PREFIXES = [
   "docs/",
   "tests/",
   "tools/",
+  "public/",
+  "server/",
   "README.md",
   "package.json",
-  "index.html",
-  "game.html",
-  "patchUI.html",
   "patchServer.mjs",
-  "patchUtils.js",
   "patches.json"
 ];
 const PROTECTED_GATE_FILES = new Set([
@@ -64,7 +62,8 @@ const PROTECTED_GATE_FILES = new Set([
   "docs/llm/ENTRY.md",
   "docs/llm/OPERATING_PROTOCOL.md",
   "docs/llm/TASK_ENTRY_MATRIX.json",
-  "docs/llm/entry/LLM_ENTRY_LOCK.json"
+  "docs/llm/entry/LLM_ENTRY_LOCK.json",
+  "server/patchUtils.js"
 ]);
 
 const state = {

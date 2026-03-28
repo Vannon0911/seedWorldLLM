@@ -2,6 +2,7 @@ import { extname, resolve } from 'node:path';
 import { readFile, stat } from 'node:fs/promises';
 
 const ROOT_DIR = process.cwd();
+const PUBLIC_DIR = resolve(ROOT_DIR, 'public');
 const SRC_DIR = resolve(ROOT_DIR, 'src');
 
 const CONTENT_TYPES = Object.freeze({
@@ -31,10 +32,10 @@ function isPathInside(parentDir, candidate) {
 }
 
 export function resolveStaticPath(pathname) {
-  if (pathname === '/menu') return resolve(ROOT_DIR, 'menu.html');
-  if (pathname === '/')     return resolve(ROOT_DIR, 'index.html');
-  if (pathname === '/patch') return resolve(ROOT_DIR, 'patchUI.html');
-  if (pathname === '/popup') return resolve(ROOT_DIR, 'patch-popup.html');
+  if (pathname === '/menu') return resolve(PUBLIC_DIR, 'menu.html');
+  if (pathname === '/')     return resolve(PUBLIC_DIR, 'index.html');
+  if (pathname === '/patch') return resolve(PUBLIC_DIR, 'patchUI.html');
+  if (pathname === '/popup') return resolve(PUBLIC_DIR, 'patch-popup.html');
 
   if (hasHiddenSegment(pathname)) return null;
 

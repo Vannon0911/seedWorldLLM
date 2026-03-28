@@ -17,7 +17,7 @@
     },
     {
       "name": "Patch Runtime",
-      "prefixes": ["tools/patch/", "patchServer.mjs", "patchUI.html", "patch-popup.html"],
+      "prefixes": ["tools/patch/", "patchServer.mjs", "public/patchUI.html", "public/patch-popup.html", "public/index.html", "public/menu.html", "public/game.html", "server/patchUtils.js"],
       "purpose": "Terminal patch flow and browser control-plane API"
     },
     {

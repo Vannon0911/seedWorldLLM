@@ -21,7 +21,14 @@ function contentType(filePath) {
 
 function resolvePath(urlPathname) {
   const normalized = decodeURIComponent(urlPathname || "/");
-  const rawRel = normalized === "/" ? "game.html" : normalized.replace(/^\/+/, "");
+  const routeMap = new Map([
+    ["/", "public/game.html"],
+    ["/game.html", "public/game.html"],
+    ["/menu.html", "public/menu.html"],
+    ["/patchUI.html", "public/patchUI.html"],
+    ["/patch-popup.html", "public/patch-popup.html"]
+  ]);
+  const rawRel = routeMap.get(normalized) || normalized.replace(/^\/+/, "");
   const abs = path.resolve(ROOT, rawRel);
   const rootPrefix = `${path.resolve(ROOT)}${path.sep}`;
   if (!(abs === path.resolve(ROOT) || abs.startsWith(rootPrefix))) {

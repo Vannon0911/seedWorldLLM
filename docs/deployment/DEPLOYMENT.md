@@ -28,39 +28,39 @@ node start-server.js
 
 ```powershell
 # Run the deployment script
-.\deploy.ps1
+.\ops\scripts\deploy.ps1
 
 # Or with force restart
-.\deploy.ps1 -Force
+.\ops\scripts\deploy.ps1 -Force
 
 # With SSL enabled (requires domain configuration)
-.\deploy.ps1 -EnableSSL
+.\ops\scripts\deploy.ps1 -EnableSSL
 ```
 
 ### Quick Start (Linux/Mac)
 
 ```bash
 # Make script executable
-chmod +x deploy.sh
+chmod +x ops/scripts/deploy.sh
 
 # Run deployment
-./deploy.sh
+./ops/scripts/deploy.sh
 ```
 
 ### Manual Docker Steps
 
 ```bash
 # Build the image
-docker compose build
+docker compose -f ops/docker/docker-compose.yml build
 
 # Start the application
-docker compose up -d
+docker compose -f ops/docker/docker-compose.yml up -d
 
 # View logs
-docker compose logs -f
+docker compose -f ops/docker/docker-compose.yml logs -f
 
 # Stop the application
-docker compose down
+docker compose -f ops/docker/docker-compose.yml down
 ```
 
 ## Production Configuration
@@ -77,7 +77,7 @@ WS_PORT=8080
 
 ### SSL/HTTPS Setup
 
-1. Update `docker-compose.yml` with your domain:
+1. Update `ops/docker/docker-compose.yml` with your domain:
    ```yaml
    labels:
      - "traefik.http.routers.seedworld.rule=Host(`your-domain.com`)"
@@ -88,7 +88,7 @@ WS_PORT=8080
 
 2. Run with SSL enabled:
    ```bash
-   docker compose up -d
+   docker compose -f ops/docker/docker-compose.yml up -d
    ```
 
 ### Cloud Deployment
@@ -132,10 +132,10 @@ The application includes built-in health checks:
 
 ```bash
 # View application logs
-docker compose logs -f seedworld
+docker compose -f ops/docker/docker-compose.yml logs -f seedworld
 
 # View all logs
-docker compose logs -f
+docker compose -f ops/docker/docker-compose.yml logs -f
 ```
 
 ## Troubleshooting
@@ -150,13 +150,13 @@ docker compose logs -f
 
 ```bash
 # Check container status
-docker compose ps
+docker compose -f ops/docker/docker-compose.yml ps
 
 # Enter container for debugging
-docker compose exec seedworld sh
+docker compose -f ops/docker/docker-compose.yml exec seedworld sh
 
 # Restart services
-docker compose restart
+docker compose -f ops/docker/docker-compose.yml restart
 ```
 
 ## Security Considerations
@@ -170,8 +170,8 @@ docker compose restart
 
 ```bash
 # Export container data
-docker compose exec seedworld tar czf /tmp/backup.tar.gz /app/data
+docker compose -f ops/docker/docker-compose.yml exec seedworld tar czf /tmp/backup.tar.gz /app/data
 
 # Import container data
-docker compose exec seedworld tar xzf /tmp/backup.tar.gz -C /app
+docker compose -f ops/docker/docker-compose.yml exec seedworld tar xzf /tmp/backup.tar.gz -C /app
 ```
