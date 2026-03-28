@@ -76,12 +76,12 @@ npm run patch:apply -- --input <zip|json>
 
 Project wiki pages:
 
-- [Home](https://github.com/Vannon0911/seedWorldLLM/wiki)
-- [Architecture](https://github.com/Vannon0911/seedWorldLLM/wiki/Architecture)
-- [Kernel Governance](https://github.com/Vannon0911/seedWorldLLM/wiki/Kernel-Governance)
-- [Patch Flow](https://github.com/Vannon0911/seedWorldLLM/wiki/Patch-Flow)
-- [Developer Onboarding](https://github.com/Vannon0911/seedWorldLLM/wiki/Developer-Onboarding)
-- [Cleanup & Removal Playbook](https://github.com/Vannon0911/seedWorldLLM/wiki/Cleanup-and-Removal-Playbook)
+- [Home](./docs/wiki/Home.md)
+- [Architecture](./docs/wiki/Architecture.md)
+- [Kernel Governance](./docs/wiki/Kernel-Governance.md)
+- [Patch Flow](./docs/wiki/Patch-Flow.md)
+- [Developer Onboarding](./docs/wiki/Developer-Onboarding.md)
+- [Cleanup & Removal Playbook](./docs/wiki/Cleanup-and-Removal-Playbook.md)
 
 ## Contributing
 
