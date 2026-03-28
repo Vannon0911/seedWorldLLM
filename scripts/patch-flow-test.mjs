@@ -455,8 +455,14 @@ async function testPatchServerCancelAuthAndRateLimit() {
   await restartedServer.close();
   await rm(paths.statusPath, { force: true });
   await rm(paths.cancelPath, { force: true });
+  await rm(paths.logPath, { force: true });
+  await rm(paths.summaryPath, { force: true });
+  await rm(paths.sessionDir, { recursive: true, force: true });
   await rm(ratePaths.statusPath, { force: true });
   await rm(ratePaths.cancelPath, { force: true });
+  await rm(ratePaths.logPath, { force: true });
+  await rm(ratePaths.summaryPath, { force: true });
+  await rm(ratePaths.sessionDir, { recursive: true, force: true });
 }
 
 await testManifestDetectionError();

@@ -4,7 +4,7 @@ import { join, resolve } from 'node:path';
 import { randomUUID } from 'node:crypto';
 import { spawn } from 'node:child_process';
 import {
-  createSessionId, ensureSessionFilesystem,
+  appendJsonLine, createSessionId, ensureSessionFilesystem,
   getSessionPaths, readJson, writeJson
 } from '../tools/patch/lib/session-store.mjs';
 import { readSessionLogs, readSessionStatus } from '../tools/patch/lib/orchestrator.mjs';
@@ -122,12 +122,49 @@ export async function handleCancel(req, res, sessionId, json) {
   if (!status) { json(res, 404, { error: 'session not found' }); return; }
   const paths = getSessionPaths(ROOT_DIR, sessionId);
   const budget = await consumeCancelBudget(paths.statusPath);
-  if (!budget.allowed) { json(res, 429, { error: 'cancel rate limit exceeded' }); return; }
+  if (!budget.allowed) {
+    await appendJsonLine(paths.logPath, {
+      ts: new Date().toISOString(),
+      type: 'cancel-denied',
+      reason: 'rate-limit',
+      sessionId,
+      cancelControl: budget.cancelControl
+    });
+    json(res, 429, { error: 'cancel rate limit exceeded' });
+    return;
+  }
   const cancelToken = await parseCancelToken(req);
-  if (status.cancelToken && status.cancelToken !== cancelToken) { json(res, 403, { error: 'invalid cancel token', sessionId }); return; }
-  if (existsSync(paths.cancelPath)) { json(res, 202, { sessionId, cancelRequested: true, alreadyRequested: true, cancelControl: budget.cancelControl }); return; }
+  if (status.cancelToken && status.cancelToken !== cancelToken) {
+    await appendJsonLine(paths.logPath, {
+      ts: new Date().toISOString(),
+      type: 'cancel-denied',
+      reason: 'invalid-token',
+      sessionId,
+      cancelControl: budget.cancelControl
+    });
+    json(res, 403, { error: 'invalid cancel token', sessionId });
+    return;
+  }
+  if (existsSync(paths.cancelPath)) {
+    await appendJsonLine(paths.logPath, {
+      ts: new Date().toISOString(),
+      type: 'cancel-requested',
+      sessionId,
+      alreadyRequested: true,
+      cancelControl: budget.cancelControl
+    });
+    json(res, 202, { sessionId, cancelRequested: true, alreadyRequested: true, cancelControl: budget.cancelControl });
+    return;
+  }
   await mkdir(resolve(join(paths.cancelPath, '..')), { recursive: true });
   await writeFile(paths.cancelPath, `${new Date().toISOString()}\n`, 'utf8');
+  await appendJsonLine(paths.logPath, {
+    ts: new Date().toISOString(),
+    type: 'cancel-requested',
+    sessionId,
+    alreadyRequested: false,
+    cancelControl: budget.cancelControl
+  });
   json(res, 202, { sessionId, cancelRequested: true, alreadyRequested: false, cancelControl: budget.cancelControl });
 }
 
