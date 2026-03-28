@@ -185,7 +185,7 @@ export class GameUIController extends BaseUIController {
 
   updateGameWorld() {
     if (this.tileGridRenderer) {
-      this.tileGridRenderer.render(this.currentState, this.selectedTile);
+      this.tileGridRenderer.render(this.currentState, this.currentState?.clock?.tick ?? 0);
     }
   }
 
