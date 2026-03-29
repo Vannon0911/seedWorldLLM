@@ -64,6 +64,8 @@
 - dev/tests/modules/05.static-handler-security.module.mjs
 - dev/tests/modules/06.governance-enforcement.module.mjs
 - dev/tests/modules/07.preflight-mutation-guard.module.mjs
+- dev/tests/modules/08.kernel-replay-determinism.module.mjs
+- dev/tests/modules/09.game-logic-tile-action.module.mjs
 - dev/tests/modules/15.worldgen-deterministic.module.mjs
 - dev/tools/llm-preflight.mjs
 - dev/tools/patch/import-dispatch.mjs
@@ -112,6 +114,8 @@
 - dev/tests/modules/05.static-handler-security.module.mjs
 - dev/tests/modules/06.governance-enforcement.module.mjs
 - dev/tests/modules/07.preflight-mutation-guard.module.mjs
+- dev/tests/modules/08.kernel-replay-determinism.module.mjs
+- dev/tests/modules/09.game-logic-tile-action.module.mjs
 - dev/tests/modules/15.worldgen-deterministic.module.mjs
 - dev/tools/llm-preflight.mjs
 - dev/tools/patch/import-dispatch.mjs

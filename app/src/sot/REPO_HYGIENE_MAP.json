@@ -67,8 +67,8 @@
     }
   ],
   "fileCounts": {
-    "allFiles": 105,
-    "codeFiles": 91
+    "allFiles": 107,
+    "codeFiles": 93
   },
   "unownedFiles": [
     "app/src/llm/llm-gate-policy.json",
@@ -111,6 +111,8 @@
     "dev/tests/modules/05.static-handler-security.module.mjs",
     "dev/tests/modules/06.governance-enforcement.module.mjs",
     "dev/tests/modules/07.preflight-mutation-guard.module.mjs",
+    "dev/tests/modules/08.kernel-replay-determinism.module.mjs",
+    "dev/tests/modules/09.game-logic-tile-action.module.mjs",
     "dev/tests/modules/15.worldgen-deterministic.module.mjs",
     "dev/tools/llm-preflight.mjs",
     "dev/tools/patch/import-dispatch.mjs",
@@ -159,6 +161,8 @@
     "dev/tests/modules/05.static-handler-security.module.mjs",
     "dev/tests/modules/06.governance-enforcement.module.mjs",
     "dev/tests/modules/07.preflight-mutation-guard.module.mjs",
+    "dev/tests/modules/08.kernel-replay-determinism.module.mjs",
+    "dev/tests/modules/09.game-logic-tile-action.module.mjs",
     "dev/tests/modules/15.worldgen-deterministic.module.mjs",
     "dev/tools/llm-preflight.mjs",
     "dev/tools/patch/import-dispatch.mjs",
@@ -302,6 +306,8 @@
     "dev/tests/modules/05.static-handler-security.module.mjs": 0,
     "dev/tests/modules/06.governance-enforcement.module.mjs": 0,
     "dev/tests/modules/07.preflight-mutation-guard.module.mjs": 0,
+    "dev/tests/modules/08.kernel-replay-determinism.module.mjs": 0,
+    "dev/tests/modules/09.game-logic-tile-action.module.mjs": 0,
     "dev/tests/modules/15.worldgen-deterministic.module.mjs": 0,
     "dev/tools/llm-preflight.mjs": 0,
     "dev/tools/patch/apply.mjs": 0,
@@ -456,6 +462,8 @@
     "dev/tests/modules/05.static-handler-security.module.mjs": [],
     "dev/tests/modules/06.governance-enforcement.module.mjs": [],
     "dev/tests/modules/07.preflight-mutation-guard.module.mjs": [],
+    "dev/tests/modules/08.kernel-replay-determinism.module.mjs": [],
+    "dev/tests/modules/09.game-logic-tile-action.module.mjs": [],
     "dev/tests/modules/15.worldgen-deterministic.module.mjs": [],
     "dev/tools/llm-preflight.mjs": [],
     "dev/tools/patch/apply.mjs": [
