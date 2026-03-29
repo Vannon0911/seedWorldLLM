@@ -25,6 +25,16 @@ function isPlainObject(value) {
   return proto === Object.prototype || proto === null;
 }
 
+function deriveSeedSignature(seed) {
+  let hash = 2166136261;
+  for (let i = 0; i < seed.length; i += 1) {
+    hash ^= seed.charCodeAt(i);
+    hash = Math.imul(hash, 16777619);
+  }
+
+  return (hash >>> 0).toString(16).padStart(8, "0");
+}
+
 class KernelGovernanceError extends Error {
   constructor(message, { code, auditId, details } = {}) {
     super(message);
@@ -433,12 +443,13 @@ export class KernelController {
   }
 
   #createInitialState() {
+    const seedSignature = deriveSeedSignature(this.deterministicSeed);
     return {
       worldMap: new Map(),
       clock: { tick: 0, msPerTick: 100 },
       resources: { ore: 1000, iron: 0 },
       structures: new Map(),
-      statistics: { totalTicks: 0, structuresBuilt: 0 }
+      statistics: { totalTicks: 0, structuresBuilt: 0, seedSignature }
     };
   }
 
