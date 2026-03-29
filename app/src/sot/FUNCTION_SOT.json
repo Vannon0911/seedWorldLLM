@@ -5137,10 +5137,10 @@
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#main@189",
+      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#main@190",
       "name": "main",
       "file": "dev/tools/runtime/preflight-mutation-guard.mjs",
-      "line": 189,
+      "line": 190,
       "kind": "function",
       "category": "runtime-tooling"
     },
@@ -5177,26 +5177,26 @@
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#resolveOrKeepLock@114",
+      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#resolveOrKeepLock@115",
       "name": "resolveOrKeepLock",
       "file": "dev/tools/runtime/preflight-mutation-guard.mjs",
-      "line": 114,
+      "line": 115,
       "kind": "function",
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#runEnforceMode@167",
+      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#runEnforceMode@168",
       "name": "runEnforceMode",
       "file": "dev/tools/runtime/preflight-mutation-guard.mjs",
-      "line": 167,
+      "line": 168,
       "kind": "function",
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#runVerifyMode@147",
+      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#runVerifyMode@148",
       "name": "runVerifyMode",
       "file": "dev/tools/runtime/preflight-mutation-guard.mjs",
-      "line": 147,
+      "line": 148,
       "kind": "function",
       "category": "runtime-tooling"
     },

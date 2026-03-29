@@ -99,9 +99,9 @@ try {
 } catch (error) {
   const msg = String(error?.message || error);
   if (msg.includes("dev/tools/runtime/syncDocs.mjs")) {
-    console.error("[PREFLIGHT] BLOCK: Docs-Sync ist Pflicht vor der Testline. Fuehre zuerst `npm run sync:docs:apply` aus oder nutze den Pre-Commit-Hook.");
+    console.error("[PREFLIGHT] BLOCK: Docs-/SoT-Sync ist Pflicht vor der Testline. Nicht halbgar 'fixen' - erst `npm run sync:docs:apply` bzw. den Pre-Commit-Hook sauber durchlaufen lassen.");
   }
   console.error(`[PREFLIGHT] BLOCK: ${msg}`);
-  console.error("[PREFLIGHT] BLOCK: Jeder Test muss belegt erfolgreich sein. Ruecksprache halten, bevor fortgefahren wird.");
+  console.error("[PREFLIGHT] BLOCK: Testline bleibt policy-gebunden. Erst Synchronitaet und Absicht sauber halten, dann weiter.");
   process.exit(1);
 }

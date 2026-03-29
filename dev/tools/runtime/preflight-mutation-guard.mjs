@@ -110,7 +110,8 @@ async function ensureInjectedLock(head, vault) {
 
   await writeJson(statePath, lock);
   await writeJson(vaultPath, nextVault);
-  console.warn(`[PREFLIGHT_GUARD] lock active: ${relPath}`);
+  console.warn(`[PREFLIGHT_GUARD] challenge armed in ${relPath}`);
+  console.warn("[PREFLIGHT_GUARD] Kein blindes 'Fixen'. Erst sauber lesen, dann Docs/SoT synchron halten und policy-gerecht aufloesen.");
 }
 
 async function resolveOrKeepLock(lock, vault, head) {
@@ -179,10 +180,10 @@ async function runEnforceMode(lock, vault, head) {
 
   if (vault.lastGeneratedHead === head) {
     if (vault.lastResolvedHead === head) {
-      console.log(`[PREFLIGHT_GUARD] already verified for HEAD ${head.slice(0, 12)}`);
+    console.log(`[PREFLIGHT_GUARD] HEAD ${head.slice(0, 12)} bereits sauber verifiziert; keine neue challenge.`);
       return;
     }
-    throw new Error(`state tamper detected: generated challenge missing for head ${head.slice(0, 12)}`);
+    throw new Error(`policy drift detected: challenge fuer head ${head.slice(0, 12)} fehlt; nicht still 'reparieren', erst Sync/Absicht sauber halten.`);
   }
 
   await ensureInjectedLock(head, vault);

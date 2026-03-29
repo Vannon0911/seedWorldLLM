@@ -159,11 +159,11 @@ if (writeMode && currentLlmIndex !== llmIndexContent) {
 }
 
 if (!writeMode && drift.length > 0) {
-  console.error("[SYNC_DOCS] BLOCK: docs sync required before preflight/testline.");
+  console.error("[SYNC_DOCS] BLOCK: docs/SoT muessen vor preflight/testline synchron sein.");
   for (const item of drift) {
     console.error(` - ${item}`);
   }
-  console.error("[SYNC_DOCS] FIX: npm run sync:docs:apply");
+  console.error("[SYNC_DOCS] ACTION: Nicht blind nachziehen. Erst sauber synchronisieren: npm run sync:docs:apply");
   process.exit(1);
 } else {
   console.log(`[SYNC_DOCS] OK (mode=${writeMode ? "write" : "check"})`);

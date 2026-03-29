@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-echo "[hook:pre-commit] signing guard + sync docs + llm guard + mutation challenge + verify preflight"
+echo "[hook:pre-commit] signing guard + docs/SoT sync + llm guard + guard challenge + verify preflight"
 npm run signing:guard -- --config-only
 npm run sync:docs:apply
 git add docs/INDEX.md docs/LLM/INDEX.md docs/LLM/AKTUELLE_RED_ACTIONS.md docs/SOT/ORIENTATION.md docs/SOT/REPO_HYGIENE_MAP.md app/src/sot/REPO_HYGIENE_MAP.json
