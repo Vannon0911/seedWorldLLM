@@ -2,14 +2,14 @@
 
 Dieser Stand wird automatisch vor Preflight/Commit synchronisiert.
 
-- Snapshot: `c1cc9ca6c6fc6ea7`
+- Snapshot: `4cdd235c312f11f4`
 - Candidate Changes: `1`
 
 ## Commit-Kandidat (Name-Status)
-- `M` .githooks/pre-push
+- `M` dev/tools/runtime/updateRedActions.mjs
 
 ## Red-Actions (risikoreiche Treffer)
-- `hook-flow` -> `M` .githooks/pre-push
+- `runtime-guard` -> `M` dev/tools/runtime/updateRedActions.mjs
 
 ## Regel
 - Jeder Commit muss diesen Stand widerspruchsfrei spiegeln.
