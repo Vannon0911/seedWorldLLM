@@ -8,12 +8,39 @@ const hooksDir = resolve(root, ".githooks");
 const preCommit = `#!/bin/sh
 set -e
 
-echo "[hook:pre-commit] signing guard + docs/SoT sync + llm guard + guard challenge + verify preflight"
+only_preflight_injection_changes() {
+  staged_files=$(git diff --cached --name-only --diff-filter=ACMR)
+  [ -n "$staged_files" ] || return 1
+
+  for file in $staged_files
+  do
+    case "$file" in
+      .githooks/pre-commit|\
+      dev/tools/runtime/installGitHooks.mjs|\
+      dev/tools/runtime/preflight-mutation-guard.mjs)
+        ;;
+      *)
+        return 1
+        ;;
+    esac
+  done
+
+  return 0
+}
+
+echo "[hook:pre-commit] signing guard + llm guard + guard challenge + verify preflight"
 npm run signing:guard -- --config-only
-npm run sot:apply
-npm run sync:docs:apply
-git add docs/INDEX.md docs/LLM/INDEX.md docs/LLM/AKTUELLE_RED_ACTIONS.md docs/SOT/ORIENTATION.md docs/SOT/REPO_HYGIENE_MAP.md app/src/sot/FUNCTION_SOT.json app/src/sot/REPO_HYGIENE_MAP.json
+if only_preflight_injection_changes; then
+  echo "[hook:pre-commit] injection-only commit detected; skipping docs/SoT sync and preflight runs"
+else
+  npm run sot:apply
+  npm run sync:docs:apply
+  git add docs/INDEX.md docs/LLM/INDEX.md docs/LLM/AKTUELLE_RED_ACTIONS.md docs/SOT/ORIENTATION.md docs/SOT/REPO_HYGIENE_MAP.md app/src/sot/FUNCTION_SOT.json app/src/sot/REPO_HYGIENE_MAP.json
+fi
 npm run llm:guard -- --action commit
+if only_preflight_injection_changes; then
+  exit 0
+fi
 npm run preflight:guard
 PREFLIGHT_GUARD_MODE=verify npm run preflight
 `;

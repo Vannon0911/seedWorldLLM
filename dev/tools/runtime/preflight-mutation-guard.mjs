@@ -1,6 +1,6 @@
 import { randomBytes, createHash } from "node:crypto";
 import { spawnSync } from "node:child_process";
-import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
+import { mkdir, readFile, readdir, rm, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -146,6 +146,48 @@ async function writeJson(absPath, payload) {
 
 async function readText(absPath) {
   return readFile(absPath, "utf8");
+}
+
+async function renderLsOutput(absPath) {
+  try {
+    const entries = await readdir(absPath, { withFileTypes: true });
+    if (entries.length === 0) {
+      return [`[PREFLIGHT_LS] ${path.relative(root, absPath) || "."}: <empty>`];
+    }
+
+    const lines = [`[PREFLIGHT_LS] ${path.relative(root, absPath) || "."}:`];
+    const sorted = [...entries].sort((a, b) => a.name.localeCompare(b.name));
+    for (const entry of sorted) {
+      const entryPath = path.join(absPath, entry.name);
+      let sizeText = "-";
+      try {
+        const info = await stat(entryPath);
+        sizeText = String(info.size);
+      } catch {
+        sizeText = "?";
+      }
+      const kind = entry.isDirectory() ? "d" : entry.isSymbolicLink() ? "l" : "f";
+      lines.push(`[PREFLIGHT_LS]   ${kind} ${entry.name} (${sizeText}b)`);
+    }
+    return lines;
+  } catch (error) {
+    return [`[PREFLIGHT_LS] ${path.relative(root, absPath) || "."}: <unavailable: ${String(error?.message || error)}>`];
+  }
+}
+
+async function emitPreflightLsOutput() {
+  const pathsToList = [
+    root,
+    path.join(root, "runtime"),
+    path.join(root, "runtime", ".patch-manager"),
+    path.join(root, "dev", "tools", "runtime")
+  ];
+
+  for (const absPath of pathsToList) {
+    for (const line of await renderLsOutput(absPath)) {
+      console.error(line);
+    }
+  }
 }
 
 async function findLegacyMarker() {
@@ -469,6 +511,7 @@ async function main() {
     await runEnforceMode(lock, vault, head);
   } catch (error) {
     console.error(`[PREFLIGHT_GUARD] BLOCK: ${String(error?.message || error)}`);
+    await emitPreflightLsOutput();
     process.exit(1);
   }
 }
