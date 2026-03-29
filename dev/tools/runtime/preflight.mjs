@@ -60,11 +60,22 @@ function runNpmScript(scriptName) {
   return runProcess(npmCmd, ["run", scriptName], `npm run ${scriptName}`);
 }
 
+function mutationGuardArgs() {
+  const envMode = String(process.env.PREFLIGHT_GUARD_MODE || "").trim().toLowerCase();
+  if (envMode === "0" || envMode === "verify") {
+    return ["--verify"];
+  }
+  if (envMode === "enforce") {
+    return ["--enforce"];
+  }
+  return [];
+}
+
 try {
   // 1) identity and policy guards first
   await runNodeScript("dev/tools/runtime/signing-guard.mjs", ["--config-only"]);
   await runNodeScript("dev/tools/runtime/evidence-lock.mjs");
-  await runNodeScript("dev/tools/runtime/preflight-mutation-guard.mjs");
+  await runNodeScript("dev/tools/runtime/preflight-mutation-guard.mjs", mutationGuardArgs());
   await runNodeScript("dev/tools/runtime/updateFunctionSot.mjs");
   await runNodeScript("dev/tools/runtime/syncDocs.mjs");
   await runNodeScript("dev/tools/runtime/governance-verify.mjs");
@@ -87,6 +98,9 @@ try {
   console.log("[PREFLIGHT] OK");
 } catch (error) {
   const msg = String(error?.message || error);
+  if (msg.includes("dev/tools/runtime/syncDocs.mjs")) {
+    console.error("[PREFLIGHT] BLOCK: Docs-Sync ist Pflicht vor der Testline. Fuehre zuerst `npm run sync:docs:apply` aus oder nutze den Pre-Commit-Hook.");
+  }
   console.error(`[PREFLIGHT] BLOCK: ${msg}`);
   console.error("[PREFLIGHT] BLOCK: Jeder Test muss belegt erfolgreich sein. Ruecksprache halten, bevor fortgefahren wird.");
   process.exit(1);

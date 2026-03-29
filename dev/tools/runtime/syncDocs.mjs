@@ -159,7 +159,7 @@ if (writeMode && currentLlmIndex !== llmIndexContent) {
 }
 
 if (!writeMode && drift.length > 0) {
-  console.error("[SYNC_DOCS] DRIFT:");
+  console.error("[SYNC_DOCS] BLOCK: docs sync required before preflight/testline.");
   for (const item of drift) {
     console.error(` - ${item}`);
   }

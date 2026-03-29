@@ -5225,6 +5225,14 @@
       "category": "runtime-tooling"
     },
     {
+      "id": "dev/tools/runtime/preflight.mjs#mutationGuardArgs@61",
+      "name": "mutationGuardArgs",
+      "file": "dev/tools/runtime/preflight.mjs",
+      "line": 61,
+      "kind": "function",
+      "category": "runtime-tooling"
+    },
+    {
       "id": "dev/tools/runtime/preflight.mjs#runNodeScript@48",
       "name": "runNodeScript",
       "file": "dev/tools/runtime/preflight.mjs",

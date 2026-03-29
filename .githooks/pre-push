@@ -29,7 +29,7 @@ do
   fi
 done
 
-echo "[hook:pre-push] llm guard + signing guard + mandatory preflight"
+echo "[hook:pre-push] llm guard + signing guard + verify preflight"
 npm run llm:guard -- --action push
 npm run signing:guard -- --config-only
 PREFLIGHT_GUARD_MODE=verify npm run preflight

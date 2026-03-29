@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "preflight": "node dev/tools/runtime/preflight.mjs",
-    "preflight:guard": "node dev/tools/runtime/preflight-mutation-guard.mjs",
+    "preflight:guard": "node dev/tools/runtime/preflight-mutation-guard.mjs --enforce",
+    "preflight:guard:verify": "node dev/tools/runtime/preflight-mutation-guard.mjs --verify",
     "server": "node start-server.js",
     "patch:server": "node app/server/patchServer.mjs",
     "patch:apply": "node dev/tools/patch/apply.mjs",

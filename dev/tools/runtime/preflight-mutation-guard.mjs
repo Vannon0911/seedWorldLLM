@@ -189,12 +189,22 @@ async function runEnforceMode(lock, vault, head) {
 }
 
 async function main() {
-  const mode = String(process.env.PREFLIGHT_GUARD_MODE || (process.env.CI ? "verify" : "enforce")).trim().toLowerCase();
+  const cliEnforce = process.argv.includes("--enforce");
+  const cliVerify = process.argv.includes("--verify");
+  const envMode = String(process.env.PREFLIGHT_GUARD_MODE || "").trim().toLowerCase();
+  const mode = cliEnforce
+    ? "enforce"
+    : cliVerify
+      ? "verify"
+      : String(envMode || (process.env.CI ? "verify" : "enforce")).trim().toLowerCase();
   const lock = await readJsonOrNull(statePath);
   const vault = normalizeVault(await readJsonOrNull(vaultPath));
   const head = currentHead();
 
   try {
+    if (mode !== "verify" && mode !== "enforce") {
+      throw new Error(`unknown mode '${mode}' (allowed: verify|enforce)`);
+    }
     if (mode === "verify") {
       await runVerifyMode(lock, vault, head);
       return;
