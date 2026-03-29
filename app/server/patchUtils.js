@@ -155,3 +155,5 @@ export function classifyPatchRisk(validation) {
     shouldNotifyLlm: riskLevel !== "low"
   };
 }
+
+export const __guardAttestationKeepAlive = true;

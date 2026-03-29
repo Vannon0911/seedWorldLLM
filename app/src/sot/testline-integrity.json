@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-03-29T09:12:57.7235000+02:00",
+  "generatedAt": "2026-03-29T09:02:01.319Z",
   "monitoredRoots": [
     "dev/scripts",
     "dev/tests"
@@ -26,21 +26,21 @@
   ],
   "fileHashes": {
     "dev/scripts/build-evidence-bundle.mjs": "b1da99115d60a0563d61b85b3a5e4a01a094f428396aa86a873190dd0492968c",
-    "dev/scripts/playwright-tiles-full.mjs": "b2897f6e3ae707e0e0fcea0bff9a6d2aebbede5735ddf1a21a3c6510b294cbcc",
+    "dev/scripts/playwright-tiles-full.mjs": "edab1f888c35264153e35f77a38e21ad93527ba660ff95d72e06180a6194a712",
     "dev/scripts/repo-cleanup-baseline.mjs": "8912fb12093c5676046b19caffab52258a7ff90af6e817395cfb69099a2b7861",
     "dev/scripts/runtime-guards-test.mjs": "77bf66bb22a57fe27038e4b8116f7eed3a597c70ad185fa21ff4c6987b3bcf83",
-    "dev/scripts/smoke-test.mjs": "abf70356a221e46d8d162aff229d850135673b3dc344df89d151efb054e64f56",
-    "dev/scripts/test-runner.mjs": "799128539d73745b1d753a68f9f9349c561e7cdcab2c2ce65d4f6392b5e9a345",
-    "dev/scripts/verify-evidence.mjs": "5f58b12ffce5f8eecb422eed051742ac16cbb59c55115be1fa74e0171ab7b844",
+    "dev/scripts/smoke-test.mjs": "6dd132264bd110f3451dbd326f328460369f41af886a01be19b8b5c011e09f01",
+    "dev/scripts/test-runner.mjs": "668f096500d7d76208a9db88b2bad2e2aa6ad0735096c4001c5945e9714e44a5",
+    "dev/scripts/verify-evidence.mjs": "a10315480ade5d5aba6b6a0a4e104fe112489e7def4ad63b4d43016834297226",
     "dev/tests/helpers/runScriptTest.mjs": "c99ec5251e3501b89a91b655f93f7448a4f57bdc45c3687b8846fcfee02a286e",
     "dev/tests/MainTest.mjs": "a588cd7c5d913048c476d37e0535106178423691c1e9db9ac4a218ddc579fb47",
     "dev/tests/modules/00.smoke-script.module.mjs": "ff4b8e6cc0a37412e59df4d5622df4f6ca135eb8326a12a70c0c24f0f472436f",
     "dev/tests/modules/01.runtime-guards-script.module.mjs": "cd84e1f1c3c619bc05315f275b370722f8bc1622812205b70c624b33fcbdf3c8",
     "dev/tests/modules/03.kernel-same-action-same-tick.module.mjs": "15a4a30a45854a6568e7134e2e79da98de5a19536364d48ad2432d72e3dec3d5",
     "dev/tests/modules/04.patch-utils.module.mjs": "4b0bd95ff63557107771a73bd3e09d82085d046742c47e894caf41aaa315720c",
-    "dev/tests/modules/05.static-handler-security.module.mjs": "ecf4d446f36dd9a68c3bf9feffb9d485cc4270155512fd8cbcf2982ae1d54264",
+    "dev/tests/modules/05.static-handler-security.module.mjs": "d1222ab0ac68343ff531a670c6077ae09a99bc356d2dfabd3b638a1b4b819466",
     "dev/tests/modules/06.governance-enforcement.module.mjs": "b0a8d87c0ff2caef046c0a0fb7516df1223c4e2f5591d5b1224d671608430dfa",
-    "dev/tests/modules/07.preflight-mutation-guard.module.mjs": "e43cd0be1846ed0d4c113acc6cacaa68d3f4022bb7df9f5588c76e23cfcbf283",
+    "dev/tests/modules/07.preflight-mutation-guard.module.mjs": "7281cab9f697bce872f698e7c8a18add4b3ad7ed277dd65462f9ef9807246f47",
     "dev/tests/modules/15.worldgen-deterministic.module.mjs": "fea5d5b7fdd72c55a08d6b5cfe5a4f8d717be7aac9c76c80c35bbab90869f25e"
   }
 }

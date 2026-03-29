@@ -202,7 +202,6 @@ async function findActiveHiddenFault() {
   }
   return "";
 }
-
 export function buildResolutionProof(seed, lock, currentHash) {
   return sha256([
     seed,
@@ -394,10 +393,10 @@ async function runVerifyMode(lock, vault, head) {
     throw new Error(`[PREFLIGHT_ESCALATION] legacy visible fault present in ${legacyMarkerFile}`);
   }
 
-   const activeFaultFile = await findActiveHiddenFault();
-   if (activeFaultFile) {
-     throw new Error(`[UNRESOLVED_ATTESTATION] hidden fault signature present in ${activeFaultFile}`);
-   }
+  const activeFaultFile = await findActiveHiddenFault();
+  if (activeFaultFile) {
+    throw new Error(`[UNRESOLVED_ATTESTATION] hidden fault signature present in ${activeFaultFile}`);
+  }
 
   if (!lock) {
     if (vault.lastGeneratedHead === head && vault.lastResolvedHead !== head) {
