@@ -85,9 +85,7 @@ function buildContent(changes, snapshotHash) {
 
 async function main() {
   const stagedRaw = runGit(["diff", "--cached", "--name-status", "--no-renames"]);
-  const fallbackRaw = stagedRaw ? "" : runGit(["status", "--porcelain"]);
-  const input = stagedRaw || fallbackRaw;
-  const changes = parseNameStatus(input);
+  const changes = parseNameStatus(stagedRaw);
   const normalizedInput = changes
     .map((entry) => `${entry.status}\t${entry.file}`)
     .join("\n");
@@ -96,7 +94,8 @@ async function main() {
     .digest("hex")
     .slice(0, 16);
 
-  // Clean working tree / no staged candidate must never block preflight checks.
+  // Red actions describe the staged commit candidate only; unstaged worktree noise
+  // must never rewrite or block the synchronized snapshot.
   if (!writeMode && changes.length === 0) {
     console.log(`[RED_ACTIONS] OK (${changes.length} candidate changes, snapshot=${snapshotHash}, mode=check, clean-tree-bypass=true)`);
     return;

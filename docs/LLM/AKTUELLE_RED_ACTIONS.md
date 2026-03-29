@@ -2,17 +2,14 @@
 
 Dieser Stand wird automatisch vor Preflight/Commit synchronisiert.
 
-- Snapshot: `38dfeb2b4b4f0e87`
-- Candidate Changes: `3`
+- Snapshot: `4cdd235c312f11f4`
+- Candidate Changes: `1`
 
 ## Commit-Kandidat (Name-Status)
-- `M` .githooks/pre-commit
-- `M` app/src/sot/FUNCTION_SOT.json
-- `M` dev/tools/runtime/installGitHooks.mjs
+- `M` dev/tools/runtime/updateRedActions.mjs
 
 ## Red-Actions (risikoreiche Treffer)
-- `hook-flow` -> `M` .githooks/pre-commit
-- `runtime-guard` -> `M` dev/tools/runtime/installGitHooks.mjs
+- `runtime-guard` -> `M` dev/tools/runtime/updateRedActions.mjs
 
 ## Regel
 - Jeder Commit muss diesen Stand widerspruchsfrei spiegeln.
