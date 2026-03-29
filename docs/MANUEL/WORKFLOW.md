@@ -38,7 +38,7 @@ npm run patch:apply -- --input <zip|json> [--actor <name>]
 1. Lokale Hooks sind nur Vorpruefung, nicht die finale Autoritaet.
 2. Harte Merge-Sperre laeuft ueber GitHub Ruleset + Required Checks.
 3. `main` darf nur per PR gemerged werden, nie per Direct Push.
-4. Force-Push, Ref-Delete, Non-FF und Unsigniertes Commit sind serverseitig blockiert.
+4. Force-Push, Ref-Delete und Non-FF sind serverseitig blockiert.
 
 ### Setup (einmalig pro Repo)
 
