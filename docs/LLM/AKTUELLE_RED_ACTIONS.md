@@ -2,25 +2,14 @@
 
 Dieser Stand wird automatisch vor Preflight/Commit synchronisiert.
 
-- Snapshot: `d60982a7babc986d`
-- Candidate Changes: `7`
+- Snapshot: `2e1cfa82b035c26c`
+- Candidate Changes: `0`
 
 ## Commit-Kandidat (Name-Status)
-- `M` app/src/sot/FUNCTION_SOT.json
-- `M` dev/tools/runtime/preflight.mjs
-- `M` dev/tools/runtime/repo-hygiene-map.mjs
-- `M` dev/tools/runtime/syncDocs.mjs
-- `M` dev/tools/runtime/updateFunctionSot.mjs
-- `M` dev/tools/runtime/updateRedActions.mjs
-- `M` package.json
+- Keine gestagten Aenderungen erkannt.
 
 ## Red-Actions (risikoreiche Treffer)
-- `runtime-guard` -> `M` dev/tools/runtime/preflight.mjs
-- `runtime-guard` -> `M` dev/tools/runtime/repo-hygiene-map.mjs
-- `runtime-guard` -> `M` dev/tools/runtime/syncDocs.mjs
-- `runtime-guard` -> `M` dev/tools/runtime/updateFunctionSot.mjs
-- `runtime-guard` -> `M` dev/tools/runtime/updateRedActions.mjs
-- `script-surface` -> `M` package.json
+- Keine risikoreichen Treffer im aktuellen Commit-Kandidaten.
 
 ## Regel
 - Jeder Commit muss diesen Stand widerspruchsfrei spiegeln.
