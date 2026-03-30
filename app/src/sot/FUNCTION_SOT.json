@@ -1433,18 +1433,18 @@
       "category": "kernel-core"
     },
     {
-      "id": "app/src/plugins/radialBuildController.js#animate@446",
+      "id": "app/src/plugins/radialBuildController.js#animate@475",
       "name": "animate",
       "file": "app/src/plugins/radialBuildController.js",
-      "line": 446,
+      "line": 475,
       "kind": "arrow",
       "category": "ui"
     },
     {
-      "id": "app/src/plugins/radialBuildController.js#applyPlacement@371",
+      "id": "app/src/plugins/radialBuildController.js#applyPlacement@406",
       "name": "applyPlacement",
       "file": "app/src/plugins/radialBuildController.js",
-      "line": 371,
+      "line": 406,
       "kind": "function",
       "category": "ui"
     },
@@ -1457,18 +1457,18 @@
       "category": "ui"
     },
     {
-      "id": "app/src/plugins/radialBuildController.js#buildTileSignature@223",
+      "id": "app/src/plugins/radialBuildController.js#buildTileSignature@227",
       "name": "buildTileSignature",
       "file": "app/src/plugins/radialBuildController.js",
-      "line": 223,
+      "line": 227,
       "kind": "function",
       "category": "ui"
     },
     {
-      "id": "app/src/plugins/radialBuildController.js#closeMenu@343",
+      "id": "app/src/plugins/radialBuildController.js#closeMenu@363",
       "name": "closeMenu",
       "file": "app/src/plugins/radialBuildController.js",
-      "line": 343,
+      "line": 363,
       "kind": "function",
       "category": "ui"
     },
@@ -1481,10 +1481,10 @@
       "category": "ui"
     },
     {
-      "id": "app/src/plugins/radialBuildController.js#drawConnections@196",
+      "id": "app/src/plugins/radialBuildController.js#drawConnections@200",
       "name": "drawConnections",
       "file": "app/src/plugins/radialBuildController.js",
-      "line": 196,
+      "line": 200,
       "kind": "function",
       "category": "ui"
     },
@@ -1521,18 +1521,18 @@
       "category": "ui"
     },
     {
-      "id": "app/src/plugins/radialBuildController.js#installRadialBuildController@289",
+      "id": "app/src/plugins/radialBuildController.js#installRadialBuildController@293",
       "name": "installRadialBuildController",
       "file": "app/src/plugins/radialBuildController.js",
-      "line": 289,
+      "line": 293,
       "kind": "function",
       "category": "ui"
     },
     {
-      "id": "app/src/plugins/radialBuildController.js#installRadialMenu@239",
+      "id": "app/src/plugins/radialBuildController.js#installRadialMenu@243",
       "name": "installRadialMenu",
       "file": "app/src/plugins/radialBuildController.js",
-      "line": 239,
+      "line": 243,
       "kind": "function",
       "category": "ui"
     },
@@ -1545,18 +1545,18 @@
       "category": "ui"
     },
     {
-      "id": "app/src/plugins/radialBuildController.js#openMenuAt@328",
+      "id": "app/src/plugins/radialBuildController.js#openMenuAt@338",
       "name": "openMenuAt",
       "file": "app/src/plugins/radialBuildController.js",
-      "line": 328,
+      "line": 338,
       "kind": "function",
       "category": "ui"
     },
     {
-      "id": "app/src/plugins/radialBuildController.js#optionNodes@304",
+      "id": "app/src/plugins/radialBuildController.js#optionNodes@314",
       "name": "optionNodes",
       "file": "app/src/plugins/radialBuildController.js",
-      "line": 304,
+      "line": 314,
       "kind": "arrow",
       "category": "ui"
     },
@@ -1569,26 +1569,34 @@
       "category": "ui"
     },
     {
-      "id": "app/src/plugins/radialBuildController.js#redrawConnections@351",
+      "id": "app/src/plugins/radialBuildController.js#redrawConnections@371",
       "name": "redrawConnections",
       "file": "app/src/plugins/radialBuildController.js",
-      "line": 351,
+      "line": 371,
       "kind": "function",
       "category": "ui"
     },
     {
-      "id": "app/src/plugins/radialBuildController.js#resizeSvg@312",
+      "id": "app/src/plugins/radialBuildController.js#resizeSvg@322",
       "name": "resizeSvg",
       "file": "app/src/plugins/radialBuildController.js",
-      "line": 312,
+      "line": 322,
       "kind": "function",
       "category": "ui"
     },
     {
-      "id": "app/src/plugins/radialBuildController.js#setActive@322",
+      "id": "app/src/plugins/radialBuildController.js#resolveTileFromPointer@381",
+      "name": "resolveTileFromPointer",
+      "file": "app/src/plugins/radialBuildController.js",
+      "line": 381,
+      "kind": "function",
+      "category": "ui"
+    },
+    {
+      "id": "app/src/plugins/radialBuildController.js#setActive@332",
       "name": "setActive",
       "file": "app/src/plugins/radialBuildController.js",
-      "line": 322,
+      "line": 332,
       "kind": "function",
       "category": "ui"
     },
@@ -1609,10 +1617,10 @@
       "category": "ui"
     },
     {
-      "id": "app/src/plugins/radialBuildController.js#updateDebug@272",
+      "id": "app/src/plugins/radialBuildController.js#updateDebug@276",
       "name": "updateDebug",
       "file": "app/src/plugins/radialBuildController.js",
-      "line": 272,
+      "line": 276,
       "kind": "function",
       "category": "ui"
     },
@@ -2073,186 +2081,186 @@
       "category": "ui"
     },
     {
-      "id": "app/src/ui/GameUIController.js#countStructures@225",
+      "id": "app/src/ui/GameUIController.js#countStructures@226",
       "name": "countStructures",
       "file": "app/src/ui/GameUIController.js",
-      "line": 225,
+      "line": 226,
       "kind": "method",
       "category": "ui"
     },
     {
-      "id": "app/src/ui/GameUIController.js#createBaseStructure@27",
+      "id": "app/src/ui/GameUIController.js#createBaseStructure@28",
       "name": "createBaseStructure",
       "file": "app/src/ui/GameUIController.js",
-      "line": 27,
+      "line": 28,
       "kind": "method",
       "category": "ui"
     },
     {
-      "id": "app/src/ui/GameUIController.js#createGameStatus@123",
+      "id": "app/src/ui/GameUIController.js#createGameStatus@124",
       "name": "createGameStatus",
       "file": "app/src/ui/GameUIController.js",
-      "line": 123,
+      "line": 124,
       "kind": "method",
       "category": "ui"
     },
     {
-      "id": "app/src/ui/GameUIController.js#createGameWorld@108",
+      "id": "app/src/ui/GameUIController.js#createGameWorld@109",
       "name": "createGameWorld",
       "file": "app/src/ui/GameUIController.js",
-      "line": 108,
+      "line": 109,
       "kind": "method",
       "category": "ui"
     },
     {
-      "id": "app/src/ui/GameUIController.js#createResourcePanel@62",
+      "id": "app/src/ui/GameUIController.js#createResourcePanel@63",
       "name": "createResourcePanel",
       "file": "app/src/ui/GameUIController.js",
-      "line": 62,
+      "line": 63,
       "kind": "method",
       "category": "ui"
     },
     {
-      "id": "app/src/ui/GameUIController.js#createStatsPanel@85",
+      "id": "app/src/ui/GameUIController.js#createStatsPanel@86",
       "name": "createStatsPanel",
       "file": "app/src/ui/GameUIController.js",
-      "line": 85,
+      "line": 86,
       "kind": "method",
       "category": "ui"
     },
     {
-      "id": "app/src/ui/GameUIController.js#destroy@256",
+      "id": "app/src/ui/GameUIController.js#destroy@257",
       "name": "destroy",
       "file": "app/src/ui/GameUIController.js",
-      "line": 256,
+      "line": 257,
       "kind": "method",
       "category": "ui"
     },
     {
-      "id": "app/src/ui/GameUIController.js#getCurrentState@278",
+      "id": "app/src/ui/GameUIController.js#getCurrentState@279",
       "name": "getCurrentState",
       "file": "app/src/ui/GameUIController.js",
-      "line": 278,
+      "line": 279,
       "kind": "method",
       "category": "ui"
     },
     {
-      "id": "app/src/ui/GameUIController.js#getGameLogic@282",
+      "id": "app/src/ui/GameUIController.js#getGameLogic@283",
       "name": "getGameLogic",
       "file": "app/src/ui/GameUIController.js",
-      "line": 282,
+      "line": 283,
       "kind": "method",
       "category": "ui"
     },
     {
-      "id": "app/src/ui/GameUIController.js#getSelectedTile@275",
+      "id": "app/src/ui/GameUIController.js#getSelectedTile@276",
       "name": "getSelectedTile",
       "file": "app/src/ui/GameUIController.js",
-      "line": 275,
+      "line": 276,
       "kind": "method",
       "category": "ui"
     },
     {
-      "id": "app/src/ui/GameUIController.js#handleTileSelection@149",
+      "id": "app/src/ui/GameUIController.js#handleTileSelection@150",
       "name": "handleTileSelection",
       "file": "app/src/ui/GameUIController.js",
-      "line": 149,
+      "line": 150,
       "kind": "method",
       "category": "ui"
     },
     {
-      "id": "app/src/ui/GameUIController.js#initialize@18",
+      "id": "app/src/ui/GameUIController.js#initialize@19",
       "name": "initialize",
       "file": "app/src/ui/GameUIController.js",
-      "line": 18,
+      "line": 19,
       "kind": "method",
       "category": "ui"
     },
     {
-      "id": "app/src/ui/GameUIController.js#placeStructure@231",
+      "id": "app/src/ui/GameUIController.js#placeStructure@232",
       "name": "placeStructure",
       "file": "app/src/ui/GameUIController.js",
-      "line": 231,
+      "line": 232,
       "kind": "method",
       "category": "ui"
     },
     {
-      "id": "app/src/ui/GameUIController.js#render@269",
+      "id": "app/src/ui/GameUIController.js#render@270",
       "name": "render",
       "file": "app/src/ui/GameUIController.js",
-      "line": 269,
+      "line": 270,
       "kind": "method",
       "category": "ui"
     },
     {
-      "id": "app/src/ui/GameUIController.js#renderBuildActions@219",
+      "id": "app/src/ui/GameUIController.js#renderBuildActions@220",
       "name": "renderBuildActions",
       "file": "app/src/ui/GameUIController.js",
-      "line": 219,
+      "line": 220,
       "kind": "method",
       "category": "ui"
     },
     {
-      "id": "app/src/ui/GameUIController.js#startTickLoop@129",
+      "id": "app/src/ui/GameUIController.js#startTickLoop@130",
       "name": "startTickLoop",
       "file": "app/src/ui/GameUIController.js",
-      "line": 129,
+      "line": 130,
       "kind": "method",
       "category": "ui"
     },
     {
-      "id": "app/src/ui/GameUIController.js#updateBuildActions@205",
+      "id": "app/src/ui/GameUIController.js#updateBuildActions@206",
       "name": "updateBuildActions",
       "file": "app/src/ui/GameUIController.js",
-      "line": 205,
+      "line": 206,
       "kind": "method",
       "category": "ui"
     },
     {
-      "id": "app/src/ui/GameUIController.js#updateGameWorld@184",
+      "id": "app/src/ui/GameUIController.js#updateGameWorld@185",
       "name": "updateGameWorld",
       "file": "app/src/ui/GameUIController.js",
-      "line": 184,
+      "line": 185,
       "kind": "method",
       "category": "ui"
     },
     {
-      "id": "app/src/ui/GameUIController.js#updateResources@168",
+      "id": "app/src/ui/GameUIController.js#updateResources@169",
       "name": "updateResources",
       "file": "app/src/ui/GameUIController.js",
-      "line": 168,
+      "line": 169,
       "kind": "method",
       "category": "ui"
     },
     {
-      "id": "app/src/ui/GameUIController.js#updateStats@176",
+      "id": "app/src/ui/GameUIController.js#updateStats@177",
       "name": "updateStats",
       "file": "app/src/ui/GameUIController.js",
-      "line": 176,
+      "line": 177,
       "kind": "method",
       "category": "ui"
     },
     {
-      "id": "app/src/ui/GameUIController.js#updateStatus@190",
+      "id": "app/src/ui/GameUIController.js#updateStatus@191",
       "name": "updateStatus",
       "file": "app/src/ui/GameUIController.js",
-      "line": 190,
+      "line": 191,
       "kind": "method",
       "category": "ui"
     },
     {
-      "id": "app/src/ui/GameUIController.js#updateTileInfo@197",
+      "id": "app/src/ui/GameUIController.js#updateTileInfo@198",
       "name": "updateTileInfo",
       "file": "app/src/ui/GameUIController.js",
-      "line": 197,
+      "line": 198,
       "kind": "method",
       "category": "ui"
     },
     {
-      "id": "app/src/ui/GameUIController.js#updateUI@161",
+      "id": "app/src/ui/GameUIController.js#updateUI@162",
       "name": "updateUI",
       "file": "app/src/ui/GameUIController.js",
-      "line": 161,
+      "line": 162,
       "kind": "method",
       "category": "ui"
     },
@@ -2673,6 +2681,94 @@
       "category": "ui"
     },
     {
+      "id": "app/src/ui/RenderManager.js#clamp@3",
+      "name": "clamp",
+      "file": "app/src/ui/RenderManager.js",
+      "line": 3,
+      "kind": "function",
+      "category": "ui"
+    },
+    {
+      "id": "app/src/ui/RenderManager.js#getSnapshot@132",
+      "name": "getSnapshot",
+      "file": "app/src/ui/RenderManager.js",
+      "line": 132,
+      "kind": "method",
+      "category": "ui"
+    },
+    {
+      "id": "app/src/ui/RenderManager.js#normalizeRenderGrid@17",
+      "name": "normalizeRenderGrid",
+      "file": "app/src/ui/RenderManager.js",
+      "line": 17,
+      "kind": "function",
+      "category": "ui"
+    },
+    {
+      "id": "app/src/ui/RenderManager.js#screenToTile@123",
+      "name": "screenToTile",
+      "file": "app/src/ui/RenderManager.js",
+      "line": 123,
+      "kind": "method",
+      "category": "ui"
+    },
+    {
+      "id": "app/src/ui/RenderManager.js#setGrid@94",
+      "name": "setGrid",
+      "file": "app/src/ui/RenderManager.js",
+      "line": 94,
+      "kind": "method",
+      "category": "ui"
+    },
+    {
+      "id": "app/src/ui/RenderManager.js#setViewport@85",
+      "name": "setViewport",
+      "file": "app/src/ui/RenderManager.js",
+      "line": 85,
+      "kind": "method",
+      "category": "ui"
+    },
+    {
+      "id": "app/src/ui/RenderManager.js#start@49",
+      "name": "start",
+      "file": "app/src/ui/RenderManager.js",
+      "line": 49,
+      "kind": "method",
+      "category": "ui"
+    },
+    {
+      "id": "app/src/ui/RenderManager.js#stop@60",
+      "name": "stop",
+      "file": "app/src/ui/RenderManager.js",
+      "line": 60,
+      "kind": "method",
+      "category": "ui"
+    },
+    {
+      "id": "app/src/ui/RenderManager.js#subscribe@67",
+      "name": "subscribe",
+      "file": "app/src/ui/RenderManager.js",
+      "line": 67,
+      "kind": "method",
+      "category": "ui"
+    },
+    {
+      "id": "app/src/ui/RenderManager.js#toFiniteNumber@1",
+      "name": "toFiniteNumber",
+      "file": "app/src/ui/RenderManager.js",
+      "line": 1,
+      "kind": "function",
+      "category": "ui"
+    },
+    {
+      "id": "app/src/ui/RenderManager.js#worldToScreen@112",
+      "name": "worldToScreen",
+      "file": "app/src/ui/RenderManager.js",
+      "line": 112,
+      "kind": "method",
+      "category": "ui"
+    },
+    {
       "id": "app/src/ui/TileAnimationSDK.js#clamp@1",
       "name": "clamp",
       "file": "app/src/ui/TileAnimationSDK.js",
@@ -2801,114 +2897,130 @@
       "category": "ui"
     },
     {
-      "id": "app/src/ui/UIController.js#applyGameAction@209",
+      "id": "app/src/ui/UIController.js#applyGameAction@264",
       "name": "applyGameAction",
       "file": "app/src/ui/UIController.js",
-      "line": 209,
+      "line": 264,
       "kind": "method",
       "category": "ui"
     },
     {
-      "id": "app/src/ui/UIController.js#applyLocalFallback@301",
+      "id": "app/src/ui/UIController.js#applyLocalFallback@368",
       "name": "applyLocalFallback",
       "file": "app/src/ui/UIController.js",
-      "line": 301,
+      "line": 368,
       "kind": "arrow",
       "category": "ui"
     },
     {
-      "id": "app/src/ui/UIController.js#bootstrap@102",
+      "id": "app/src/ui/UIController.js#bootstrap@154",
       "name": "bootstrap",
       "file": "app/src/ui/UIController.js",
-      "line": 102,
+      "line": 154,
       "kind": "method",
       "category": "ui"
     },
     {
-      "id": "app/src/ui/UIController.js#clone@27",
+      "id": "app/src/ui/UIController.js#clone@28",
       "name": "clone",
       "file": "app/src/ui/UIController.js",
-      "line": 27,
+      "line": 28,
       "kind": "function",
       "category": "ui"
     },
     {
-      "id": "app/src/ui/UIController.js#frame@350",
+      "id": "app/src/ui/UIController.js#frame@418",
       "name": "frame",
       "file": "app/src/ui/UIController.js",
-      "line": 350,
+      "line": 418,
       "kind": "arrow",
       "category": "ui"
     },
     {
-      "id": "app/src/ui/UIController.js#handleApply@136",
+      "id": "app/src/ui/UIController.js#handleApply@189",
       "name": "handleApply",
       "file": "app/src/ui/UIController.js",
-      "line": 136,
+      "line": 189,
       "kind": "method",
       "category": "ui"
     },
     {
-      "id": "app/src/ui/UIController.js#handleGuard@179",
+      "id": "app/src/ui/UIController.js#handleGuard@234",
       "name": "handleGuard",
       "file": "app/src/ui/UIController.js",
-      "line": 179,
+      "line": 234,
       "kind": "method",
       "category": "ui"
     },
     {
-      "id": "app/src/ui/UIController.js#handlePlan@113",
+      "id": "app/src/ui/UIController.js#handlePlan@165",
       "name": "handlePlan",
       "file": "app/src/ui/UIController.js",
-      "line": 113,
+      "line": 165,
       "kind": "method",
       "category": "ui"
     },
     {
-      "id": "app/src/ui/UIController.js#isPlainObject@18",
+      "id": "app/src/ui/UIController.js#isPlainObject@19",
       "name": "isPlainObject",
       "file": "app/src/ui/UIController.js",
-      "line": 18,
+      "line": 19,
       "kind": "function",
       "category": "ui"
     },
     {
-      "id": "app/src/ui/UIController.js#parseJson@35",
+      "id": "app/src/ui/UIController.js#parseJson@36",
       "name": "parseJson",
       "file": "app/src/ui/UIController.js",
-      "line": 35,
+      "line": 36,
       "kind": "function",
       "category": "ui"
     },
     {
-      "id": "app/src/ui/UIController.js#pretty@31",
+      "id": "app/src/ui/UIController.js#pretty@32",
       "name": "pretty",
       "file": "app/src/ui/UIController.js",
-      "line": 31,
+      "line": 32,
       "kind": "function",
       "category": "ui"
     },
     {
-      "id": "app/src/ui/UIController.js#refresh@161",
+      "id": "app/src/ui/UIController.js#refresh@215",
       "name": "refresh",
       "file": "app/src/ui/UIController.js",
-      "line": 161,
+      "line": 215,
       "kind": "method",
       "category": "ui"
     },
     {
-      "id": "app/src/ui/UIController.js#setDisabled@59",
-      "name": "setDisabled",
+      "id": "app/src/ui/UIController.js#resolveGridSpecFromState@77",
+      "name": "resolveGridSpecFromState",
       "file": "app/src/ui/UIController.js",
-      "line": 59,
+      "line": 77,
       "kind": "function",
       "category": "ui"
     },
     {
-      "id": "app/src/ui/UIController.js#setTextContent@53",
+      "id": "app/src/ui/UIController.js#setDisabled@60",
+      "name": "setDisabled",
+      "file": "app/src/ui/UIController.js",
+      "line": 60,
+      "kind": "function",
+      "category": "ui"
+    },
+    {
+      "id": "app/src/ui/UIController.js#setTextContent@54",
       "name": "setTextContent",
       "file": "app/src/ui/UIController.js",
-      "line": 53,
+      "line": 54,
+      "kind": "function",
+      "category": "ui"
+    },
+    {
+      "id": "app/src/ui/UIController.js#toPositiveInteger@68",
+      "name": "toPositiveInteger",
+      "file": "app/src/ui/UIController.js",
+      "line": 68,
       "kind": "function",
       "category": "ui"
     },
@@ -4393,42 +4505,74 @@
       "category": "patch-tooling"
     },
     {
-      "id": "dev/tools/runtime/apply-github-ruleset.mjs#getRepoPath@20",
+      "id": "dev/tools/runtime/apply-github-ruleset.mjs#getRepoPath@22",
       "name": "getRepoPath",
       "file": "dev/tools/runtime/apply-github-ruleset.mjs",
-      "line": 20,
+      "line": 22,
       "kind": "function",
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/apply-github-ruleset.mjs#gh@16",
+      "id": "dev/tools/runtime/apply-github-ruleset.mjs#gh@18",
       "name": "gh",
       "file": "dev/tools/runtime/apply-github-ruleset.mjs",
-      "line": 16,
+      "line": 18,
       "kind": "function",
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/apply-github-ruleset.mjs#main@37",
+      "id": "dev/tools/runtime/apply-github-ruleset.mjs#main@44",
       "name": "main",
       "file": "dev/tools/runtime/apply-github-ruleset.mjs",
-      "line": 37,
+      "line": 44,
       "kind": "function",
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/apply-github-ruleset.mjs#normalizePayload@29",
-      "name": "normalizePayload",
-      "file": "dev/tools/runtime/apply-github-ruleset.mjs",
-      "line": 29,
-      "kind": "function",
-      "category": "runtime-tooling"
-    },
-    {
-      "id": "dev/tools/runtime/apply-github-ruleset.mjs#run@5",
+      "id": "dev/tools/runtime/apply-github-ruleset.mjs#run@7",
       "name": "run",
       "file": "dev/tools/runtime/apply-github-ruleset.mjs",
-      "line": 5,
+      "line": 7,
+      "kind": "function",
+      "category": "runtime-tooling"
+    },
+    {
+      "id": "dev/tools/runtime/apply-github-ruleset.mjs#validatePayload@31",
+      "name": "validatePayload",
+      "file": "dev/tools/runtime/apply-github-ruleset.mjs",
+      "line": 31,
+      "kind": "function",
+      "category": "runtime-tooling"
+    },
+    {
+      "id": "dev/tools/runtime/check-wrapper-guardrails.mjs#ensureStringField@35",
+      "name": "ensureStringField",
+      "file": "dev/tools/runtime/check-wrapper-guardrails.mjs",
+      "line": 35,
+      "kind": "function",
+      "category": "runtime-tooling"
+    },
+    {
+      "id": "dev/tools/runtime/check-wrapper-guardrails.mjs#main@43",
+      "name": "main",
+      "file": "dev/tools/runtime/check-wrapper-guardrails.mjs",
+      "line": 43,
+      "kind": "function",
+      "category": "runtime-tooling"
+    },
+    {
+      "id": "dev/tools/runtime/check-wrapper-guardrails.mjs#parseDateOnly@17",
+      "name": "parseDateOnly",
+      "file": "dev/tools/runtime/check-wrapper-guardrails.mjs",
+      "line": 17,
+      "kind": "function",
+      "category": "runtime-tooling"
+    },
+    {
+      "id": "dev/tools/runtime/check-wrapper-guardrails.mjs#resolveTodayUtc@24",
+      "name": "resolveTodayUtc",
+      "file": "dev/tools/runtime/check-wrapper-guardrails.mjs",
+      "line": 24,
       "kind": "function",
       "category": "runtime-tooling"
     },
@@ -4745,42 +4889,42 @@
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#assessHeadDrift@332",
+      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#assessHeadDrift@342",
       "name": "assessHeadDrift",
       "file": "dev/tools/runtime/preflight-mutation-guard.mjs",
-      "line": 332,
+      "line": 342,
       "kind": "function",
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#buildChallengeBlockMessage@361",
+      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#buildChallengeBlockMessage@371",
       "name": "buildChallengeBlockMessage",
       "file": "dev/tools/runtime/preflight-mutation-guard.mjs",
-      "line": 361,
+      "line": 371,
       "kind": "function",
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#buildResolutionProof@262",
+      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#buildResolutionProof@272",
       "name": "buildResolutionProof",
       "file": "dev/tools/runtime/preflight-mutation-guard.mjs",
-      "line": 262,
+      "line": 272,
       "kind": "function",
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#clearLegacyStateIfSafe@448",
+      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#clearLegacyStateIfSafe@458",
       "name": "clearLegacyStateIfSafe",
       "file": "dev/tools/runtime/preflight-mutation-guard.mjs",
-      "line": 448,
+      "line": 458,
       "kind": "function",
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#clearStaleHeadDriftIfSafe@494",
+      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#clearStaleHeadDriftIfSafe@504",
       "name": "clearStaleHeadDriftIfSafe",
       "file": "dev/tools/runtime/preflight-mutation-guard.mjs",
-      "line": 494,
+      "line": 504,
       "kind": "function",
       "category": "runtime-tooling"
     },
@@ -4793,58 +4937,58 @@
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#deriveToken@73",
+      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#deriveToken@83",
       "name": "deriveToken",
       "file": "dev/tools/runtime/preflight-mutation-guard.mjs",
-      "line": 73,
+      "line": 83,
       "kind": "function",
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#emitPreflightLsOutput@185",
+      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#emitPreflightLsOutput@195",
       "name": "emitPreflightLsOutput",
       "file": "dev/tools/runtime/preflight-mutation-guard.mjs",
-      "line": 185,
+      "line": 195,
       "kind": "function",
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#ensureInjectedLock@544",
+      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#ensureInjectedLock@554",
       "name": "ensureInjectedLock",
       "file": "dev/tools/runtime/preflight-mutation-guard.mjs",
-      "line": 544,
+      "line": 554,
       "kind": "function",
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#ensureVaultSeed@214",
+      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#ensureVaultSeed@224",
       "name": "ensureVaultSeed",
       "file": "dev/tools/runtime/preflight-mutation-guard.mjs",
-      "line": 214,
+      "line": 224,
       "kind": "function",
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#findActiveHiddenFault@241",
+      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#findActiveHiddenFault@251",
       "name": "findActiveHiddenFault",
       "file": "dev/tools/runtime/preflight-mutation-guard.mjs",
-      "line": 241,
+      "line": 251,
       "kind": "function",
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#findLegacyMarker@200",
+      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#findLegacyMarker@210",
       "name": "findLegacyMarker",
       "file": "dev/tools/runtime/preflight-mutation-guard.mjs",
-      "line": 200,
+      "line": 210,
       "kind": "function",
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#injectFault@223",
+      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#injectFault@233",
       "name": "injectFault",
       "file": "dev/tools/runtime/preflight-mutation-guard.mjs",
-      "line": 223,
+      "line": 233,
       "kind": "function",
       "category": "runtime-tooling"
     },
@@ -4881,98 +5025,98 @@
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#isFaultStillActive@237",
+      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#isFaultStillActive@247",
       "name": "isFaultStillActive",
       "file": "dev/tools/runtime/preflight-mutation-guard.mjs",
-      "line": 237,
+      "line": 247,
       "kind": "function",
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#main@763",
+      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#main@773",
       "name": "main",
       "file": "dev/tools/runtime/preflight-mutation-guard.mjs",
-      "line": 763,
+      "line": 773,
       "kind": "function",
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#normalizeLock@89",
+      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#normalizeLock@99",
       "name": "normalizeLock",
       "file": "dev/tools/runtime/preflight-mutation-guard.mjs",
-      "line": 89,
+      "line": 99,
       "kind": "function",
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#normalizeVault@110",
+      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#normalizeVault@120",
       "name": "normalizeVault",
       "file": "dev/tools/runtime/preflight-mutation-guard.mjs",
-      "line": 110,
+      "line": 120,
       "kind": "function",
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#pickTargetFile@218",
+      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#pickTargetFile@228",
       "name": "pickTargetFile",
       "file": "dev/tools/runtime/preflight-mutation-guard.mjs",
-      "line": 218,
+      "line": 228,
       "kind": "function",
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#readJsonOrNull@141",
+      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#readJsonOrNull@151",
       "name": "readJsonOrNull",
       "file": "dev/tools/runtime/preflight-mutation-guard.mjs",
-      "line": 141,
+      "line": 151,
       "kind": "function",
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#readText@154",
+      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#readText@164",
       "name": "readText",
       "file": "dev/tools/runtime/preflight-mutation-guard.mjs",
-      "line": 154,
+      "line": 164,
       "kind": "function",
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#recordPendingFailure@406",
+      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#recordPendingFailure@416",
       "name": "recordPendingFailure",
       "file": "dev/tools/runtime/preflight-mutation-guard.mjs",
-      "line": 406,
+      "line": 416,
       "kind": "function",
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#renderLsOutput@158",
+      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#renderLsOutput@168",
       "name": "renderLsOutput",
       "file": "dev/tools/runtime/preflight-mutation-guard.mjs",
-      "line": 158,
+      "line": 168,
       "kind": "function",
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#resolveOrKeepLock@607",
+      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#resolveOrKeepLock@617",
       "name": "resolveOrKeepLock",
       "file": "dev/tools/runtime/preflight-mutation-guard.mjs",
-      "line": 607,
+      "line": 617,
       "kind": "function",
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#runEnforceMode@717",
+      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#runEnforceMode@727",
       "name": "runEnforceMode",
       "file": "dev/tools/runtime/preflight-mutation-guard.mjs",
-      "line": 717,
+      "line": 727,
       "kind": "function",
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#runVerifyMode@672",
+      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#runVerifyMode@682",
       "name": "runVerifyMode",
       "file": "dev/tools/runtime/preflight-mutation-guard.mjs",
-      "line": 672,
+      "line": 682,
       "kind": "function",
       "category": "runtime-tooling"
     },
@@ -4985,34 +5129,34 @@
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#strategyFor@81",
+      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#strategyFor@91",
       "name": "strategyFor",
       "file": "dev/tools/runtime/preflight-mutation-guard.mjs",
-      "line": 81,
+      "line": 91,
       "kind": "function",
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#toIndex@77",
+      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#toIndex@87",
       "name": "toIndex",
       "file": "dev/tools/runtime/preflight-mutation-guard.mjs",
-      "line": 77,
+      "line": 87,
       "kind": "function",
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#validateResolutionCandidate@292",
+      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#validateResolutionCandidate@302",
       "name": "validateResolutionCandidate",
       "file": "dev/tools/runtime/preflight-mutation-guard.mjs",
-      "line": 292,
+      "line": 302,
       "kind": "function",
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#writeJson@149",
+      "id": "dev/tools/runtime/preflight-mutation-guard.mjs#writeJson@159",
       "name": "writeJson",
       "file": "dev/tools/runtime/preflight-mutation-guard.mjs",
-      "line": 149,
+      "line": 159,
       "kind": "function",
       "category": "runtime-tooling"
     },

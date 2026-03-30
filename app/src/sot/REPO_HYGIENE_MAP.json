@@ -67,8 +67,8 @@
     }
   ],
   "fileCounts": {
-    "allFiles": 116,
-    "codeFiles": 102
+    "allFiles": 119,
+    "codeFiles": 104
   },
   "unownedFiles": [
     "app/src/llm/llm-gate-policy.json",
@@ -78,6 +78,7 @@
     "app/src/sot/release-manifest.json",
     "app/src/sot/repo-boundaries.json",
     "app/src/sot/testline-integrity.json",
+    "app/src/sot/wrapper-guardrails.json",
     "dev/tools/llm-preflight.mjs"
   ],
   "unreachableCode": [
@@ -123,6 +124,7 @@
     "dev/tools/patch/patchMatrix.js",
     "dev/tools/patch/validate-patch-matrix.mjs",
     "dev/tools/runtime/apply-github-ruleset.mjs",
+    "dev/tools/runtime/check-wrapper-guardrails.mjs",
     "dev/tools/runtime/evidence-lock.mjs",
     "dev/tools/runtime/function-sot-shared.mjs",
     "dev/tools/runtime/governance-verify.mjs",
@@ -176,6 +178,7 @@
     "dev/tools/patch/import-dispatch.mjs",
     "dev/tools/patch/validate-patch-matrix.mjs",
     "dev/tools/runtime/apply-github-ruleset.mjs",
+    "dev/tools/runtime/check-wrapper-guardrails.mjs",
     "dev/tools/runtime/evidence-lock.mjs",
     "dev/tools/runtime/governance-verify.mjs",
     "dev/tools/runtime/installGitHooks.mjs",
@@ -297,6 +300,7 @@
     "app/src/ui/IconAnimations.js": 1,
     "app/src/ui/MainMenuController.js": 0,
     "app/src/ui/plugins/ExampleUIPlugin.js": 0,
+    "app/src/ui/RenderManager.js": 3,
     "app/src/ui/TileAnimationSDK.js": 0,
     "app/src/ui/TileGridRenderer.js": 2,
     "app/src/ui/UIController.js": 1,
@@ -339,6 +343,7 @@
     "dev/tools/patch/patchMatrix.js": 1,
     "dev/tools/patch/validate-patch-matrix.mjs": 0,
     "dev/tools/runtime/apply-github-ruleset.mjs": 0,
+    "dev/tools/runtime/check-wrapper-guardrails.mjs": 0,
     "dev/tools/runtime/evidence-lock.mjs": 0,
     "dev/tools/runtime/function-sot-shared.mjs": 1,
     "dev/tools/runtime/governance-verify.mjs": 0,
@@ -436,6 +441,7 @@
       "app/src/game/GameLogicController.js",
       "app/src/kernel/KernelController.js",
       "app/src/kernel/interface.js",
+      "app/src/ui/RenderManager.js",
       "app/src/ui/UIController.js",
       "app/src/ui/ViewportManager.js"
     ],
@@ -448,6 +454,7 @@
     "app/src/ui/events.js": [],
     "app/src/ui/GameUIController.js": [
       "app/src/ui/BaseUIController.js",
+      "app/src/ui/RenderManager.js",
       "app/src/ui/TileGridRenderer.js",
       "app/src/ui/events.js"
     ],
@@ -458,11 +465,13 @@
       "app/src/ui/GameUIController.js"
     ],
     "app/src/ui/plugins/ExampleUIPlugin.js": [],
+    "app/src/ui/RenderManager.js": [],
     "app/src/ui/TileAnimationSDK.js": [],
     "app/src/ui/TileGridRenderer.js": [],
     "app/src/ui/UIController.js": [
       "app/src/game/worldGen.js",
       "app/src/ui/IconAnimations.js",
+      "app/src/ui/RenderManager.js",
       "app/src/ui/TileGridRenderer.js"
     ],
     "app/src/ui/UIPluginController.js": [],
@@ -538,6 +547,7 @@
       "dev/tools/patch/patchMatrix.js"
     ],
     "dev/tools/runtime/apply-github-ruleset.mjs": [],
+    "dev/tools/runtime/check-wrapper-guardrails.mjs": [],
     "dev/tools/runtime/evidence-lock.mjs": [],
     "dev/tools/runtime/function-sot-shared.mjs": [],
     "dev/tools/runtime/governance-verify.mjs": [],

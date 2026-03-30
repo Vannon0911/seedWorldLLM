@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "generatedAt": "2026-03-31T00:00:00Z",
+  "wrappers": [
+    {
+      "wrapperId": "wrp-base-ui-controller",
+      "owner": "UI Layer",
+      "ticketRef": "T03-BASEUI-017",
+      "canonicalTarget": "ui.base-controller.render-manager",
+      "introducedAt": "2026-03-30",
+      "expiresAt": "2026-04-13",
+      "state": "active",
+      "reason": "Controller split migration while plugin hooks converge",
+      "lastObservedAt": "2026-03-31T00:00:00Z",
+      "flag": "legacy.wrapper.base-ui-controller",
+      "file": "app/src/ui/BaseUIController.js"
+    },
+    {
+      "wrapperId": "wrp-main-menu-controller",
+      "owner": "UI Layer",
+      "ticketRef": "T03-MENU-011",
+      "canonicalTarget": "ui.main-menu.controller-v2",
+      "introducedAt": "2026-03-30",
+      "expiresAt": "2026-04-06",
+      "state": "active",
+      "reason": "Dynamic menu controller loading still references legacy fallback path",
+      "lastObservedAt": "2026-03-31T00:00:00Z",
+      "flag": "legacy.wrapper.main-menu-controller",
+      "file": "app/src/ui/MainMenuController.js"
+    },
+    {
+      "wrapperId": "wrp-ui-controller",
+      "owner": "UI Layer",
+      "ticketRef": "T03-UIC-009",
+      "canonicalTarget": "ui.runtime.controller.render-manager",
+      "introducedAt": "2026-03-30",
+      "expiresAt": "2026-04-20",
+      "state": "active",
+      "reason": "Grid/viewport bridge while render-manager callers are consolidated",
+      "lastObservedAt": "2026-03-31T00:00:00Z",
+      "flag": "legacy.wrapper.ui-controller",
+      "file": "app/src/ui/UIController.js"
+    },
+    {
+      "wrapperId": "wrp-world-render-fallback",
+      "owner": "UI Layer",
+      "ticketRef": "T03-WORLD-004",
+      "canonicalTarget": "ui.world-render.worker-primary",
+      "introducedAt": "2026-03-30",
+      "expiresAt": "2026-04-06",
+      "state": "active",
+      "reason": "Worker parity checkpoint before browser fallback removal",
+      "lastObservedAt": "2026-03-31T00:00:00Z",
+      "flag": "legacy.wrapper.world-render-fallback",
+      "file": "app/public/game.html"
+    }
+  ]
+}

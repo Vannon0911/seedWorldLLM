@@ -20,6 +20,7 @@
     "governance:verify": "node dev/tools/runtime/governance-verify.mjs",
     "signing:guard": "node dev/tools/runtime/signing-guard.mjs",
     "release:guard": "node dev/tools/runtime/release-guard.mjs",
+    "check:wrapper-guardrails": "node dev/tools/runtime/check-wrapper-guardrails.mjs",
     "hygiene:map": "node dev/tools/runtime/repo-hygiene-map.mjs",
     "hygiene:why": "node dev/tools/runtime/repo-hygiene-why.mjs",
     "gate:testline:verify": "node dev/tools/runtime/verify-testline-integrity.mjs",
@@ -31,7 +32,7 @@
     "sync:docs": "node dev/tools/runtime/syncDocs.mjs",
     "sync:docs:apply": "node dev/tools/runtime/syncDocs.mjs --write",
     "preflight:verify": "node dev/tools/runtime/preflight.mjs --verify",
-    "check:required": "npm run governance:verify && npm run sync:docs && npm run preflight:verify && npm test",
+    "check:required": "npm run governance:verify && npm run check:wrapper-guardrails && npm run sync:docs && npm run preflight:verify && npm test",
     "test:playwright:fulltiles": "node dev/scripts/playwright-tiles-full.mjs",
     "test:full": "npm run check:required && npm run test:playwright:fulltiles",
     "hooks:install": "node dev/tools/runtime/installGitHooks.mjs",
@@ -46,6 +47,7 @@
     "evidence:lock:update": "node dev/tools/runtime/evidence-lock.mjs --update"
   },
   "devDependencies": {
+    "jszip": "^3.10.1",
     "playwright": "^1.58.2"
   }
 }

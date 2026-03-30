@@ -105,6 +105,7 @@ try {
     await runNodeScript("dev/tools/runtime/syncDocs.mjs");
   }
   await runNodeScript("dev/tools/runtime/governance-verify.mjs");
+  await runNodeScript("dev/tools/runtime/check-wrapper-guardrails.mjs");
   await runNodeScript("dev/tools/runtime/preflight-mutation-guard.mjs", mutationGuardArgs());
 
   // 2) immutable integrity gate (pre)
