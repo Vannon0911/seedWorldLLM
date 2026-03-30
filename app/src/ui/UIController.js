@@ -67,7 +67,7 @@ function setDisabled(elements, disabled) {
 }
 
 export class UIController {
-  constructor({ kernel, gameLogic, kernelCommand, viewportManager = null, elements = {} } = {}) {
+  constructor({ kernel, gameLogic, kernelCommand, viewportManager = null, renderManager = null, elements = {} } = {}) {
     if (!kernel || typeof kernel.plan !== "function" || typeof kernel.apply !== "function") {
       throw new Error("[UI_CONTROLLER] kernel mit plan/apply erforderlich.");
     }
@@ -84,6 +84,7 @@ export class UIController {
     this.gameLogic = gameLogic;
     this.kernelCommand = kernelCommand;
     this.viewportManager = viewportManager && typeof viewportManager.subscribe === "function" ? viewportManager : null;
+    this.renderManager = renderManager && typeof renderManager.subscribe === "function" ? renderManager : null;
     this.unsubscribeViewport = null;
     this.elements = elements;
     this.currentState = clone(DEFAULT_STATE);
@@ -260,6 +261,13 @@ export class UIController {
     }
 
     this.tileGridRenderer = new TileGridRenderer(container, 16, 12, 84);
+    if (this.renderManager && typeof this.renderManager.setGrid === "function") {
+      this.renderManager.setGrid({
+        width: this.tileGridRenderer.width,
+        height: this.tileGridRenderer.height,
+        tileSize: this.tileGridRenderer.tileSize
+      });
+    }
     this.tileGridRenderer.onTileClick(({ tile, x, y }) => {
       this.#renderStatus(`tile:${x},${y}`);
       this.#renderSummary({
@@ -270,7 +278,21 @@ export class UIController {
   }
 
   #bindViewport() {
-    if (!this.viewportManager || this.unsubscribeViewport) {
+    if (this.unsubscribeViewport) {
+      return;
+    }
+
+    if (this.renderManager) {
+      this.unsubscribeViewport = this.renderManager.subscribe((snapshot) => {
+        if (this.tileGridRenderer && typeof this.tileGridRenderer.onViewportChange === "function") {
+          this.tileGridRenderer.onViewportChange(snapshot.viewport);
+        }
+        this.#renderGrid();
+      });
+      return;
+    }
+
+    if (!this.viewportManager) {
       return;
     }
 
