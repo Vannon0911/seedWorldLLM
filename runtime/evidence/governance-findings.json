@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-03-31T10:07:54.045Z",
+  "policy": "governance-findings.v1",
+  "report_path": "runtime/evidence/required-check-report.json",
+  "report_fingerprint": "82668ffb6fa2b7d141482903f6dc12215494b510802dc4cc65c23a39d1594337",
+  "report_status": "PASSED",
+  "blockers": [],
+  "created_task_ids": []
+}

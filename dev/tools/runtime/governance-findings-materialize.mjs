@@ -6,7 +6,8 @@ import {
   buildBlockers,
   findingFingerprint,
   loadReport,
-  nextTaskId
+  nextTaskId,
+  reportFingerprint
 } from "./governance-findings-shared.mjs";
 
 const root = process.cwd();
@@ -73,7 +74,7 @@ function resolveScope(stepId) {
 
 async function main() {
   const args = parseArgs(process.argv.slice(2));
-  const { report, reportSha, reportRel } = await loadReport(root, args.report);
+  const { report, reportRel } = await loadReport(root, args.report);
   const blockers = buildBlockers(report);
   const { allTasks } = await loadTasks();
   const existingByFingerprint = new Map();
@@ -134,7 +135,7 @@ async function main() {
     generated_at: new Date().toISOString(),
     policy: "governance-findings.v1",
     report_path: reportRel,
-    report_sha256: reportSha,
+    report_fingerprint: reportFingerprint(report),
     report_status: report.overall_status || "UNKNOWN",
     blockers: mapped,
     created_task_ids: created.map((task) => task.task_id)

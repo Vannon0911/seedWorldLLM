@@ -5,7 +5,7 @@
   "seed": "suite-00-runtime-governance-seed",
   "seed_source": "test-vector",
   "content_revision": {
-    "fingerprint": "cacfbce70da73870349c7ef69f0e0c34945be9434cb183889dde950c751be84d",
+    "fingerprint": "b8a46eba15726139b39ba2591c5cadd5584c4d440b6d27a6df07e0e3f64a5e8e",
     "files": [
       {
         "path": "app/src/game/worldGen.js",
@@ -13,7 +13,7 @@
       },
       {
         "path": "app/src/sot/source-of-truth.json",
-        "hash": "0e4241a48e073412c173cf8b199edbfc61d0a6b235fefc59db343f07d2afe8f9"
+        "hash": "46759b835df46702979cb46574f54265f8c3c680c2b8b73f6e4a4b269572a246"
       }
     ]
   },
@@ -34,7 +34,7 @@
       }
     ]
   },
-  "timestamp": "2026-03-31T09:27:04.879Z",
+  "timestamp": "2026-03-31T10:07:47.960Z",
   "deterministic_fingerprint": "7607599dc8de1939c414158bc19f3d0dc132b43a3eb7b370d508a679a7dc94ce",
   "output_hashes": {
     "payload": "7607599dc8de1939c414158bc19f3d0dc132b43a3eb7b370d508a679a7dc94ce"

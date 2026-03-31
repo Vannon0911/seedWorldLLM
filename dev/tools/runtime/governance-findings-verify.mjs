@@ -5,7 +5,8 @@ import {
   REQUIRED_REPORT_REL,
   buildBlockers,
   findingFingerprint,
-  loadReport
+  loadReport,
+  reportFingerprint
 } from "./governance-findings-shared.mjs";
 
 const root = process.cwd();
@@ -37,6 +38,12 @@ async function main() {
   if (!evidence) {
     console.error("[GOVERNANCE_FINDINGS] missing evidence file");
     console.error("[GOVERNANCE_FINDINGS] FIX: npm run governance:findings:materialize");
+    process.exit(1);
+  }
+
+  const currentFingerprint = reportFingerprint(report);
+  if ((evidence.report_fingerprint || "") !== currentFingerprint) {
+    console.error("[GOVERNANCE_FINDINGS] report fingerprint mismatch");
     process.exit(1);
   }
 

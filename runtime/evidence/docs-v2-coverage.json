@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-03-31T09:27:09.876Z",
-  "scanned_files": 103,
-  "classified_files": 103,
+  "generated_at": "2026-03-31T10:07:52.547Z",
+  "scanned_files": 115,
+  "classified_files": 115,
   "unclassified_files": [],
   "buckets": [
     {
@@ -22,7 +22,7 @@
     {
       "id": "task-control",
       "class": "Task-Control",
-      "count": 22
+      "count": 28
     },
     {
       "id": "tem-legacy-reference",
@@ -35,9 +35,9 @@
       "count": 2
     },
     {
-      "id": "docs-llm-out-of-scope",
-      "class": "Out-of-Scope",
-      "count": 4
+      "id": "governance-procedure",
+      "class": "Governance-Procedure",
+      "count": 10
     },
     {
       "id": "manual-legacy-archive",

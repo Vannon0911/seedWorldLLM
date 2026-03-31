@@ -1,95 +1,55 @@
 {
-  "generated_at": "2026-03-31T09:02:10.336Z",
+  "generated_at": "2026-03-31T09:56:36.948Z",
   "changed_files": [
+    ".githooks/pre-commit",
     ".github/workflows/required-checks.yml",
     "app/src/kernel/GovernanceEngine.js",
-    "app/src/kernel/KernelController.js",
     "app/src/sot/docs-v2.json",
     "app/src/sot/governance-engine.sot.v2.json",
+    "app/src/sot/llm-read-contract.v1.json",
     "app/src/sot/REPO_HYGIENE_MAP.json",
     "app/src/sot/repo-boundaries.json",
     "app/src/sot/source-of-truth.json",
     "app/src/sot/STRING_MATRIX.json",
+    "app/src/sot/sub-agent-manifest.v1.json",
     "dev/tools/runtime/governance-coverage-verify.mjs",
+    "dev/tools/runtime/governance-findings-materialize.mjs",
+    "dev/tools/runtime/governance-findings-shared.mjs",
+    "dev/tools/runtime/governance-findings-verify.mjs",
+    "dev/tools/runtime/governance-llm-verify.mjs",
+    "dev/tools/runtime/governance-policy-verify.mjs",
+    "dev/tools/runtime/governance-subagent-verify.mjs",
+    "dev/tools/runtime/installGitHooks.mjs",
     "dev/tools/runtime/run-required-checks.mjs",
-    "dev/tools/runtime/signing-guard.mjs",
-    "dev/tools/runtime/sync-versioning.mjs",
+    "dev/tools/runtime/sync-llm-read-contract.mjs",
+    "dev/tools/runtime/sync-sub-agent-manifest.mjs",
+    "docs/INDEX.md",
+    "docs/LLM/ENTRY.md",
+    "docs/LLM/INDEX.md",
     "docs/LLM/POLICY.md",
-    "docs/MANUEL/wiki/Home.md",
     "docs/MANUEL/WORKFLOW.md",
-    "docs/SOT/ORIENTATION.md",
     "docs/SOT/REPO_HYGIENE_MAP.md",
     "docs/SOT/STRING_MATRIX.md",
+    "docs/V2/ARCHIVE.md",
     "docs/V2/HOME.md",
-    "docs/V2/PLAN.md",
-    "docs/V2/RELEASE_0.3.1a.md",
     "docs/V2/SYSTEM_PLAN.md",
     "docs/V2/TRUTH.md",
     "package.json",
     "README.md",
-    "tem/tasks/open/GOV-001.json",
-    "tem/tasks/open/GOV-002.json",
-    "tem/tasks/open/GOV-003.json",
-    "tem/tasks/open/GOV-004.json",
-    "tem/tasks/open/GOV-005.json",
-    "tem/tasks/open/GOV-006.json"
+    "Sub_Agent/01_code_reviewer.md",
+    "Sub_Agent/02_playwright_debugger.md",
+    "Sub_Agent/03_repo_hygiene_mapper.md",
+    "Sub_Agent/04_docs_sync_specialist.md",
+    "Sub_Agent/05_governance_guard.md",
+    "Sub_Agent/INDEX.md",
+    "tem/SCHEMA.json",
+    "tem/tasks/archive/LLM-001.json",
+    "tem/tasks/archive/LLM-002.json",
+    "tem/tasks/archive/LLM-003.json",
+    "tem/tasks/archive/LLM-004.json",
+    "tem/tasks/archive/LLM-005.json",
+    "tem/tasks/archive/LLM-006.json",
+    "tem/TODO.md"
   ],
-  "archived_tasks": [
-    {
-      "task_id": "GOV-001",
-      "archived_path": "tem/tasks/archive/GOV-001.json",
-      "touched_paths": [
-        "app/src/kernel/GovernanceEngine.js",
-        "dev/tools/runtime/run-required-checks.mjs",
-        "package.json"
-      ]
-    },
-    {
-      "task_id": "GOV-002",
-      "archived_path": "tem/tasks/archive/GOV-002.json",
-      "touched_paths": [
-        "app/src/kernel/GovernanceEngine.js",
-        "dev/tools/runtime/signing-guard.mjs",
-        "package.json"
-      ]
-    },
-    {
-      "task_id": "GOV-003",
-      "archived_path": "tem/tasks/archive/GOV-003.json",
-      "touched_paths": [
-        "app/src/kernel/GovernanceEngine.js",
-        "dev/tools/runtime/governance-coverage-verify.mjs",
-        "dev/tools/runtime/run-required-checks.mjs",
-        "package.json"
-      ]
-    },
-    {
-      "task_id": "GOV-004",
-      "archived_path": "tem/tasks/archive/GOV-004.json",
-      "touched_paths": [
-        "dev/tools/runtime/sync-versioning.mjs",
-        "docs/MANUEL/wiki/Home.md",
-        "docs/V2/RELEASE_0.3.1a.md",
-        "package.json",
-        "README.md"
-      ]
-    },
-    {
-      "task_id": "GOV-005",
-      "archived_path": "tem/tasks/archive/GOV-005.json",
-      "touched_paths": [
-        "app/src/sot/governance-engine.sot.v2.json",
-        "dev/tools/runtime/sync-versioning.mjs"
-      ]
-    },
-    {
-      "task_id": "GOV-006",
-      "archived_path": "tem/tasks/archive/GOV-006.json",
-      "touched_paths": [
-        "app/src/kernel/GovernanceEngine.js",
-        "app/src/sot/governance-engine.sot.v2.json",
-        "dev/tools/runtime/run-required-checks.mjs"
-      ]
-    }
-  ]
+  "archived_tasks": []
 }

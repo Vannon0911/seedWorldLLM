@@ -1,9 +1,9 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-03-31T09:27:59.025Z",
-  "scanned_count": 83,
-  "scanned_files": 83,
-  "classified_count": 83,
+  "generated_at": "2026-03-31T10:07:53.886Z",
+  "scanned_count": 102,
+  "scanned_files": 102,
+  "classified_count": 102,
   "classified_items": [
     {
       "path": ".githooks/pre-commit",
@@ -161,6 +161,16 @@
       "matched_prefix": "app/src/kernel/seedGuard.js"
     },
     {
+      "path": "app/src/sot/llm-read-contract.v1.json",
+      "owner": "Governance Control Plane",
+      "matched_prefix": "app/src/sot/llm-read-contract.v1.json"
+    },
+    {
+      "path": "app/src/sot/sub-agent-manifest.v1.json",
+      "owner": "Governance Control Plane",
+      "matched_prefix": "app/src/sot/sub-agent-manifest.v1.json"
+    },
+    {
       "path": "dev/scripts/build-evidence-bundle.mjs",
       "owner": "Reproduction Evidence",
       "matched_prefix": "dev/scripts/build-evidence-bundle.mjs"
@@ -246,9 +256,34 @@
       "matched_prefix": "dev/tools/runtime/governance-coverage-verify.mjs"
     },
     {
+      "path": "dev/tools/runtime/governance-findings-materialize.mjs",
+      "owner": "Governance Control Plane",
+      "matched_prefix": "dev/tools/runtime/governance-findings-materialize.mjs"
+    },
+    {
+      "path": "dev/tools/runtime/governance-findings-shared.mjs",
+      "owner": "Reproduction Evidence",
+      "matched_prefix": "dev/tools/runtime/"
+    },
+    {
+      "path": "dev/tools/runtime/governance-findings-verify.mjs",
+      "owner": "Governance Control Plane",
+      "matched_prefix": "dev/tools/runtime/governance-findings-verify.mjs"
+    },
+    {
+      "path": "dev/tools/runtime/governance-llm-verify.mjs",
+      "owner": "Governance Control Plane",
+      "matched_prefix": "dev/tools/runtime/governance-llm-verify.mjs"
+    },
+    {
       "path": "dev/tools/runtime/governance-policy-verify.mjs",
       "owner": "Governance Control Plane",
       "matched_prefix": "dev/tools/runtime/governance-policy-verify.mjs"
+    },
+    {
+      "path": "dev/tools/runtime/governance-subagent-verify.mjs",
+      "owner": "Governance Control Plane",
+      "matched_prefix": "dev/tools/runtime/governance-subagent-verify.mjs"
     },
     {
       "path": "dev/tools/runtime/governance-verify.mjs",
@@ -351,9 +386,19 @@
       "matched_prefix": "dev/tools/runtime/sync-docs-v2.mjs"
     },
     {
+      "path": "dev/tools/runtime/sync-llm-read-contract.mjs",
+      "owner": "Governance Control Plane",
+      "matched_prefix": "dev/tools/runtime/sync-llm-read-contract.mjs"
+    },
+    {
       "path": "dev/tools/runtime/sync-string-matrix.mjs",
       "owner": "Documentation V2",
       "matched_prefix": "dev/tools/runtime/sync-string-matrix.mjs"
+    },
+    {
+      "path": "dev/tools/runtime/sync-sub-agent-manifest.mjs",
+      "owner": "Governance Control Plane",
+      "matched_prefix": "dev/tools/runtime/sync-sub-agent-manifest.mjs"
     },
     {
       "path": "dev/tools/runtime/sync-tem-control-files.mjs",
@@ -406,6 +451,26 @@
       "matched_prefix": "dev/tools/runtime/verify-testline-integrity.mjs"
     },
     {
+      "path": "docs/LLM/AKTUELLE_RED_ACTIONS.md",
+      "owner": "Governance Control Plane",
+      "matched_prefix": "docs/LLM/"
+    },
+    {
+      "path": "docs/LLM/ENTRY.md",
+      "owner": "Governance Control Plane",
+      "matched_prefix": "docs/LLM/"
+    },
+    {
+      "path": "docs/LLM/INDEX.md",
+      "owner": "Governance Control Plane",
+      "matched_prefix": "docs/LLM/"
+    },
+    {
+      "path": "docs/LLM/POLICY.md",
+      "owner": "Governance Control Plane",
+      "matched_prefix": "docs/LLM/"
+    },
+    {
       "path": "package.json",
       "owner": "Governance Control Plane",
       "matched_prefix": "package.json"
@@ -414,6 +479,36 @@
       "path": "README.md",
       "owner": "Governance Control Plane",
       "matched_prefix": "README.md"
+    },
+    {
+      "path": "Sub_Agent/01_code_reviewer.md",
+      "owner": "Governance Control Plane",
+      "matched_prefix": "Sub_Agent/"
+    },
+    {
+      "path": "Sub_Agent/02_playwright_debugger.md",
+      "owner": "Governance Control Plane",
+      "matched_prefix": "Sub_Agent/"
+    },
+    {
+      "path": "Sub_Agent/03_repo_hygiene_mapper.md",
+      "owner": "Governance Control Plane",
+      "matched_prefix": "Sub_Agent/"
+    },
+    {
+      "path": "Sub_Agent/04_docs_sync_specialist.md",
+      "owner": "Governance Control Plane",
+      "matched_prefix": "Sub_Agent/"
+    },
+    {
+      "path": "Sub_Agent/05_governance_guard.md",
+      "owner": "Governance Control Plane",
+      "matched_prefix": "Sub_Agent/"
+    },
+    {
+      "path": "Sub_Agent/INDEX.md",
+      "owner": "Governance Control Plane",
+      "matched_prefix": "Sub_Agent/"
     },
     {
       "path": "VERSION",
@@ -432,11 +527,11 @@
     },
     {
       "owner": "Reproduction Evidence",
-      "count": 37
+      "count": 38
     },
     {
       "owner": "Governance Control Plane",
-      "count": 15
+      "count": 33
     },
     {
       "owner": "Documentation V2",

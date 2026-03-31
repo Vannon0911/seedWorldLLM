@@ -9,6 +9,23 @@ export function sha256(text) {
   return createHash("sha256").update(text).digest("hex");
 }
 
+export function reportFingerprint(report) {
+  return sha256(
+    JSON.stringify({
+      policy: report.policy || "unknown",
+      run_mode: report.run_mode || "unknown",
+      overall_status: report.overall_status || "UNKNOWN",
+      failure_step: report.failure_step || null,
+      steps: (report.steps || []).map((step) => ({
+        id: step.id || step.script || "unknown",
+        status: step.status || "UNKNOWN",
+        exit_code: step.exit_code ?? null,
+        output_sha256: step.output_sha256 || "missing"
+      }))
+    })
+  );
+}
+
 export function dedup(items, keyFn) {
   const out = [];
   const seen = new Set();
