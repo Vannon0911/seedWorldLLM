@@ -3,7 +3,7 @@
   "policy": "kernel-governance-engine.v2",
   "run_mode": "verify-only",
   "repo": {
-    "head": "39f1aee891d10f995c41012086c7a8f18bed04d2",
+    "head": "688d43b6e5778f0e49bc170da29283e6c2251f2b",
     "branch": "main"
   },
   "environment": {
@@ -11,16 +11,16 @@
     "platform": "win32",
     "arch": "x64"
   },
-  "started_at": "2026-03-31T09:06:27.978Z",
+  "started_at": "2026-03-31T09:27:01.221Z",
   "steps": [
     {
       "id": "versioning:verify",
       "script": "versioning:verify",
       "type": "verify",
       "command": "node C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js run versioning:verify",
-      "started_at": "2026-03-31T09:06:28.162Z",
-      "ended_at": "2026-03-31T09:06:28.666Z",
-      "duration_ms": 504,
+      "started_at": "2026-03-31T09:27:01.366Z",
+      "ended_at": "2026-03-31T09:27:01.898Z",
+      "duration_ms": 532,
       "status": "PASSED",
       "exit_code": 0,
       "output_sha256": "2d17f0cf067a73aed1b49afae1227c4fb7ea6f3b94cd331b3aca236c1de78870"
@@ -30,18 +30,114 @@
       "script": "governance:policy:verify",
       "type": "verify",
       "command": "node C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js run governance:policy:verify",
-      "started_at": "2026-03-31T09:06:28.667Z",
-      "ended_at": "2026-03-31T09:06:30.183Z",
-      "duration_ms": 1516,
-      "status": "FAILED",
-      "exit_code": 1,
-      "output_sha256": "49fa14f7552da827c4fce5e25dee11dbbcc796a944537cfa1ba00ed6d1eab5d4"
+      "started_at": "2026-03-31T09:27:01.898Z",
+      "ended_at": "2026-03-31T09:27:03.465Z",
+      "duration_ms": 1567,
+      "status": "PASSED",
+      "exit_code": 0,
+      "output_sha256": "648c09c3f5a3045f6970d91a31dcf801f8fd6b9e186bee1abba4082173b781fb"
+    },
+    {
+      "id": "tests",
+      "script": "test:verify",
+      "type": "verify",
+      "command": "node C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js run test:verify",
+      "started_at": "2026-03-31T09:27:03.465Z",
+      "ended_at": "2026-03-31T09:27:06.295Z",
+      "duration_ms": 2830,
+      "status": "PASSED",
+      "exit_code": 0,
+      "output_sha256": "df1df6d1c7b8fb1a768fe7dabbdd62ce437d4775053ad4659463705c66fba91a"
+    },
+    {
+      "id": "evidence:verify",
+      "script": "evidence:verify",
+      "type": "verify",
+      "command": "node C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js run evidence:verify",
+      "started_at": "2026-03-31T09:27:06.295Z",
+      "ended_at": "2026-03-31T09:27:06.918Z",
+      "duration_ms": 623,
+      "status": "PASSED",
+      "exit_code": 0,
+      "output_sha256": "2833acd3209c7505636956ad7117c794b4bd7f9551101d66590ab938d26607dc"
+    },
+    {
+      "id": "testline:verify",
+      "script": "testline:verify",
+      "type": "verify",
+      "command": "node C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js run testline:verify",
+      "started_at": "2026-03-31T09:27:06.918Z",
+      "ended_at": "2026-03-31T09:27:07.510Z",
+      "duration_ms": 592,
+      "status": "PASSED",
+      "exit_code": 0,
+      "output_sha256": "6c5b42feb3cceda71a93b8e4d66ecd89d8d9f435770e54695e26e01a1ff8daf9"
+    },
+    {
+      "id": "repo:hygiene:verify",
+      "script": "repo:hygiene:verify",
+      "type": "verify",
+      "command": "node C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js run repo:hygiene:verify",
+      "started_at": "2026-03-31T09:27:07.510Z",
+      "ended_at": "2026-03-31T09:27:08.723Z",
+      "duration_ms": 1213,
+      "status": "PASSED",
+      "exit_code": 0,
+      "output_sha256": "875aa8cc2ad865c90cad8d1efd9916af565d882aaca615f6375a7ecdbb4b2501"
+    },
+    {
+      "id": "docs:v2:verify",
+      "script": "docs:v2:verify",
+      "type": "verify",
+      "command": "node C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js run docs:v2:verify",
+      "started_at": "2026-03-31T09:27:08.723Z",
+      "ended_at": "2026-03-31T09:27:09.340Z",
+      "duration_ms": 617,
+      "status": "PASSED",
+      "exit_code": 0,
+      "output_sha256": "cde2f754ab531ec2ff115ff7a79a652b05d0dfd338a5f1994e823ec50772cb30"
+    },
+    {
+      "id": "docs:v2:coverage",
+      "script": "docs:v2:coverage",
+      "type": "verify",
+      "command": "node C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js run docs:v2:coverage",
+      "started_at": "2026-03-31T09:27:09.340Z",
+      "ended_at": "2026-03-31T09:27:09.918Z",
+      "duration_ms": 578,
+      "status": "PASSED",
+      "exit_code": 0,
+      "output_sha256": "87ff96b7c7bcddac15a8cd8fb69b4a16332db24735fb9d4bd9f68668ef010278"
+    },
+    {
+      "id": "docs:tasks:verify",
+      "script": "docs:tasks:verify",
+      "type": "verify",
+      "command": "node C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js run docs:tasks:verify",
+      "started_at": "2026-03-31T09:27:09.918Z",
+      "ended_at": "2026-03-31T09:27:10.547Z",
+      "duration_ms": 629,
+      "status": "PASSED",
+      "exit_code": 0,
+      "output_sha256": "0832aeccdc5a7e396728c58f822929d6052ca6e35ed3800a695a73dbebc25bdd"
+    },
+    {
+      "id": "governance:coverage:verify",
+      "script": "governance:coverage:verify",
+      "type": "verify",
+      "command": "node C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js run governance:coverage:verify",
+      "started_at": "2026-03-31T09:27:10.547Z",
+      "ended_at": "2026-03-31T09:27:11.225Z",
+      "duration_ms": 678,
+      "status": "PASSED",
+      "exit_code": 0,
+      "output_sha256": "6c8a4e9492d076d3e36bac0b235ff95ab45f0ae6cecc60701f2e3a68278635d5"
     }
   ],
-  "overall_status": "FAILED",
-  "failure_step": "governance:policy:verify",
+  "overall_status": "PASSED",
+  "failure_step": null,
   "execution": {
-    "total_steps": 9,
+    "total_steps": 10,
     "sync_steps": [],
     "verify_steps": [
       "versioning:verify",
@@ -52,11 +148,53 @@
       "repo:hygiene:verify",
       "docs:v2:verify",
       "docs:v2:coverage",
+      "docs:tasks:verify",
       "governance:coverage:verify"
     ],
     "run_mode": "verify-only",
     "step_contract": "sync (optional) -> verify (mandatory)"
   },
-  "contract_hash": "c6d97f5708ffcbfac8f84469dd659579aac74f3eb4698ade414a128e834dcd53",
-  "finished_at": "2026-03-31T09:06:30.183Z"
+  "contract_hash": "a4d3523da0139df940ebd1e579990fb7ee18b801db777d3c64af89bcfd14ed69",
+  "proof": {
+    "evidence_summary": {
+      "path": "runtime/evidence/summary.json",
+      "sha256": "060688ee490e845c68411743ec482c1ff68ee3cdfe53bfd45650a51904b720f5"
+    },
+    "final_testline_summary": {
+      "path": "runtime/evidence/final/testline-summary.json",
+      "sha256": "c2a8ed4677f860b044cc1f72ab2d5e2dcec92f29df6c7bc1780bb375fa4262e0"
+    },
+    "sot": [
+      {
+        "path": "VERSION",
+        "sha256": "7f5b24c6b647e06bc8c57beb3975e0baea40f00d9af8fbca41cd30d32d1ca266"
+      },
+      {
+        "path": "app/src/sot/source-of-truth.json",
+        "sha256": "0e4241a48e073412c173cf8b199edbfc61d0a6b235fefc59db343f07d2afe8f9"
+      },
+      {
+        "path": "app/src/sot/repo-boundaries.json",
+        "sha256": "47ea04f54691821ee32053a6e3148965eef6fd6ea99b38a61209e99fda962905"
+      },
+      {
+        "path": "app/src/sot/docs-v2.json",
+        "sha256": "a70a4bea69ce017871aa8eb7b321634463e9f39fd30159f36b9d50838ea596ff"
+      },
+      {
+        "path": "app/src/sot/governance-engine.sot.v2.json",
+        "sha256": "2a0f95a0f1910d39a2dcfae42c87411ee00aa090ccced0e268009b7442d4c51e"
+      },
+      {
+        "path": "app/src/sot/testline-integrity.json",
+        "sha256": "af3f5d725e5dedfdf0f2b9880e88b2900383a75636ac6fbee3cad231ee149584"
+      }
+    ],
+    "manifest": {
+      "path": "runtime/evidence/governance-proof-manifest.json",
+      "sha256": "687b561c105f3a5edab8361f2de64df6f9343be285e1c7c2f0bc960cf927c934"
+    }
+  },
+  "claim_rule": "Claims are valid only if all verify gates passed and proof artifacts were hashed and cross-checked.",
+  "finished_at": "2026-03-31T09:27:11.263Z"
 }

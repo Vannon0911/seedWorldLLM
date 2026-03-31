@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-31T08:52:16.932Z",
+  "generated_at": "2026-03-31T09:27:07.458Z",
   "required_tests": [
     "00-runtime-governance-suite",
     "10-determinism-seed-proof-suite",

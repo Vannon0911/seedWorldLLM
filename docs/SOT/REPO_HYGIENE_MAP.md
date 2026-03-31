@@ -2,15 +2,15 @@
 
 ## Ownership
 - **Kernel Core**: Deterministic execution and seed-bound kernel state transitions
-  prefixes: app/src/kernel/, app/src/kernel/deterministicKernel.js, app/src/kernel/fingerprint.js, app/src/kernel/runtimeGuards.js, app/src/kernel/seedGuard.js, app/src/kernel/GovernanceEngine.js, app/src/kernel/KernelController.js, app/src/kernel/ActionRegistry.js, app/src/kernel/KernelRouter.js
+  prefixes: app/src/kernel/, app/src/kernel/deterministicKernel.js, app/src/kernel/fingerprint.js, app/src/kernel/runtimeGuards.js, app/src/kernel/seedGuard.js, app/src/kernel/KernelController.js, app/src/kernel/ActionRegistry.js, app/src/kernel/KernelRouter.js
 - **Authoritative Content**: Canonical gameplay content and deterministic interpretation rules
   prefixes: app/src/game/
 - **Reproduction Evidence**: Double-run orchestration, evidence generation, comparison and final proof
-  prefixes: dev/scripts/build-evidence-bundle.mjs, dev/scripts/evidence-shared.mjs, dev/scripts/repo-cleanup-baseline.mjs, dev/scripts/runtime-guards-test.mjs, dev/scripts/test-runner.mjs, dev/scripts/verify-evidence.mjs, dev/tools/runtime/, dev/tools/runtime/run-required-checks.mjs, dev/tools/runtime/verify-testline-integrity.mjs, dev/tests/modules/, app/src/sot/governance-engine.sot.v2.json
+  prefixes: dev/scripts/build-evidence-bundle.mjs, dev/scripts/evidence-shared.mjs, dev/scripts/repo-cleanup-baseline.mjs, dev/scripts/runtime-guards-test.mjs, dev/scripts/test-runner.mjs, dev/scripts/verify-evidence.mjs, dev/tools/runtime/, dev/tools/runtime/verify-testline-integrity.mjs, dev/tests/modules/
 - **Governance Control Plane**: Zero-trust governance contract, policy gates, proof manifest and enforcement wiring
-  prefixes: app/src/kernel/GovernanceEngine.js, app/src/sot/governance-engine.sot.v2.json, package.json, README.md, VERSION, dev/tools/runtime/run-required-checks.mjs, dev/tools/runtime/signing-guard.mjs, dev/tools/runtime/sync-versioning.mjs, dev/tools/runtime/governance-coverage-verify.mjs, dev/tools/runtime/verify-docs-v2-coverage.mjs, .githooks/, .github/workflows/, .github/rulesets/
+  prefixes: app/src/kernel/GovernanceEngine.js, app/src/sot/governance-engine.sot.v2.json, package.json, README.md, VERSION, dev/tools/runtime/run-required-checks.mjs, dev/tools/runtime/signing-guard.mjs, dev/tools/runtime/governance-policy-verify.mjs, dev/tools/runtime/sync-versioning.mjs, dev/tools/runtime/governance-coverage-verify.mjs, dev/tools/runtime/verify-docs-v2-coverage.mjs, .githooks/, .github/workflows/, .github/rulesets/
 - **Documentation V2**: Human-readable truth, atomic planning tasks, string matrix discipline and archive automation
-  prefixes: app/src/sot/docs-v2.json, app/src/sot/STRING_MATRIX.json, docs/SOT/STRING_MATRIX.md, docs/V2/, tem/tasks/, dev/tools/runtime/docs-v2-shared.mjs, dev/tools/runtime/probe-docs-v2-adversarial.mjs, dev/tools/runtime/scan-doc-tasks.mjs, dev/tools/runtime/sync-string-matrix.mjs, dev/tools/runtime/sync-docs-v2.mjs
+  prefixes: app/src/sot/docs-v2.json, app/src/sot/STRING_MATRIX.json, docs/SOT/STRING_MATRIX.md, docs/V2/, tem/tasks/, dev/tools/runtime/docs-v2-shared.mjs, dev/tools/runtime/probe-docs-v2-adversarial.mjs, dev/tools/runtime/scan-doc-tasks.mjs, dev/tools/runtime/scan-doc-tasks-verify.mjs, dev/tools/runtime/sync-string-matrix.mjs, dev/tools/runtime/sync-docs-v2.mjs
 - **Deprecated Runtime**: No longer part of mandatory truth or gates
   prefixes: app/server/, start-server.js, app/src/main.js, app/src/browser/, app/src/ui/, app/src/plugins/, app/src/workers/, app/src/SeedWorld_WorldGen.mjs, dev/tools/patch/, dev/patches/, dev/scripts/playwright-tiles-full.mjs, dev/tools/runtime/preflight.mjs
 
@@ -20,7 +20,9 @@
 - dev/tools/runtime/run-required-checks.mjs
 - dev/tools/runtime/sync-versioning.mjs
 - dev/tools/runtime/governance-coverage-verify.mjs
+- dev/tools/runtime/governance-policy-verify.mjs
 - dev/tools/runtime/signing-guard.mjs
+- dev/tools/runtime/scan-doc-tasks-verify.mjs
 - dev/tools/runtime/verify-docs-v2-coverage.mjs
 - dev/tools/runtime/verify-testline-integrity.mjs
 
@@ -62,7 +64,6 @@
 - dev/tools/runtime/check-wrapper-guardrails.mjs
 - dev/tools/runtime/evidence-lock.mjs
 - dev/tools/runtime/function-sot-shared.mjs
-- dev/tools/runtime/governance-policy-verify.mjs
 - dev/tools/runtime/governance-verify.mjs
 - dev/tools/runtime/installGitHooks.mjs
 - dev/tools/runtime/llm-entry.mjs
@@ -77,7 +78,6 @@
 - dev/tools/runtime/repo-hygiene-verify.mjs
 - dev/tools/runtime/repo-hygiene-why.mjs
 - dev/tools/runtime/report-untested-systems.mjs
-- dev/tools/runtime/scan-doc-tasks-verify.mjs
 - dev/tools/runtime/scan-doc-tasks.mjs
 - dev/tools/runtime/sync-docs-v2.mjs
 - dev/tools/runtime/sync-string-matrix.mjs
@@ -106,7 +106,6 @@
 - dev/tools/runtime/check-tem-structure.mjs
 - dev/tools/runtime/check-wrapper-guardrails.mjs
 - dev/tools/runtime/evidence-lock.mjs
-- dev/tools/runtime/governance-policy-verify.mjs
 - dev/tools/runtime/governance-verify.mjs
 - dev/tools/runtime/llm-entry.mjs
 - dev/tools/runtime/llm-override.mjs
@@ -119,7 +118,6 @@
 - dev/tools/runtime/repo-hygiene-verify.mjs
 - dev/tools/runtime/repo-hygiene-why.mjs
 - dev/tools/runtime/report-untested-systems.mjs
-- dev/tools/runtime/scan-doc-tasks-verify.mjs
 - dev/tools/runtime/scan-doc-tasks.mjs
 - dev/tools/runtime/sync-docs-v2.mjs
 - dev/tools/runtime/sync-string-matrix.mjs

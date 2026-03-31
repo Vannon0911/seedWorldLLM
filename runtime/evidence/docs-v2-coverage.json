@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-03-31T08:52:18.967Z",
-  "scanned_files": 97,
-  "classified_files": 97,
+  "generated_at": "2026-03-31T09:27:09.876Z",
+  "scanned_files": 103,
+  "classified_files": 103,
   "unclassified_files": [],
   "buckets": [
     {
@@ -22,7 +22,7 @@
     {
       "id": "task-control",
       "class": "Task-Control",
-      "count": 16
+      "count": 22
     },
     {
       "id": "tem-legacy-reference",
