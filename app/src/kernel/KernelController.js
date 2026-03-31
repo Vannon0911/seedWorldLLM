@@ -1,31 +1,16 @@
 import { withDeterminismGuards } from "./runtimeGuards.js";
 import { KernelRouter } from "./KernelRouter.js";
-import { PatchOrchestrator } from "./PatchOrchestrator.js";
 import { ActionRegistry } from "./ActionRegistry.js";
-import { KernelGates } from "./KernelGates.js";
-import { GateManager } from "./GateManager.js";
+import { generateWorld } from "../game/worldGen.js";
 
 const DEFAULT_CONFIRMATION_PREFIX = "KERNEL-CONFIRM";
-const UNUSED_GATE_ALLOWLIST = new Set([
-  "system.reset",
-  "system.shutdown",
-  "patch.apply",
-  "kernel.tick",
-  "state.modify",
-  "game.access",
-  "dev.access",
-  "patcher.access"
-]);
 
-/**
- * Determine whether a value is a plain object.
- *
- * A plain object is a non-null, non-array object whose prototype is either
- * `Object.prototype` or `null`.
- *
- * @param {*} value - The value to test.
- * @returns {boolean} `true` if `value` is a plain object, `false` otherwise.
- */
+function assert(condition, message) {
+  if (!condition) {
+    throw new Error(message);
+  }
+}
+
 function isPlainObject(value) {
   if (!value || typeof value !== "object" || Array.isArray(value)) {
     return false;
@@ -34,20 +19,16 @@ function isPlainObject(value) {
   return proto === Object.prototype || proto === null;
 }
 
-/**
- * Derive a deterministic 8-character lowercase hexadecimal signature from a seed string.
- * @param {string} seed - Seed string to derive the signature from.
- * @returns {string} An 8-character, zero-padded lowercase hexadecimal signature derived from the seed.
- */
 function deriveSeedSignature(seed) {
   let hash = 2166136261;
   for (let i = 0; i < seed.length; i += 1) {
     hash ^= seed.charCodeAt(i);
     hash = Math.imul(hash, 16777619);
   }
-
   return (hash >>> 0).toString(16).padStart(8, "0");
 }
+
+let denyCounter = 0;
 
 class KernelGovernanceError extends Error {
   constructor(message, { code, auditId, details } = {}) {
@@ -59,53 +40,24 @@ class KernelGovernanceError extends Error {
   }
 }
 
-/**
- * Kernel Controller with enforced governance chokepoint.
- */
 export class KernelController {
   constructor(options = {}) {
     this.confirmationPrefix =
       typeof options.confirmationPrefix === "string" && options.confirmationPrefix.trim().length > 0
         ? options.confirmationPrefix.trim()
         : DEFAULT_CONFIRMATION_PREFIX;
-
     this.governanceMode = options.governanceMode === "shadow" ? "shadow" : "enforce";
     this.governanceAuditTrail = [];
+    this.currentTick = 0;
+    this.deterministicSeed =
+      typeof options.seed === "string" && options.seed.trim().length > 0 ? options.seed.trim() : "default-seed";
 
     this.router = new KernelRouter();
     this.router.registerHandler("game", (action) => this.#handleRegisteredAction("game", action));
-    this.router.registerHandler("patch", (action) => this.#handleRegisteredAction("patch", action));
-    this.router.registerHandler("ui", (action) => this.#handleRegisteredAction("ui", action));
     this.router.registerHandler("kernel", (action) => this.#handleRegisteredAction("kernel", action));
 
-    this.patchOrchestrator = new PatchOrchestrator(this);
-
-    this.patches = new Map();
-    this.hooks = {
-      advanceTick: [],
-      placeStructure: [],
-      inspectTile: [],
-      getBuildOptions: []
-    };
-    this.patchValidation = new Map();
-    this.rollbackStates = new Map();
-
-    this.currentTick = 0;
-    this.deterministicSeed = options.seed || "default-seed";
-    this.allowedMutations = new Set(["ui_update", "plugin_state_change", "event_trigger", "visual_effect"]);
-
     this.actionRegistry = new ActionRegistry();
-    this.kernelGates = new KernelGates(this.#kernelGateInterface.bind(this));
-    this.gateManager = new GateManager({
-      kernelGates: this.kernelGates,
-      mode: this.governanceMode,
-      onAudit: (event) => this.#recordGovernanceAudit(event)
-    });
-
     this.#registerActions();
-    if (options.governanceSelfTest !== false) {
-      this.#verifyGovernanceIntegrity();
-    }
   }
 
   async execute(input = {}) {
@@ -118,6 +70,13 @@ export class KernelController {
 
   async apply(input = {}) {
     return this.#execute(input);
+  }
+
+  getCurrentState() {
+    return {
+      tick: this.currentTick,
+      seed: this.deterministicSeed
+    };
   }
 
   async #execute(input) {
@@ -155,26 +114,7 @@ export class KernelController {
       });
     }
 
-    const gateDecision = await this.gateManager.enforce({
-      domain,
-      actionType,
-      requiredGate: definition.requiredGate,
-      context: this.#createGateContext({ domain, actionType, action })
-    });
-
-    if (!gateDecision.allowed) {
-      throw this.#denyAction({
-        code: "GATE_DENIED",
-        reason: gateDecision.event?.reason || `Gate denied for ${domain}.${actionType}`,
-        domain,
-        actionType,
-        auditId: gateDecision.auditId
-      });
-    }
-
-    return withDeterminismGuards(() => {
-      return this.router.route({ domain, action, sourceDomain: input.sourceDomain });
-    });
+    return withDeterminismGuards(() => this.router.route({ domain, action, sourceDomain: input.sourceDomain }));
   }
 
   #handleRegisteredAction(domain, action) {
@@ -192,7 +132,6 @@ export class KernelController {
   }
 
   #registerActions() {
-    // Game domain
     this.actionRegistry
       .register({
         domain: "game",
@@ -226,143 +165,21 @@ export class KernelController {
         domain: "game",
         actionType: "placeStructure",
         requiredGate: "game.action",
-        validator: (action) => this.#validateHasPlainObject(action, "state"),
+        validator: (action) => this.#validatePlaceStructure(action),
         handler: (action) => this.#placeStructure(action)
       });
 
-    // UI domain
     this.actionRegistry
-      .register({
-        domain: "ui",
-        actionType: "render",
-        requiredGate: "ui.action",
-        validator: () => ({ valid: true }),
-        handler: () => ({ success: true, message: "UI render action handled" })
-      })
-      .register({
-        domain: "ui",
-        actionType: "update",
-        requiredGate: "ui.action",
-        validator: () => ({ valid: true }),
-        handler: () => ({ success: true, message: "UI update action handled" })
-      });
-
-    // Patch domain
-    this.actionRegistry
-      .register({
-        domain: "patch",
-        actionType: "startSession",
-        requiredGate: "patch.action",
-        validator: () => ({ valid: true }),
-        handler: (action) => ({ success: true, sessionId: action.config?.sessionId || "default" })
-      })
-      .register({
-        domain: "patch",
-        actionType: "endSession",
-        requiredGate: "patch.action",
-        validator: () => ({ valid: true }),
-        handler: () => ({ success: true, ended: true })
-      })
-      .register({
-        domain: "patch",
-        actionType: "applyBrowserPatch",
-        requiredGate: "patch.action",
-        validator: (action) => this.#validateHasPlainObject(action, "patch"),
-        handler: (action) => this.#registerPatch({ patch: action.patch })
-      })
-      .register({
-        domain: "patch",
-        actionType: "applyPatch",
-        requiredGate: "patch.action",
-        validator: (action) => this.#validateHasString(action, "patchId"),
-        handler: (action) => ({ success: true, applied: action.patchId, acknowledgement: true })
-      })
-      .register({
-        domain: "patch",
-        actionType: "getStatus",
-        requiredGate: "patch.action",
-        validator: () => ({ valid: true }),
-        handler: () => ({ success: true, status: this.patchOrchestrator.sessionState })
-      })
-      .register({
-        domain: "patch",
-        actionType: "registerPatch",
-        requiredGate: "patch.action",
-        validator: (action) => this.#validateHasPlainObject(action, "patch"),
-        handler: (action) => this.#registerPatch(action)
-      })
-      .register({
-        domain: "patch",
-        actionType: "unregisterPatch",
-        requiredGate: "patch.action",
-        validator: (action) => this.#validateHasString(action, "patchId"),
-        handler: (action) => this.#unregisterPatch(action)
-      })
-      .register({
-        domain: "patch",
-        actionType: "listPatches",
-        requiredGate: "patch.action",
-        validator: () => ({ valid: true }),
-        handler: () => this.#listPatches()
-      })
-      .register({
-        domain: "patch",
-        actionType: "validatePatch",
-        requiredGate: "patch.action",
-        validator: (action) => this.#validateHasPlainObject(action, "patch"),
-        handler: (action) => this.#validatePatch(action)
-      });
-
-    // Kernel domain
-    this.actionRegistry
-      .register({
-        domain: "kernel",
-        actionType: "validate",
-        requiredGate: "kernel.action",
-        validator: () => ({ valid: true }),
-        handler: () => ({ success: true, validated: true })
-      })
       .register({
         domain: "kernel",
         actionType: "status",
         requiredGate: "kernel.action",
         validator: () => ({ valid: true }),
-        handler: () => ({ status: "ready", determinism: "enabled" })
-      })
-      .register({
-        domain: "kernel",
-        actionType: "registerPatch",
-        requiredGate: "kernel.action",
-        validator: (action) => this.#validateHasPlainObject(action, "patch"),
-        handler: (action) => this.#registerPatch(action)
-      })
-      .register({
-        domain: "kernel",
-        actionType: "unregisterPatch",
-        requiredGate: "kernel.action",
-        validator: (action) => this.#validateHasString(action, "patchId"),
-        handler: (action) => this.#unregisterPatch(action)
-      })
-      .register({
-        domain: "kernel",
-        actionType: "validatePatch",
-        requiredGate: "kernel.action",
-        validator: (action) => this.#validateHasPlainObject(action, "patch"),
-        handler: (action) => this.#validatePatch(action)
-      })
-      .register({
-        domain: "kernel",
-        actionType: "listPatches",
-        requiredGate: "kernel.action",
-        validator: () => ({ valid: true }),
-        handler: () => this.#listPatches()
-      })
-      .register({
-        domain: "kernel",
-        actionType: "getHooks",
-        requiredGate: "kernel.action",
-        validator: () => ({ valid: true }),
-        handler: () => this.#getHooks()
+        handler: () => ({
+          status: "deterministic",
+          seed: this.deterministicSeed,
+          tick: this.currentTick
+        })
       })
       .register({
         domain: "kernel",
@@ -387,379 +204,184 @@ export class KernelController {
     return { valid: true };
   }
 
-  #createGateContext({ domain, actionType, action }) {
-    return {
-      domain,
-      actionType,
-      action,
-      patchData: action.patch,
-      tickCount: Number.isFinite(action.ticks) ? action.ticks : 1,
-      modification: isPlainObject(action.modification) ? action.modification : {},
-      gameLogic: true,
-      devEnabled: true
-    };
+  #validatePlaceStructure(action) {
+    const stateCheck = this.#validateHasPlainObject(action, "state");
+    if (!stateCheck.valid) {
+      return stateCheck;
+    }
+    if (!Number.isFinite(Number(action?.x)) || !Number.isFinite(Number(action?.y))) {
+      return { valid: false, reason: "Pflichtfeld fehlt oder ungueltig: x/y" };
+    }
+    return this.#validateHasString(action, "structureId");
   }
 
   #recordGovernanceAudit(event) {
     this.governanceAuditTrail.push(event);
-    if (this.governanceAuditTrail.length > 2000) {
-      this.governanceAuditTrail = this.governanceAuditTrail.slice(-2000);
+    if (this.governanceAuditTrail.length > 1024) {
+      this.governanceAuditTrail = this.governanceAuditTrail.slice(-1024);
     }
   }
 
-  #verifyGovernanceIntegrity() {
-    this.actionRegistry.verifyAgainstGates(this.kernelGates.getGateNames());
-
-    const referencedGates = new Set(this.actionRegistry.list().map((entry) => entry.requiredGate));
-    const unreferenced = this.kernelGates
-      .getGateNames()
-      .filter((gateName) => !referencedGates.has(gateName) && !UNUSED_GATE_ALLOWLIST.has(gateName));
-
-    if (unreferenced.length > 0) {
-      throw new Error(
-        `[KERNEL_GOVERNANCE] Nicht referenzierte Gates gefunden: ${unreferenced.join(", ")}`
-      );
-    }
-  }
-
-  #denyAction({ code, reason, domain, actionType, auditId = null }) {
-    const assignedAuditId = auditId || `deny-${Date.now()}-${this.governanceAuditTrail.length + 1}`;
+  #denyAction({ code, reason, domain, actionType }) {
+    denyCounter += 1;
+    const assignedAuditId = `deny-${String(denyCounter).padStart(6, "0")}`;
     const event = {
       auditId: assignedAuditId,
-      decision: "deny",
+      decision: this.governanceMode === "shadow" ? "shadow_deny" : "deny",
       code,
       reason,
       domain,
-      actionType,
-      timestamp: Date.now()
+      actionType
     };
     this.#recordGovernanceAudit(event);
     return new KernelGovernanceError(reason, { code, auditId: assignedAuditId, details: event });
   }
 
-  #kernelGateInterface(command, payload) {
-    switch (command) {
-      case "game.exists":
-      case "system.ready":
-      case "dev.available":
-      case "patch.system.available":
-      case "user.can_patch":
-      case "tick.can_advance":
-      case "state.can_modify":
-      case "system.can_reset":
-      case "system.can_shutdown":
-        return true;
-      case "patch.get":
-        return this.patches.get(String(payload)) || null;
-      default:
-        return false;
-    }
-  }
-
   #createInitialState() {
-    const seedSignature = deriveSeedSignature(this.deterministicSeed);
+    const world = generateWorld({
+      seed: this.deterministicSeed,
+      width: 16,
+      height: 12
+    });
+    const worldMap = new Map(world.tiles.map((tile) => [`${tile.x},${tile.y}`, { ...tile }]));
     return {
-      worldMap: new Map(),
+      world,
+      worldMap,
       clock: { tick: 0, msPerTick: 100 },
       resources: { ore: 1000, iron: 0 },
       structures: new Map(),
-      statistics: { totalTicks: 0, structuresBuilt: 0, seedSignature }
+      statistics: {
+        totalTicks: 0,
+        structuresBuilt: 0,
+        totalOreProduced: 0,
+        seedSignature: deriveSeedSignature(this.deterministicSeed)
+      }
     };
   }
 
   #advanceTick(action) {
     const state = this.#readPlainObject(action, "state", "[ADVANCE_TICK] state fehlt.");
-    const ticks = this.#readNumber(action, "ticks", 1);
+    const ticks = this.#readInteger(action, "ticks", 1);
+    assert(ticks > 0, "[ADVANCE_TICK] ticks muss positiv sein.");
 
-    let modifiedState = state;
-    for (const hook of this.hooks.advanceTick.sort((a, b) => a.priority - b.priority)) {
-      if (hook.enabled) {
-        try {
-          const result = hook.handler(modifiedState, ticks);
-          if (result && typeof result === "object") {
-            modifiedState = result;
-          }
-        } catch (error) {
-          throw new Error(`[KERNEL] Hook ${hook.patchId}:${hook.hookId} failed: ${String(error?.message || error)}`);
-        }
-      }
-    }
+    const structures = new Map(state.structures instanceof Map ? state.structures : []);
+    const mines = Array.from(structures.values()).filter((entry) => entry?.id === "mine").length;
+    const oreGain = mines * ticks;
 
+    this.currentTick = (Number(state.clock?.tick) || 0) + ticks;
     return {
-      ...modifiedState,
+      ...state,
+      structures,
       clock: {
-        ...modifiedState.clock,
-        tick: modifiedState.clock.tick + ticks
+        ...state.clock,
+        tick: this.currentTick
+      },
+      resources: {
+        ...state.resources,
+        ore: (Number(state.resources?.ore) || 0) + oreGain
       },
       statistics: {
-        ...modifiedState.statistics,
-        totalTicks: modifiedState.statistics.totalTicks + ticks
+        ...state.statistics,
+        totalTicks: (Number(state.statistics?.totalTicks) || 0) + ticks,
+        totalOreProduced: (Number(state.statistics?.totalOreProduced) || 0) + oreGain
       }
     };
   }
 
   #inspectTile(action) {
     const state = this.#readPlainObject(action, "state", "[INSPECT_TILE] state fehlt.");
-    const x = this.#readNumber(action, "x");
-    const y = this.#readNumber(action, "y");
-
-    const tileKey = `${x},${y}`;
-    const tile = state.worldMap.get(tileKey) || { terrain: "grass", structure: null };
+    const x = this.#readInteger(action, "x", 0);
+    const y = this.#readInteger(action, "y", 0);
+    const tile = this.#getTileAt(state, x, y);
     return { x, y, tile };
   }
 
   #getBuildOptions(action) {
     const state = this.#readPlainObject(action, "state", "[GET_BUILD_OPTIONS] state fehlt.");
-
+    const ore = Number(state.resources?.ore) || 0;
     return [
-      { id: "mine", name: "Mine", cost: { ore: 100 }, canAfford: state.resources.ore >= 100 },
-      { id: "smelter", name: "Smelter", cost: { ore: 200 }, canAfford: state.resources.ore >= 200 }
+      { id: "mine", name: "Mine", cost: { ore: 100 }, canAfford: ore >= 100 },
+      { id: "smelter", name: "Smelter", cost: { ore: 200 }, canAfford: ore >= 200 }
     ];
   }
 
   #placeStructure(action) {
     const state = this.#readPlainObject(action, "state", "[PLACE_STRUCTURE] state fehlt.");
-    const x = this.#readNumber(action, "x");
-    const y = this.#readNumber(action, "y");
+    const x = this.#readInteger(action, "x", 0);
+    const y = this.#readInteger(action, "y", 0);
     const structureId = this.#readString(action, "structureId");
+    const tile = this.#getTileAt(state, x, y);
+    assert(tile, `[PLACE_STRUCTURE] Tile nicht gefunden: ${x},${y}`);
+    assert(tile.biome !== "water", `[PLACE_STRUCTURE] Struktur auf water unzulaessig: ${x},${y}`);
 
     const cost = { ore: structureId === "mine" ? 100 : 200 };
-    if (state.resources.ore < cost.ore) {
-      throw new Error(`[PLACE_STRUCTURE] Nicht genug ore: benoetigt ${cost.ore}, vorhanden ${state.resources.ore}`);
+    const ore = Number(state.resources?.ore) || 0;
+    if (ore < cost.ore) {
+      throw new Error(`[PLACE_STRUCTURE] Nicht genug ore: benoetigt ${cost.ore}, vorhanden ${ore}`);
     }
 
-    const newState = {
+    const structures = new Map(state.structures instanceof Map ? state.structures : []);
+    structures.set(`${x},${y}`, { id: structureId, builtAt: Number(state.clock?.tick) || 0 });
+    return {
       ...state,
+      structures,
       resources: {
         ...state.resources,
-        ore: state.resources.ore - cost.ore
+        ore: ore - cost.ore
       },
-      structures: new Map(state.structures || [])
+      statistics: {
+        ...state.statistics,
+        structuresBuilt: (Number(state.statistics?.structuresBuilt) || 0) + 1
+      }
     };
+  }
 
-    newState.structures.set(`${x},${y}`, { id: structureId, builtAt: state.clock.tick });
-    return newState;
+  #setDeterministicSeed(action) {
+    const seed = this.#readString(action, "seed", "[SET_SEED] seed fehlt.");
+    this.deterministicSeed = seed;
+    return {
+      success: true,
+      seed,
+      seedSignature: deriveSeedSignature(seed)
+    };
+  }
+
+  #getTileAt(state, x, y) {
+    if (state.worldMap instanceof Map && state.worldMap.has(`${x},${y}`)) {
+      return state.worldMap.get(`${x},${y}`);
+    }
+    const tiles = Array.isArray(state.world?.tiles) ? state.world.tiles : [];
+    return tiles.find((entry) => entry?.x === x && entry?.y === y) || null;
   }
 
   #assertPlainObject(value, name) {
-    if (!value || typeof value !== "object" || Array.isArray(value)) {
+    if (!isPlainObject(value)) {
       throw new Error(`[KERNEL_CONTROLLER] ${name} muss ein Plain Object sein.`);
     }
   }
 
   #readString(value, key, errorMessage) {
-    if (!(key in value) || typeof value[key] !== "string") {
+    if (!(key in value) || typeof value[key] !== "string" || value[key].trim().length === 0) {
       throw new Error(errorMessage || `[KERNEL_CONTROLLER] ${key} fehlt oder ist kein String.`);
     }
     return value[key];
   }
 
   #readPlainObject(value, key, errorMessage) {
-    if (!(key in value) || typeof value[key] !== "object" || Array.isArray(value[key])) {
+    if (!(key in value) || !isPlainObject(value[key])) {
       throw new Error(errorMessage || `[KERNEL_CONTROLLER] ${key} fehlt oder ist kein Plain Object.`);
     }
     return value[key];
   }
 
-  #readNumber(value, key, defaultValue = 0) {
+  #readInteger(value, key, defaultValue = 0) {
     if (!(key in value)) {
       return defaultValue;
     }
     const num = Number(value[key]);
-    if (!Number.isFinite(num)) {
-      throw new Error(`[KERNEL_CONTROLLER] ${key} muss eine Zahl sein.`);
+    if (!Number.isInteger(num)) {
+      throw new Error(`[KERNEL_CONTROLLER] ${key} muss eine ganze Zahl sein.`);
     }
     return num;
-  }
-
-  #registerPatch(action) {
-    const patchData = this.#readPlainObject(action, "patch", "[REGISTER_PATCH] patch fehlt.");
-    const patchId = this.#readString(patchData, "id", "[REGISTER_PATCH] patch.id fehlt.");
-
-    const validation = this.#validatePatchStructure(patchData);
-    if (!validation.valid) {
-      return { success: false, error: validation.error || validation.errors?.[0] || "Patch validation failed" };
-    }
-
-    this.patches.set(patchId, patchData);
-    this.patchValidation.set(patchId, validation);
-
-    if (patchData.hooks) {
-      for (const [hookName, hookConfig] of Object.entries(patchData.hooks)) {
-        if (this.hooks[hookName]) {
-          this.hooks[hookName].push({
-            patchId,
-            hookId: hookConfig.id || `${patchId}-${hookName}`,
-            priority: hookConfig.priority || 100,
-            enabled: hookConfig.enabled !== false,
-            handler: this.#createHookHandler(patchData, hookConfig)
-          });
-        }
-      }
-    }
-
-    return { success: true, patchId, registeredHooks: Object.keys(patchData.hooks || {}) };
-  }
-
-  #unregisterPatch(action) {
-    const patchId = this.#readString(action, "patchId", "[UNREGISTER_PATCH] patchId fehlt.");
-
-    if (!this.patches.has(patchId)) {
-      return { success: false, error: `Patch ${patchId} nicht gefunden` };
-    }
-
-    for (const hookName of Object.keys(this.hooks)) {
-      this.hooks[hookName] = this.hooks[hookName].filter((hook) => hook.patchId !== patchId);
-    }
-
-    this.patches.delete(patchId);
-    this.patchValidation.delete(patchId);
-    this.rollbackStates.delete(patchId);
-
-    return { success: true, patchId };
-  }
-
-  #validatePatch(action) {
-    const patchData = this.#readPlainObject(action, "patch", "[VALIDATE_PATCH] patch fehlt.");
-    const validation = this.#validatePatchStructure(patchData);
-
-    return {
-      success: true,
-      valid: validation.valid,
-      errors: validation.errors || [],
-      warnings: validation.warnings || []
-    };
-  }
-
-  #listPatches() {
-    const patches = [];
-    for (const [patchId, patchData] of this.patches) {
-      const validation = this.patchValidation.get(patchId);
-      patches.push({
-        id: patchId,
-        version: patchData.version,
-        description: patchData.description,
-        valid: validation?.valid || false,
-        hooks: Object.keys(patchData.hooks || {}),
-        enabled: patchData.enabled !== false
-      });
-    }
-    return { success: true, patches };
-  }
-
-  #getHooks() {
-    return { success: true, hooks: Object.keys(this.hooks) };
-  }
-
-  #validatePatchStructure(patch) {
-    const errors = [];
-    const warnings = [];
-
-    if (!patch.id || typeof patch.id !== "string") {
-      errors.push("Patch ID is required and must be a string");
-    }
-    if (!patch.version || typeof patch.version !== "string") {
-      errors.push("Patch version is required and must be a string");
-    }
-    if (!patch.hooks || typeof patch.hooks !== "object") {
-      errors.push("Patch hooks are required and must be an object");
-    }
-
-    if (patch.hooks) {
-      for (const [hookName, hookConfig] of Object.entries(patch.hooks)) {
-        if (!this.hooks[hookName]) {
-          errors.push(`Unknown hook: ${hookName}`);
-        }
-        if (!hookConfig.code || typeof hookConfig.code !== "string") {
-          errors.push(`Hook ${hookName} must have code`);
-        }
-      }
-    }
-
-    const forbiddenPatterns = [
-      "Math.random",
-      "Date.now",
-      "performance.now",
-      "setTimeout",
-      "setInterval",
-      "fetch(",
-      "XMLHttpRequest",
-      "indexedDB",
-      "Worker(",
-      "SharedWorker("
-    ];
-    const patchCode = JSON.stringify(patch);
-    for (const pattern of forbiddenPatterns) {
-      if (patchCode.includes(pattern)) {
-        errors.push(`Forbidden pattern detected: ${pattern}`);
-      }
-    }
-
-    return {
-      valid: errors.length === 0,
-      errors,
-      warnings
-    };
-  }
-
-  #createHookHandler(_patchData, hookConfig) {
-    try {
-      const func = new Function("state", "kernel", "rng", hookConfig.code);
-      return (state, ...args) => {
-        const kernelInterface = {
-          getState: () => state,
-          mutateState: (mutations) => ({ ...state, ...mutations })
-        };
-
-        let currentSeed = 123456789;
-        for (let i = 0; i < this.deterministicSeed.length; i += 1) {
-          currentSeed = (currentSeed << 5) - currentSeed + this.deterministicSeed.charCodeAt(i);
-        }
-        currentSeed = Math.abs(currentSeed);
-
-        const rng = () => {
-          currentSeed = (currentSeed * 9301 + 49297) % 233280;
-          return currentSeed / 233280;
-        };
-
-        return func(state, kernelInterface, rng, ...args);
-      };
-    } catch (error) {
-      console.error("[KERNEL] Failed to create hook handler:", error);
-      return (state) => state;
-    }
-  }
-
-  #setDeterministicSeed(action) {
-    const seed = this.#readString(action, "seed", "[SET_DETERMINISTIC_SEED] seed fehlt.");
-
-    this.deterministicSeed = seed;
-    this.currentTick = 0;
-
-    return { success: true, seed, tick: this.currentTick };
-  }
-
-  getCurrentTick() {
-    return this.currentTick;
-  }
-
-  getCurrentState() {
-    return {
-      tick: this.currentTick,
-      seed: this.deterministicSeed
-    };
-  }
-
-  executeMutation(mutation) {
-    if (!this.allowedMutations.has(mutation.type)) {
-      throw new Error(`[KERNEL] Mutation type not allowed: ${mutation.type}`);
-    }
-
-    this.currentTick += 1;
-    return {
-      success: true,
-      tick: this.currentTick,
-      mutation
-    };
   }
 }

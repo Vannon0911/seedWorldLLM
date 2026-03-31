@@ -2,59 +2,64 @@
   "owners": [
     {
       "name": "Kernel Core",
-      "prefixes": ["app/src/kernel/"],
-      "purpose": "Determinism, governance, routing and patch acknowledgements"
-    },
-    {
-      "name": "Game Logic",
-      "prefixes": ["app/src/game/"],
-      "purpose": "Action schema, mutation matrix, world/domain calculations"
-    },
-    {
-      "name": "UI Layer",
-      "prefixes": ["app/src/ui/", "app/src/plugins/", "app/src/workers/", "app/src/browser/", "app/src/main.js", "app/src/styles.css", "app/src/patch-control.css", "app/src/SeedWorld_WorldGen.mjs", "app/public/"],
-      "purpose": "Canvas-first rendering, optional SVG overlays, HUD/panel input and browser-side orchestration"
-    },
-    {
-      "name": "Patch Tooling",
-      "prefixes": ["dev/tools/patch/", "app/server/patchUtils.js"],
-      "purpose": "Terminal patch flow helpers, validation and manifest utilities"
-    },
-    {
-      "name": "Runtime Tooling",
       "prefixes": [
-        "dev/tools/runtime/",
-        "dev/tools/llm-preflight.mjs",
-        "dev/scripts/",
-        "dev/tests/",
-        "app/src/sot/",
-        "app/src/llm/",
-        "app/server/appServer.mjs",
-        "app/server/staticHandler.mjs",
-        "start-server.js"
+        "app/src/kernel/deterministicKernel.js",
+        "app/src/kernel/fingerprint.js",
+        "app/src/kernel/runtimeGuards.js",
+        "app/src/kernel/seedGuard.js",
+        "app/src/kernel/KernelController.js",
+        "app/src/kernel/ActionRegistry.js",
+        "app/src/kernel/KernelRouter.js"
       ],
-      "purpose": "Verification, docs sync, runtime server entrypoints and regression harnesses"
+      "purpose": "Deterministic execution and seed-bound kernel state transitions"
     },
     {
-      "name": "Documentation",
-      "prefixes": ["docs/"],
-      "purpose": "Contracts, orientation, audit and operational notes"
+      "name": "Authoritative Content",
+      "prefixes": [
+        "app/src/game/"
+      ],
+      "purpose": "Canonical gameplay content and deterministic interpretation rules"
+    },
+    {
+      "name": "Reproduction Evidence",
+      "prefixes": [
+        "dev/scripts/evidence-shared.mjs",
+        "dev/scripts/test-runner.mjs",
+        "dev/scripts/verify-evidence.mjs",
+        "dev/tools/runtime/verify-testline-integrity.mjs",
+        "dev/tests/modules/"
+      ],
+      "purpose": "Double-run orchestration, evidence generation, comparison and final proof"
+    },
+    {
+      "name": "Deprecated Runtime",
+      "prefixes": [
+        "app/server/",
+        "start-server.js",
+        "app/src/main.js",
+        "app/src/browser/",
+        "app/src/ui/",
+        "app/src/plugins/",
+        "app/src/workers/",
+        "app/src/SeedWorld_WorldGen.mjs",
+        "dev/tools/patch/",
+        "dev/patches/",
+        "dev/scripts/playwright-tiles-full.mjs",
+        "dev/tools/runtime/preflight.mjs"
+      ],
+      "purpose": "No longer part of mandatory truth or gates"
     }
   ],
   "entrypoints": [
-    "app/src/main.js",
-    "app/server/appServer.mjs",
-    "start-server.js",
-    "dev/tools/patch/apply.mjs",
-    "dev/scripts/smoke-test.mjs",
-    "dev/scripts/runtime-guards-test.mjs",
-    "dev/tests/MainTest.mjs"
+    "dev/scripts/test-runner.mjs",
+    "dev/scripts/verify-evidence.mjs",
+    "dev/tools/runtime/verify-testline-integrity.mjs"
   ],
   "scanRoots": [
-    "app/src",
-    "dev/tools",
+    "app/src/kernel",
+    "app/src/game",
     "dev/scripts",
-    "app/server",
-    "dev/tests"
+    "dev/tests/modules",
+    "dev/tools/runtime/verify-testline-integrity.mjs"
   ]
 }

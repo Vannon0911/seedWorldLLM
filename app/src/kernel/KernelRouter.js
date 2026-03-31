@@ -1,15 +1,4 @@
-/**
- * KernelRouter - Enforces strict domain boundary separation
- * Game and Patch domains are isolated - no cross-domain calls allowed
- */
-
-const ALLOWED_DOMAINS = Object.freeze(['game', 'patch', 'ui', 'kernel']);
-const DOMAIN_ROUTES = Object.freeze({
-  game: 'game',
-  patch: 'patch',
-  ui: 'ui',
-  kernel: 'kernel'
-});
+const ALLOWED_DOMAINS = Object.freeze(["game", "kernel"]);
 
 export class KernelRouter {
   constructor() {
@@ -28,26 +17,11 @@ export class KernelRouter {
 
   route(input) {
     const { domain, action, sourceDomain } = input;
-
-    // Validate domain
     if (!ALLOWED_DOMAINS.includes(domain)) {
       throw new Error(`[KERNEL_ROUTER] Unknown domain: ${domain}`);
     }
-
-    // Check for cross-domain call
     if (this.enforceIsolation && sourceDomain && sourceDomain !== domain) {
-      throw new Error(
-        `[KERNEL_ROUTER] Cross-domain call blocked: ${sourceDomain} -> ${domain}. ` +
-        `Action: ${action?.type || 'unknown'}`
-      );
-    }
-
-    // Prevent patch domain from accessing game state directly
-    if (domain === 'patch' && action?.requiresGameState) {
-      throw new Error(
-        `[KERNEL_ROUTER] Patch domain cannot access game state directly. ` +
-        `Use kernel acknowledgements only.`
-      );
+      throw new Error(`[KERNEL_ROUTER] Cross-domain call blocked: ${sourceDomain} -> ${domain}`);
     }
 
     const handler = this.handlers.get(domain);
@@ -55,67 +29,41 @@ export class KernelRouter {
       throw new Error(`[KERNEL_ROUTER] No handler registered for domain: ${domain}`);
     }
 
-    // Track call for audit
     this.callHistory.push({
-      from: sourceDomain || 'external',
+      from: sourceDomain || "external",
       to: domain,
-      actionType: action?.type
+      actionType: action?.type || "unknown"
     });
 
-    // Set current domain context
     const previousDomain = this.currentDomain;
     this.currentDomain = domain;
-
     try {
       const result = handler(action);
       return {
         success: true,
         domain,
         result,
-        acknowledgement: this.createAcknowledgement(domain, action, result)
+        acknowledgement: {
+          domain,
+          actionType: action?.type || "unknown",
+          status: "processed"
+        }
       };
     } finally {
       this.currentDomain = previousDomain;
     }
   }
 
-  createAcknowledgement(domain, action, result) {
-    return {
-      domain,
-      actionType: action?.type,
-      status: 'processed',
-      // Patch domain only receives acknowledgement, never raw game state
-      data: domain === 'patch' ? { acknowledged: true } : result
-    };
-  }
-
   validateIsolation() {
-    const violations = this.callHistory.filter(call =>
-      call.from !== 'external' && call.from !== call.to
-    );
-
+    const violations = this.callHistory.filter((call) => call.from !== "external" && call.from !== call.to);
     if (violations.length > 0) {
       throw new Error(
-        `[KERNEL_ROUTER] Domain isolation violations detected: ` +
-        violations.map(v => `${v.from} -> ${v.to}`).join(', ')
+        `[KERNEL_ROUTER] Domain isolation violations detected: ${violations
+          .map((entry) => `${entry.from} -> ${entry.to}`)
+          .join(", ")}`
       );
     }
-
     return { valid: true, calls: this.callHistory.length };
-  }
-
-  getStats() {
-    const domainCalls = {};
-    for (const call of this.callHistory) {
-      domainCalls[call.to] = (domainCalls[call.to] || 0) + 1;
-    }
-
-    return {
-      totalCalls: this.callHistory.length,
-      domainCalls,
-      isolationEnabled: this.enforceIsolation,
-      currentDomain: this.currentDomain
-    };
   }
 
   clearHistory() {

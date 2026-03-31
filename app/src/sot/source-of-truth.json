@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 2,
+  "lastReviewed": "2026-03-31",
+  "classes": {
+    "Kernel-Authoritative": "Deterministic simulation, state transitions, seed handling and kernel execution truth.",
+    "Content-Authoritative": "Authoritative gameplay content, rules and contracts consumed by the kernel.",
+    "Reproduction/Evidence": "Machine-readable proof artifacts, comparators and evidence contracts.",
+    "Test/Gate-Core": "Only the mandatory double-run gates that prove reproduction.",
+    "Transitional": "Active migration residue with planned removal.",
+    "Deprecated": "Superseded runtime or tooling path retained temporarily.",
+    "Archive": "Historical reference only.",
+    "Out-of-Scope": "Present in repo but not part of kernel truth or mandatory quality gates."
+  },
+  "domains": [
+    {
+      "id": "deterministic_kernel",
+      "class": "Kernel-Authoritative",
+      "authoritative": [
+        "app/src/kernel/deterministicKernel.js",
+        "app/src/kernel/fingerprint.js",
+        "app/src/kernel/runtimeGuards.js",
+        "app/src/kernel/seedGuard.js",
+        "app/src/kernel/KernelController.js",
+        "app/src/kernel/ActionRegistry.js",
+        "app/src/kernel/KernelRouter.js"
+      ],
+      "why": "These files execute or constrain deterministic kernel truth directly."
+    },
+    {
+      "id": "gameplay_content",
+      "class": "Content-Authoritative",
+      "authoritative": [
+        "app/src/game/",
+        "app/src/sot/source-of-truth.json"
+      ],
+      "why": "Gameplay content and rule interpretation remain authoritative only here."
+    },
+    {
+      "id": "reproduction_evidence",
+      "class": "Reproduction/Evidence",
+      "authoritative": [
+        "dev/scripts/evidence-shared.mjs",
+        "dev/scripts/test-runner.mjs",
+        "dev/scripts/verify-evidence.mjs",
+        "dev/tools/runtime/verify-testline-integrity.mjs",
+        "app/src/sot/testline-integrity.json"
+      ],
+      "why": "These files define and verify the machine-readable reproduction proof chain."
+    },
+    {
+      "id": "gate_core",
+      "class": "Test/Gate-Core",
+      "authoritative": [
+        "dev/tests/modules/00.runtime-governance-suite.module.mjs",
+        "dev/tests/modules/10.determinism-seed-proof-suite.module.mjs",
+        "dev/tests/modules/20.gameplay-state-suite.module.mjs",
+        "package.json",
+        ".github/workflows/required-checks.yml"
+      ],
+      "why": "Only double-run tests that prove kernel or content reproduction remain mandatory."
+    },
+    {
+      "id": "transitional_residue",
+      "class": "Transitional",
+      "authoritative": [
+        "app/src/sot/FUNCTION_SOT.json",
+        "app/src/sot/REPO_HYGIENE_MAP.json",
+        "docs/SOT/",
+        "tem/"
+      ],
+      "why": "Still present, but not required for deterministic truth."
+    },
+    {
+      "id": "deprecated_runtime",
+      "class": "Deprecated",
+      "authoritative": [
+        "app/server/",
+        "start-server.js",
+        "app/src/main.js",
+        "app/src/browser/",
+        "app/src/ui/",
+        "app/src/plugins/",
+        "app/src/workers/worldRenderWorker.js",
+        "app/src/SeedWorld_WorldGen.mjs",
+        "dev/tools/patch/",
+        "dev/patches/",
+        "dev/tools/runtime/preflight.mjs",
+        "dev/scripts/playwright-tiles-full.mjs"
+      ],
+      "why": "These paths no longer participate in required quality proof."
+    },
+    {
+      "id": "archive",
+      "class": "Archive",
+      "authoritative": [
+        "legacy/UNVERFID/",
+        "Sub_Agent/"
+      ],
+      "why": "Historical only."
+    },
+    {
+      "id": "out_of_scope",
+      "class": "Out-of-Scope",
+      "authoritative": [
+        "docs/LLM/",
+        ".githooks/",
+        ".github/rulesets/"
+      ],
+      "why": "Repository operations or process artifacts, not kernel truth."
+    }
+  ]
+}

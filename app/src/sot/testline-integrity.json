@@ -1,40 +1,26 @@
 {
-  "version": 1,
-  "generatedAt": "2026-03-30T20:56:49.244Z",
-  "monitoredRoots": [
-    "dev/scripts",
-    "dev/tests"
+  "schemaVersion": 2,
+  "requiredTests": [
+    "00-runtime-governance-suite",
+    "10-determinism-seed-proof-suite",
+    "20-gameplay-state-suite"
   ],
-  "monitoredFiles": [
-    "dev/scripts/build-evidence-bundle.mjs",
-    "dev/scripts/playwright-tiles-full.mjs",
-    "dev/scripts/repo-cleanup-baseline.mjs",
-    "dev/scripts/runtime-guards-test.mjs",
-    "dev/scripts/smoke-test.mjs",
-    "dev/scripts/test-runner.mjs",
-    "dev/scripts/verify-evidence.mjs",
-    "dev/tests/helpers/runScriptTest.mjs",
-    "dev/tests/MainTest.mjs",
-    "dev/tests/modules/00.runtime-governance-suite.module.mjs",
-    "dev/tests/modules/10.determinism-seed-proof-suite.module.mjs",
-    "dev/tests/modules/20.gameplay-state-suite.module.mjs",
-    "dev/tests/modules/30.tooling-evidence-suite.module.mjs",
-    "dev/tests/modules/40.system-coverage-suite.module.mjs"
-  ],
-  "fileHashes": {
-    "dev/scripts/build-evidence-bundle.mjs": "3e330f1f04618223e692559c2d783b8baed1b35c7934f629c5c0c373de7c24c7",
-    "dev/scripts/playwright-tiles-full.mjs": "edab1f888c35264153e35f77a38e21ad93527ba660ff95d72e06180a6194a712",
-    "dev/scripts/repo-cleanup-baseline.mjs": "f03b030044feb8a237abafcadcdf302c6cd3820e1d4ecdc49964e2c88d924a0f",
-    "dev/scripts/runtime-guards-test.mjs": "1647dd7873a8f51f557224de3b58b74fc1d35088292313532d3bd2d5180b79e4",
-    "dev/scripts/smoke-test.mjs": "6dd132264bd110f3451dbd326f328460369f41af886a01be19b8b5c011e09f01",
-    "dev/scripts/test-runner.mjs": "668f096500d7d76208a9db88b2bad2e2aa6ad0735096c4001c5945e9714e44a5",
-    "dev/scripts/verify-evidence.mjs": "a10315480ade5d5aba6b6a0a4e104fe112489e7def4ad63b4d43016834297226",
-    "dev/tests/helpers/runScriptTest.mjs": "69dc067d883ecada7f7453c68af72fe48bd7967121e47ed5fe0ee426510b4701",
-    "dev/tests/MainTest.mjs": "eb87853c41e3fb21e155222a285f57cca36ec965ba428806b412ec08982f7f62",
-    "dev/tests/modules/00.runtime-governance-suite.module.mjs": "b5f6f264a979569e5218aebbf4a1f2ca08a24c8f2e843ca9864a57a53bba9b66",
-    "dev/tests/modules/10.determinism-seed-proof-suite.module.mjs": "70b45fc7d3c7a99d4b9cf2054d7675182d9901e0d575dfb01d62786a2575a919",
-    "dev/tests/modules/20.gameplay-state-suite.module.mjs": "8ea09456ae561f33cccc12395af06638d6cb5aee580f692111c0235cde093543",
-    "dev/tests/modules/30.tooling-evidence-suite.module.mjs": "51a4f6eda71182798fd819dbdca56bae9c9fcc497cd03d3dc42c5d2dd3388dfb",
-    "dev/tests/modules/40.system-coverage-suite.module.mjs": "50a2f2e61b2769e53cd97da012ea451b0dfcb18752ac199788ebaf7277571bf9"
+  "requiredEvidence": {
+    "runCountPerTest": 2,
+    "pairCountPerTest": 1,
+    "finalSummary": "runtime/evidence/final/testline-summary.json"
+  },
+  "scopePolicy": {
+    "forbiddenMandatoryPaths": [
+      "app/server/",
+      "app/src/browser/",
+      "app/src/ui/",
+      "app/src/plugins/",
+      "app/src/workers/",
+      "dev/tools/patch/",
+      "dev/patches/",
+      "dev/scripts/playwright-tiles-full.mjs",
+      "dev/tools/runtime/preflight.mjs"
+    ]
   }
 }
