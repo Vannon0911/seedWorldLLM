@@ -38,6 +38,8 @@ Documentation 2.0 verbindet drei Dinge in einem System: menschenlesbare Wahrheit
 - SoT-Review: \`${sot.lastReviewed}\`
 - Harte Guards: rohe Plan-Dateien blocken, unregistrierte neue Dateien blocken
 - Vollrepo-Coverage: alle Dateien unter den Doku-/Plan-Roots muessen klassifiziert sein
+- String-Matrix: aktive Spiel- und Doku-Strings muessen synchronisiert sein
+- Adversarial Probe: Guard und Coverage muessen absichtliche Regelverletzungen aktiv blockieren
 `;
 }
 
@@ -52,6 +54,7 @@ function renderTruth(sourceOfTruth, repoBoundaries, docsV2) {
     `- [source-of-truth.json](${relLink("app/src/sot/source-of-truth.json")})`,
     `- [repo-boundaries.json](${relLink("app/src/sot/repo-boundaries.json")})`,
     `- [docs-v2.json](${relLink("app/src/sot/docs-v2.json")})`,
+    `- [STRING_MATRIX.json](${relLink("app/src/sot/STRING_MATRIX.json")})`,
     "",
     "## Klassen",
     ""
@@ -76,6 +79,7 @@ function renderTruth(sourceOfTruth, repoBoundaries, docsV2) {
   lines.push(`- Der Scanner schreibt Evidence nach \`${docsV2.scanner.evidence}\`.`);
   lines.push(`- Der Guard laeuft ueber \`${docsV2.guards.entry}\`.`);
   lines.push(`- Der Vollrepo-Scanner schreibt Evidence nach \`${docsV2.fullRepoCoverage.evidence}\`.`);
+  lines.push(`- Die String-Matrix wird ueber \`${docsV2.stringMatrix.entry}\` synchronisiert.`);
   lines.push("- Nur atomare Einzel-Tasks duerfen in den offenen Planungspfad.");
   lines.push("");
   lines.push("## Systemplan");
@@ -156,6 +160,7 @@ function renderRules(docsV2) {
     "- Erledigte atomare Tasks werden vom Scanner nach `tem/tasks/archive/` verschoben.",
     "- Menschenlesbare Fuehrungsseiten werden nur aus der Doku-2.0-SoT erzeugt.",
     "- Keine Datei unter den Doku-/Plan-/Legacy-Roots darf unklassifiziert bleiben.",
+    "- Aktive Spiel- und Doku-Strings duerfen nicht ohne synchronisierte String-Matrix drift erzeugen.",
     "",
     "## Guard Entry",
     "",
@@ -167,7 +172,15 @@ function renderRules(docsV2) {
     "",
     "## Coverage Entry",
     "",
-    "- `dev/tools/runtime/verify-docs-v2-coverage.mjs`"
+    "- `dev/tools/runtime/verify-docs-v2-coverage.mjs`",
+    "",
+    "## String Matrix Entry",
+    "",
+    `- \`${docsV2.stringMatrix.entry}\``,
+    "",
+    "## Adversarial Probe",
+    "",
+    `- \`${docsV2.guards.probe}\``
   ];
   return `${lines.join("\n")}\n`;
 }

@@ -2609,10 +2609,10 @@
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/docs-v2-shared.mjs#archiveTask@164",
+      "id": "dev/tools/runtime/docs-v2-shared.mjs#archiveTask@168",
       "name": "archiveTask",
       "file": "dev/tools/runtime/docs-v2-shared.mjs",
-      "line": 164,
+      "line": 168,
       "kind": "function",
       "category": "runtime-tooling"
     },
@@ -2697,34 +2697,34 @@
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/docs-v2-shared.mjs#renderTaskBullet@186",
+      "id": "dev/tools/runtime/docs-v2-shared.mjs#renderTaskBullet@190",
       "name": "renderTaskBullet",
-      "file": "dev/tools/runtime/docs-v2-shared.mjs",
-      "line": 186,
-      "kind": "function",
-      "category": "runtime-tooling"
-    },
-    {
-      "id": "dev/tools/runtime/docs-v2-shared.mjs#runGit@128",
-      "name": "runGit",
-      "file": "dev/tools/runtime/docs-v2-shared.mjs",
-      "line": 128,
-      "kind": "function",
-      "category": "runtime-tooling"
-    },
-    {
-      "id": "dev/tools/runtime/docs-v2-shared.mjs#taskDigest@190",
-      "name": "taskDigest",
       "file": "dev/tools/runtime/docs-v2-shared.mjs",
       "line": 190,
       "kind": "function",
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/docs-v2-shared.mjs#taskMatchesChangeSet@152",
+      "id": "dev/tools/runtime/docs-v2-shared.mjs#runGit@132",
+      "name": "runGit",
+      "file": "dev/tools/runtime/docs-v2-shared.mjs",
+      "line": 132,
+      "kind": "function",
+      "category": "runtime-tooling"
+    },
+    {
+      "id": "dev/tools/runtime/docs-v2-shared.mjs#taskDigest@194",
+      "name": "taskDigest",
+      "file": "dev/tools/runtime/docs-v2-shared.mjs",
+      "line": 194,
+      "kind": "function",
+      "category": "runtime-tooling"
+    },
+    {
+      "id": "dev/tools/runtime/docs-v2-shared.mjs#taskMatchesChangeSet@156",
       "name": "taskMatchesChangeSet",
       "file": "dev/tools/runtime/docs-v2-shared.mjs",
-      "line": 152,
+      "line": 156,
       "kind": "function",
       "category": "runtime-tooling"
     },
@@ -3337,6 +3337,38 @@
       "category": "runtime-tooling"
     },
     {
+      "id": "dev/tools/runtime/probe-docs-v2-adversarial.mjs#expectFailure@36",
+      "name": "expectFailure",
+      "file": "dev/tools/runtime/probe-docs-v2-adversarial.mjs",
+      "line": 36,
+      "kind": "function",
+      "category": "runtime-tooling"
+    },
+    {
+      "id": "dev/tools/runtime/probe-docs-v2-adversarial.mjs#main@47",
+      "name": "main",
+      "file": "dev/tools/runtime/probe-docs-v2-adversarial.mjs",
+      "line": 47,
+      "kind": "function",
+      "category": "runtime-tooling"
+    },
+    {
+      "id": "dev/tools/runtime/probe-docs-v2-adversarial.mjs#runCommand@5",
+      "name": "runCommand",
+      "file": "dev/tools/runtime/probe-docs-v2-adversarial.mjs",
+      "line": 5,
+      "kind": "function",
+      "category": "runtime-tooling"
+    },
+    {
+      "id": "dev/tools/runtime/probe-docs-v2-adversarial.mjs#withTempFile@25",
+      "name": "withTempFile",
+      "file": "dev/tools/runtime/probe-docs-v2-adversarial.mjs",
+      "line": 25,
+      "kind": "function",
+      "category": "runtime-tooling"
+    },
+    {
       "id": "dev/tools/runtime/release-guard.mjs#ensureCommitOnMain@96",
       "name": "ensureCommitOnMain",
       "file": "dev/tools/runtime/release-guard.mjs",
@@ -3761,10 +3793,10 @@
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/sync-docs-v2.mjs#main@210",
+      "id": "dev/tools/runtime/sync-docs-v2.mjs#main@254",
       "name": "main",
       "file": "dev/tools/runtime/sync-docs-v2.mjs",
-      "line": 210,
+      "line": 254,
       "kind": "function",
       "category": "runtime-tooling"
     },
@@ -3777,10 +3809,18 @@
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/sync-docs-v2.mjs#renderArchive@166",
+      "id": "dev/tools/runtime/sync-docs-v2.mjs#renderArchive@210",
       "name": "renderArchive",
       "file": "dev/tools/runtime/sync-docs-v2.mjs",
-      "line": 166,
+      "line": 210,
+      "kind": "function",
+      "category": "runtime-tooling"
+    },
+    {
+      "id": "dev/tools/runtime/sync-docs-v2.mjs#renderArchiveBuckets@186",
+      "name": "renderArchiveBuckets",
+      "file": "dev/tools/runtime/sync-docs-v2.mjs",
+      "line": 186,
       "kind": "function",
       "category": "runtime-tooling"
     },
@@ -3793,42 +3833,106 @@
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/sync-docs-v2.mjs#renderPlan@85",
+      "id": "dev/tools/runtime/sync-docs-v2.mjs#renderPlan@91",
       "name": "renderPlan",
       "file": "dev/tools/runtime/sync-docs-v2.mjs",
-      "line": 85,
+      "line": 91,
       "kind": "function",
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/sync-docs-v2.mjs#renderRules@141",
+      "id": "dev/tools/runtime/sync-docs-v2.mjs#renderRules@147",
       "name": "renderRules",
       "file": "dev/tools/runtime/sync-docs-v2.mjs",
-      "line": 141,
+      "line": 147,
       "kind": "function",
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/sync-docs-v2.mjs#renderSystemPlan@114",
+      "id": "dev/tools/runtime/sync-docs-v2.mjs#renderSystemPlan@120",
       "name": "renderSystemPlan",
       "file": "dev/tools/runtime/sync-docs-v2.mjs",
-      "line": 114,
+      "line": 120,
       "kind": "function",
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/sync-docs-v2.mjs#renderTruth@41",
+      "id": "dev/tools/runtime/sync-docs-v2.mjs#renderTruth@44",
       "name": "renderTruth",
       "file": "dev/tools/runtime/sync-docs-v2.mjs",
-      "line": 41,
+      "line": 44,
       "kind": "function",
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/sync-docs-v2.mjs#syncOrVerify@194",
+      "id": "dev/tools/runtime/sync-docs-v2.mjs#syncOrVerify@238",
       "name": "syncOrVerify",
       "file": "dev/tools/runtime/sync-docs-v2.mjs",
-      "line": 194,
+      "line": 238,
+      "kind": "function",
+      "category": "runtime-tooling"
+    },
+    {
+      "id": "dev/tools/runtime/sync-string-matrix.mjs#decodeEscapes@20",
+      "name": "decodeEscapes",
+      "file": "dev/tools/runtime/sync-string-matrix.mjs",
+      "line": 20,
+      "kind": "function",
+      "category": "runtime-tooling"
+    },
+    {
+      "id": "dev/tools/runtime/sync-string-matrix.mjs#extractHtmlText@54",
+      "name": "extractHtmlText",
+      "file": "dev/tools/runtime/sync-string-matrix.mjs",
+      "line": 54,
+      "kind": "function",
+      "category": "runtime-tooling"
+    },
+    {
+      "id": "dev/tools/runtime/sync-string-matrix.mjs#extractMarkdownText@43",
+      "name": "extractMarkdownText",
+      "file": "dev/tools/runtime/sync-string-matrix.mjs",
+      "line": 43,
+      "kind": "function",
+      "category": "runtime-tooling"
+    },
+    {
+      "id": "dev/tools/runtime/sync-string-matrix.mjs#extractQuotedStrings@30",
+      "name": "extractQuotedStrings",
+      "file": "dev/tools/runtime/sync-string-matrix.mjs",
+      "line": 30,
+      "kind": "function",
+      "category": "runtime-tooling"
+    },
+    {
+      "id": "dev/tools/runtime/sync-string-matrix.mjs#extractStringsForFile@67",
+      "name": "extractStringsForFile",
+      "file": "dev/tools/runtime/sync-string-matrix.mjs",
+      "line": 67,
+      "kind": "function",
+      "category": "runtime-tooling"
+    },
+    {
+      "id": "dev/tools/runtime/sync-string-matrix.mjs#main@113",
+      "name": "main",
+      "file": "dev/tools/runtime/sync-string-matrix.mjs",
+      "line": 113,
+      "kind": "function",
+      "category": "runtime-tooling"
+    },
+    {
+      "id": "dev/tools/runtime/sync-string-matrix.mjs#renderMarkdown@83",
+      "name": "renderMarkdown",
+      "file": "dev/tools/runtime/sync-string-matrix.mjs",
+      "line": 83,
+      "kind": "function",
+      "category": "runtime-tooling"
+    },
+    {
+      "id": "dev/tools/runtime/sync-string-matrix.mjs#shouldKeepString@10",
+      "name": "shouldKeepString",
+      "file": "dev/tools/runtime/sync-string-matrix.mjs",
+      "line": 10,
       "kind": "function",
       "category": "runtime-tooling"
     },
@@ -3961,6 +4065,30 @@
       "category": "runtime-tooling"
     },
     {
+      "id": "dev/tools/runtime/verify-docs-v2-coverage.mjs#main@21",
+      "name": "main",
+      "file": "dev/tools/runtime/verify-docs-v2-coverage.mjs",
+      "line": 21,
+      "kind": "function",
+      "category": "runtime-tooling"
+    },
+    {
+      "id": "dev/tools/runtime/verify-docs-v2-coverage.mjs#matchesBucket@6",
+      "name": "matchesBucket",
+      "file": "dev/tools/runtime/verify-docs-v2-coverage.mjs",
+      "line": 6,
+      "kind": "function",
+      "category": "runtime-tooling"
+    },
+    {
+      "id": "dev/tools/runtime/verify-docs-v2-guards.mjs#addBucketPaths@35",
+      "name": "addBucketPaths",
+      "file": "dev/tools/runtime/verify-docs-v2-guards.mjs",
+      "line": 35,
+      "kind": "function",
+      "category": "runtime-tooling"
+    },
+    {
       "id": "dev/tools/runtime/verify-docs-v2-guards.mjs#addRegistered@29",
       "name": "addRegistered",
       "file": "dev/tools/runtime/verify-docs-v2-guards.mjs",
@@ -3985,10 +4113,18 @@
       "category": "runtime-tooling"
     },
     {
-      "id": "dev/tools/runtime/verify-docs-v2-guards.mjs#main@35",
+      "id": "dev/tools/runtime/verify-docs-v2-guards.mjs#isRegisteredPath@41",
+      "name": "isRegisteredPath",
+      "file": "dev/tools/runtime/verify-docs-v2-guards.mjs",
+      "line": 41,
+      "kind": "function",
+      "category": "runtime-tooling"
+    },
+    {
+      "id": "dev/tools/runtime/verify-docs-v2-guards.mjs#main@53",
       "name": "main",
       "file": "dev/tools/runtime/verify-docs-v2-guards.mjs",
-      "line": 35,
+      "line": 53,
       "kind": "function",
       "category": "runtime-tooling"
     },

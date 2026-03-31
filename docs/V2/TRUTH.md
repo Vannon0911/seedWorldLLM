@@ -7,6 +7,7 @@ Diese Seite macht die fuehrende SoT menschenlesbar. Sie ersetzt die JSON-Dateien
 - [source-of-truth.json](../../app/src/sot/source-of-truth.json)
 - [repo-boundaries.json](../../app/src/sot/repo-boundaries.json)
 - [docs-v2.json](../../app/src/sot/docs-v2.json)
+- [STRING_MATRIX.json](../../app/src/sot/STRING_MATRIX.json)
 
 ## Klassen
 
@@ -24,7 +25,7 @@ Diese Seite macht die fuehrende SoT menschenlesbar. Sie ersetzt die JSON-Dateien
 - `Kernel Core`: Deterministic execution and seed-bound kernel state transitions
 - `Authoritative Content`: Canonical gameplay content and deterministic interpretation rules
 - `Reproduction Evidence`: Double-run orchestration, evidence generation, comparison and final proof
-- `Documentation V2`: Human-readable truth, atomic planning tasks and archive automation
+- `Documentation V2`: Human-readable truth, atomic planning tasks, string matrix discipline and archive automation
 - `Deprecated Runtime`: No longer part of mandatory truth or gates
 
 ## Doku-2.0-System
@@ -34,6 +35,7 @@ Diese Seite macht die fuehrende SoT menschenlesbar. Sie ersetzt die JSON-Dateien
 - Der Scanner schreibt Evidence nach `runtime/evidence/docs-v2-scan.json`.
 - Der Guard laeuft ueber `dev/tools/runtime/verify-docs-v2-guards.mjs`.
 - Der Vollrepo-Scanner schreibt Evidence nach `runtime/evidence/docs-v2-coverage.json`.
+- Die String-Matrix wird ueber `dev/tools/runtime/sync-string-matrix.mjs` synchronisiert.
 - Nur atomare Einzel-Tasks duerfen in den offenen Planungspfad.
 
 ## Systemplan

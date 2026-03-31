@@ -65,6 +65,7 @@
       "authoritative": [
         "app/src/sot/FUNCTION_SOT.json",
         "app/src/sot/REPO_HYGIENE_MAP.json",
+        "app/src/sot/STRING_MATRIX.json",
         "app/src/sot/docs-v2.json",
         "docs/SOT/",
         "docs/V2/",

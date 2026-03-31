@@ -1,0 +1,4148 @@
+{
+  "schemaVersion": 1,
+  "matrix_fingerprint": "7a0ef71bae350b3a1e589ba5c429b6ef40d6a8bbedee67ae7e6f2d6011effaba",
+  "scan_roots": [
+    "app/src/game",
+    "app/src/kernel",
+    "app/src/ui",
+    "app/public",
+    "docs/V2"
+  ],
+  "file_count": 39,
+  "unique_string_count": 775,
+  "files": [
+    {
+      "path": "app/public/game.html",
+      "string_count": 13,
+      "fingerprint": "ddc0f14e120f739db6bf68132f876a0b6937fefb9a36e448b7380fb56fa087f8",
+      "strings": [
+        {
+          "value": "de",
+          "hash": "959a45d44e6fcf58361ed004681556fe50129f2109e817dec098c00c9e5d2578"
+        },
+        {
+          "value": "game-shell",
+          "hash": "3f0a4429b371c52ad061d4d80ba97deadb7becf4fd495c77dbe94eff073608da"
+        },
+        {
+          "value": "IBM Plex Sans",
+          "hash": "f40a9b2e827fa3efde4898849bbc9da45bd83edaa61963a0e0bc7fb5f8d6538f"
+        },
+        {
+          "value": "module",
+          "hash": "120970d812836f19888625587a4606a5ad23cef31c8684e601771552548fc6b9"
+        },
+        {
+          "value": "SeedWorld - Game",
+          "hash": "045282abdc45e93c726a845c965cd3d31d7c2f8ce21b932ff5988082bf4eb1ca"
+        },
+        {
+          "value": "SeedWorld Spielansicht",
+          "hash": "e3609416b40330d69dadc51107cc4fce1598b1d67681cf25de1dec2738526639"
+        },
+        {
+          "value": "Space Grotesk",
+          "hash": "0cf7b0abb942e5ff0e4fe081f7d29a70bc7125c32969647d424c1f7e5fce045e"
+        },
+        {
+          "value": "stylesheet",
+          "hash": "02bb13a64e6befcfef900fdb5e35cb6b8db523c58bc11755c548bc4fbcdce2a8"
+        },
+        {
+          "value": "tile-grid-container",
+          "hash": "acd66c2efee132215b9febcc39632dcbef4766281be9b67410aac6f11702893c"
+        },
+        {
+          "value": "Trebuchet MS",
+          "hash": "efd094c18baa4f2ccaa4432560ff5dcf095b83b4114c72ecd48bb37cf1d82e6d"
+        },
+        {
+          "value": "UTF-8",
+          "hash": "3ad3031f5503a4404af825262ee8232cc04d4ea6683d42c5dd0a2f2a27ac9824"
+        },
+        {
+          "value": "viewport",
+          "hash": "280503c51e3833fb85864034470887912137490d4d3f7c5480250720bc1a10ea"
+        },
+        {
+          "value": "width=device-width, initial-scale=1.0",
+          "hash": "ede110c10283e66095fb9d4aae5c93d782b368cde15a194377d5453d5aeea9cf"
+        }
+      ]
+    },
+    {
+      "path": "app/public/index.html",
+      "string_count": 14,
+      "fingerprint": "c5d4433bddb8fae75af5483e00098511864f4668797bc5988baaa53e8a2e117c",
+      "strings": [
+        {
+          "value": "🎮 DIRECT GAME",
+          "hash": "5574c38f00d180bc00c701778159f4cc131a55180093a23fcda0bfa1b7addb64"
+        },
+        {
+          "value": "de",
+          "hash": "959a45d44e6fcf58361ed004681556fe50129f2109e817dec098c00c9e5d2578"
+        },
+        {
+          "value": "Direkt in die einzige verbleibende Browser-Ansicht.",
+          "hash": "17fdcde94d65aa95bf04471666ff3d99082295074acc7cf23737618023d0dc88"
+        },
+        {
+          "value": "hint",
+          "hash": "b80e0af617d0f8ff54ab3142c34c76e83eafe75c6b2cbe87a44c56bb8505dd01"
+        },
+        {
+          "value": "IBM Plex Sans",
+          "hash": "f40a9b2e827fa3efde4898849bbc9da45bd83edaa61963a0e0bc7fb5f8d6538f"
+        },
+        {
+          "value": "Kein Browser-Menue, keine Patch-Oberflaeche, kein zweiter Navigationspfad.",
+          "hash": "8223c9215f9a3b4f49b376c60ed6789b91d7e91f1c23b8587d0c281fb96c83ec"
+        },
+        {
+          "value": "launch",
+          "hash": "abfc412ce6e530df63b0dc9bf4e02bb3cb1719ab967c8f4ea3951ab5bae4ff3f"
+        },
+        {
+          "value": "SeedWorld",
+          "hash": "3f952b04de42aeecacc6e76759f8e9403327d5aebe802cf7da76e7157fe90c74"
+        },
+        {
+          "value": "shell",
+          "hash": "ce635c4eabff5e4f56dba8fb1e39ca235530aa2b6b18533eef1af3862016c577"
+        },
+        {
+          "value": "Space Grotesk",
+          "hash": "0cf7b0abb942e5ff0e4fe081f7d29a70bc7125c32969647d424c1f7e5fce045e"
+        },
+        {
+          "value": "Trebuchet MS",
+          "hash": "efd094c18baa4f2ccaa4432560ff5dcf095b83b4114c72ecd48bb37cf1d82e6d"
+        },
+        {
+          "value": "UTF-8",
+          "hash": "3ad3031f5503a4404af825262ee8232cc04d4ea6683d42c5dd0a2f2a27ac9824"
+        },
+        {
+          "value": "viewport",
+          "hash": "280503c51e3833fb85864034470887912137490d4d3f7c5480250720bc1a10ea"
+        },
+        {
+          "value": "width=device-width, initial-scale=1.0",
+          "hash": "ede110c10283e66095fb9d4aae5c93d782b368cde15a194377d5453d5aeea9cf"
+        }
+      ]
+    },
+    {
+      "path": "app/src/game/actions/buildAction.js",
+      "string_count": 3,
+      "fingerprint": "11ba31beb5c3c52fd6af04ffdfe7fbc84a170bb605fe6eaec94230d54bdf0e00",
+      "strings": [
+        {
+          "value": "[GAME_LOGIC] Nicht genug ore fuer build: benoetigt ${requiredOre}, vorhanden ${oreCurrent}",
+          "hash": "1532ff005540e017feb3ac8104510afd71c8619cb8b269a283bdd60d63f38d5a"
+        },
+        {
+          "value": "object",
+          "hash": "2958d416d08aa5a472d7b509036cb7eafd542add84527e66a145ea64cb4cdc75"
+        },
+        {
+          "value": "set",
+          "hash": "6ee0eb490ff832101cf82a3d387c35f29e4230be786978f7acf9e811febf6723"
+        }
+      ]
+    },
+    {
+      "path": "app/src/game/actions/transportAction.js",
+      "string_count": 2,
+      "fingerprint": "3a0c291d1fb8f339f23405afaf5e3a55a60fc5b460d9253cb9e3ae336dd73161",
+      "strings": [
+        {
+          "value": "object",
+          "hash": "2958d416d08aa5a472d7b509036cb7eafd542add84527e66a145ea64cb4cdc75"
+        },
+        {
+          "value": "set",
+          "hash": "6ee0eb490ff832101cf82a3d387c35f29e4230be786978f7acf9e811febf6723"
+        }
+      ]
+    },
+    {
+      "path": "app/src/game/contracts/ActionSchema.md",
+      "string_count": 45,
+      "fingerprint": "17d8b454b7c6fafe14be7f8dc3dc13f4d1bc16a91939594b07443ee758ad5661",
+      "strings": [
+        {
+          "value": "__proto__",
+          "hash": "30e2af384186b57fda019524ade9f9afe48e815480b993d14ec8dc68251b592a"
+        },
+        {
+          "value": "- `action.payload` ist immer ein Plain-Object.",
+          "hash": "d6f69b8e413b4b731b6bf4d5bb9c4ec13900caa1140022134423435935ee6f0c"
+        },
+        {
+          "value": "- `action.type` ist ein nicht-leerer String.",
+          "hash": "3dbbcd5b852188077a76b3959a81ad5797537a1c1d87bdf3b2983db7757a122d"
+        },
+        {
+          "value": "- `action` ist immer ein Plain-Object.",
+          "hash": "1f47f207ade931256ac6d1ac7b12faeab7659174bac0419daa3233191426aece"
+        },
+        {
+          "value": "- `src/game/GameLogicController.js`",
+          "hash": "9c298526aee9c0debd4f2c2a7bafd858acf6a4dff0d18bb4460236c2eff5fedd"
+        },
+        {
+          "value": "- Der Game-Logic-Controller erzeugt nur Patch-Wuensche.",
+          "hash": "9579c7c98f7c5faf9167d7df42324819e6e44100759a2710586561435c7f1d74"
+        },
+        {
+          "value": "- Der Kernel entscheidet, ob die vorgeschlagenen Patches geschrieben werden.",
+          "hash": "59cf0e34766e7c51793a343afee3dbbbe6f75337558e92498a2ebef443336e29"
+        },
+        {
+          "value": "- Direkte State-Writes sind ausgeschlossen.",
+          "hash": "4190bc839ec1f706d9bc7024bf55b092433951744fd9dc030f214b9f91b113f8"
+        },
+        {
+          "value": "- Keine Getter, Setter, `__proto__`, `prototype`, `constructor` oder `eval`.",
+          "hash": "9f706b97ce18c77a23528803d0daa3b9e38a4a1b3ba1d14dfc88e24fd67f7304"
+        },
+        {
+          "value": "| `build` | `machine`, `count` | Erhoeht eine Maschinenanzahl und bucht Kosten ab. |",
+          "hash": "20daed2dbe580f6ddf8b77b7a8fa1e03f4b87bef67279ce3a64f7b3bd9595b50"
+        },
+        {
+          "value": "| `consume` | `resource`, `amount` | Senkt eine Resource deterministisch. |",
+          "hash": "a11c07c94e9d40cb904100791dedf87c240e65ce1c7a84e771ccecf917f23217"
+        },
+        {
+          "value": "| `generate_world` | `seed` | Generiert deterministische World-Daten (seed/size/meta/tiles). |",
+          "hash": "4547250c0949710f06a68a6b8f937e618e488c03ab40176c4336d667b750b170"
+        },
+        {
+          "value": "| `inspect` | keine | Reine Analyse, keine State-Aenderung. |",
+          "hash": "1f8e9b2c19e5e5a122ba7fce02c4b3980f0f2b35c833a517c53dfab15a258b08"
+        },
+        {
+          "value": "| `produce` | `resource`, `amount` | Erhoeht eine Resource deterministisch. |",
+          "hash": "c4cb2a5790eb5e97aed67a9646593a5211248bee2a870a7e38d6bc043a86b703"
+        },
+        {
+          "value": "| `regenerate_world` | `seed` | Regeneriert die World-Daten mit neuem/gleichbleibendem Seed. |",
+          "hash": "b49348e44a5d0c28157e58880e0e971a882caa4b3d4587682222633b9d103fb4"
+        },
+        {
+          "value": "| `transport` | `from`, `to`, `amount` | Verschiebt Menge zwischen zwei Lager-Slots. |",
+          "hash": "d547680a91b5c6256aaa2ea2803d62b581ba7bec067a86cd2ce16d16bcb2026b"
+        },
+        {
+          "value": "| Action | Pflichtfelder | Bedeutung |",
+          "hash": "d44c334b339e97afc88bc52da715486065ae217fee1e7f1b953fe762d35240b3"
+        },
+        {
+          "value": "action",
+          "hash": "bd938c688f49b77c7fc537c6b9222e2c97ebddd63076b87f2feaec66fb9c05d0"
+        },
+        {
+          "value": "Action Schema",
+          "hash": "abf0470293a54143958eb1530bc7ed5046fbadb6f5bcbb4ddd066007d0a138d6"
+        },
+        {
+          "value": "action.payload",
+          "hash": "7ee5500a323633acdff80194e411e7f1a7cc4aca400ae5993c0e5ae62691cb76"
+        },
+        {
+          "value": "action.type",
+          "hash": "a18c43957cb344517777a072e62c99f046c5ca75e9de4b3b316d42c64d6b6661"
+        },
+        {
+          "value": "amount",
+          "hash": "cf38d95c9c6b1d9d5125c04d41a54df57727ef4cfb3f5116a602fe2b25115c13"
+        },
+        {
+          "value": "build",
+          "hash": "44575cf5b28512d75644bf54a517dcef304ff809fd511747621b4d64f19aac66"
+        },
+        {
+          "value": "constructor",
+          "hash": "e3c1703abf8a6b3df04dd30e184fe02bb6724f46830b544562ff083169371068"
+        },
+        {
+          "value": "consume",
+          "hash": "96f39e3569ec878ecb0b6c1713b4e49f5ca0550d892364f385fcde951f92e5de"
+        },
+        {
+          "value": "Controller-Verhalten",
+          "hash": "042a9367af3ab36dfdd9120296f205a9cd729d484aabeac83c92d76814d9cda8"
+        },
+        {
+          "value": "count",
+          "hash": "6c35493a2b937829c9815c39e23af964bc84e5430a7dc104c700bbc0de2b59e3"
+        },
+        {
+          "value": "Dieses Schema beschreibt die Aktionen, die der `GameLogicController` in SeedWorld verarbeiten darf.",
+          "hash": "847e41e31747ecd4d6033a41d6d9ef9dd588f15c86f722dcfe4c1bdd8f4c6118"
+        },
+        {
+          "value": "eval",
+          "hash": "1bbd174404efbce95f1af489ef93f4aa0f4d55718f24c3504682216afa7b7fb1"
+        },
+        {
+          "value": "from",
+          "hash": "75857a45899985be4c4d941e90b6b396d6c92a4c7437aaf0bf102089fe21379d"
+        },
+        {
+          "value": "GameLogicController",
+          "hash": "7750390987dc06f398aaa0018d6b2c550c064a4ede50a52c767c69de8239e5d1"
+        },
+        {
+          "value": "generate_world",
+          "hash": "151233a7dea93177ac09db019f8b7607cb13eb8fb3777f1c0392c7fbbf64b8af"
+        },
+        {
+          "value": "inspect",
+          "hash": "14a60637758cb026afd2fe447f3648a07965072eeefaa9ee57734959bce8ae2b"
+        },
+        {
+          "value": "Kanonische Aktionen",
+          "hash": "e5704153c5998de486e49dbd86898bb62af1b01820c6dacc16e13db58bc1c96f"
+        },
+        {
+          "value": "machine",
+          "hash": "bc020a35b7f9cb1382e7b534c68e3c531d849b119bf14f75ddead6cc45c3ccc1"
+        },
+        {
+          "value": "Payload-Regeln",
+          "hash": "dc0f47ab7c61d01461dec0294e56e50a9d3631a59d9929818989b2ce5ba4a269"
+        },
+        {
+          "value": "produce",
+          "hash": "1198780b3af7203cac87d6f443ab13bcfdb9635ea6393e7ee30193f671df5093"
+        },
+        {
+          "value": "prototype",
+          "hash": "b34563e2ebeb771708ba0648c9385383f61cc11e86af6076848433059c14b2df"
+        },
+        {
+          "value": "regenerate_world",
+          "hash": "6fcf3384c67d8bc28a54ae8318e01307363d53861b1b3a140b4ee2b76ca7cab9"
+        },
+        {
+          "value": "resource",
+          "hash": "5de95319f17467ed6dc58e4e0b16c1193a13b35d60dc48bcf06bf6b7beebbe6c"
+        },
+        {
+          "value": "seed",
+          "hash": "19b25856e1c150ca834cffc8b59b23adbd0ec0389e58eb22b3b64768098d002b"
+        },
+        {
+          "value": "to",
+          "hash": "663ea1bfffe5038f3f0cf667f14c4257eff52d77ce7f2a218f72e9286616ea39"
+        },
+        {
+          "value": "transport",
+          "hash": "6694ea8075001f6628da20f1afdafc74a763e2098bafc633b057534792db6aad"
+        },
+        {
+          "value": "Ziel-Datei",
+          "hash": "217ad657c17636bda38b7dbbc4ecf483ef1428f77eaf5e196ecf18a40f133251"
+        },
+        {
+          "value": "Zweck",
+          "hash": "5c123d4febae3709a2286d1c11cc218274eeeed7120d7b5cfe44fa22dcc1d4ab"
+        }
+      ]
+    },
+    {
+      "path": "app/src/game/contracts/MutationMatrix.md",
+      "string_count": 66,
+      "fingerprint": "c652d85f52b37b7f0fc24bd95ee1e6bf434eb62067cbcbc5d1df60a121519182",
+      "strings": [
+        {
+          "value": "__proto__",
+          "hash": "30e2af384186b57fda019524ade9f9afe48e815480b993d14ec8dc68251b592a"
+        },
+        {
+          "value": "- `src/game/contracts/mutationMatrixConstraints.js`",
+          "hash": "622ed8a707e3818c09d813a759c9b82c25290eabc9943112c2ae251da8acf62f"
+        },
+        {
+          "value": "- `src/game/GameLogicController.js`",
+          "hash": "9c298526aee9c0debd4f2c2a7bafd858acf6a4dff0d18bb4460236c2eff5fedd"
+        },
+        {
+          "value": "- Der Game-Logic-Controller darf keine Pfade ausserhalb dieser Matrix vorschlagen.",
+          "hash": "7b4aad915ab3ab413a4e3bcb2e42e9021649ebeebf7798c3e7669dc7afa4c00d"
+        },
+        {
+          "value": "- Der Kernel darf nur schreiben, wenn ein Patch innerhalb dieser Whitelist liegt.",
+          "hash": "df4fe6677978fe85b1f99e3dc70d1aae7a9dc95557d3d6d0a6ced4afa98f74ba"
+        },
+        {
+          "value": "- Die Mutation-Matrix ist die technische Grenze fuer alle Game-Patches.",
+          "hash": "1403b2d3c9ae4ab03a8cda4eb10143bca51d4f06d5446a14a3b5e35038be171b"
+        },
+        {
+          "value": "- Ein Patch darf nur die Domain `game` tragen.",
+          "hash": "2b4f4a986e7cadfc5397085dfb167b6ff953bec4060abe9003fe1d734295cc5d"
+        },
+        {
+          "value": "- Ein Patch-Pfad muss mit einem der oben gelisteten Pfade beginnen oder exakt darauf zeigen.",
+          "hash": "1e1b8c3f97a062775c64ce9d84bd8e3a26fcf6a0b31eb1e5b1d8fbeae7e54e62"
+        },
+        {
+          "value": "- Root-Container-Replacements sind nicht vorgesehen.",
+          "hash": "9d24106ef2e59a093ba5662db25e8d6fd4d423437f1e4345c1ace6c6395b6fdd"
+        },
+        {
+          "value": "- Typ- und Range-Verletzungen muessen fail-closed mit strukturierten Fehlercodes blockiert werden.",
+          "hash": "2b710ea461edc9ede5a9afd7e2a99c45bc4afaeb9f25cc1636305571ff7ba77d"
+        },
+        {
+          "value": "- Ungueltige Pfade wie `__proto__`, `prototype`, `constructor` und `eval` sind verboten.",
+          "hash": "c7c39b88e5347b379a706438e9aef2adc7abcc22fc898e32f770acb6cfa8662c"
+        },
+        {
+          "value": "| `logistics.storageA` | `uint32` | `0` | `1000000` | `true` |",
+          "hash": "01c3d0481195c5da4c239453ce9f58a25467101818063c70843dff3c5cff8041"
+        },
+        {
+          "value": "| `logistics.storageB` | `uint32` | `0` | `1000000` | `true` |",
+          "hash": "c0ca33c38cde7f889bb6b54642db28a2be70671745695f3c73759a6e61bf1ac0"
+        },
+        {
+          "value": "| `machines.assemblers` | `uint16` | `0` | `1024` | `true` |",
+          "hash": "cefb562e6e4e144cb4521f2ed80dbdd70d72101b34135d9dbb1aff586035d265"
+        },
+        {
+          "value": "| `machines.conveyors` | `uint16` | `0` | `4096` | `true` |",
+          "hash": "df6c6842257d86ae8cadd2279058947272bfeb7eb7be38c41de47ed8b194ae2d"
+        },
+        {
+          "value": "| `machines.miners` | `uint16` | `0` | `1024` | `true` |",
+          "hash": "412855885090a682a637951734f2a982e8cd9b38c47c910d155f69fdf0726476"
+        },
+        {
+          "value": "| `meta.lastAction` | `string` | `0` | `128` | `n/a` |",
+          "hash": "ac4c2a16768645d6c1b621b040b694a913e720a0ec47c4abe92528cdcde19fd9"
+        },
+        {
+          "value": "| `meta.revision` | `uint32` | `0` | `4294967295` | `true` |",
+          "hash": "68f0ba82f8037c96d7c82775af1226cee76c25fc5f88079a4f9533623b6564ba"
+        },
+        {
+          "value": "| `resources.copper` | `uint32` | `0` | `999999` | `true` |",
+          "hash": "e8c50b6e462ccde176fdf36c43c757851e49092ea61140190ee55f8cc259a1fd"
+        },
+        {
+          "value": "| `resources.gears` | `uint32` | `0` | `999999` | `true` |",
+          "hash": "2f5971216a6bca25c92c30f271f0b9e28d71234c8239aa05f080c45276132ad9"
+        },
+        {
+          "value": "| `resources.iron` | `uint32` | `0` | `999999` | `true` |",
+          "hash": "dc120472b5d14beac5e384b63772ccc4b0de51310ec3ba35064c248efa21a9ea"
+        },
+        {
+          "value": "| `resources.ore` | `uint32` | `0` | `999999` | `true` |",
+          "hash": "8b0866e400d3ad9f9f89f88b111f37f9477db1c4eb3750314f25a876dce050ae"
+        },
+        {
+          "value": "| `world.meta` | `object` | `n/a` | `n/a` | `n/a` |",
+          "hash": "6f4e32ce08b3af50f4230c4cd6cbda51ba39fa80da2d2367bc4716ef9dae5056"
+        },
+        {
+          "value": "| `world.seed` | `string` | `1` | `128` | `n/a` |",
+          "hash": "84ba4e95df1b3923c09bb9ba500a5c79ab5fb267ab1895f6fbd0f1698f8acac2"
+        },
+        {
+          "value": "| `world.size.height` | `uint16` | `1` | `1024` | `true` |",
+          "hash": "4d4dc41ebd6e2cd0517ac98cf06412d15dbc478fd49456fa140434c342aeec04"
+        },
+        {
+          "value": "| `world.size.width` | `uint16` | `1` | `1024` | `true` |",
+          "hash": "2603d9a53fd38c8f8fdfab7d2ace20ce83c5ce082dcdc37bc828f484f99809ec"
+        },
+        {
+          "value": "| `world.tiles` | `array` | `n/a` | `n/a` | `n/a` |",
+          "hash": "bc913c95b5d84686143af6943c91b39cf279890fd7d3193ab1f400785246feb6"
+        },
+        {
+          "value": "| Domain | Erlaubte Pfade |",
+          "hash": "c6d7201b8fb47fd6611f1e393b2e37c1a56a805bc3265a75d6e5aaf87587b984"
+        },
+        {
+          "value": "| Pfad | Typ | Min | Max | Integer |",
+          "hash": "5307cf936734155a583e58f04a4faec7fee4de22ef83ff7c53b76a9adec5bc3f"
+        },
+        {
+          "value": "array",
+          "hash": "dbe42cc09c16704aa3d60127c60b4e1646fc6da1d4764aa517de053e65a663d7"
+        },
+        {
+          "value": "constructor",
+          "hash": "e3c1703abf8a6b3df04dd30e184fe02bb6724f46830b544562ff083169371068"
+        },
+        {
+          "value": "Controller-Verhalten",
+          "hash": "042a9367af3ab36dfdd9120296f205a9cd729d484aabeac83c92d76814d9cda8"
+        },
+        {
+          "value": "Diese Matrix beschreibt, welche State-Pfade der `GameLogicController` fuer die Domain `game` patchen darf.",
+          "hash": "1dc3d6cad2dc428ec443cbd84aca19e754172ea2e234151c39e5ed5e26cfc032"
+        },
+        {
+          "value": "eval",
+          "hash": "1bbd174404efbce95f1af489ef93f4aa0f4d55718f24c3504682216afa7b7fb1"
+        },
+        {
+          "value": "game",
+          "hash": "6ca5cab77e702c787b4c14b3d3bf26bad43da606be6eed04ab0b9720120ae081"
+        },
+        {
+          "value": "GameLogicController",
+          "hash": "7750390987dc06f398aaa0018d6b2c550c064a4ede50a52c767c69de8239e5d1"
+        },
+        {
+          "value": "Kanonische Whitelist",
+          "hash": "909d0449a9389e1f159916ea4cf769cba7e0421fa700e1608818ff686c2bd936"
+        },
+        {
+          "value": "logistics.storageA",
+          "hash": "0f5cf1457e06f52923e15e74281765fc0b3b8e21f5125ee20afa7fa6cb998b09"
+        },
+        {
+          "value": "logistics.storageB",
+          "hash": "69831a512fb4a98c8a18c4ea0aa135a4f85e37a67f9aebbb0540ed72fb882486"
+        },
+        {
+          "value": "machines.assemblers",
+          "hash": "3f50b2a927a61412ea3f2e56b764bf6c3ec3059d11ac7d17ea93bd812234deef"
+        },
+        {
+          "value": "machines.conveyors",
+          "hash": "933ec7d2e80c4b794b0a44c5c3e75ecf0093bf5e9c837b0e7509cda28c6cfe14"
+        },
+        {
+          "value": "machines.miners",
+          "hash": "28b554038c434b65b0cdb5585e4d6b04ca122be750102a4f6b69367d500ee79d"
+        },
+        {
+          "value": "meta.lastAction",
+          "hash": "1c6349f538e2b82c846fdd69900901cc4a5a012352d6a83087dd66fa88a9c4de"
+        },
+        {
+          "value": "meta.revision",
+          "hash": "9930fe244b4d5bbb14040ce4a1d802c1e15291618b64a2c7dc099214f6513614"
+        },
+        {
+          "value": "Mutation Matrix",
+          "hash": "330da7a10dbeabfd52e4a106294398c24257b3a122b83ecb4823d0847ed10701"
+        },
+        {
+          "value": "n/a",
+          "hash": "a683c5c5349f6f7fb903ba8a9e7e55d0ba1b8f03579f95be83f4954c33e81098"
+        },
+        {
+          "value": "object",
+          "hash": "2958d416d08aa5a472d7b509036cb7eafd542add84527e66a145ea64cb4cdc75"
+        },
+        {
+          "value": "Patch-Regeln",
+          "hash": "5c79d72d666a4fa2819ddcc9635397539d277e854f75e7af6f0d51fac4e7580a"
+        },
+        {
+          "value": "prototype",
+          "hash": "b34563e2ebeb771708ba0648c9385383f61cc11e86af6076848433059c14b2df"
+        },
+        {
+          "value": "resources.copper",
+          "hash": "338d833bb82bec18796fec5f76a3726a35b07b04e3f4d90c4f922bbc641de1d4"
+        },
+        {
+          "value": "resources.gears",
+          "hash": "2710e18edb976052db8109c5001d9e27202a5075a42675b2e1a9b8b3bb8cc450"
+        },
+        {
+          "value": "resources.iron",
+          "hash": "313322772f3790fe97762e6586f3a14a6a91371023368d8e661114a1511589d4"
+        },
+        {
+          "value": "resources.ore",
+          "hash": "89f5c12b7ef97e9caa3e4c8ba336e8048904406888d9ff849c99b8529189fa77"
+        },
+        {
+          "value": "string",
+          "hash": "473287f8298dba7163a897908958f7c0eae733e25d2e027992ea2edc9bed2fa8"
+        },
+        {
+          "value": "true",
+          "hash": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b"
+        },
+        {
+          "value": "Typed Constraints",
+          "hash": "9e44b48ff33553487cd7a2f0b67bbabe4569d6728593ca472f048aeb1ceb67e8"
+        },
+        {
+          "value": "uint16",
+          "hash": "6cd79c26910fc8527da68ba02c6eb374416b07240b94a0857b134037a4c3fed5"
+        },
+        {
+          "value": "uint32",
+          "hash": "1c06d81634ed9a2e4e5594026e886b021f6ccad84a982c2034d9693403089b91"
+        },
+        {
+          "value": "world.meta",
+          "hash": "4a8b0b0c01914629bd7c10ac23cb572467fc1ea799fcc448c592a365091a7c54"
+        },
+        {
+          "value": "world.seed",
+          "hash": "6f9acc1e8e0f138bd9314717ed0a9a37d6a5e5dc79eb0a15bb4d9f5bf88df69f"
+        },
+        {
+          "value": "world.size",
+          "hash": "d2bec53b12f9537ca4fd9bcff60a75d50e868d3326f9b6246ef8520058cc690e"
+        },
+        {
+          "value": "world.size.height",
+          "hash": "6331a59f65792fbd65c52c0e96c31ceae85a528bdf886e86a9fcd16bfa18b7d8"
+        },
+        {
+          "value": "world.size.width",
+          "hash": "93ae7ba8b3557e9ad43ea0f72a679544aa715ada5eb23dbc31ca555a1910a4c2"
+        },
+        {
+          "value": "world.tiles",
+          "hash": "d0d02636b6984a8d0df92b937719153c693c1f71eac535eac450fac6e279e63e"
+        },
+        {
+          "value": "Ziel-Datei",
+          "hash": "217ad657c17636bda38b7dbbc4ecf483ef1428f77eaf5e196ecf18a40f133251"
+        },
+        {
+          "value": "Zweck",
+          "hash": "5c123d4febae3709a2286d1c11cc218274eeeed7120d7b5cfe44fa22dcc1d4ab"
+        }
+      ]
+    },
+    {
+      "path": "app/src/game/contracts/mutationMatrixConstraints.js",
+      "string_count": 21,
+      "fingerprint": "e8509895a6dc4339917f3b08edb4f98e6f7807d5bc826f396fc73a7f73cd8b2e",
+      "strings": [
+        {
+          "value": "array",
+          "hash": "dbe42cc09c16704aa3d60127c60b4e1646fc6da1d4764aa517de053e65a663d7"
+        },
+        {
+          "value": "logistics.storageA",
+          "hash": "0f5cf1457e06f52923e15e74281765fc0b3b8e21f5125ee20afa7fa6cb998b09"
+        },
+        {
+          "value": "logistics.storageB",
+          "hash": "69831a512fb4a98c8a18c4ea0aa135a4f85e37a67f9aebbb0540ed72fb882486"
+        },
+        {
+          "value": "machines.assemblers",
+          "hash": "3f50b2a927a61412ea3f2e56b764bf6c3ec3059d11ac7d17ea93bd812234deef"
+        },
+        {
+          "value": "machines.conveyors",
+          "hash": "933ec7d2e80c4b794b0a44c5c3e75ecf0093bf5e9c837b0e7509cda28c6cfe14"
+        },
+        {
+          "value": "machines.miners",
+          "hash": "28b554038c434b65b0cdb5585e4d6b04ca122be750102a4f6b69367d500ee79d"
+        },
+        {
+          "value": "meta.lastAction",
+          "hash": "1c6349f538e2b82c846fdd69900901cc4a5a012352d6a83087dd66fa88a9c4de"
+        },
+        {
+          "value": "meta.revision",
+          "hash": "9930fe244b4d5bbb14040ce4a1d802c1e15291618b64a2c7dc099214f6513614"
+        },
+        {
+          "value": "object",
+          "hash": "2958d416d08aa5a472d7b509036cb7eafd542add84527e66a145ea64cb4cdc75"
+        },
+        {
+          "value": "resources.copper",
+          "hash": "338d833bb82bec18796fec5f76a3726a35b07b04e3f4d90c4f922bbc641de1d4"
+        },
+        {
+          "value": "resources.gears",
+          "hash": "2710e18edb976052db8109c5001d9e27202a5075a42675b2e1a9b8b3bb8cc450"
+        },
+        {
+          "value": "resources.iron",
+          "hash": "313322772f3790fe97762e6586f3a14a6a91371023368d8e661114a1511589d4"
+        },
+        {
+          "value": "resources.ore",
+          "hash": "89f5c12b7ef97e9caa3e4c8ba336e8048904406888d9ff849c99b8529189fa77"
+        },
+        {
+          "value": "string",
+          "hash": "473287f8298dba7163a897908958f7c0eae733e25d2e027992ea2edc9bed2fa8"
+        },
+        {
+          "value": "uint16",
+          "hash": "6cd79c26910fc8527da68ba02c6eb374416b07240b94a0857b134037a4c3fed5"
+        },
+        {
+          "value": "uint32",
+          "hash": "1c06d81634ed9a2e4e5594026e886b021f6ccad84a982c2034d9693403089b91"
+        },
+        {
+          "value": "world.meta",
+          "hash": "4a8b0b0c01914629bd7c10ac23cb572467fc1ea799fcc448c592a365091a7c54"
+        },
+        {
+          "value": "world.seed",
+          "hash": "6f9acc1e8e0f138bd9314717ed0a9a37d6a5e5dc79eb0a15bb4d9f5bf88df69f"
+        },
+        {
+          "value": "world.size.height",
+          "hash": "6331a59f65792fbd65c52c0e96c31ceae85a528bdf886e86a9fcd16bfa18b7d8"
+        },
+        {
+          "value": "world.size.width",
+          "hash": "93ae7ba8b3557e9ad43ea0f72a679544aa715ada5eb23dbc31ca555a1910a4c2"
+        },
+        {
+          "value": "world.tiles",
+          "hash": "d0d02636b6984a8d0df92b937719153c693c1f71eac535eac450fac6e279e63e"
+        }
+      ]
+    },
+    {
+      "path": "app/src/game/gameConfig.js",
+      "string_count": 60,
+      "fingerprint": "d03b33fd58b65ed4bae9f4853081b8f5eb106caac0efda4cdbbbed0c5fd7d341",
+      "strings": [
+        {
+          "value": "amount",
+          "hash": "cf38d95c9c6b1d9d5125c04d41a54df57727ef4cfb3f5116a602fe2b25115c13"
+        },
+        {
+          "value": "Assembler capacity is online.",
+          "hash": "a8e78021a88cce7cdb639abcf0fb37e0bd99482a84ea711540c3ae12ac83123f"
+        },
+        {
+          "value": "Assembler Line",
+          "hash": "9f570455277a49b8c747478f0fc3be6b493ab65398fae9f255e0a65caaccd6d8"
+        },
+        {
+          "value": "assembler-line",
+          "hash": "b4ffe6803afff669876ced2557aa51c2783bfd252e98fdf8193c77f9c540fef2"
+        },
+        {
+          "value": "assembly",
+          "hash": "e020bdf568793dee747a220086c5e53c8b3af5abd959383a31297f303577efe6"
+        },
+        {
+          "value": "Assembly",
+          "hash": "44e7d4b248469d73fded51deae7a7855ffed503a0c85ba86db249880ac84abc6"
+        },
+        {
+          "value": "At least one machine is working.",
+          "hash": "9a39146e6007a56b09fc38286dadd1977c08cbe22b73ee2c6ebdb7954cd240b1"
+        },
+        {
+          "value": "builder",
+          "hash": "df6b07176a9b17cc4c9afc257bd404732e7d09b76436c7890f7b7be14e579794"
+        },
+        {
+          "value": "Builder",
+          "hash": "090940e7325896cc06b13348b51fbaba86a5d9d1937fc37a4e3a3f02f00401db"
+        },
+        {
+          "value": "Copper First",
+          "hash": "580a8945f3adbb898e2431f41c7502aca07752dfa920fa4a06b38d170c90025f"
+        },
+        {
+          "value": "Copper flow established.",
+          "hash": "842f923040c9d85b76a05469562a995967527e706218a59fd9809b5911417941"
+        },
+        {
+          "value": "copper-first",
+          "hash": "e36a1b5e2282b5dceacaf47e27d63ac7065ca158f82cb9ef30493f34573e7cf3"
+        },
+        {
+          "value": "count",
+          "hash": "6c35493a2b937829c9815c39e23af964bc84e5430a7dc104c700bbc0de2b59e3"
+        },
+        {
+          "value": "Erz",
+          "hash": "349ad55824407e8895626b15f64f22d4b2b7e6d46bf492965270efbda61c74aa"
+        },
+        {
+          "value": "Fabrik",
+          "hash": "4e4c2364f2b2db281190ddca3653ca070ef535bee1ea4fac0a1262ac88ca91ec"
+        },
+        {
+          "value": "First ore signal online.",
+          "hash": "a5b4ca9c9a5368baacb1e1929ef32de2c49ebb257a46f075b0ca4eac0dc783ec"
+        },
+        {
+          "value": "flow",
+          "hash": "3b21278178ed3463f3bde3a35f088caf6d99ff1b2f647d9a0c2b8de599ec3dc6"
+        },
+        {
+          "value": "Flow",
+          "hash": "f1273dc72c95d57e92eb520dac8ef22abb27634f46dcda121dab711eb04f66ec"
+        },
+        {
+          "value": "from",
+          "hash": "75857a45899985be4c4d941e90b6b396d6c92a4c7437aaf0bf102089fe21379d"
+        },
+        {
+          "value": "game",
+          "hash": "6ca5cab77e702c787b4c14b3d3bf26bad43da606be6eed04ab0b9720120ae081"
+        },
+        {
+          "value": "Gear First",
+          "hash": "a971f9aa8b7f2b97a78ed908241eedc2d8bded6a0e75b9249e4309046e5bbf3a"
+        },
+        {
+          "value": "Gear stock is available.",
+          "hash": "4a0322168e18b62a3991d6138d74820cb1f756a05bee33c56a5da2d6c568f4d6"
+        },
+        {
+          "value": "gear-first",
+          "hash": "8c295c270b7eef505e27bf922ec145d16f1311982c370657d2e0a81cafbb4b74"
+        },
+        {
+          "value": "horizon",
+          "hash": "4726a1bce9706083939a56b88b657a4c6fe83d9ae0543889df2938517ed1e4f5"
+        },
+        {
+          "value": "Horizon",
+          "hash": "ae8359684edfa68a550cb0ab9ffee0aa27c2d6325191fc805f0a1b5bf40a7d51"
+        },
+        {
+          "value": "Iron First",
+          "hash": "0b505c5169abdfdb6ad48ccb4a0b44e131d0d3fb429c4ce0b0ceb1b2bf786309"
+        },
+        {
+          "value": "Iron flow established.",
+          "hash": "f7f778ce8a86e5e2a5982605f14d1657976132c234cc39605f1c863f42064e8b"
+        },
+        {
+          "value": "iron-first",
+          "hash": "dc63eb25bd19204911cd797f95adda25101b53cddbe1bb6f0a380f2821eac12e"
+        },
+        {
+          "value": "Lager",
+          "hash": "3781688d9e695dcde69e64b016124ff2781dae59f354f0ec0d173bed95b4fdf9"
+        },
+        {
+          "value": "Logistics Flow",
+          "hash": "54167513c57fb0537b6ea9693ab611f3cb2885d855af8a0429abfe6eca887a3c"
+        },
+        {
+          "value": "logistics-flow",
+          "hash": "952591e9df4016425bf91d4f32b1fb1eb2ba2cfaab8507ba29249ddcd1194e35"
+        },
+        {
+          "value": "logistics.storageA",
+          "hash": "0f5cf1457e06f52923e15e74281765fc0b3b8e21f5125ee20afa7fa6cb998b09"
+        },
+        {
+          "value": "logistics.storageB",
+          "hash": "69831a512fb4a98c8a18c4ea0aa135a4f85e37a67f9aebbb0540ed72fb882486"
+        },
+        {
+          "value": "machine",
+          "hash": "bc020a35b7f9cb1382e7b534c68e3c531d849b119bf14f75ddead6cc45c3ccc1"
+        },
+        {
+          "value": "Machine First",
+          "hash": "5278a19012e6bebebd8805fec9cbb4ff6b87add947cea67231d2a58fd44c24f9"
+        },
+        {
+          "value": "machine-first",
+          "hash": "b1fc8d79a06efd966a401c97150e6a521e5c8b107fe3725846b3e01c681d78ca"
+        },
+        {
+          "value": "machines.assemblers",
+          "hash": "3f50b2a927a61412ea3f2e56b764bf6c3ec3059d11ac7d17ea93bd812234deef"
+        },
+        {
+          "value": "machines.conveyors",
+          "hash": "933ec7d2e80c4b794b0a44c5c3e75ecf0093bf5e9c837b0e7509cda28c6cfe14"
+        },
+        {
+          "value": "machines.miners",
+          "hash": "28b554038c434b65b0cdb5585e4d6b04ca122be750102a4f6b69367d500ee79d"
+        },
+        {
+          "value": "meta.lastAction",
+          "hash": "1c6349f538e2b82c846fdd69900901cc4a5a012352d6a83087dd66fa88a9c4de"
+        },
+        {
+          "value": "meta.revision",
+          "hash": "9930fe244b4d5bbb14040ce4a1d802c1e15291618b64a2c7dc099214f6513614"
+        },
+        {
+          "value": "Ore First",
+          "hash": "24e79c0e37679030013a4405a6126262e52d8b34dc9c8a96a0446731d65e7343"
+        },
+        {
+          "value": "ore-first",
+          "hash": "2545c7089287ad932cfaf47829310a6e3a34a122d6698b80f36cc5071d2d0aad"
+        },
+        {
+          "value": "resource",
+          "hash": "5de95319f17467ed6dc58e4e0b16c1193a13b35d60dc48bcf06bf6b7beebbe6c"
+        },
+        {
+          "value": "resources.copper",
+          "hash": "338d833bb82bec18796fec5f76a3726a35b07b04e3f4d90c4f922bbc641de1d4"
+        },
+        {
+          "value": "resources.gears",
+          "hash": "2710e18edb976052db8109c5001d9e27202a5075a42675b2e1a9b8b3bb8cc450"
+        },
+        {
+          "value": "resources.iron",
+          "hash": "313322772f3790fe97762e6586f3a14a6a91371023368d8e661114a1511589d4"
+        },
+        {
+          "value": "resources.ore",
+          "hash": "89f5c12b7ef97e9caa3e4c8ba336e8048904406888d9ff849c99b8529189fa77"
+        },
+        {
+          "value": "seed",
+          "hash": "19b25856e1c150ca834cffc8b59b23adbd0ec0389e58eb22b3b64768098d002b"
+        },
+        {
+          "value": "Seed",
+          "hash": "367ef06b8fbf3aaaccd9cff1301628fae45901ccd9661b5a1b256c7cc5314d24"
+        },
+        {
+          "value": "sprout",
+          "hash": "7957bdf8ea97bea330a7e03361617f09d58f59a9db836ecac295571e45a6314e"
+        },
+        {
+          "value": "Sprout",
+          "hash": "badd2252b629e326bf47991a3573829cc1f0ccb783ca7b554de803fc38a0e7eb"
+        },
+        {
+          "value": "Storage is carrying load.",
+          "hash": "3daf32b4b6fd1ba5f280dde70e97002ddc0d7a23837f5a2763b6e74d4724796f"
+        },
+        {
+          "value": "tileType",
+          "hash": "00227f840c1d3353813d1152063a7130aaf4812d7a6c3d44348045964ae129a1"
+        },
+        {
+          "value": "to",
+          "hash": "663ea1bfffe5038f3f0cf667f14c4257eff52d77ce7f2a218f72e9286616ea39"
+        },
+        {
+          "value": "Verbindung",
+          "hash": "036781f17340ce47c14653a728904ecf2f623e83c2a9adcb72e3e8751e9ff844"
+        },
+        {
+          "value": "world.meta",
+          "hash": "4a8b0b0c01914629bd7c10ac23cb572467fc1ea799fcc448c592a365091a7c54"
+        },
+        {
+          "value": "world.seed",
+          "hash": "6f9acc1e8e0f138bd9314717ed0a9a37d6a5e5dc79eb0a15bb4d9f5bf88df69f"
+        },
+        {
+          "value": "world.size",
+          "hash": "d2bec53b12f9537ca4fd9bcff60a75d50e868d3326f9b6246ef8520058cc690e"
+        },
+        {
+          "value": "world.tiles",
+          "hash": "d0d02636b6984a8d0df92b937719153c693c1f71eac535eac450fac6e279e63e"
+        }
+      ]
+    },
+    {
+      "path": "app/src/game/gameConstants.js",
+      "string_count": 11,
+      "fingerprint": "e033fa79a1a1cbcab8c0649eaf2410b7ca89b2164f8f7db2aaaafa533ee1849b",
+      "strings": [
+        {
+          "value": "+${mined} Erz",
+          "hash": "a4748d2ae608f53101748cff86e32de35cfec6354678d92537804c84c3d00e7e"
+        },
+        {
+          "value": "+${smelted} Eisen",
+          "hash": "2b1d74ad8e926324ca1064b66992defde798b119796a16470c91e244de702990"
+        },
+        {
+          "value": "${state.clock.secondsElapsed}s",
+          "hash": "82160db254a9a3289b11ea49d870f1e3001a11a46eaa61e7c7b1ff35a544c093"
+        },
+        {
+          "value": "Abbauer laufen nur auf Erzfeldern. Schmelzen wandeln 5 Erz automatisch in 1 Eisen.",
+          "hash": "094aa86a8e0cfd09cfcd0ff0a79d11a88eeeffe265873f907d336a36e7e43e4a"
+        },
+        {
+          "value": "Automatik wartet",
+          "hash": "3812c5cf8208a6a3efe74aca346d6f45e8137a98c71ba93b05b32ed53183cd5a"
+        },
+        {
+          "value": "miner",
+          "hash": "8b133a3868993176b613738816247a7f4d357cae555996519cf5b543e9b3554b"
+        },
+        {
+          "value": "object",
+          "hash": "2958d416d08aa5a472d7b509036cb7eafd542add84527e66a145ea64cb4cdc75"
+        },
+        {
+          "value": "ore",
+          "hash": "f8bd17bea0e948bb644ee10b36ba44e1627d6ab0f0deaebbadc600303d24b6ad"
+        },
+        {
+          "value": "smelter",
+          "hash": "4e82d2b592679b26752a4816f6e099f1393b6302380349fe7a1fa2642f641756"
+        },
+        {
+          "value": "tick",
+          "hash": "55a4bc5be68ea5c30cbe4d07e3bf951163b5a207dfd628ea53a2eb21072a9f3b"
+        },
+        {
+          "value": "Tick ${state.clock.tick}",
+          "hash": "fa04b61c0f159366f74f2f7cb54dd0a0ce9297f3d01b2dfe5acc88582f617674"
+        }
+      ]
+    },
+    {
+      "path": "app/src/game/gameInput.js",
+      "string_count": 13,
+      "fingerprint": "4c414d99a07af80a80d9515df6c54e90a1ece0956519644b2735c102528c6c2f",
+      "strings": [
+        {
+          "value": "[GAME_LOGIC] ${label} darf nicht leer sein.",
+          "hash": "66091f9efbd6427b6c0af3e65dc5e11a799a38ce89d8e16f4139b4c10d431790"
+        },
+        {
+          "value": "[GAME_LOGIC] ${label} muss eine ganze Zahl sein.",
+          "hash": "eec48606b9df6e438e3608f0c2af8d06c4fbd8f4e3fb2056483cd9d387c26cfb"
+        },
+        {
+          "value": "[GAME_LOGIC] ${label} muss eine positive ganze Zahl sein.",
+          "hash": "cec34a707b88d63f68a80927fa609f3f31b1e08aec9af4f73598c2080cae3788"
+        },
+        {
+          "value": "[GAME_LOGIC] ${label} muss String sein.",
+          "hash": "70aa701f011b031f889f1a0913bbb7a9a79572fc54badb1ef7d6822a77181e09"
+        },
+        {
+          "value": "[GAME_LOGIC] action muss Plain-Object sein.",
+          "hash": "d3dded1cc4c744d657f04a61f9323248f904c3d6ea84fa0fddce0534272808b2"
+        },
+        {
+          "value": "[GAME_LOGIC] action.payload muss Plain-Object sein.",
+          "hash": "e03c04446ea04674186e50050db9886477a299e37fbf3b51785a7a350fefaeca"
+        },
+        {
+          "value": "[GAME_LOGIC] kernelApi braucht planPatch/applyPatch.",
+          "hash": "0ae0853c7eba12d144343ccf547cff9bc3f1c302c8007de467843d9e1a233bec"
+        },
+        {
+          "value": "[GAME_LOGIC] kernelApi fehlt.",
+          "hash": "e4ad64591c8f981b3530bbe3a21ee891e5999aebc2b252f9c1678bde5f79a483"
+        },
+        {
+          "value": "[GAME_LOGIC] state muss Plain-Object sein.",
+          "hash": "fe08201627452b54772bbf691fc1ee8a9b51a1628a200734711cdd43f89c54dc"
+        },
+        {
+          "value": "action.type",
+          "hash": "a18c43957cb344517777a072e62c99f046c5ca75e9de4b3b316d42c64d6b6661"
+        },
+        {
+          "value": "function",
+          "hash": "78f9ac018e554365069108352dacabb7fbd15246edf19400677e3b54fe24e126"
+        },
+        {
+          "value": "object",
+          "hash": "2958d416d08aa5a472d7b509036cb7eafd542add84527e66a145ea64cb4cdc75"
+        },
+        {
+          "value": "string",
+          "hash": "473287f8298dba7163a897908958f7c0eae733e25d2e027992ea2edc9bed2fa8"
+        }
+      ]
+    },
+    {
+      "path": "app/src/game/GameLogicController.js",
+      "string_count": 13,
+      "fingerprint": "01b6e147de7c197c08bbfc908e857f7ee34166fc6eb34258550b2220f5a3c6cd",
+      "strings": [
+        {
+          "value": "__proto__",
+          "hash": "30e2af384186b57fda019524ade9f9afe48e815480b993d14ec8dc68251b592a"
+        },
+        {
+          "value": "[GAME_LOGIC] Action nicht erlaubt: ${action.type}",
+          "hash": "a9f0d70b4d9c89d8d0fb15cbdbbac4a8977a1211bbc2483f87e18623bd5350e4"
+        },
+        {
+          "value": "[GAME_LOGIC] mutationMatrix fuer game fehlt.",
+          "hash": "a3fb6c298d0aa0205a74ff0778faf966b11e0b4bfb907084f2b9b33dec4d679f"
+        },
+        {
+          "value": "[GAME_LOGIC] Patch muss Plain-Object sein.",
+          "hash": "b676cb2fdad8a48ae7c3de5271073967e062458b6123b391ed5c251e52e95e40"
+        },
+        {
+          "value": "[GAME_LOGIC] Patch path fehlt.",
+          "hash": "f04ccabfea148da7bdda86873db0a18a20d1471faeb021df8510f744fb3e90e1"
+        },
+        {
+          "value": "[GAME_LOGIC] Patch-Domain ungueltig: ${String(patch.domain)}",
+          "hash": "d8c264a174c2ae7338f585b5b34b0593b90ba69951d0c786c91a95f0cb842e76"
+        },
+        {
+          "value": "[GAME_LOGIC] Patch-Pfad nicht erlaubt: ${patch.path}",
+          "hash": "0429f49d283cc063a0a9a7a90f2be9ed00db8e88d271a109761ab8cf135e1a7f"
+        },
+        {
+          "value": "[GAME_LOGIC] Pflichtfeld fehlt: ${action.type}.${key}",
+          "hash": "7e5613011b834f8b636e735ea8821d25842cc2f70efad339c4c364b43247e196"
+        },
+        {
+          "value": "[GAME_LOGIC] Ungueltiger Patch-Pfad.",
+          "hash": "43b964a2af6519aadcbc500f7c686a6bbc766c86790e009ef4f12bde32712950"
+        },
+        {
+          "value": "${prefix}.",
+          "hash": "89a134ffd805afea56a9a70cfddd003d9833cedfb13cefc4041efec0f8195320"
+        },
+        {
+          "value": "constructor",
+          "hash": "e3c1703abf8a6b3df04dd30e184fe02bb6724f46830b544562ff083169371068"
+        },
+        {
+          "value": "prototype",
+          "hash": "b34563e2ebeb771708ba0648c9385383f61cc11e86af6076848433059c14b2df"
+        },
+        {
+          "value": "string",
+          "hash": "473287f8298dba7163a897908958f7c0eae733e25d2e027992ea2edc9bed2fa8"
+        }
+      ]
+    },
+    {
+      "path": "app/src/game/gamePatchBuilders.js",
+      "string_count": 52,
+      "fingerprint": "012122d60e093604aca8502efba2942274e0f90669038d4c53c8b891aac0d632",
+      "strings": [
+        {
+          "value": "[GAME_LOGIC] Keine Baukosten fuer Maschine: ${machine}",
+          "hash": "5d8995ea11a5d58cb97eb832ef9d749c2f074468fefbfa0ee220f0d49b731bca"
+        },
+        {
+          "value": "[GAME_LOGIC] Tile ausserhalb der Welt: ${x},${y}",
+          "hash": "8caec8e624a16e8ec762db287a826480d1c85031e01e1f3c646b6b0cc7312f69"
+        },
+        {
+          "value": "[GAME_LOGIC] Unbekannte Action: ${action.type}",
+          "hash": "5d090d749de6692d12550ac97d284a145717da9a7ddcc015cd9b4b3eaa0b053b"
+        },
+        {
+          "value": "[GAME_LOGIC] Unbekannte Maschine: ${machine}",
+          "hash": "e8ec77f281bcf95abb8abf8de3d44004e7f4cdf6dec64b0dc452d086984b7aea"
+        },
+        {
+          "value": "[GAME_LOGIC] Unbekannte Resource: ${resource}",
+          "hash": "01b6577d08a3bbc9dc0902fcac812afe0ebeb8723df922c921f0eb207e1b5b37"
+        },
+        {
+          "value": "[GAME_LOGIC] Unbekannter Storage-Slot: ${slot}",
+          "hash": "61d3a723048473de5f96776f48a66bbb55fe6b94629e3c465875d8dfa5ea2a88"
+        },
+        {
+          "value": "[GAME_LOGIC] Unbekannter Tile-Typ: ${tileType}",
+          "hash": "94fb7fec9f92d67a99521776f95210d2f4d4ca7115c4e650ad70b40415af2b38"
+        },
+        {
+          "value": "assembler",
+          "hash": "1ca89e861e514f1a2cdde83f8ed49a69b1c19a76dd2c3bd76bd7ffe36364bd11"
+        },
+        {
+          "value": "assemblers",
+          "hash": "cb0ba669c8f3b53d9560d0ae812266a199e53a1901c595931dc1d7b8260d5031"
+        },
+        {
+          "value": "build",
+          "hash": "44575cf5b28512d75644bf54a517dcef304ff809fd511747621b4d64f19aac66"
+        },
+        {
+          "value": "build.count",
+          "hash": "56d9453eaf564ad766ce127de949b940dceac20865e5bac3eb0911d392acd451"
+        },
+        {
+          "value": "build.machine",
+          "hash": "23fab74405211f5aa3870a476989046d484f9cdf71ab391e615cb8f9f864c9aa"
+        },
+        {
+          "value": "consume",
+          "hash": "96f39e3569ec878ecb0b6c1713b4e49f5ca0550d892364f385fcde951f92e5de"
+        },
+        {
+          "value": "consume.amount",
+          "hash": "961958bfdf1d23107985fa19aee1433200c87d5c637a7e492fbcb95236890188"
+        },
+        {
+          "value": "consume.resource",
+          "hash": "d1e14a636a44cfd0337186a2ce7b38a1167287ab028484470514d20f8f618f53"
+        },
+        {
+          "value": "conveyor",
+          "hash": "ce8da97457ff05c19252776bfca37126f97b14a0781335ddc9bf19caa9b54b89"
+        },
+        {
+          "value": "conveyors",
+          "hash": "98a8d3beda5efab94e0c4f003e26b87a578f68879f9a4b4ddc805a9a1e0b8bd8"
+        },
+        {
+          "value": "copper",
+          "hash": "d16f06fe255d801e0639b8d749b815ea9e788af7b9ceba2b773c1dbc8f080442"
+        },
+        {
+          "value": "empty",
+          "hash": "2e1cfa82b035c26cbbbdae632cea070514eb8b773f616aaeaf668e2f0be8f10d"
+        },
+        {
+          "value": "gears",
+          "hash": "1d30a0049c5b5666a1f8710c2aaa569eb50200c36019c9f4e29ebc0694e2e8fc"
+        },
+        {
+          "value": "generate_world",
+          "hash": "151233a7dea93177ac09db019f8b7607cb13eb8fb3777f1c0392c7fbbf64b8af"
+        },
+        {
+          "value": "generate_world.seed",
+          "hash": "62bf8cf3d06d890f7b7d1d86c98fbd83771a90ab3928f2757af6178fed915fc5"
+        },
+        {
+          "value": "inspect",
+          "hash": "14a60637758cb026afd2fe447f3648a07965072eeefaa9ee57734959bce8ae2b"
+        },
+        {
+          "value": "iron",
+          "hash": "04e9c0db87e7eebbf8123dae64d169c85540d588a38b4f9f3fbc255c7c6c65a9"
+        },
+        {
+          "value": "logistics.${slot}",
+          "hash": "e900a5a294dc7d96f36c20809075e22e8b62396ff426031ff6639485abdce4a8"
+        },
+        {
+          "value": "machines.${getMachineStateKey(machine)}",
+          "hash": "7ec388fc6c737264d1310bbcab290b755a700322b312126d5fef092750b3fb32"
+        },
+        {
+          "value": "miner",
+          "hash": "8b133a3868993176b613738816247a7f4d357cae555996519cf5b543e9b3554b"
+        },
+        {
+          "value": "miners",
+          "hash": "423686fdde5567e03bbdcec45e7a22578964060d9aafc29bb500531c1eef4198"
+        },
+        {
+          "value": "object",
+          "hash": "2958d416d08aa5a472d7b509036cb7eafd542add84527e66a145ea64cb4cdc75"
+        },
+        {
+          "value": "ore",
+          "hash": "f8bd17bea0e948bb644ee10b36ba44e1627d6ab0f0deaebbadc600303d24b6ad"
+        },
+        {
+          "value": "produce",
+          "hash": "1198780b3af7203cac87d6f443ab13bcfdb9635ea6393e7ee30193f671df5093"
+        },
+        {
+          "value": "produce.amount",
+          "hash": "e69ee2134b4280f67923c320d87a6cffb896d2d8ef99d4116236de78809eb10d"
+        },
+        {
+          "value": "produce.resource",
+          "hash": "c98482652c14354c8dd031e5769a0a2a3df4d31f7a6049d6ce6443609e8214e5"
+        },
+        {
+          "value": "regenerate_world",
+          "hash": "6fcf3384c67d8bc28a54ae8318e01307363d53861b1b3a140b4ee2b76ca7cab9"
+        },
+        {
+          "value": "regenerate_world.seed",
+          "hash": "4f277d7cf97feb20c04a3d4526e762bb4c00192e8ccbbcc39960eb348f49dc81"
+        },
+        {
+          "value": "resources.${resource}",
+          "hash": "861dd661e9e36fd9df522e3d2d2039e172a1a3d4a15fdc59e9f32132ad54063b"
+        },
+        {
+          "value": "resources.ore",
+          "hash": "89f5c12b7ef97e9caa3e4c8ba336e8048904406888d9ff849c99b8529189fa77"
+        },
+        {
+          "value": "set",
+          "hash": "6ee0eb490ff832101cf82a3d387c35f29e4230be786978f7acf9e811febf6723"
+        },
+        {
+          "value": "set_tile_type",
+          "hash": "9b583604618eb73085330de3ebe2bd1a15abe315b4fb3b1680edcc1e8a8778fd"
+        },
+        {
+          "value": "set_tile_type.tileType",
+          "hash": "01a9ac56f316d94dd4b2aff91cdf64257acfd39ec3080cbe382d7a20f8279baf"
+        },
+        {
+          "value": "set_tile_type.x",
+          "hash": "eaff156f60ff11bb2971a7208d862c2c5e49b9eb230e5da0df2a9feb92d32f21"
+        },
+        {
+          "value": "set_tile_type.y",
+          "hash": "257ed71c72c279a468340bd7cae5dc93496e07a7588d72a8cab737137a848f35"
+        },
+        {
+          "value": "storageA",
+          "hash": "ec9411b5dbe8dfa3549615dd7ce4820824121304d1251e4ed9a59000c81913a8"
+        },
+        {
+          "value": "storageB",
+          "hash": "8313b9b9315c596586d5733b17f9cc5bea95acf3af619b96251c4be5c5fb4572"
+        },
+        {
+          "value": "transport",
+          "hash": "6694ea8075001f6628da20f1afdafc74a763e2098bafc633b057534792db6aad"
+        },
+        {
+          "value": "transport.amount",
+          "hash": "f2a12210e763194141154497968c52ef7ff8257fe747aa31c5f65bb7bcbe263c"
+        },
+        {
+          "value": "transport.from",
+          "hash": "7baa49db5859d208e425d37d2e482ac5e2d121d825ed026c2f16d8fca5422ad5"
+        },
+        {
+          "value": "transport.to",
+          "hash": "180b674f7be40b4a93eb9729e3a0663126b4aaaf177893fd711ba3f8c9eb8246"
+        },
+        {
+          "value": "world.meta",
+          "hash": "4a8b0b0c01914629bd7c10ac23cb572467fc1ea799fcc448c592a365091a7c54"
+        },
+        {
+          "value": "world.seed",
+          "hash": "6f9acc1e8e0f138bd9314717ed0a9a37d6a5e5dc79eb0a15bb4d9f5bf88df69f"
+        },
+        {
+          "value": "world.size",
+          "hash": "d2bec53b12f9537ca4fd9bcff60a75d50e868d3326f9b6246ef8520058cc690e"
+        },
+        {
+          "value": "world.tiles",
+          "hash": "d0d02636b6984a8d0df92b937719153c693c1f71eac535eac450fac6e279e63e"
+        }
+      ]
+    },
+    {
+      "path": "app/src/game/gameProgress.js",
+      "string_count": 25,
+      "fingerprint": "765e33ce5138887b494c40c427b4c49fab7309f97aec0860cdc321c9369da9a1",
+      "strings": [
+        {
+          "value": "Action: ${summary.action}",
+          "hash": "0e8d6b61b3fb3b1c4731a5e04270912fb2fcef6f48798a56d86f62d8bb69ca8d"
+        },
+        {
+          "value": "assemblers",
+          "hash": "cb0ba669c8f3b53d9560d0ae812266a199e53a1901c595931dc1d7b8260d5031"
+        },
+        {
+          "value": "Bridge mining into transport.",
+          "hash": "d9df952331366cb15ae92a5bc5cb0a9b5e0c35b661a7c9cd5223e982c1b173f7"
+        },
+        {
+          "value": "Connect output into assembler readiness.",
+          "hash": "1cfa96a375a10855148d4f64e302bd566be68349c0291f83637e8ca892448829"
+        },
+        {
+          "value": "conveyors",
+          "hash": "98a8d3beda5efab94e0c4f003e26b87a578f68879f9a4b4ddc805a9a1e0b8bd8"
+        },
+        {
+          "value": "copper",
+          "hash": "d16f06fe255d801e0639b8d749b815ea9e788af7b9ceba2b773c1dbc8f080442"
+        },
+        {
+          "value": "Focus: ${afterSnapshot.focus}",
+          "hash": "33c08a88d23af0bf513e831f361566228d61ae2e20d45f6a0fde73298f434a97"
+        },
+        {
+          "value": "gears",
+          "hash": "1d30a0049c5b5666a1f8710c2aaa569eb50200c36019c9f4e29ebc0694e2e8fc"
+        },
+        {
+          "value": "Grow throughput with more logistics.",
+          "hash": "dcc26a806d0228284194bf0ce83709995a666ed4c905f67a81b1ef5cff2d575f"
+        },
+        {
+          "value": "iron",
+          "hash": "04e9c0db87e7eebbf8123dae64d169c85540d588a38b4f9f3fbc255c7c6c65a9"
+        },
+        {
+          "value": "Level: ${beforeSnapshot.level.title} -> ${afterSnapshot.level.title}",
+          "hash": "807e08cab3ae70268b32d3085b70aec2ff955bee8d74cf01f44cecc8dab535ff"
+        },
+        {
+          "value": "logistics",
+          "hash": "8880894de4fc1864c60ed6af5dc8afb16fd41c113688bc2620950259515e610e"
+        },
+        {
+          "value": "machines",
+          "hash": "5709ff28b655e82531c0fb3b0193b8ec9b1849128d8a0840c43d91ecb8e620d0"
+        },
+        {
+          "value": "Milestone unlocked: ${afterSnapshot.level.title}",
+          "hash": "ad62986beceb28315e72ebaef9bb88acaf9d3cc0267fd92bd89ec7b53497417c"
+        },
+        {
+          "value": "miners",
+          "hash": "423686fdde5567e03bbdcec45e7a22578964060d9aafc29bb500531c1eef4198"
+        },
+        {
+          "value": "No new reward",
+          "hash": "f52b27fffc248952d1a90f983f85443a4d600dd656177a1df134b6bc869779b2"
+        },
+        {
+          "value": "object",
+          "hash": "2958d416d08aa5a472d7b509036cb7eafd542add84527e66a145ea64cb4cdc75"
+        },
+        {
+          "value": "ore",
+          "hash": "f8bd17bea0e948bb644ee10b36ba44e1627d6ab0f0deaebbadc600303d24b6ad"
+        },
+        {
+          "value": "Progress +${scoreDelta}",
+          "hash": "ca5ec128713610b46417ca08680b1d4c011ee2e5cfbebd39634dfe70ee31b74d"
+        },
+        {
+          "value": "resources",
+          "hash": "41d311a605520fc7b8b9a980a79437a26e26cebcbfdd569dd78d30f7cb3e7237"
+        },
+        {
+          "value": "Score: ${beforeSnapshot.score} -> ${afterSnapshot.score}",
+          "hash": "c6cea2039812dce1a926da8924261ea57d8c72f246040561945deb7972f4957c"
+        },
+        {
+          "value": "Start with the first production node.",
+          "hash": "926b27f43fe2f3e28fee83ad356fcdb1dcc2466806afb0185c3922daf0886080"
+        },
+        {
+          "value": "storageA",
+          "hash": "ec9411b5dbe8dfa3549615dd7ce4820824121304d1251e4ed9a59000c81913a8"
+        },
+        {
+          "value": "storageB",
+          "hash": "8313b9b9315c596586d5733b17f9cc5bea95acf3af619b96251c4be5c5fb4572"
+        },
+        {
+          "value": "Unlocked: ${newlyEarnedRewards.map((reward) => reward.title).join(\", \")}",
+          "hash": "32b461a81a1a3c47e32c0d6757e37e67a171904982d9e6c3e8a44a1a13965ba3"
+        }
+      ]
+    },
+    {
+      "path": "app/src/game/gameStateReducer.js",
+      "string_count": 3,
+      "fingerprint": "c1421b502cf1ca242d0824e5899a426f732a3e3d1c9e61e6ceccfd3df729e5c5",
+      "strings": [
+        {
+          "value": "[GAME_LOGIC] Patch path fehlt.",
+          "hash": "f04ccabfea148da7bdda86873db0a18a20d1471faeb021df8510f744fb3e90e1"
+        },
+        {
+          "value": "[GAME_LOGIC] Unsupported patch operation: ${String(patch.op)}",
+          "hash": "dbce41493cab8e468aa81cae4030f5c73deae2687d261ac5c6caba88f35c2891"
+        },
+        {
+          "value": "set",
+          "hash": "6ee0eb490ff832101cf82a3d387c35f29e4230be786978f7acf9e811febf6723"
+        }
+      ]
+    },
+    {
+      "path": "app/src/game/worldGen.js",
+      "string_count": 30,
+      "fingerprint": "6f8142a8d9b9b4067ce52555a4f1a90244ddb2675fe06c887d4798788ed0cf0a",
+      "strings": [
+        {
+          "value": "[WORLD_GEN] world muss Objekt sein.",
+          "hash": "fc39c8d298cfad900599868c254e8cf8560f4bc33743392c26e404b9d56ef008"
+        },
+        {
+          "value": "[WORLD_GEN] world.meta fehlt.",
+          "hash": "4229fcf4caa0f296005ee62505839c0d8fd53b70f3d7dbe9b14e60581499b638"
+        },
+        {
+          "value": "[WORLD_GEN] world.seed fehlt.",
+          "hash": "1e6dd63208ce661a10a8e80d6df38a5f6f89ef2c9b766f5b3ee0f0cdc4ae64ca"
+        },
+        {
+          "value": "[WORLD_GEN] world.size fehlt.",
+          "hash": "5a10d05e313377972165dfd3a40550dab9f3de19d8c449121427860d39751ab0"
+        },
+        {
+          "value": "[WORLD_GEN] world.size.height ungueltig.",
+          "hash": "1daa6d8e62b956b53e350c7ec2c3dc7d8c3d0f669fc96e3364698c7940030dfc"
+        },
+        {
+          "value": "[WORLD_GEN] world.size.width ungueltig.",
+          "hash": "ae40402986d2555f0ac54855e63570c3c57199ea11404a2635911cbfe3922b79"
+        },
+        {
+          "value": "[WORLD_GEN] world.tiles muss Array sein.",
+          "hash": "72fdd628ad6dc99f801c60433fa0c8edc5104a9aa48e3fff51dc6539a0f6caae"
+        },
+        {
+          "value": "${anchorX + cell.x}:${anchorY + cell.y}",
+          "hash": "a791bc94d4170791c037aab087835df4852c6edeb424f80bb99fbd94b7507f34"
+        },
+        {
+          "value": "${anchorX}:${anchorY}:${stamp.id}",
+          "hash": "b9f177eb0d14494c66c2c4e6458e378dc55e01be4207578c21c2857a78ddb810"
+        },
+        {
+          "value": "${tile.x}:${tile.y}",
+          "hash": "e566e8af73deeda9530389b23f2e0e023009b8e79c426d2d618d0c677ccdc3b4"
+        },
+        {
+          "value": "coal",
+          "hash": "6d114c95fbf5208dd6cf5133f5f89db623bf20ee6f6e68f48f0bbfa4a21a843c"
+        },
+        {
+          "value": "coal-pocket-b",
+          "hash": "cd5a0297a71ef1af5d2e21df6fa3ad95eedbf5c654dabe3ed5753e28c28d3bfe"
+        },
+        {
+          "value": "dry",
+          "hash": "b755cb248c3c4a7d94f835b4421809336e7015850342064be4dfa23349dcdcaa"
+        },
+        {
+          "value": "dust",
+          "hash": "abb32701117d50a93f8ffb60e801097d8a18d0a75ba7f7a327d50103cb50278e"
+        },
+        {
+          "value": "empty",
+          "hash": "2e1cfa82b035c26cbbbdae632cea070514eb8b773f616aaeaf668e2f0be8f10d"
+        },
+        {
+          "value": "forest",
+          "hash": "619a2ccf126ce837dc7cd3bdb4d7f44280a0ea4f721e5a738f859aa19d52a78f"
+        },
+        {
+          "value": "meadow",
+          "hash": "6d02f7d61e02d070944a9a37856f43d78fb89f8adea6150cd2fdcb53d2a4cc4a"
+        },
+        {
+          "value": "meadow-clear-a",
+          "hash": "902122b23c5619e538fbf3940d458ad329a2f43cfdcff7f71be8c5d50fa8814f"
+        },
+        {
+          "value": "none",
+          "hash": "140bedbf9c3f6d56a9846d2ba7088798683f4da0c248231336e6a05679e4fdfe"
+        },
+        {
+          "value": "object",
+          "hash": "2958d416d08aa5a472d7b509036cb7eafd542add84527e66a145ea64cb4cdc75"
+        },
+        {
+          "value": "ore",
+          "hash": "f8bd17bea0e948bb644ee10b36ba44e1627d6ab0f0deaebbadc600303d24b6ad"
+        },
+        {
+          "value": "ore-pocket-a",
+          "hash": "d28e0c5f073b0b7ac141245cf64b9a7f1a58afd803668bb6a89456f2475962a9"
+        },
+        {
+          "value": "rock",
+          "hash": "350a770c0ec9f353e1a5629895f374fdaa299876c3870c03feb60eb4a3769d94"
+        },
+        {
+          "value": "scrub",
+          "hash": "e8927b61deaf6863a3006b9a100f01d4962374aa9dea9516949e817cecca3b97"
+        },
+        {
+          "value": "seedworld-default",
+          "hash": "a7ce4d344265bd09765e82801c53caf4b1f6aae48e4cb074214a6bbe7cf3e3e8"
+        },
+        {
+          "value": "steppe",
+          "hash": "891a17dd29f0f5726ddf3df373fb1b4a40bfe61a13d75df3efa126856c2ab629"
+        },
+        {
+          "value": "string",
+          "hash": "473287f8298dba7163a897908958f7c0eae733e25d2e027992ea2edc9bed2fa8"
+        },
+        {
+          "value": "trees",
+          "hash": "29d807300a961b0cbdb4f22cc5db866a43d20d87b1e17b7f50c91bab25089940"
+        },
+        {
+          "value": "water",
+          "hash": "0f4168490e38b8447e11ba4bd656aa11b925bd22af30bac464bc153fdb608501"
+        },
+        {
+          "value": "worldgen.v1.voronoi-noise",
+          "hash": "b14a2800b433b2ccf718db3aa07b119a7103a91470d7c3648342dad723c3f3c7"
+        }
+      ]
+    },
+    {
+      "path": "app/src/kernel/ActionRegistry.js",
+      "string_count": 11,
+      "fingerprint": "ee7e4f7a25fb180cebd78f8dfa8463424f1f4c4c3a74149c5fecee43b3f56689",
+      "strings": [
+        {
+          "value": "[ACTION_REGISTRY] ${label} muss ein nicht-leerer String sein.",
+          "hash": "91c7ca2987e432023203c90a461751cc6e827906ec851da6c84a7c6b38f45041"
+        },
+        {
+          "value": "[ACTION_REGISTRY] ${label} muss eine Funktion sein.",
+          "hash": "fdf36581e73ee943f866daa7e718c45354795a64fd25b5936938a629abe644ca"
+        },
+        {
+          "value": "[ACTION_REGISTRY] Doppelte Registrierung: ${domain}.${actionType}",
+          "hash": "b1e9f214a766bd507db33a3b37a8fa7d25c69c3ba6d3da54a2cf47a8d8ab602c"
+        },
+        {
+          "value": "[ACTION_REGISTRY] Gate '${entry.requiredGate}' fuer ${entry.domain}.${entry.actionType} nicht gefunden.",
+          "hash": "bafbed561d6170e5ea9b29fb1a10abd6f3b390cd49c699d26a6258bbb1d4d157"
+        },
+        {
+          "value": "${String(domain)}::${String(actionType)}",
+          "hash": "28c8bde0a19cd6d7cbcb4b9a58c53626862c1d8ec48e8b2fc07b3fa38faae9b1"
+        },
+        {
+          "value": "actionType",
+          "hash": "3cc7f44fd2a7cff16b9689cf6c7530b3fdab279761b6f3729be1d57648417dca"
+        },
+        {
+          "value": "domain",
+          "hash": "f2ff83860a4dc203988ed1a22ba1f21237f04abdbd0c4c951103cfbed121de78"
+        },
+        {
+          "value": "function",
+          "hash": "78f9ac018e554365069108352dacabb7fbd15246edf19400677e3b54fe24e126"
+        },
+        {
+          "value": "handler",
+          "hash": "3128389bb1c21bafeaa7b6e627026558f2845a3817f88436925b1ed9f845973e"
+        },
+        {
+          "value": "requiredGate",
+          "hash": "d6256f5dafeec6df497bf56197d0a8dbed9ee3e56cff8c0ab0f851f1dec0617e"
+        },
+        {
+          "value": "string",
+          "hash": "473287f8298dba7163a897908958f7c0eae733e25d2e027992ea2edc9bed2fa8"
+        }
+      ]
+    },
+    {
+      "path": "app/src/kernel/deterministicKernel.js",
+      "string_count": 10,
+      "fingerprint": "ac433aae1785216db271edc7a90898fdf9a6cd2747dee74ab25d162e5364f933",
+      "strings": [
+        {
+          "value": "[KERNEL_DETERMINISM] ${message}",
+          "hash": "83309307515982a029431de046faad632e15ab9983ddb03e4b0d428ec1e0f9c2"
+        },
+        {
+          "value": "advanceTick",
+          "hash": "e302c255410be5f273f49107487e32e53bfbdaa33c847f39f7b5270414b78b0f"
+        },
+        {
+          "value": "createInitialState",
+          "hash": "6391a9fb93613a1e2e9c53e02a3a0af7d3133a6964a6513bc5cb5c4b3f77ce23"
+        },
+        {
+          "value": "game",
+          "hash": "6ca5cab77e702c787b4c14b3d3bf26bad43da606be6eed04ab0b9720120ae081"
+        },
+        {
+          "value": "object",
+          "hash": "2958d416d08aa5a472d7b509036cb7eafd542add84527e66a145ea64cb4cdc75"
+        },
+        {
+          "value": "options fehlen oder sind kein Plain-Object",
+          "hash": "014c2a03a039ce36d477ae1ffce3e2be31cff2346cbb9d108e14c13aba18a3f4"
+        },
+        {
+          "value": "seed muss eine nicht-leere Zeichenkette sein",
+          "hash": "695c98eb30245bfd7ac5b72b12b65d073285674c1205eed20f79decd5a50e833"
+        },
+        {
+          "value": "seedworld.v2.controller",
+          "hash": "4900327a54eabe874f7c67a5389809f4492956fc1ac34faf0896f0fa5695a9c4"
+        },
+        {
+          "value": "string",
+          "hash": "473287f8298dba7163a897908958f7c0eae733e25d2e027992ea2edc9bed2fa8"
+        },
+        {
+          "value": "ticks ausserhalb 1..256",
+          "hash": "c1baa6ad7e25862773e4795ac6a888522f7724ab1e7897302a474922bd65a217"
+        }
+      ]
+    },
+    {
+      "path": "app/src/kernel/fingerprint.js",
+      "string_count": 27,
+      "fingerprint": "013b5f9f913123489d3640a842998ecd0019c7bdc65d3c4a3af969b3ad9eb815",
+      "strings": [
+        {
+          "value": "${JSON.stringify(key)}:${stableStringifyInternal(value[key], seen)}",
+          "hash": "5fbac3d8083b7847987304291e2496bb8902dc200562d7126b287cfbcf4b3d9a"
+        },
+        {
+          "value": "arr:[${items.join(\",\")}]",
+          "hash": "0e9b5c21c03c7074aee1440096177947de6c56a62815cd69d8c36e31104ff5c7"
+        },
+        {
+          "value": "bigint",
+          "hash": "75d012fe28656e0a51e783b2a42c2b30b807009894b8a0cc0ea5e54f928d93a2"
+        },
+        {
+          "value": "bigint:${value.toString()}",
+          "hash": "62797ebaa28bc1cc4c5e3de3e0c560388469d6a4ce6967fb719a36b4d891b9d9"
+        },
+        {
+          "value": "bool:${value ? \"true\" : \"false\"}",
+          "hash": "fe02871a2ccbfa9c4c232cba4a42e05b2da7a9a6b2c3b44dd39a8edc2fadde7a"
+        },
+        {
+          "value": "boolean",
+          "hash": "bf84d3d60e93cc959793d5c9d8308fbcf868f673cb032f461c9676f0480cc29e"
+        },
+        {
+          "value": "date:${value.toISOString()}",
+          "hash": "bdea092d5b666e55cdd8f763a58372864f9bc055ee981525936d82008897feaf"
+        },
+        {
+          "value": "function",
+          "hash": "78f9ac018e554365069108352dacabb7fbd15246edf19400677e3b54fe24e126"
+        },
+        {
+          "value": "null",
+          "hash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        },
+        {
+          "value": "num:-0",
+          "hash": "4c8f1bdec3379208f95e9980d3767df97f6b44f717cdc924522b9f2d3185c07e"
+        },
+        {
+          "value": "num:-Infinity",
+          "hash": "9043e91e64a9d7f4c81894d7f181f5f3425819897b7574c55bd2f6da57751b4e"
+        },
+        {
+          "value": "num:+Infinity",
+          "hash": "f7a307db42a5a31a73d99f4fbaf89026f62037df896b08fd76c85c34274681cc"
+        },
+        {
+          "value": "num:${String(value)}",
+          "hash": "c6a49e0cf129b68d6d7372a41d58fd1377a5076f98cbe39a0f8e8030ab99c2e1"
+        },
+        {
+          "value": "num:NaN",
+          "hash": "4ab74b63a9227c4518f01ac6855613aacbd8037af70e84ea18c17be65b3c7dc5"
+        },
+        {
+          "value": "number",
+          "hash": "12886f9d00055adf24c40579e22d31b2b45f2023f892954ffd5567beb60825f8"
+        },
+        {
+          "value": "obj:{${entries.join(\",\")}}",
+          "hash": "d3ede5d844320ceba76d54c3d932ff42d8c98f8687bc096d0eb044b2961d302d"
+        },
+        {
+          "value": "SHA-256",
+          "hash": "bbd07c4fc02c99b97124febf42c7b63b5011c0df28d409fbb486b5a9d2e615ea"
+        },
+        {
+          "value": "sha256Hex erwartet eine Zeichenkette.",
+          "hash": "717e5e37f520dff8442f5a94c6f317d0c8ef2b9f65bb4e4df581ebbc00a148a4"
+        },
+        {
+          "value": "stableStringify kann ${type} nicht serialisieren.",
+          "hash": "f9ecdd569c7b249e5c2fccf29f81d39980595ac2623725d4f22c9330d20bc5d8"
+        },
+        {
+          "value": "stableStringify kann ungueltige Date-Werte nicht serialisieren.",
+          "hash": "8085a74f9f50e1e5662e914eda1d90ca8858ff8406f00684867446d2573b6969"
+        },
+        {
+          "value": "stableStringify unterstuetzt keine zyklischen Strukturen.",
+          "hash": "d9b803bcc3f09c79c8dd4145bb88ac11d13e9f2221aab2e99f0db138bb3153a4"
+        },
+        {
+          "value": "stableStringify unterstuetzt nur Arrays, Dates und Plain-Objects; gesehen: ${Object.prototype.toString.call(value)}",
+          "hash": "a2f79ae08f6861634b8ce3250d683cf82d5ea8e81c59c4cac1daf293f5200984"
+        },
+        {
+          "value": "str:${JSON.stringify(value)}",
+          "hash": "11a9ab8add93fb0e9d2e9af072e60de6c08607d87a5d99b2b1ebbf5dafc95933"
+        },
+        {
+          "value": "string",
+          "hash": "473287f8298dba7163a897908958f7c0eae733e25d2e027992ea2edc9bed2fa8"
+        },
+        {
+          "value": "symbol",
+          "hash": "b76a7ca153c24671658335bbd08946350ffc621fa1c516e7123095d4ffd5c581"
+        },
+        {
+          "value": "undef",
+          "hash": "3a7b1681045c78f45696d8bcf69c24ddb61ed47987782a24d66d432a3b6fc101"
+        },
+        {
+          "value": "undefined",
+          "hash": "eb045d78d273107348b0300c01d29b7552d622abbc6faf81b3ec55359aa9950c"
+        }
+      ]
+    },
+    {
+      "path": "app/src/kernel/GateManager.js",
+      "string_count": 12,
+      "fingerprint": "3c3fe44ee1ff7ce4d5ba37a53bdeb81ab3ecd066a82252aebd25bb4d857ad674",
+      "strings": [
+        {
+          "value": "[GATE_MANAGER] kernelGates mit executeGate erforderlich.",
+          "hash": "a75642322669be9b5c77e6a4d7fd27863f14822e4ebdf3550e7a67a1fb9511fe"
+        },
+        {
+          "value": "allow",
+          "hash": "410083735735a10e658a19edd1704e606c9dd112e225825b63fafeded766c8b9"
+        },
+        {
+          "value": "audit-${String(auditCounter).padStart(8, \"0\")}",
+          "hash": "458111c9757ad62c605ee727c3f512fe9a384b8931eccec03ea64b454f688789"
+        },
+        {
+          "value": "deny",
+          "hash": "3026a0ca485e5831657ba0120fa8dd66b3425427bfb0a2be0db743e2305cc7c5"
+        },
+        {
+          "value": "enforce",
+          "hash": "c1f1005e99318bf634290d9d518d9bf9ba14bf9a46eaa78abfbc9f99647ca2d9"
+        },
+        {
+          "value": "function",
+          "hash": "78f9ac018e554365069108352dacabb7fbd15246edf19400677e3b54fe24e126"
+        },
+        {
+          "value": "gate_denied",
+          "hash": "636842a86d8377ef0d40316247e0a3897b6ef76a82c1bb925ceb076c508f23a6"
+        },
+        {
+          "value": "gate_pass",
+          "hash": "cf35505448343e2f2082b9e2eb33a74059f9960c3d795be7926e202b41f605ae"
+        },
+        {
+          "value": "missing_required_gate",
+          "hash": "6c45b9d57d896317e85f302b003ae986f38cd6a1f44cd1ec0f635dd11aba08d1"
+        },
+        {
+          "value": "shadow",
+          "hash": "0bb09d80600eec3eb9d7793a6f859bedde2a2d83899b70bd78e961ed674b32f4"
+        },
+        {
+          "value": "shadow_allow",
+          "hash": "9dbaf7c6aa5ba200f95475a9bf44824d969041fd2a22aab7f057217a139da4d7"
+        },
+        {
+          "value": "string",
+          "hash": "473287f8298dba7163a897908958f7c0eae733e25d2e027992ea2edc9bed2fa8"
+        }
+      ]
+    },
+    {
+      "path": "app/src/kernel/gates/accessGates.js",
+      "string_count": 11,
+      "fingerprint": "cfc82d0981230c3a7024af7690ebd09975e9048b5c041013727838b46762bdc6",
+      "strings": [
+        {
+          "value": "Dev-Modus nicht aktiviert",
+          "hash": "76ff328a294779a6bb30f2e70f5367dd94487658ca905e3e607209e30c826e31"
+        },
+        {
+          "value": "Dev-Tools nicht verfuegbar",
+          "hash": "ab86477411a1095527234e0afcdf7ab88970ecdd151378d83857d0df41e62f49"
+        },
+        {
+          "value": "dev.available",
+          "hash": "9ff93ad4d61bc34a65289a49e1f868cf9fd7e6c835c52db4cf6e12e27822ee0f"
+        },
+        {
+          "value": "Fehlende Patch-Berechtigung",
+          "hash": "7b4e25962403bbec1798ab4b0f92b92482c6b2440ca5fb187520d41be68dbe65"
+        },
+        {
+          "value": "Game-Logik nicht verfuegbar",
+          "hash": "d982ed1c00c5bbcc6d5b078cc568d17dd92be9336a3acaed448ccd5640e0888c"
+        },
+        {
+          "value": "game.exists",
+          "hash": "6d83d5daea8886c6536d458cd6b74433cc6d918a2b53db6301eb6252062bd262"
+        },
+        {
+          "value": "Patch-System nicht verfuegbar",
+          "hash": "c475232375bde93a7ca5b1e181998e91b3e62592f9034c62bcd6944d1bbaf398"
+        },
+        {
+          "value": "patch.system.available",
+          "hash": "dd014cb7afcaeef60ee9c143bdebb4d855c0d8cf6c9c61280a1c38d744296331"
+        },
+        {
+          "value": "System nicht bereit",
+          "hash": "940debd30c4425fa805c66958d36833a9ac2a4d8e517c0dfabe98ea8845be85b"
+        },
+        {
+          "value": "system.ready",
+          "hash": "9560adb1b760660664a2713c11f252d28bdaa062a580df30fe39a2bca576d9e1"
+        },
+        {
+          "value": "user.can_patch",
+          "hash": "0cedd415c6bfe28f55b09b6cae77dd75caf6c9bde4c62b9b34234c981f4fd5dc"
+        }
+      ]
+    },
+    {
+      "path": "app/src/kernel/gates/operationGates.js",
+      "string_count": 19,
+      "fingerprint": "dc10018efd8c45674e5331728b84b111f430c33e93383143c64fc2bdc4038454",
+      "strings": [
+        {
+          "value": "id",
+          "hash": "a56145270ce6b3bebd1dd012b73948677dd618d496488bc608a3cb43ce3547dd"
+        },
+        {
+          "value": "Keine Patch-Daten uebermittelt",
+          "hash": "7f4244f34921506c05cec86474a1cb51607bf6b48548ff13dc22d02e07dd0c73"
+        },
+        {
+          "value": "number",
+          "hash": "12886f9d00055adf24c40579e22d31b2b45f2023f892954ffd5567beb60825f8"
+        },
+        {
+          "value": "object",
+          "hash": "2958d416d08aa5a472d7b509036cb7eafd542add84527e66a145ea64cb4cdc75"
+        },
+        {
+          "value": "Patch-Version ${patchData.version} ist nicht neuer als ${existing.version}",
+          "hash": "8fad27e6d8bbfbddf354f8943f0ffa24469f7658eeaf07b965749fa945420deb"
+        },
+        {
+          "value": "patch.get",
+          "hash": "573da7a0aa544900dd4a43b50420b2dc80df307213426ab2a4dd5f641d80f165"
+        },
+        {
+          "value": "Pflichtfeld fehlt: ${field}",
+          "hash": "9010d40f64985f8479112702213a301e9c2cbb291a31e75c4de62a63154024ca"
+        },
+        {
+          "value": "schema",
+          "hash": "df0ad6e43880f09c90ebf95f19110178aba6890df0010ebda7485029e2b543b4"
+        },
+        {
+          "value": "State-Änderung nicht erlaubt",
+          "hash": "87a7958c5e5e310468f8db3474af4c21e7a09f0e9681bda351a5b3c41895f7a4"
+        },
+        {
+          "value": "state.can_modify",
+          "hash": "e81c6c1c07ffd8c7ccc1f32207bc1b47123438cafa7912a9cbc455019c0c3587"
+        },
+        {
+          "value": "System kann Tick nicht vorrücken",
+          "hash": "9b1e088f64cb5bf5468daad6566f4d62c32505bd31fb9e2994a3af8fac149ef3"
+        },
+        {
+          "value": "System-Reset nicht erlaubt",
+          "hash": "a4d58e59762d15ed0ccb7424e4bbe306afa1c03d252322caaf1682205925daaa"
+        },
+        {
+          "value": "System-Shutdown nicht erlaubt",
+          "hash": "85ea72650c1058722bf5b41e6e055624fb9bc7b1350e84dd85b5a3ec5987aa64"
+        },
+        {
+          "value": "system.can_reset",
+          "hash": "63c8d9d2351bf478b021d0e413f5765afcafd6afd08c439db54695403c1f5790"
+        },
+        {
+          "value": "system.can_shutdown",
+          "hash": "b4889d4b3c5f420fb77e43f40ce179c3e91a377308a74e9a91e7c43fc876a7ef"
+        },
+        {
+          "value": "tick.can_advance",
+          "hash": "9077400f1f4dabd060a862c31514dadf8081b0a916dc178cc05cfa1c8c07b10a"
+        },
+        {
+          "value": "Ungueltige Tick-Anzahl",
+          "hash": "24a40766b555e316b37b23e7eea275abe1e013991f6462f209ea2bc83f926e11"
+        },
+        {
+          "value": "Ungültiges Modifications-Objekt",
+          "hash": "a35e9faf90dbf06db9f03381fe6b9e7af652ea677839c60a7e32a5d6a47dcbed"
+        },
+        {
+          "value": "version",
+          "hash": "5ca4f3850ccc331aaf8a257d6086e526a3b42a63e18cb11d020847985b31d188"
+        }
+      ]
+    },
+    {
+      "path": "app/src/kernel/KernelController.js",
+      "string_count": 66,
+      "fingerprint": "fa2fa070ffa3e889f1f2cd660c3e137eff4a138179f2a60ca8f5e9b6322a26ec",
+      "strings": [
+        {
+          "value": "[${domain.toUpperCase()}] type fehlt.",
+          "hash": "636755c8a6e65d24192768c2eab068eeb86d5fac8d9acde19f84bc70d079255c"
+        },
+        {
+          "value": "[ADVANCE_TICK] state fehlt.",
+          "hash": "e888a83380aaa37e7dfa6905f65415bd3b1d3173091438a8a592a177a9251d34"
+        },
+        {
+          "value": "[ADVANCE_TICK] ticks muss positiv sein.",
+          "hash": "2990cbba08ade3568aacfb126909ce32c25884cc3b6ffde5283645c87d19da62"
+        },
+        {
+          "value": "[GET_BUILD_OPTIONS] state fehlt.",
+          "hash": "a86546e42debd56a2ca981eb7acba76ed2b9efae490101a4d9e25a96bd99bcae"
+        },
+        {
+          "value": "[INSPECT_TILE] state fehlt.",
+          "hash": "ac63ae1c663e613e88cda5ce565d0437210ea5014423d2975e45c579bb051979"
+        },
+        {
+          "value": "[KERNEL_CONTROLLER] ${key} fehlt oder ist kein Plain Object.",
+          "hash": "1dd8d0891e5f1705e7d6aedf21ad0673d91423fe75bc19904b297e328c783de1"
+        },
+        {
+          "value": "[KERNEL_CONTROLLER] ${key} fehlt oder ist kein String.",
+          "hash": "e133a90034b831219e3855e9397024f1b89487ce6d303e81e4a9ebadfd0e71ed"
+        },
+        {
+          "value": "[KERNEL_CONTROLLER] ${key} muss eine ganze Zahl sein.",
+          "hash": "f3d759e103b5d72deda982ce6a74a99c2c338788e42d8fdf80fca0235824c025"
+        },
+        {
+          "value": "[KERNEL_CONTROLLER] ${name} muss ein Plain Object sein.",
+          "hash": "f96c5d765fe48f4ed2e43b9adb9d1c8f04244cc5ca71f25917741dc4a0705e37"
+        },
+        {
+          "value": "[KERNEL_CONTROLLER] action fehlt.",
+          "hash": "5b8ddab59ce96b77bc38c54e0b37c9f3f04dcd9a422dc8a84177ffd46f488b60"
+        },
+        {
+          "value": "[KERNEL_CONTROLLER] action.type fehlt.",
+          "hash": "1af93bfa7cca573f74eb0a18fcddb156649492b0fd687aa20f07f95dcbe89283"
+        },
+        {
+          "value": "[KERNEL_CONTROLLER] domain fehlt.",
+          "hash": "07a0cdf346b47485d42bbafcb85bfe30e2da2d87ad28220acbc586b553ab8e7c"
+        },
+        {
+          "value": "[PLACE_STRUCTURE] Nicht genug ore: benoetigt ${cost.ore}, vorhanden ${ore}",
+          "hash": "49ea1b0d8fc131db842af1a15f29437eddf6bf11181fa0140107ed58a72b61c3"
+        },
+        {
+          "value": "[PLACE_STRUCTURE] state fehlt.",
+          "hash": "166cf7acfee57e2c9a36a8614eae640e228c3dcc78501b9d224b44966128877f"
+        },
+        {
+          "value": "[PLACE_STRUCTURE] Struktur auf water unzulaessig: ${x},${y}",
+          "hash": "7173f06dddb4f3e93dcfabc5568e3447de1cff908f2fd4ee767dab1004b9cb4b"
+        },
+        {
+          "value": "[PLACE_STRUCTURE] Tile nicht gefunden: ${x},${y}",
+          "hash": "35f76419e3a832e454554c1c19b61bd9a74c66b14d606f6809df06090032868e"
+        },
+        {
+          "value": "[SET_SEED] seed fehlt.",
+          "hash": "cafc3caaf07b4df0bb38c2ce5cf2f6ad4b7fda903119a064f7b49756077f0a42"
+        },
+        {
+          "value": "${tile.x},${tile.y}",
+          "hash": "07349c76b7d86c511c7913d15c7334ae4d3abc49185c2a588752c4f4aab1ff67"
+        },
+        {
+          "value": "${x},${y}",
+          "hash": "b71848232426675c3448d6ef16a53415219690667bb36833d57d7c701983aa22"
+        },
+        {
+          "value": "action",
+          "hash": "bd938c688f49b77c7fc537c6b9222e2c97ebddd63076b87f2feaec66fb9c05d0"
+        },
+        {
+          "value": "ACTION_NOT_REGISTERED",
+          "hash": "3090826d84da42b0de0b9e74b90efe0eba3751689a3e41fb23bd0a31bdad4d9e"
+        },
+        {
+          "value": "ACTION_VALIDATION_FAILED",
+          "hash": "860441c78fe181f893982789462febb2988d7b941c665402ec51a21c5346ecd4"
+        },
+        {
+          "value": "ACTION_VALIDATOR_INVALID",
+          "hash": "8b0fa6e55981784ad79018b442699d195e6f3861f620aa2a434a70820bf87617"
+        },
+        {
+          "value": "Action-Validation fehlgeschlagen: ${domain}.${actionType}",
+          "hash": "f2486361b48d05922e22f72de4c19ce0c4cf046cc6a1c08006ea67cb286d12a4"
+        },
+        {
+          "value": "advanceTick",
+          "hash": "e302c255410be5f273f49107487e32e53bfbdaa33c847f39f7b5270414b78b0f"
+        },
+        {
+          "value": "boolean",
+          "hash": "bf84d3d60e93cc959793d5c9d8308fbcf868f673cb032f461c9676f0480cc29e"
+        },
+        {
+          "value": "createInitialState",
+          "hash": "6391a9fb93613a1e2e9c53e02a3a0af7d3133a6964a6513bc5cb5c4b3f77ce23"
+        },
+        {
+          "value": "default-seed",
+          "hash": "5eea53b5f2b2e864e55245390da1716f1c9cee640e22e53aa7e8fb6a7e0338d5"
+        },
+        {
+          "value": "deny",
+          "hash": "3026a0ca485e5831657ba0120fa8dd66b3425427bfb0a2be0db743e2305cc7c5"
+        },
+        {
+          "value": "deny-${String(denyCounter).padStart(6, \"0\")}",
+          "hash": "d971f8f915b8f52742c75b88b8421eecdbbc43f15fe477ccd5e795e246a94765"
+        },
+        {
+          "value": "deterministic",
+          "hash": "0badac3c6df445ad3aea62da1350683923aba37c685978afed96a515d12921a3"
+        },
+        {
+          "value": "domain",
+          "hash": "f2ff83860a4dc203988ed1a22ba1f21237f04abdbd0c4c951103cfbed121de78"
+        },
+        {
+          "value": "enforce",
+          "hash": "c1f1005e99318bf634290d9d518d9bf9ba14bf9a46eaa78abfbc9f99647ca2d9"
+        },
+        {
+          "value": "game",
+          "hash": "6ca5cab77e702c787b4c14b3d3bf26bad43da606be6eed04ab0b9720120ae081"
+        },
+        {
+          "value": "game.action",
+          "hash": "b9b635b9544ea5c2897114b5010b9546a76ef69eec399b20f563da298bdd856c"
+        },
+        {
+          "value": "getBuildOptions",
+          "hash": "db5b296c99c10eaa722795e963659b4e698b82f7bce778f6c94a33e86321a03b"
+        },
+        {
+          "value": "input",
+          "hash": "c96c6d5be8d08a12e7b5cdc1b207fa6b2430974c86803d8891675e76fd992c20"
+        },
+        {
+          "value": "inspectTile",
+          "hash": "ef93abe6f5487380f7e09cdba8bb7c622ac48b0af664d4dba2cb42bc9e96f85b"
+        },
+        {
+          "value": "kernel",
+          "hash": "6923dd1bc0460082c5d55a831908c24a282860b7f1cd6c2b79cf1bc8857c639c"
+        },
+        {
+          "value": "KERNEL_GOVERNANCE_ERROR",
+          "hash": "8c7c1d50836db0d9eb30945527404eec4d8663363aaed6880f2d92e6c0cc12b5"
+        },
+        {
+          "value": "KERNEL-CONFIRM",
+          "hash": "98109c6017ffa413c35ebd90e77ab29000bc1d818a8c6d5cca84e860d67cd1b4"
+        },
+        {
+          "value": "kernel.action",
+          "hash": "7d20c922832534b513975313f06225bfb15acba942e7666cec462f65b887a4b2"
+        },
+        {
+          "value": "KernelGovernanceError",
+          "hash": "5274053c8a04d4603bee352097420fc07ab10f6e7e3e5527ad72eeed47c30bdf"
+        },
+        {
+          "value": "mine",
+          "hash": "3fd30542fe3f61b14bd4a4b2dc0b6fb30fa6f63ebce52dd1778aaa8c4dc02cff"
+        },
+        {
+          "value": "Mine",
+          "hash": "f57afb7d275a26df0de0e933b28c16f2462e84c09ad605945a4c6163f2be3baa"
+        },
+        {
+          "value": "object",
+          "hash": "2958d416d08aa5a472d7b509036cb7eafd542add84527e66a145ea64cb4cdc75"
+        },
+        {
+          "value": "Pflichtfeld fehlt oder ungueltig: ${key}",
+          "hash": "939cf1dc3c50895d235bdc3fd07ae10ac89cfc21ecde982c84fcca23f96b41cb"
+        },
+        {
+          "value": "Pflichtfeld fehlt oder ungueltig: x/y",
+          "hash": "691c6e0aff034e18a2deb5295881c2fff48827b6679a0ca5b133de6d117389dc"
+        },
+        {
+          "value": "Pflichtfeld fehlt: ${key}",
+          "hash": "c79d60310df64b7b760f850d5df3ca94c4ad5e247c9346014a6a00f26dfbfc58"
+        },
+        {
+          "value": "placeStructure",
+          "hash": "ac2bae13ea9dd07eb41228a7105160e10534e143184688c5077dc86048068294"
+        },
+        {
+          "value": "seed",
+          "hash": "19b25856e1c150ca834cffc8b59b23adbd0ec0389e58eb22b3b64768098d002b"
+        },
+        {
+          "value": "setDeterministicSeed",
+          "hash": "df9009f3460c3b59479f6837688785d523c3a3f09cab3324e56a4acf3c494964"
+        },
+        {
+          "value": "shadow",
+          "hash": "0bb09d80600eec3eb9d7793a6f859bedde2a2d83899b70bd78e961ed674b32f4"
+        },
+        {
+          "value": "shadow_deny",
+          "hash": "94eda682da43a16bcde96c2100c61ee5abf0bb355c39bd1b5757beedb820ff5e"
+        },
+        {
+          "value": "smelter",
+          "hash": "4e82d2b592679b26752a4816f6e099f1393b6302380349fe7a1fa2642f641756"
+        },
+        {
+          "value": "Smelter",
+          "hash": "4c85ecaec998a3fc5f2c6546c3982c833cf252b763efb8464700fc4a640c6c84"
+        },
+        {
+          "value": "state",
+          "hash": "4ba69735ca53765ed6a709edb56c6ea236b7193a3b29a6b390c346f0f4340e4e"
+        },
+        {
+          "value": "status",
+          "hash": "073c1634c496cdb649d1afe0a312bbb4b7e1741b271542e4a436c3b8824b1761"
+        },
+        {
+          "value": "string",
+          "hash": "473287f8298dba7163a897908958f7c0eae733e25d2e027992ea2edc9bed2fa8"
+        },
+        {
+          "value": "structureId",
+          "hash": "66ba38bd167c128bdc24f9d11de83f8b127844d0e44dd6e2903c7d0672efabeb"
+        },
+        {
+          "value": "ticks",
+          "hash": "724ef7ead11e3b729e20397060df0956a3ed73dff34b8c444e62869897aef6bb"
+        },
+        {
+          "value": "type",
+          "hash": "1303c06b0b014d0ce7b988ab173a13f31227d417058ff4bbe6f8c222b4ad913c"
+        },
+        {
+          "value": "Ungemappte Action geblockt: ${domain}.${actionType}",
+          "hash": "aa00d343d061d94d8cdaec67e91b4c8074873c1fb15d35d08415037556ef351a"
+        },
+        {
+          "value": "Ungemappte Action im Handler geblockt: ${domain}.${type}",
+          "hash": "fbbbd9d92d5dfd693677a5678ce361f208face38f14b12427c97c0222ae1877a"
+        },
+        {
+          "value": "Ungueltiges Validator-Ergebnis fuer ${domain}.${actionType}",
+          "hash": "a5280ae1ad8cd62d10211c1133f53b85e8e973a729fe6d7bbfa269b26bb99526"
+        },
+        {
+          "value": "water",
+          "hash": "0f4168490e38b8447e11ba4bd656aa11b925bd22af30bac464bc153fdb608501"
+        }
+      ]
+    },
+    {
+      "path": "app/src/kernel/KernelGates.js",
+      "string_count": 39,
+      "fingerprint": "47c1764cd57f7fe63675f1b0219a75d3d0cf3d45ef99eba085523d27b3f7e3b3",
+      "strings": [
+        {
+          "value": "[KERNEL_GATES] gateName fehlt.",
+          "hash": "fa194380e23bb6fce3f28de4caee840b766526ca1195c67f0f0db107cc0f5c48"
+        },
+        {
+          "value": "[KERNEL_GATES] validator fehlt fuer Gate '${gateName}'.",
+          "hash": "66fb0dad012d550024e57d293a7ab324c9eeaf228543719fbcc6c42dc8537cfa"
+        },
+        {
+          "value": "access",
+          "hash": "a0561fd649cdb6baa784055f051bad796ea0afef17fca38219549deeba4e8c1a"
+        },
+        {
+          "value": "allow",
+          "hash": "410083735735a10e658a19edd1704e606c9dd112e225825b63fafeded766c8b9"
+        },
+        {
+          "value": "boolean",
+          "hash": "bf84d3d60e93cc959793d5c9d8308fbcf868f673cb032f461c9676f0480cc29e"
+        },
+        {
+          "value": "Controls access to development mode",
+          "hash": "fa400d7784e2c49057a036ab3bcde392c283fe5743e8330f7d2e610516c98236"
+        },
+        {
+          "value": "Controls access to game mode",
+          "hash": "2e6413bae5d5015743b2e296d19a4af4f8c54cbde8289546cd19885a5043c732"
+        },
+        {
+          "value": "Controls access to patch mode",
+          "hash": "b99cf432518825fd36b6c7da17cf480a4e84598472b4d4e05d40cb546c1e9178"
+        },
+        {
+          "value": "Controls patch apply operations",
+          "hash": "4663c7dd7293f0c0be44802e6020daeeee487b744be6f250ecf88bb767aa2238"
+        },
+        {
+          "value": "Controls state modifications",
+          "hash": "c5b6eeaa94b0b788a84854ca3ea436b77aa49b2454c14334cfeaf2bc10fd8aca"
+        },
+        {
+          "value": "Controls system reset",
+          "hash": "7fadee09b8094385dd15eed89eb2fdb297bbf472cf81cfa608a4b857e37c13a5"
+        },
+        {
+          "value": "Controls system shutdown",
+          "hash": "6c5f8923f1874e90a3c37cc5e26bb988af2ffa2f2a66b41e8b931a1b18965f18"
+        },
+        {
+          "value": "Controls tick advancement",
+          "hash": "d86171a9aaadb92e47e77a4c8606478912a5d43fdb88c6afec0666809d93bc5b"
+        },
+        {
+          "value": "deny",
+          "hash": "3026a0ca485e5831657ba0120fa8dd66b3425427bfb0a2be0db743e2305cc7c5"
+        },
+        {
+          "value": "dev.access",
+          "hash": "b4c214f0d7c0dbd23136c57504964a30268061382d590df365e5dcb3b984c334"
+        },
+        {
+          "value": "function",
+          "hash": "78f9ac018e554365069108352dacabb7fbd15246edf19400677e3b54fe24e126"
+        },
+        {
+          "value": "game.access",
+          "hash": "beb4e67dc92e350a1e8a93f6eee17edca665971937af0181b14f717cb73652c8"
+        },
+        {
+          "value": "game.action",
+          "hash": "b9b635b9544ea5c2897114b5010b9546a76ef69eec399b20f563da298bdd856c"
+        },
+        {
+          "value": "Gate '${gateName}' returned invalid validator result.",
+          "hash": "b39f99bd384b0daafe64f45b8128892df197820e5e092517834796764d5bd65f"
+        },
+        {
+          "value": "Gate disabled: ${gateName}",
+          "hash": "eef520bf2dd9b57a0d23fabc6f25ef4462d7df866d8d0fefeb723a23ff4b5839"
+        },
+        {
+          "value": "Gate not found: ${gateName}",
+          "hash": "c1180b8721061e2e9fc6f06f197fbb3fa6f374fa4e66098d87e7b03bf9ab9c1c"
+        },
+        {
+          "value": "Gate validation failed: ${gateName}",
+          "hash": "803faa79db194929d15adf7b0fdc9a308cc82c44890c84df16f56f72c259dd2b"
+        },
+        {
+          "value": "Kernel-enforced game action gate",
+          "hash": "4c6415d2095fce19d1ee44f6dbf5fb12a19df4d0d088bb60b35dd98f9f187cfd"
+        },
+        {
+          "value": "Kernel-enforced kernel action gate",
+          "hash": "93822ef4f09a109307450bc12794d59b5d6e0aee916b5c93e48bda2d0368f3ca"
+        },
+        {
+          "value": "Kernel-enforced patch action gate",
+          "hash": "77dc697264b5319f2a0b245981fc4b6a304e05c1e0f74b97c3f08f925a27d88b"
+        },
+        {
+          "value": "Kernel-enforced UI action gate",
+          "hash": "29730ef4dbf7d01ebc1a60ed7b5698da860378a9a007ac2706e2472531f2577a"
+        },
+        {
+          "value": "kernel.action",
+          "hash": "7d20c922832534b513975313f06225bfb15acba942e7666cec462f65b887a4b2"
+        },
+        {
+          "value": "kernel.tick",
+          "hash": "dc9feceea6d91748e419557f3569d49aa22e1de1e9e69533468a5e9c0b290854"
+        },
+        {
+          "value": "object",
+          "hash": "2958d416d08aa5a472d7b509036cb7eafd542add84527e66a145ea64cb4cdc75"
+        },
+        {
+          "value": "operation",
+          "hash": "9bf5a24e4aa779981ac41f1a0f8713ec758e12df95fa51866869849c06e51175"
+        },
+        {
+          "value": "patch.action",
+          "hash": "da831ca66be0e09445b3e5f189395c6779c43812b3d921e78224cf729637ecbd"
+        },
+        {
+          "value": "patch.apply",
+          "hash": "6a9aedfb28354b7bf79ca26c3aaf08f02bfcc8741f219434f7e53f59df3066a8"
+        },
+        {
+          "value": "patcher.access",
+          "hash": "62c8309ffc8e89131e2becdf9f879c1f73fb1b7de3220c54893b389eaa62853f"
+        },
+        {
+          "value": "state.modify",
+          "hash": "10ca74617b83a66f31261f87463f64c13fbbe086ad4e3a30c46a2ab8afe80523"
+        },
+        {
+          "value": "string",
+          "hash": "473287f8298dba7163a897908958f7c0eae733e25d2e027992ea2edc9bed2fa8"
+        },
+        {
+          "value": "system",
+          "hash": "bbc5e661e106c6dcd8dc6dd186454c2fcba3c710fb4d8e71a60c93eaf077f073"
+        },
+        {
+          "value": "system.reset",
+          "hash": "64c7aeeeb1b347e5110539af7075e235833ca21959c6b630b0e08b3ff35adee6"
+        },
+        {
+          "value": "system.shutdown",
+          "hash": "7f2a2a0b44ad918c8df6021d98982bb79ca960583ce89067a533c4c140664c9a"
+        },
+        {
+          "value": "ui.action",
+          "hash": "ccddf4e64a093b5a0431c935fad097045a12fedab678c9801c78bec2fd108ec2"
+        }
+      ]
+    },
+    {
+      "path": "app/src/kernel/KernelRouter.js",
+      "string_count": 11,
+      "fingerprint": "4473687bbc585c068764067dbc82906f061cfbad7c91d6a6cfa47346d1c5cf24",
+      "strings": [
+        {
+          "value": ")\n          .join(\", \")}",
+          "hash": "b092042fec25c9a451a058bde1c2853da2dcc42cae6aa79ff231848324bba403"
+        },
+        {
+          "value": "[KERNEL_ROUTER] Cross-domain call blocked: ${sourceDomain} -> ${domain}",
+          "hash": "7786a4ac5101bb19a5da7864e88817893a9045d86b81be56dac59240da4efd60"
+        },
+        {
+          "value": "[KERNEL_ROUTER] Domain isolation violations detected: ${violations\n          .map((entry) => ",
+          "hash": "7942b8d9b968cf2a0594b1bf27505a19ee801acfd912f938f82c534096963195"
+        },
+        {
+          "value": "[KERNEL_ROUTER] Invalid domain: ${domain}",
+          "hash": "ea7089710371106f893e852e351b731064235a145ab664c4b7ab0277d7ae3643"
+        },
+        {
+          "value": "[KERNEL_ROUTER] No handler registered for domain: ${domain}",
+          "hash": "d9422794358828b082989925c9529338c7c5ca813723a741fbb7b2388bc9c161"
+        },
+        {
+          "value": "[KERNEL_ROUTER] Unknown domain: ${domain}",
+          "hash": "fa42bbd76ebdc29410f18ce73a70c95dc2358fd3f16ace9408cc1740fc849793"
+        },
+        {
+          "value": "external",
+          "hash": "3c4623849a49a53911c4a3e48d8cead8a1858960bccdea7a1b978d73ec2f06d7"
+        },
+        {
+          "value": "game",
+          "hash": "6ca5cab77e702c787b4c14b3d3bf26bad43da606be6eed04ab0b9720120ae081"
+        },
+        {
+          "value": "kernel",
+          "hash": "6923dd1bc0460082c5d55a831908c24a282860b7f1cd6c2b79cf1bc8857c639c"
+        },
+        {
+          "value": "processed",
+          "hash": "58190ffabf981aa3956f64e7fb6c336b181e7145950a37f4ce6d761a81f5d083"
+        },
+        {
+          "value": "unknown",
+          "hash": "b23a6a8439c0dde5515893e7c90c1e3233b8616e634470f20dc4928bcf3609bc"
+        }
+      ]
+    },
+    {
+      "path": "app/src/kernel/PatchOrchestrator.js",
+      "string_count": 21,
+      "fingerprint": "d8b1408c22c64c3e4b6b23350854fe1674e5797ec4f28b3d544506b1206dd12c",
+      "strings": [
+        {
+          "value": "[PATCH_ORCHESTRATOR] Direct game state access forbidden. ",
+          "hash": "db5a7d04c2f11fa9471705fa433913288232310962058f6a34db85d38fc351e3"
+        },
+        {
+          "value": "[PATCH_ORCHESTRATOR] Direct game state mutation forbidden. ",
+          "hash": "21bf10e7fd755d1324c5bed482df87ff165e9abefe8c0f1c3576cd72ce3ae02d"
+        },
+        {
+          "value": "active",
+          "hash": "96879611650f80a81392a52e0db9b0237669087c4518e1c130e541a505e0eeef"
+        },
+        {
+          "value": "applied",
+          "hash": "b4267ce93cbba4e415504feb895f662dcced5d7aa406f27e8447c8fd5f0d48c8"
+        },
+        {
+          "value": "applyPatch",
+          "hash": "f4e69497fb19d8d30e98de067442470d7af2776f206d20585f30554f4e4f2958"
+        },
+        {
+          "value": "ended",
+          "hash": "e87ba7a0b779d8b797f86d19604504496f23b4d1e31ed4721d9dc8634172b723"
+        },
+        {
+          "value": "endSession",
+          "hash": "c579c7b6bfa4f7ad812daa549b5361ae149c70afa58c45d7dcb79fed483b9b0e"
+        },
+        {
+          "value": "error",
+          "hash": "ca00fccfb408989eddc401062c4d1219a6aceb6b9b55412357f1790862e8f178"
+        },
+        {
+          "value": "failed",
+          "hash": "5d28a90f4498a81461efbaf6f628a19d9778390bb5c81a393dd936181cc3d826"
+        },
+        {
+          "value": "idle",
+          "hash": "4fb62348858c2f6fbd6db27fa4c11edd8559119869d1034e2bd3390fd92b1a04"
+        },
+        {
+          "value": "listPatches",
+          "hash": "68f23753d0a5501a8233b2b12a63023974272a3fffdae05dfe40a512905bfc98"
+        },
+        {
+          "value": "patch",
+          "hash": "a4895eb44afc336fecbba6e520cd67e178dace0276655d102fceffa8e5f70570"
+        },
+        {
+          "value": "Patch domain only receives kernel acknowledgements.",
+          "hash": "0feae343bfe7cfed9cb0229145a6f5c96a63c2d29f3d045f479d8ab2b897c835"
+        },
+        {
+          "value": "registered",
+          "hash": "b1a9e561106ea030330ac272e9f446130d42887aa4596fbf9a1dc4bd2144ed4a"
+        },
+        {
+          "value": "registerPatch",
+          "hash": "4294b344b4c1400df6f7f10212f60f2997a639ebf1b60193e0872db89dd09b5d"
+        },
+        {
+          "value": "started",
+          "hash": "03494afd4248c42f5fa1237bf2eeebe751ab8d9c977d55405fcb17469dbd91f8"
+        },
+        {
+          "value": "starting",
+          "hash": "59dbf36d9930a99bfc1e13a10518cd5cf42d29ef9b21993c424b4146a81aa30e"
+        },
+        {
+          "value": "startSession",
+          "hash": "14785dfb8b14296fd9c474396d05ddd05748a7b163f4bdc7a8cbd1b4fdb112ac"
+        },
+        {
+          "value": "unregistered",
+          "hash": "d72aa3403ef75857e709398ea03819b34d66619113f6c21958ef7865da7dd8dd"
+        },
+        {
+          "value": "unregisterPatch",
+          "hash": "3107fd199d8250868187f335be7f68b9fef506a629eeb22be825eb2337a51fbb"
+        },
+        {
+          "value": "Use kernel.execute with domain: \"game\" for state changes.",
+          "hash": "ecda10cc96a56b45dc2f6943675c80a5a9ef3dc21b45bfeba88f1d1b543b2ac8"
+        }
+      ]
+    },
+    {
+      "path": "app/src/kernel/runtimeGuards.js",
+      "string_count": 24,
+      "fingerprint": "b06f388ffda57e8bce60f7f87f44e75aab44a9a8f2211ca5bd5cc201fab7ae4f",
+      "strings": [
+        {
+          "value": "[KERNEL_GUARD] ${message}",
+          "hash": "5ba3323307035866827b282dbbe68831e34509d0c9c12a9bd81b3c0aeb05a80e"
+        },
+        {
+          "value": "`crypto.getRandomValues()` ist im deterministischen Kernel verboten.",
+          "hash": "7190b9119cad1a262b33a1327f366be259ab0b82508f26e1a8696781af8e1796"
+        },
+        {
+          "value": "`crypto.randomUUID()` ist im deterministischen Kernel verboten.",
+          "hash": "87179024094e9431173378d289248d5e3993a9e092cdb4acf5584688136a924a"
+        },
+        {
+          "value": "`Date.now()` ist im deterministischen Kernel verboten.",
+          "hash": "6d81a0b9b4f694492daa8b53fc3af3c08050f19835ba8f39fd1d8386a7e82268"
+        },
+        {
+          "value": "`Date()` als Funktion ist im deterministischen Kernel verboten.",
+          "hash": "dd9c7e5fcfa43e3597fd3c6ecc1fad97b359aee506aec60430942be19cf55abc"
+        },
+        {
+          "value": "`Date()` ohne festen Input ist im Kernel verboten.",
+          "hash": "fd72272b694cfac12938e44b1cdd80fc1e325ed2fdab08885a1735119bbb4db8"
+        },
+        {
+          "value": "`Math.random()` ist im deterministischen Kernel verboten.",
+          "hash": "1398056ee5d69169a2829fe81ce83f13ae923d9bfb46a217ca62a764fee34ec8"
+        },
+        {
+          "value": "`performance.now()` ist im deterministischen Kernel verboten.",
+          "hash": "eb91d0080009ca7d0b334af272f79ddfd1db9e6e4194f86da8ef527752ab68e5"
+        },
+        {
+          "value": "constructor",
+          "hash": "e3c1703abf8a6b3df04dd30e184fe02bb6724f46830b544562ff083169371068"
+        },
+        {
+          "value": "crypto.getRandomValues konnte nicht sauber zurueckgesetzt werden.",
+          "hash": "3b7144be75ee57daada9c8ed39e1df3794d6efc4dc35a23a57fda012c14f2203"
+        },
+        {
+          "value": "crypto.randomUUID konnte nicht sauber zurueckgesetzt werden.",
+          "hash": "43890253df5d43d19de6409052d1621863afe04477a6c15de079e1e1d6db670e"
+        },
+        {
+          "value": "Date",
+          "hash": "99c40ab405926cb5ad1def9cff4d7ce624f8f8abfff4e85f655347fcb949d08e"
+        },
+        {
+          "value": "Date.prototype.constructor konnte nicht sauber zurueckgesetzt werden.",
+          "hash": "785e69845fcc434675229003f13998a6a7bb2514f780e59e2a4a92121aac5686"
+        },
+        {
+          "value": "determinism-guard",
+          "hash": "0e3722b7bf79b85f151328fb6c8213d68f470cda194721caa8211a0d90ae76c1"
+        },
+        {
+          "value": "Determinismus-Guards konnten nicht sauber zurueckgesetzt werden.",
+          "hash": "449a6e955f40371418912a4af3e425c1d331d657fe60f59380511cd1f628b314"
+        },
+        {
+          "value": "Determinismus-Guards laufen bereits in einem aktiven Scope.",
+          "hash": "73001f99ebdf68d8dd4416da05de191f321032b92462a6ce0355fc34f5f4a8dd"
+        },
+        {
+          "value": "function",
+          "hash": "78f9ac018e554365069108352dacabb7fbd15246edf19400677e3b54fe24e126"
+        },
+        {
+          "value": "getRandomValues",
+          "hash": "bd84a4e2b0bb1b84c067b76162b1103350d35155e2257933dd841c23914c3ab1"
+        },
+        {
+          "value": "Konnte Guard fuer ${String(key)} nicht erzwingen.",
+          "hash": "eee2a3f2a113bdedf84d003dc014ea6f30c29d687e517eee5bfbe1ca8421e810"
+        },
+        {
+          "value": "now",
+          "hash": "ed5eb9a37e2d8231af3388319b941995f6dc8755c56043d0cc52b5fe405a87de"
+        },
+        {
+          "value": "performance.now konnte nicht sauber zurueckgesetzt werden.",
+          "hash": "8729a785dc50438a3612e231a99f9cb6e4f89b91b1503a3151e26e89e28afd63"
+        },
+        {
+          "value": "random",
+          "hash": "a441b15fe9a3cf56661190a0b93b9dec7d04127288cc87250967cf3b52894d11"
+        },
+        {
+          "value": "randomUUID",
+          "hash": "23cc52720b3ca5494fc7420b7bd225d36e1fb6d3a5084a964851c492b32e5aac"
+        },
+        {
+          "value": "value",
+          "hash": "cd42404d52ad55ccfa9aca4adc828aa5800ad9d385a0671fbcbf724118320619"
+        }
+      ]
+    },
+    {
+      "path": "app/src/kernel/seedGuard.js",
+      "string_count": 6,
+      "fingerprint": "f710516365f07fd1b9348193924f14e176c41be67dc69e08f2962cdd4e1ee74d",
+      "strings": [
+        {
+          "value": "[SEED_GUARD] ${message}",
+          "hash": "ea188cc3f41f0835aae6cdb8d157dfe6681c7b3950009712adb9a3cb55159db3"
+        },
+        {
+          "value": "expectedSeedHash muss 64 Hex Zeichen haben",
+          "hash": "740d02fd2aead0d46eeeaff198d7cb283fa0ab1a6c4d1e67931660fbc199180c"
+        },
+        {
+          "value": "expectedSeedHash muss eine Zeichenkette sein",
+          "hash": "8f9cb7d9bb73705cb2f7c220a9a328f4174ad964316ee4713868a862746ea14f"
+        },
+        {
+          "value": "seed fehlt oder ungueltig",
+          "hash": "d07116ab4b778e2cbdb53fe85403712157de6587ab2d68a36508033415146e17"
+        },
+        {
+          "value": "Seed-Abgleich fehlgeschlagen (Hash mismatch)",
+          "hash": "d4733b6f7b439a2fae5e1248a82380504101922507ca80cfd78c02deb992e111"
+        },
+        {
+          "value": "string",
+          "hash": "473287f8298dba7163a897908958f7c0eae733e25d2e027992ea2edc9bed2fa8"
+        }
+      ]
+    },
+    {
+      "path": "app/src/ui/IconAnimations.js",
+      "string_count": 1,
+      "fingerprint": "82a52d8a394c5f20157a4c80f41a0ccb28440775e85ee99f9e53aecb4949eb36",
+      "strings": [
+        {
+          "value": "scale(${(1 + wobble).toFixed(3)})",
+          "hash": "82a52d8a394c5f20157a4c80f41a0ccb28440775e85ee99f9e53aecb4949eb36"
+        }
+      ]
+    },
+    {
+      "path": "app/src/ui/RenderManager.js",
+      "string_count": 1,
+      "fingerprint": "78f9ac018e554365069108352dacabb7fbd15246edf19400677e3b54fe24e126",
+      "strings": [
+        {
+          "value": "function",
+          "hash": "78f9ac018e554365069108352dacabb7fbd15246edf19400677e3b54fe24e126"
+        }
+      ]
+    },
+    {
+      "path": "app/src/ui/tileGrid.css",
+      "string_count": 6,
+      "fingerprint": "aa3844d318c2d6f9097413b6cbf2dca03d76d1bb099a0a68381da703954caba2",
+      "strings": [
+        {
+          "value": "coal",
+          "hash": "6d114c95fbf5208dd6cf5133f5f89db623bf20ee6f6e68f48f0bbfa4a21a843c"
+        },
+        {
+          "value": "factory",
+          "hash": "06c8aaa93d80a768829b6005973fa92e34612849b79910c8be8e3b006cf91c61"
+        },
+        {
+          "value": "mine",
+          "hash": "3fd30542fe3f61b14bd4a4b2dc0b6fb30fa6f63ebce52dd1778aaa8c4dc02cff"
+        },
+        {
+          "value": "on",
+          "hash": "b8d31e852725afb1e26d53bab6095b2bff1749c9275be13ed1c05a56ed31ec09"
+        },
+        {
+          "value": "ore",
+          "hash": "f8bd17bea0e948bb644ee10b36ba44e1627d6ab0f0deaebbadc600303d24b6ad"
+        },
+        {
+          "value": "storage",
+          "hash": "49a25f9feefaffecad0fcd30c50dc9331cff8b55ece53def6285c09e17e6f5d7"
+        }
+      ]
+    },
+    {
+      "path": "app/src/ui/TileGridRenderer.js",
+      "string_count": 85,
+      "fingerprint": "92ea1251203b013f178512ae1cc915d17044be7d5ff7e86f0aef82326e9c6aad",
+      "strings": [
+        {
+          "value": "--ao-bl",
+          "hash": "0b35a0d40d73fc76729e00264e4174ef2a61b2557e3d73b3cfea338b487216b6"
+        },
+        {
+          "value": "--ao-br",
+          "hash": "c9f323293b6364b2828ff0da511457233522302708f0735eab2e04bb119df7b6"
+        },
+        {
+          "value": "--ao-tl",
+          "hash": "44724c0628b0d907931e0ee3890f9c6b55454352a63675546c814427368f40f3"
+        },
+        {
+          "value": "--ao-tr",
+          "hash": "f2e346416da26b10d4854eaae71a9ee994c135986a4bb290bc5f5f40f125baf1"
+        },
+        {
+          "value": "--d1x",
+          "hash": "00715b42f7a84c976090cc9d4ac415cd21646fca5556ebccb377547dc02c40ec"
+        },
+        {
+          "value": "--d1y",
+          "hash": "41e6d71ee431ec200200563d92ef544a261a70631b9dcdb3afbc625b7c92ba5a"
+        },
+        {
+          "value": "--d2x",
+          "hash": "69b1fb5a3e2973d6512d6ab5c0c8f73d277f5b731458f1070c51d33fd30d1274"
+        },
+        {
+          "value": "--d2y",
+          "hash": "7d910f559401ff0663a9adadd3e75cea1ae15e86184e3b280f372a63f72b6712"
+        },
+        {
+          "value": "--d3x",
+          "hash": "6a148dc21b6ec89a726ddc8a542c19f49442d6283af1b88e05d71cdce1754e1a"
+        },
+        {
+          "value": "--d3y",
+          "hash": "664d4e54170bf897c436a543c686fb9243b7a550ee96cded15cdf156faff9127"
+        },
+        {
+          "value": "--edge-bottom-alpha",
+          "hash": "99984c79bba65058507e0ab6836323e7c19243c503e32d6db235ba91cff83b82"
+        },
+        {
+          "value": "--edge-bottom-color",
+          "hash": "6181c7ec4ba2f575b5c7d0cf4d65e600d913cab567fddeb6c467a411a8ce03bb"
+        },
+        {
+          "value": "--edge-left-alpha",
+          "hash": "eb1428f859ff4d0745c6377ebb44490d7d23ca175131dfd356b3989cb1a1f1ce"
+        },
+        {
+          "value": "--edge-left-color",
+          "hash": "423900b97f1a6086f009adaa5a2310fbe493909a75fcbbc2f183a89d9f958e29"
+        },
+        {
+          "value": "--edge-right-alpha",
+          "hash": "b765ecad398f85796c3f784af2684ce76cbbb8c86c769db28a50317f7ab15be5"
+        },
+        {
+          "value": "--edge-right-color",
+          "hash": "bd2a4ff98c5ca12571875f5d3102dde9a678e8257e1014e631c4c8d4083de3c4"
+        },
+        {
+          "value": "--edge-top-alpha",
+          "hash": "fd630649320960b612ec55b74c56252f31412f8c7441c8a4fe1d7a573ed8d8ad"
+        },
+        {
+          "value": "--edge-top-color",
+          "hash": "4e9e041753210e16b48acc8c14f16ce34b8a907301ddee46f65427d982ce8060"
+        },
+        {
+          "value": "--grid-height",
+          "hash": "e84ea2224f562d9dca620e842b17aeeda2956244e5f6ec25999b3e004e13c035"
+        },
+        {
+          "value": "--grid-width",
+          "hash": "803c814ad946eed8faf43db9c83f36deec9cda5b4e4f98a35449797acfddbeff"
+        },
+        {
+          "value": "--tile-base",
+          "hash": "c710dc5a797d2debe0ba658faf6e5d552ae992ef217f2a98abcd2b4443b06569"
+        },
+        {
+          "value": "--tile-detail",
+          "hash": "87e20f6aa24095754bf3740e62d13cdde868fd4a5d0bf4a5bd22e834b16bdfd2"
+        },
+        {
+          "value": "--tile-grain-alpha",
+          "hash": "4086a7d5d9c197544fc08a061c8512a927491276388a2afc2e3e1189f33ed191"
+        },
+        {
+          "value": "--tile-grass",
+          "hash": "925b6ca1f8be6b10b5016283ce2045a5c29d06ca86c477218dac7bcaa496a79e"
+        },
+        {
+          "value": "--tile-noise",
+          "hash": "d89de2f58513c1e8db88345441dea5de8030e5a6baea6fb6b5ec447d09d3949b"
+        },
+        {
+          "value": "--tile-size",
+          "hash": "e34d236598e946b98c21ae25151a469e2048fa646f63fdc13ec3e5bfe70adb7c"
+        },
+        {
+          "value": "--tile-stone",
+          "hash": "b7df637131999c90a2ccb70385a92656568b15b91ef7d4b1ba30e79fd3677d9c"
+        },
+        {
+          "value": "--viewport-height",
+          "hash": "fee661b2733795707b31ff06d04c48eb9879a6fc2a41a4920821a4048dc25579"
+        },
+        {
+          "value": "--viewport-width",
+          "hash": "287a1ce2b0d29c0eedc19731484a18b2c0b250c1bc3b6efa702593d186668081"
+        },
+        {
+          "value": ".tile",
+          "hash": "ebc4ef7a66acaa4feeff83e938484e623d48bf928b9ac2102e60055ecd14ec11"
+        },
+        {
+          "value": "[TILE_GRID] Container not found.",
+          "hash": "1aafebbd502c5bf589f2f394bbe94361e4d32d45c4f38d45d16f51d7a38df17a"
+        },
+        {
+          "value": "${d1x}%",
+          "hash": "6c4a8fd5f533ee494b2c435449275a0fc5e1d2b4db2e5a29ec111b0e0b956027"
+        },
+        {
+          "value": "${d1y}%",
+          "hash": "99c5e921f73e035f92cf605faddda7c8386aa3158dd5ef2ac8a6df0f5ee8cb1b"
+        },
+        {
+          "value": "${d2x}%",
+          "hash": "f0faa38088151d915457d3252b678cb5cbe80aaf5d4afa5d9d871b83bab6fb4d"
+        },
+        {
+          "value": "${d2y}%",
+          "hash": "eefbc228e682690f55dda143580ba7a45352f8814002827392279c31087754df"
+        },
+        {
+          "value": "${d3x}%",
+          "hash": "3b33526cfed526a00bd2894dec73ae771245eb39b3ea4263e903309631fb36bf"
+        },
+        {
+          "value": "${d3y}%",
+          "hash": "bf1ddde06733fc58b785508b710eb1a1ceb4023ec75e262b36a1951289df416f"
+        },
+        {
+          "value": "${Math.max(0, Math.round(height))}px",
+          "hash": "4ae6c9e11d8dfb9768e3ec94da46e5bd58181cc617c250bcccf4f6fd61f192f9"
+        },
+        {
+          "value": "${Math.max(0, Math.round(width))}px",
+          "hash": "30c1f12f32f955894c4f2aa8b0f617a89e0d92c26b52f6b18d161a955a97fcbf"
+        },
+        {
+          "value": "${Math.trunc(x)}:${Math.trunc(y)}",
+          "hash": "6ff059617bb4b0076dffa0c15d5fbd030756cd757f0698a265ca9e9ce9ccfccc"
+        },
+        {
+          "value": "${this.tileSize}px",
+          "hash": "3e5aa89f20acb66707a1bfde7950b63f63ffb851a905d2fbea9e679941649098"
+        },
+        {
+          "value": "${tile.rate} ${tile.unit.trim()}",
+          "hash": "b73ee594ae73fba4168f901fe1986b5cba25f284b5eb83fdccae306218e2c5e5"
+        },
+        {
+          "value": "aria-hidden",
+          "hash": "66eaf9abadcdda6c5ff024d2f1833abdfb52156072d292fd20282726a4c915e8"
+        },
+        {
+          "value": "brightness(${brightness.toFixed(3)})",
+          "hash": "e97bf97889ea9c34dae37c7171d55b1b16e2f638a45aa67ee536c118a00aeff7"
+        },
+        {
+          "value": "click",
+          "hash": "e5c7ffac26fed654fe62045898f55b551a0dc120badf3d116bcd364418f3ec16"
+        },
+        {
+          "value": "coal",
+          "hash": "6d114c95fbf5208dd6cf5133f5f89db623bf20ee6f6e68f48f0bbfa4a21a843c"
+        },
+        {
+          "value": "connector",
+          "hash": "c08c6acfff81cafe379f88061e6b71bfbf2e9b5c5fcba037f0ac69a6b896d41b"
+        },
+        {
+          "value": "div",
+          "hash": "cd35a2426062b7d58fd4a63f813cc506ef87e449087d28d256b8c393f20fa364"
+        },
+        {
+          "value": "empty",
+          "hash": "2e1cfa82b035c26cbbbdae632cea070514eb8b773f616aaeaf668e2f0be8f10d"
+        },
+        {
+          "value": "factory",
+          "hash": "06c8aaa93d80a768829b6005973fa92e34612849b79910c8be8e3b006cf91c61"
+        },
+        {
+          "value": "forest",
+          "hash": "619a2ccf126ce837dc7cd3bdb4d7f44280a0ea4f721e5a738f859aa19d52a78f"
+        },
+        {
+          "value": "function",
+          "hash": "78f9ac018e554365069108352dacabb7fbd15246edf19400677e3b54fe24e126"
+        },
+        {
+          "value": "grid",
+          "hash": "0f2a693e93e2ed7008feb5b7714bbab236e3907e64188199e3be1ae367f49c40"
+        },
+        {
+          "value": "gridcell",
+          "hash": "2648ac479a631e03ae9c6e2d78023aff6a88dfd7d36ef1b9fb7bbe4dfe993bca"
+        },
+        {
+          "value": "hsl(${hue.toFixed(1)} ${sat.toFixed(1)}% ${light.toFixed(1)}%)",
+          "hash": "1b089ce00ec889b667775450163a5017e38a28dc61e88bcfaec1e8c43acf4766"
+        },
+        {
+          "value": "icon",
+          "hash": "c2d4b446a44ce54fab8e01150e24dd24f3d850c7c14dcfe31f6321341dd86874"
+        },
+        {
+          "value": "meadow",
+          "hash": "6d02f7d61e02d070944a9a37856f43d78fb89f8adea6150cd2fdcb53d2a4cc4a"
+        },
+        {
+          "value": "mine",
+          "hash": "3fd30542fe3f61b14bd4a4b2dc0b6fb30fa6f63ebce52dd1778aaa8c4dc02cff"
+        },
+        {
+          "value": "none",
+          "hash": "140bedbf9c3f6d56a9846d2ba7088798683f4da0c248231336e6a05679e4fdfe"
+        },
+        {
+          "value": "number",
+          "hash": "12886f9d00055adf24c40579e22d31b2b45f2023f892954ffd5567beb60825f8"
+        },
+        {
+          "value": "object",
+          "hash": "2958d416d08aa5a472d7b509036cb7eafd542add84527e66a145ea64cb4cdc75"
+        },
+        {
+          "value": "off",
+          "hash": "b4dc66dde806261bdda8607d8707aa727d308cd80272381a5583f63899918467"
+        },
+        {
+          "value": "ore",
+          "hash": "f8bd17bea0e948bb644ee10b36ba44e1627d6ab0f0deaebbadc600303d24b6ad"
+        },
+        {
+          "value": "repeat(${this.height}, ${this.tileSize}px)",
+          "hash": "5b4f36813564b6a33083ee09749eef51abe60bb329fdae75f2036a688ff89d5b"
+        },
+        {
+          "value": "repeat(${this.width}, ${this.tileSize}px)",
+          "hash": "574377caa46d4b8dc49f84bdb826de443f107c13da17600627e5712f71d0be1c"
+        },
+        {
+          "value": "role",
+          "hash": "4b168d88dc872a7753c2bc35b36a2d4249487af55baf78f247f38cae2fe962da"
+        },
+        {
+          "value": "scrub",
+          "hash": "e8927b61deaf6863a3006b9a100f01d4962374aa9dea9516949e817cecca3b97"
+        },
+        {
+          "value": "span",
+          "hash": "37a0025aa1f2e29f9f88f59f961e44a320849dfc79a85ef3c02654d50d2e7480"
+        },
+        {
+          "value": "steppe",
+          "hash": "891a17dd29f0f5726ddf3df373fb1b4a40bfe61a13d75df3efa126856c2ab629"
+        },
+        {
+          "value": "storage",
+          "hash": "49a25f9feefaffecad0fcd30c50dc9331cff8b55ece53def6285c09e17e6f5d7"
+        },
+        {
+          "value": "string",
+          "hash": "473287f8298dba7163a897908958f7c0eae733e25d2e027992ea2edc9bed2fa8"
+        },
+        {
+          "value": "tile tile--${tile.type}",
+          "hash": "af853823b47f307b83a6f70e5f5a1ed66b5ed4afd030378ea636d49af548965f"
+        },
+        {
+          "value": "tile tile--empty",
+          "hash": "ed39f15bd9b584d78391bb3db68508332ab264b843a3f2fbb245345a6f0d0e9f"
+        },
+        {
+          "value": "tile--active",
+          "hash": "ec8e0893dc0cfd62f0c70be73426d4719c488d36f1caf535093a9af65d1ec7c0"
+        },
+        {
+          "value": "tile--empty",
+          "hash": "0e581f9548341b51cdf44983750324b4cd40cad2744e35490b374c2c60bc97ba"
+        },
+        {
+          "value": "tile-fx",
+          "hash": "47fbbc2f813a35874fdc69769a75ba92f86ccfe08d6e373d0bc7afcf930610b6"
+        },
+        {
+          "value": "tile-grid",
+          "hash": "dbe7fb45a42da1696ecce8b9166085586baa2e3d5335a68d0e821c2ce8f4ae27"
+        },
+        {
+          "value": "tile-output",
+          "hash": "74c66f432b7089f20705cf445e7c933c535ef00908eb62fac91c3ca9df5c7e3b"
+        },
+        {
+          "value": "translate(-50%, -50%)",
+          "hash": "569bd25dce87a68e236eead6f6df69579acd12bf7d179bc1ec334bb6d4a3a209"
+        },
+        {
+          "value": "translate(-50%, -50%) rotate(${rotation.toFixed(2)}deg)",
+          "hash": "5f8a2d6fbf1379329d9ceb4a1d077fcd8ce9da6b390f4606adbfbc2d148c0700"
+        },
+        {
+          "value": "translate(-50%, -50%) rotate(${swing.toFixed(2)}deg) ${pickaxe}",
+          "hash": "bef49bf5464fee22b98a6d3e43228f45889137f8f3e912d59d2057cac5f9fd87"
+        },
+        {
+          "value": "translate(-50%, -50%) scale(${pulse.toFixed(3)})",
+          "hash": "506815975b5ceba931c5cabd90421bd38f4a45887c27a8a14cc3fddd740fe692"
+        },
+        {
+          "value": "translate(-50%, -50%) translateX(${(pulse / 20).toFixed(2)}px)",
+          "hash": "5df52d944e2e181fd2068720f16c16c914262d90c3557ff74c284e629ff5f51a"
+        },
+        {
+          "value": "true",
+          "hash": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b"
+        },
+        {
+          "value": "water",
+          "hash": "0f4168490e38b8447e11ba4bd656aa11b925bd22af30bac464bc153fdb608501"
+        }
+      ]
+    },
+    {
+      "path": "app/src/ui/UIController.js",
+      "string_count": 8,
+      "fingerprint": "895f2b99369cfea99a0df4adf18b053f4b7ead72159591d0ea6dea89c4bd3761",
+      "strings": [
+        {
+          "value": "[UI_CONTROLLER] gameLogic mit calculateAction erforderlich.",
+          "hash": "0c4765074dc882899d3578295e8773b7a0f00158fd09b6574e686dd620714007"
+        },
+        {
+          "value": "function",
+          "hash": "78f9ac018e554365069108352dacabb7fbd15246edf19400677e3b54fe24e126"
+        },
+        {
+          "value": "generate_world",
+          "hash": "151233a7dea93177ac09db019f8b7607cb13eb8fb3777f1c0392c7fbbf64b8af"
+        },
+        {
+          "value": "object",
+          "hash": "2958d416d08aa5a472d7b509036cb7eafd542add84527e66a145ea64cb4cdc75"
+        },
+        {
+          "value": "seedworld-v1",
+          "hash": "27c345522e5326f8d425244d2e6cc55295ab0ea9e58b4b9c84967e518f7867fe"
+        },
+        {
+          "value": "string",
+          "hash": "473287f8298dba7163a897908958f7c0eae733e25d2e027992ea2edc9bed2fa8"
+        },
+        {
+          "value": "tile-grid-container",
+          "hash": "acd66c2efee132215b9febcc39632dcbef4766281be9b67410aac6f11702893c"
+        },
+        {
+          "value": "undefined",
+          "hash": "eb045d78d273107348b0300c01d29b7552d622abbc6faf81b3ec55359aa9950c"
+        }
+      ]
+    },
+    {
+      "path": "app/src/ui/ViewportManager.js",
+      "string_count": 7,
+      "fingerprint": "dbe70e14909952c9ad88126c3fa8135a995f68cce8d4d71e71ad54463c028c88",
+      "strings": [
+        {
+          "value": "function",
+          "hash": "78f9ac018e554365069108352dacabb7fbd15246edf19400677e3b54fe24e126"
+        },
+        {
+          "value": "manual",
+          "hash": "36bde66f289a35683683b041c6d8f418a5f36607b547da25d00ad55891e80b88"
+        },
+        {
+          "value": "number",
+          "hash": "12886f9d00055adf24c40579e22d31b2b45f2023f892954ffd5567beb60825f8"
+        },
+        {
+          "value": "orientationchange",
+          "hash": "608bc36fc02d596b41fa1ae71278ffbcf0fd3379fa2830bd638cb6741d3f8ff9"
+        },
+        {
+          "value": "resize",
+          "hash": "acd532d8913e66d436b38de9acba750f92f20e16c49dafb78b69363127a38c60"
+        },
+        {
+          "value": "subscribe",
+          "hash": "f40fd562f63078722310bf105375576916ef81609331c36aa36015b4f56f9082"
+        },
+        {
+          "value": "undefined",
+          "hash": "eb045d78d273107348b0300c01d29b7552d622abbc6faf81b3ec55359aa9950c"
+        }
+      ]
+    },
+    {
+      "path": "docs/V2/ARCHIVE.md",
+      "string_count": 32,
+      "fingerprint": "160db2f1a032e605056f2b742890f2c15b2be2b5fd192c670cd1b8aa49936234",
+      "strings": [
+        {
+          "value": "- Archived At: `2026-03-31T06:40:49.205Z`",
+          "hash": "47561df1d6eee2d35b8b6ede8709c9efd1000074aeee33ca2840c51f6f7accab"
+        },
+        {
+          "value": "- Archived At: `2026-03-31T07:17:51.097Z`",
+          "hash": "2e42bfddceac637eb71d5bf784ce734f155a74c27da577fb068331f7ce0a3de3"
+        },
+        {
+          "value": "- Class: `Archive`",
+          "hash": "d6432faf5d87335893e3f0c499a35264e7c16518e62694957e8038b8265478a4"
+        },
+        {
+          "value": "- Class: `Out-of-Scope`",
+          "hash": "26a78f95eb229da62da5b202776facffd1f7d4a951fcb2598e7682b3e18f8aec"
+        },
+        {
+          "value": "- JSON: `tem/tasks/archive/DOC-001.json`",
+          "hash": "cb5d780f6029195fa182892a844abe7d0054f24fd991d890b0dc8d164e8d33cf"
+        },
+        {
+          "value": "- JSON: `tem/tasks/archive/DOC-002.json`",
+          "hash": "c807750a686e5c53a5f2db973da25bb36ffada6108513d1ec1496cdf3b0244c3"
+        },
+        {
+          "value": "- Paths: `docs/IN PLANUNG/`",
+          "hash": "2e330be8043c6190f7441aff20a6292ab0d9ba562565d0fe8c69da5ff95e741e"
+        },
+        {
+          "value": "- Paths: `docs/LLM/`",
+          "hash": "68bded2f453b69e2df32ec3f6bca86a73ea1a46bf63c8939be2073ef447d8138"
+        },
+        {
+          "value": "- Paths: `docs/MANUEL/deployment/DEPLOYMENT.md`, `docs/MANUEL/wiki/Kernel-Governance.md`, `docs/MANUEL/wiki/Patch-Flow.md`",
+          "hash": "1da327f10045fcb7bc1e7964fd72f441ac81b4045d190f5b5e72925a019d15e4"
+        },
+        {
+          "value": "- Paths: `legacy/UNVERFID/`",
+          "hash": "9492479026282e47c1360c5b064d8a9189ed3364bf9f36ec48bc13d65bf9092d"
+        },
+        {
+          "value": "- Reason: scope matched current change set",
+          "hash": "c06634b8d11963e2a447d3e8dc466f4a567350f67ca4769ccdfd34d32e97917a"
+        },
+        {
+          "value": "2026-03-31T06:40:49.205Z",
+          "hash": "4b42b97a1b86d4fefbd31d9aa0fdf91970e24efca26c72046e83a6880dd02833"
+        },
+        {
+          "value": "2026-03-31T07:17:51.097Z",
+          "hash": "71bff6fea86729ef6a89746c818721f8d16cb5196e60d5f889572f13b455be26"
+        },
+        {
+          "value": "Archive",
+          "hash": "66f4804ee23ddc092d1bae43cb88186aa541187fff7c1cc8a4aa17e59a9f4123"
+        },
+        {
+          "value": "Archived Tasks",
+          "hash": "d54f7b91cf0ace6996db66a7658abc2b250bc2061efb72c1dd2df21d95377e7d"
+        },
+        {
+          "value": "Archivierte oder ausserhalb des Pflichtkerns liegende Dokumentationsbereiche sind explizit klassifiziert und werden nicht mehr als fuehrende Wahrheit behandelt.",
+          "hash": "b97a77368a7e63c17c21343edb09f9500efeec91e4a681265753e1936bae1b9e"
+        },
+        {
+          "value": "Archivierte Tasks wurden vom Scanner aus dem offenen Planungspfad entfernt, weil ihr deklarierter Scope im Aenderungssatz getroffen wurde.",
+          "hash": "4c35bb199968a6660e2ffd6025810c74ce76177fd4dea1cf670bd2e7aa15f0c9"
+        },
+        {
+          "value": "DOC-001 Documentation 2.0 einfuehren",
+          "hash": "88f3a4ac84fe8fa145d841e2c5adac6ea739d958817d1540e3a95a3cae92e57a"
+        },
+        {
+          "value": "DOC-002 String matrix and adversarial probe enforce Documentation V2 hygiene",
+          "hash": "8591ae78065f9462809a53af0fa30ff146e25a11702b7c26b00cfb9fcdb0e3b0"
+        },
+        {
+          "value": "docs-llm-out-of-scope",
+          "hash": "171e5ba777cef5eadb754fb1754d93501b7f7233b235bb41e11f473686e65f15"
+        },
+        {
+          "value": "docs-planning-archive",
+          "hash": "b181f0056a556589a86d9ad53976c280378616347bc9599812e770e813e7ce16"
+        },
+        {
+          "value": "docs/IN PLANUNG/",
+          "hash": "707b38b633a4fc30993230f4d5c258035ab1f6c6d210fc0ab0585a1b5cafcec3"
+        },
+        {
+          "value": "docs/LLM/",
+          "hash": "b6545ef47f280d7ccc81c850d2ec788d0ba9ed7e17e9fb2eb2390f6283772c47"
+        },
+        {
+          "value": "Klassifizierte Archive / Out-of-Scope",
+          "hash": "aeecad9ff8facc5e6f8b042df7fd8baaab9f307b99f250031f00032e522c7e34"
+        },
+        {
+          "value": "legacy-unverfid-archive",
+          "hash": "e028cf82bd211d65a69129d77c3dee6ee7c5e1c53ef9152c2a4c3ff3eea977ad"
+        },
+        {
+          "value": "legacy/UNVERFID/",
+          "hash": "64cfd072331ef66030a8c0476fe8235127f053d5bd2c249d46e83503e9854fad"
+        },
+        {
+          "value": "manual-legacy-archive",
+          "hash": "d8a5b84b2ccda726b9b3228da42355b914cde68dd715adefde66a012d6f979cf"
+        },
+        {
+          "value": "Out-of-Scope",
+          "hash": "8338e5f43e928d635e6621643b8f31d7067ff8ecd4477e1b784a33d3de74e524"
+        },
+        {
+          "value": "tem-legacy-reference",
+          "hash": "6b713107c9a0aa5268a95a8cdf2308a130ed70fff100fbf58bb34fd5c0617c03"
+        },
+        {
+          "value": "tem/check-justification/",
+          "hash": "baa714d972f50b965f1e02f6e1a16593cd179e0d570972fbb2146159a5d13812"
+        },
+        {
+          "value": "tem/rebuttals/",
+          "hash": "318352a8bbd720d91c7110c925e3a2335f5000ac6181afc655d524ce095c4315"
+        },
+        {
+          "value": "tem/slices/",
+          "hash": "f192cad4e42c8bc209f53c77e0e65714c9266a6f5ee26af81f181ecd3b85d28a"
+        }
+      ]
+    },
+    {
+      "path": "docs/V2/HOME.md",
+      "string_count": 15,
+      "fingerprint": "856def86411d25442d690cfc9293cfa1e7a45697bcb090a96520cc666cbe80cd",
+      "strings": [
+        {
+          "value": "- Abgeschlossene Aufgaben lesen: [ARCHIVE](./ARCHIVE.md)",
+          "hash": "309a4fc2b644d6d6f131504ef0d11edf74b7ef4b2e55acf4318c8a295627c7c4"
+        },
+        {
+          "value": "- Adversarial Probe: Guard und Coverage muessen absichtliche Regelverletzungen aktiv blockieren",
+          "hash": "382d30d968646f0a1c9794872f80d2213188d45dbdd8e92ccae97d16d5dd4f32"
+        },
+        {
+          "value": "- Archivierte Tasks: 2",
+          "hash": "1e2b7ecdf3edd4eba1dab05d39c285acda0010aa2887691e0355f7dc8cf8e9df"
+        },
+        {
+          "value": "- Harte Guards: rohe Plan-Dateien blocken, unregistrierte neue Dateien blocken",
+          "hash": "a4e2e6b1f7397e948eb564aee2054c5548987357daac3042085c2bb7802401fd"
+        },
+        {
+          "value": "- Maschinenbasis: [app/src/sot/docs-v2.json](../../app/src/sot/docs-v2.json)",
+          "hash": "c280e2d28b8916e3f225a9388755a45801d10a1d935745fac9f4bc7616f095f1"
+        },
+        {
+          "value": "- Offene Aufgaben lesen: [PLAN](./PLAN.md)",
+          "hash": "8a8e733fbea880db0275741b387b4e8ec3de76c069b98825077c4853731ea7a4"
+        },
+        {
+          "value": "- Offene Tasks: 10",
+          "hash": "68e810ae8506b9b6c234f8dc7b4a56a22ff11840a9b24309e49a1ee2af435c53"
+        },
+        {
+          "value": "- SoT-Review: `2026-03-31`",
+          "hash": "7d432c27602e0f2e1baa796ce95903a24b00db9b60ef4c95a00965a3eaba040e"
+        },
+        {
+          "value": "- String-Matrix: aktive Spiel- und Doku-Strings muessen synchronisiert sein",
+          "hash": "b861be569e357dd5b226af68a0f466f5fa6b9d207ea0be566fd4657fb393de39"
+        },
+        {
+          "value": "- Task-Schema: `2.0.0`",
+          "hash": "55329310533aadfb9ddd1b0d85720237e35a655bd49c6c8634230aa109baf729"
+        },
+        {
+          "value": "- Vollrepo-Coverage: alle Dateien unter den Doku-/Plan-Roots muessen klassifiziert sein",
+          "hash": "5717cdad674521510cb59c5c132f6f79ae44a5bae0745b22100aff5dc17d6bff"
+        },
+        {
+          "value": "- Wahrheit lesen: [TRUTH](./TRUTH.md)",
+          "hash": "3cd9a2d9f122626f51c46c750f4d7b22e69e946f4fd99fe364ce523bad7cef6b"
+        },
+        {
+          "value": "Documentation 2.0",
+          "hash": "99aed0fd4512b76ee882dca245eee67e53d049c428b5b087d15667f5720f950e"
+        },
+        {
+          "value": "Einstieg",
+          "hash": "f6d1badb525cc04feb3dcd277b18657b2450ec361576a32956c7bbbc908775f5"
+        },
+        {
+          "value": "Status",
+          "hash": "920e413c7d411b61ef3e8c63b1cb6ad058d5f95f8b481dbafe60248387d8c355"
+        }
+      ]
+    },
+    {
+      "path": "docs/V2/PLAN.md",
+      "string_count": 46,
+      "fingerprint": "f48d79099a21ee2cecdfa15cb81454d931810ec6d120660f977676bd30cc4f34",
+      "strings": [
+        {
+          "value": "- Description: Canvas als primaren Tile-Pfad setzen und DOM nur noch als Restadapter behandeln.",
+          "hash": "0d93e873b36f398091eb3cade138d1273b4ef4bb6a5993941a6523edb949ba84"
+        },
+        {
+          "value": "- Description: Debug- oder Textausgaben sollen die echte Canvas-Sicht und Geometrie mit abbilden.",
+          "hash": "867562d5faf901e63bead4888a28d968211d8106ca6e8f659f5af472bcb74539"
+        },
+        {
+          "value": "- Description: DOM soll nur noch HUD oder Panel tragen, nicht mehr die Tile-Flaeche selbst.",
+          "hash": "9edbda3b7bdc6ca97589d849e6577067b0f0400ae6c00878ecf1839e798820d2"
+        },
+        {
+          "value": "- Description: Doppelte Render-Loops entfernen und nur einen aktiven Scheduler fuer die Browseransicht lassen.",
+          "hash": "d660f635a8258a4a5524e1e2c231283f56f5911433d394888feaa10782aef245"
+        },
+        {
+          "value": "- Description: Interaktion nicht mehr ueber DOM-Rechtecke, sondern ueber Geometrie aus dem Renderpfad berechnen.",
+          "hash": "32af6d7c897a287646c36b0c6c1cb3b1f4b23913c226b48c592347fa88a11df9"
+        },
+        {
+          "value": "- Description: Interaktion und HUD sollen nach der Canvas-Migration ohne Sonderpfade testbar bleiben.",
+          "hash": "49cbe9703e9e161db5764652e120ba68f21b55e942b060ff43a0fa2d0e149246"
+        },
+        {
+          "value": "- Description: Overlay-, Hover- und Effektlogik in denselben Canvas-Koordinatenraum ziehen.",
+          "hash": "541a99016d6de04b4a63a42802c841df9adbdbf34cd89e4280abf103b56410f4"
+        },
+        {
+          "value": "- Description: Resize, Zoom und Overlay-Verhalten in der Testlinie maschinenlesbar absichern.",
+          "hash": "69ecc38da3ed086a6abdbe68bb5da3bdffb5823c73e880da099d001da83b32da"
+        },
+        {
+          "value": "- Description: SVG nur noch fuer unvermeidliche Linien- oder Pulseffekte behalten und Layer-Reihenfolge absichern.",
+          "hash": "67334bdd8f713cab572d62667556ae179e4e913ab6fc29ea51c5cffae9601632"
+        },
+        {
+          "value": "- Description: World- oder Hintergrundlayer mit derselben Geometrie wie die Tile-Darstellung verbinden.",
+          "hash": "c600ac70fe584101fb1084bec4a982f7450278520145f8650987b868321c5851"
+        },
+        {
+          "value": "- JSON: `tem/tasks/open/CF-003.json`",
+          "hash": "0f245ee134828f8b31666f0c4df2d16f7b7b767e6c80240c4024a4f4015344db"
+        },
+        {
+          "value": "- JSON: `tem/tasks/open/CF-004.json`",
+          "hash": "7f9987aa72a2c830a78020b7eb09dc27aac4f4cf84022fdc5bd8afc27c82ccc7"
+        },
+        {
+          "value": "- JSON: `tem/tasks/open/CF-005.json`",
+          "hash": "7da892d991f7c08efb9208160959f4d126bd1d585c33f6e2aeba3e63ec1502b6"
+        },
+        {
+          "value": "- JSON: `tem/tasks/open/CF-006.json`",
+          "hash": "466b0bc12f17ad1e3c5cc466ebf60e17c5ef329580a21c07bc3adc53aa2e1d0a"
+        },
+        {
+          "value": "- JSON: `tem/tasks/open/CF-007.json`",
+          "hash": "ff70626df7611e98a42f70acc6a8a768ee957b986fef17c8e2fee5dae77784d2"
+        },
+        {
+          "value": "- JSON: `tem/tasks/open/CF-008.json`",
+          "hash": "018718d8977acf695150a5680819cff4911f6cf3e01b3db455c1ded8565bdef4"
+        },
+        {
+          "value": "- JSON: `tem/tasks/open/CF-009.json`",
+          "hash": "c0ad6f88ef2fcdc5fe2b383ec19e94bc2e23c0eff12b6a72006e914150aefc3c"
+        },
+        {
+          "value": "- JSON: `tem/tasks/open/CF-010.json`",
+          "hash": "f5ec6b835a53608b4c6431be683f15b896c1aa29b974cd7f7a03ac84a535db06"
+        },
+        {
+          "value": "- JSON: `tem/tasks/open/CF-011.json`",
+          "hash": "650697f1ee189e937692f6c02eb302e107783e77f9bf547719cdf874701272f4"
+        },
+        {
+          "value": "- JSON: `tem/tasks/open/CF-012.json`",
+          "hash": "01ffab8dbbc224be201241ae59ff4df29bac590b5ad040d4175748020b2e99b7"
+        },
+        {
+          "value": "- Match: `all_scope_paths_touched`",
+          "hash": "b7754ba1905d50bb658e6d81abda126d04cb053db298354d5a02f979d55c1468"
+        },
+        {
+          "value": "- Scope: `app/src/ui/IconAnimations.js`, `app/src/ui/RenderManager.js`, `app/src/ui/UIController.js`",
+          "hash": "4cd75b5db93ef45839961479437f8871f000bef607b620484d7bfa8550dc7e43"
+        },
+        {
+          "value": "- Scope: `app/src/ui/RenderManager.js`, `app/src/ui/UIController.js`",
+          "hash": "b1893eeaa840d7be60e605e4f1c12f6cd6746f6e9ffe85a0338f8c46a0249314"
+        },
+        {
+          "value": "- Scope: `app/src/ui/RenderManager.js`, `app/src/ui/UIController.js`, `app/public/game.html`",
+          "hash": "6ae5c8654752db8dde9649d9d3cb0273193bcba5e3d08f421fc3ac1126fe209c"
+        },
+        {
+          "value": "- Scope: `app/src/ui/TileGridRenderer.js`, `app/public/game.html`, `app/src/ui/tileGrid.css`",
+          "hash": "bb3a388b736f1e42489e753ec8f447260f85af250292962fa52bd3b45c53d9df"
+        },
+        {
+          "value": "- Scope: `app/src/ui/TileGridRenderer.js`, `app/src/ui/RenderManager.js`, `app/src/ui/UIController.js`, `app/public/game.html`, `app/src/ui/tileGrid.css`",
+          "hash": "cccabb84388c7801691c5c49af4c4fd19affa2c158917a113d19180b40652d7d"
+        },
+        {
+          "value": "- Scope: `app/src/ui/UIController.js`, `app/src/ui/RenderManager.js`",
+          "hash": "453f728eea219af5d36bdabf7692eac6986109f53ccda0540c8437f98120551b"
+        },
+        {
+          "value": "- Scope: `app/src/ui/UIController.js`, `app/src/ui/RenderManager.js`, `app/src/main.js`, `app/public/game.html`",
+          "hash": "32b1ba0fbeebda6cdb3e737c7d3462e03f32b20966faef6283915401351dac78"
+        },
+        {
+          "value": "- Scope: `app/src/ui/UIController.js`, `app/src/ui/RenderManager.js`, `dev/scripts/test-runner.mjs`",
+          "hash": "6871023e0ca3712b176076da36b3dc17ea5c587327669c02ac0c176e86345057"
+        },
+        {
+          "value": "- Scope: `dev/scripts/test-runner.mjs`, `dev/scripts/verify-evidence.mjs`, `dev/tools/runtime/verify-testline-integrity.mjs`",
+          "hash": "90adec0cec3f5d45761d2e84bd311fbf0a95cf687e95c4ec9fd0fff45164a9e4"
+        },
+        {
+          "value": "- Source: `docs/V2/SYSTEM_PLAN.md`",
+          "hash": "20e6cf86cf07171f9288e151a3bcf6ed46c177abd6ebe8dfa767f4e1f1e5f339"
+        },
+        {
+          "value": "- Track: `canvas-migration`",
+          "hash": "83957a691ca05298e9099fb0a824ebedab2609d808cb449030a982d586a96898"
+        },
+        {
+          "value": "all_scope_paths_touched",
+          "hash": "7e35c8b3d22bd99f1bec25fb75ad3e95d81ec0e6e877e165f9b534d49c8a0eb9"
+        },
+        {
+          "value": "canvas-migration",
+          "hash": "4ab5ad64b1f0443b700dada940d9f9f3f3a50500bf14c2c57b810d926bdb7886"
+        },
+        {
+          "value": "CF-003 Einen einzigen aktiven Frame-Scheduler festziehen",
+          "hash": "b8f498f517cacb28f4945a3148d35456cbfdb38274b48a0b231938c2e7af0113"
+        },
+        {
+          "value": "CF-004 Tile-Basisdarstellung auf Canvas ziehen",
+          "hash": "65c9fc67dc8d0acc7d36451967c95327eee7ed1c8df2a44941a3a238827f0d9b"
+        },
+        {
+          "value": "CF-005 Hover, Selection und Effekte als Canvas-Layer ziehen",
+          "hash": "24f07da8eab0dd043dd8d8ef71fc6a8d4186bc060cf92db062469481216de453"
+        },
+        {
+          "value": "CF-006 World-Hintergrund in denselben Koordinatenraum ziehen",
+          "hash": "c4a81a6802706b49ed63337adf217c863d097b0b28dda61e521ad1ef5471f562"
+        },
+        {
+          "value": "CF-007 SVG-Overlay auf Restlinien reduzieren",
+          "hash": "b490081ecb7cefaff261c53d9dde396ca7fc92ac6eded003d954a34c8c1c466e"
+        },
+        {
+          "value": "CF-008 Pointer-Hit-Testing auf screenToTile umstellen",
+          "hash": "5dddf1aef515058b525e6570a181b716dd3b09f504467e1a71a8573080d8403e"
+        },
+        {
+          "value": "CF-009 DOM-Grid abbauen",
+          "hash": "707a2ace70bc2501217c8be77fd71224283d2d11c3f1c89ebd1f2b05f4cd6f4f"
+        },
+        {
+          "value": "CF-010 Debug-State um Canvas-Sicht erweitern",
+          "hash": "685179c48e4d677b8db8469f57f36560f1cc5ea03d28d8acf50a3a3b3b31b117"
+        },
+        {
+          "value": "CF-011 Canvas-Deckungsgleichheit per Tests absichern",
+          "hash": "73a0c2c8727ac7d05fced25c0b277c40755ba4a79669264be41bf2739d8e4a74"
+        },
+        {
+          "value": "CF-012 Canvas-Hit-Testing und HUD-Smokes stabilisieren",
+          "hash": "1607cd544a1acd2d706a0315158197fbcdda50456b0f6fe479ae0e3ea1b0f8c4"
+        },
+        {
+          "value": "Open Tasks",
+          "hash": "96d741b61505fddc71d372abb7d3b3c0fc20fc06f2603e3a5e5ea8288ae81590"
+        },
+        {
+          "value": "Planning Path",
+          "hash": "40a46e098c452d144c193d2a2cc1f5ec67d703e9fce93a95b786fbe7f2bc9df6"
+        }
+      ]
+    },
+    {
+      "path": "docs/V2/RULES.md",
+      "string_count": 22,
+      "fingerprint": "a1fe8d2facdebcc27472a42478d2914ee8ed653b2daf4798de390b8c9e0752ae",
+      "strings": [
+        {
+          "value": "- `dev/tools/runtime/probe-docs-v2-adversarial.mjs`",
+          "hash": "35e687539c679f61711f7039a295df1d44e6f45f1832c8188eeb60e3b4a1fe28"
+        },
+        {
+          "value": "- `dev/tools/runtime/scan-doc-tasks.mjs`",
+          "hash": "4f33238ac6df1677e21595a477a923caa25db006048f02169d23e7e75ae85c17"
+        },
+        {
+          "value": "- `dev/tools/runtime/sync-string-matrix.mjs`",
+          "hash": "50414231e0706a33206bb56c7bf8cde4365ef344a6a6a2cd01d9b3e075c46e15"
+        },
+        {
+          "value": "- `dev/tools/runtime/verify-docs-v2-coverage.mjs`",
+          "hash": "7ccf68aaf540d477b1e8a46301747bac95d986db242e9cd773e716a0128a26bd"
+        },
+        {
+          "value": "- `dev/tools/runtime/verify-docs-v2-guards.mjs`",
+          "hash": "fced634b14a2c8738b6fb2cbf8e19e0228d071d1a652cdd3c212e682f3630da8"
+        },
+        {
+          "value": "- Aktive Spiel- und Doku-Strings duerfen nicht ohne synchronisierte String-Matrix drift erzeugen.",
+          "hash": "b5fca5f840d5c9fa8130f3611ed4874f928a4a2ddf938803b402b1beca1cf7da"
+        },
+        {
+          "value": "- Erledigte atomare Tasks werden vom Scanner nach `tem/tasks/archive/` verschoben.",
+          "hash": "ae7771a8d0bb17475cc83e0548e258518dff69f53f4abc6d76f0512ee2400cbc"
+        },
+        {
+          "value": "- Keine Datei unter den Doku-/Plan-/Legacy-Roots darf unklassifiziert bleiben.",
+          "hash": "dc28a8584f059631a1abea6de10342c3c7c3376784142a16fba91b34d3108da2"
+        },
+        {
+          "value": "- Keine geaenderte Datei ohne Registrierung in `docs-v2.json`, Task-Scope oder Task-Source.",
+          "hash": "bb2677d729b953031b974a5c7d02c6931f709a5d1455565566b0d8bc2b1204f0"
+        },
+        {
+          "value": "- Keine offene Planung ausserhalb von `tem/tasks/open/*.json`.",
+          "hash": "e781334870fc29d0c213c9fa640aa1a2cc101a5db75e92c76dc713a8874c5b9a"
+        },
+        {
+          "value": "- Keine Testline ohne `docs:v2:guard` vor dem Scanner.",
+          "hash": "de20064d0d3f8fc98881dde257a9f538e5bd619265379a3503cbe8c6383604a1"
+        },
+        {
+          "value": "- Menschenlesbare Fuehrungsseiten werden nur aus der Doku-2.0-SoT erzeugt.",
+          "hash": "80d0f75500d2bc6c5149277f7dfd4c6919a468565911bdc8397b41383d68fb13"
+        },
+        {
+          "value": "Adversarial Probe",
+          "hash": "211ceec925b466d545392a9ebb8100caa2266294c7a0f41800aa993b61ee8961"
+        },
+        {
+          "value": "Coverage Entry",
+          "hash": "c2699829f8412b0a6a61fcc4af81447a598bafa689a4ceccf7dbe3fc1daa7470"
+        },
+        {
+          "value": "docs:v2:guard",
+          "hash": "df8522b1a6cbecbf043be15823b4cdc3f0b7ad9b7c7dd688607b05ad8d8d6fa5"
+        },
+        {
+          "value": "Documentation 2.0 ist nicht nur Doku, sondern ein Guard-System fuer Planung und Archivierung.",
+          "hash": "ced1ef76a56cfac93bbfd69b7ec5716b59694e0279a0bfccf72ee3afb821d6b6"
+        },
+        {
+          "value": "Guard Entry",
+          "hash": "a5cd6743b30f0c2d67ce0d65ac374c4b1a370d52e15d084c57a94fdd2b78df16"
+        },
+        {
+          "value": "Harte Regeln",
+          "hash": "6aaeb7472fb97ae9f73d1431e8531f8678af740499547400345f45ab102c3985"
+        },
+        {
+          "value": "Rules",
+          "hash": "4228aeb07c410ffc9d15b458bf7c2bf8d9dfa7af632f2c339e69f8cb54654da3"
+        },
+        {
+          "value": "Scanner Entry",
+          "hash": "2857c88bbef78aba0516b9f3e80b338ab6b5d14a24d3d475762cbba748e609ad"
+        },
+        {
+          "value": "String Matrix Entry",
+          "hash": "2e83c20e4b5485c65c188399dcff8839f2d3bc7fabe32a79c07593514049f712"
+        },
+        {
+          "value": "tem/tasks/archive/",
+          "hash": "7a6e6eb79c03e2b303d7ec815696c0e82c4050f9778d5c87121de3691d1b7bc0"
+        }
+      ]
+    },
+    {
+      "path": "docs/V2/SYSTEM_PLAN.md",
+      "string_count": 45,
+      "fingerprint": "5a56532b9756ab84cee12c2f6155f42dabe10e0e447a9b1d969bbbed7a5011be",
+      "strings": [
+        {
+          "value": "- Open Tasks: `CF-003`, `CF-004`, `CF-005`, `CF-006`, `CF-007`, `CF-008`, `CF-009`, `CF-010`, `CF-012`",
+          "hash": "eb968eecfc470e697d2889b4b6330fe046c0e73506e202e98e582d48eab6b87c"
+        },
+        {
+          "value": "- Open Tasks: `CF-011`, `CF-012`",
+          "hash": "293a430bed69fdd3c1cd9b8ddaa811861bef4226084cdb82dbc2585567fd475d"
+        },
+        {
+          "value": "- Open Tasks: keine",
+          "hash": "53ba7975f7dd816ff5e8efde5d0c5f8b61c477a5a463ce731a73af9e295fb8bd"
+        },
+        {
+          "value": "- Roots: `app/src/game`",
+          "hash": "7ac33951c0f54bf72f8867c8abae75a998e0f5d6b43a72993f3658e8c40ad896"
+        },
+        {
+          "value": "- Roots: `app/src/kernel`",
+          "hash": "79d99c28fdde1f45337c1c5230dc864ac95dac36d257a18a922001b3bf965644"
+        },
+        {
+          "value": "- Roots: `app/src/main.js`, `app/src/ui`, `app/public`",
+          "hash": "054dacb75cd51c5a9221fe710375f7c3ff8104e8684e36115822929cd0085cb9"
+        },
+        {
+          "value": "- Roots: `dev/scripts`, `dev/tests/modules`, `dev/tools/runtime/verify-testline-integrity.mjs`",
+          "hash": "261c89240bfc91ee3a1058ec5ce47978d5728220fb5bdbbc73c4ac2fa6edac75"
+        },
+        {
+          "value": "- Roots: `docs/V2`, `tem/tasks`, `app/src/sot/docs-v2.json`",
+          "hash": "ddd512b6fdd328ba44b20044e6f3147f4b248413758b6fcf0af2658142795d13"
+        },
+        {
+          "value": "- Roots: `tem`, `docs/IN PLANUNG`, `legacy/UNVERFID`",
+          "hash": "43393864d2db8759c5b93b2a99bd98708869a6ca6c0b844230916ebb8fc8d6e0"
+        },
+        {
+          "value": "- Truth: Authoritative content, rules and world interpretation.",
+          "hash": "baa0dbd2bd3ad3ffdf057dd0acda894d84218253b7ef950e1e524333343dc53a"
+        },
+        {
+          "value": "- Truth: Deterministic kernel execution and state transitions.",
+          "hash": "9853c731037d9d6f7a10228e02a56f4a34ed729f58703042d99b4bd7dd01d372"
+        },
+        {
+          "value": "- Truth: Double-run proof, evidence validation and final testline consistency.",
+          "hash": "1f0479b82fdcdc49e741ae762438a17ec1511ba23e27c1c7526fc5420d57da36"
+        },
+        {
+          "value": "- Truth: Human-readable truth, atomic planning and archive automation.",
+          "hash": "bade33e2847c1b07894194901f6f04ead5be78d5425259978114906472a60b8c"
+        },
+        {
+          "value": "- Truth: Remaining browser path as adapter, not as competing domain truth.",
+          "hash": "1d736700ce3710961c51e81bc0989eaae62d7771fed0c99fff2b2170243f5b84"
+        },
+        {
+          "value": "- Truth: Tracked migration residue that must not create unregistered plan drift.",
+          "hash": "10931d4160831b6c1a1d4b50a3988eeca5faf22c5b3733518e7d536d4c102d25"
+        },
+        {
+          "value": "app/public",
+          "hash": "b606c9040e250b45c1d4604f2b2a0069ae8e34f2f034a63dd886fa632bf810a5"
+        },
+        {
+          "value": "app/src/game",
+          "hash": "f64efe8c3b4bb124945bb24470ec4d48b0aebf52fdd22cc1841e6bc3a429cc91"
+        },
+        {
+          "value": "app/src/kernel",
+          "hash": "ef220df41af0b89908d71206792d343f54097c41865ebbeb04674b8f1aaf2e13"
+        },
+        {
+          "value": "app/src/ui",
+          "hash": "0fc1f3d4ae543dabfe3f28c7909fc078cc0bf4f8237200ef23504204199ff9fb"
+        },
+        {
+          "value": "Bereiche",
+          "hash": "7b40d8db4ebc62d26d6f778c02a108741ad61efa00d7264cf28b7c6320f17712"
+        },
+        {
+          "value": "browser-adapter",
+          "hash": "ae387bf29055be30380f1f6d71a246350f475f167cd5572d1cf031fcc8badf93"
+        },
+        {
+          "value": "CF-003",
+          "hash": "d26c7bcecb7a1c3ad7f2418622b4b78f24f8fb1602b26d81c9f08dc34975474c"
+        },
+        {
+          "value": "CF-004",
+          "hash": "6270389e7d123b6fcd7674c1b55a5b1e7a62f3ceaa7926343cb8b7ba8862d1dc"
+        },
+        {
+          "value": "CF-005",
+          "hash": "8d6b4274a8e2e29faa28cbaf2f0a29ae4943100f4c68856bc50529b2d9cfa8a6"
+        },
+        {
+          "value": "CF-006",
+          "hash": "b48669747cf259af01d7a2da4bdcf1718afd70d66e5506bc26e84ad8b43821a6"
+        },
+        {
+          "value": "CF-007",
+          "hash": "5fa68ca20fc6142486caa6f6bb18c3c7b3e7cb0635535f7041f4db2eea3d7133"
+        },
+        {
+          "value": "CF-008",
+          "hash": "c13a562439ee593dbfed1fa12e10407e5fb762a36666f26d80cc3b6496bde905"
+        },
+        {
+          "value": "CF-009",
+          "hash": "88ab0b9fdaa4c469916f6e7e6031015ca8de2b5fbc05b8eea4f81d91c5843087"
+        },
+        {
+          "value": "CF-010",
+          "hash": "7751d096443880314a23885d4397433caee811b7e2087d419137b59c199783c8"
+        },
+        {
+          "value": "CF-011",
+          "hash": "3ea0969a0220c2dd8fd5457983eb6af8099e727c918f16b1bbecea675cb6de12"
+        },
+        {
+          "value": "CF-012",
+          "hash": "e4697b76b1f62eb889a3b687fce821418160c0e1287401f40d6dd21a0a6ce3a0"
+        },
+        {
+          "value": "dev/scripts",
+          "hash": "87f6769880982de629de7df4124968f076ded3c1bf1b67ea83bacbe0fbe985a1"
+        },
+        {
+          "value": "dev/tests/modules",
+          "hash": "f3884fe8f51d1d84dc4957e9b60c845e9665bc50b48fef95b02754c5acb81f17"
+        },
+        {
+          "value": "Dies ist der laufende Systemplan fuer Documentation 2.0. Er deckt die aktiven Bereiche des Repos ab und verbindet sie mit offenen atomaren Tasks.",
+          "hash": "31d2905c1840e136d88b62a27353ae4ea499062ac30813f300ca71d076b646de"
+        },
+        {
+          "value": "docs/IN PLANUNG",
+          "hash": "d9a20b02d9196e21f9640b983433e7344b3676ae01d22ebcf26a1663131e5b26"
+        },
+        {
+          "value": "docs/V2",
+          "hash": "f4415004ea829aa1b85585f6a8cb95a8a6cf8898ac0c55d13feb5b71e5796bed"
+        },
+        {
+          "value": "documentation-v2",
+          "hash": "3a9b130de85a343457f54d54460bae921cac9d3e3935f7eaf3feba244fe54139"
+        },
+        {
+          "value": "gameplay-content",
+          "hash": "bab347fbeed5d73dfaacc4cc838df62e35d54d93bcb9d2627421c8cbec6ad684"
+        },
+        {
+          "value": "kernel-core",
+          "hash": "f48860f2daf7e7a03ab9827300ab91c865d446de1c12a279339a2fff75c00f4e"
+        },
+        {
+          "value": "legacy-cleanup",
+          "hash": "5dcaeb8204e7e2fb551f87c42d67056b08384cc1feb5b07305051ccec0fd2b01"
+        },
+        {
+          "value": "legacy/UNVERFID",
+          "hash": "1a87fbdaca494d3a11c1cc07c2bd49bd8e8739a7f787d9cd54f2793290993fa3"
+        },
+        {
+          "value": "reproduction-evidence",
+          "hash": "b6ce72d7942c0fa09963665c3f1c187026566046b6d4dde368d11f088c11ee73"
+        },
+        {
+          "value": "System Plan",
+          "hash": "141d6ce64e540c6ebd9d744f104f87299d15b6d9b5f74a10e6e4a353cfd5959b"
+        },
+        {
+          "value": "tem",
+          "hash": "1f7be6908b217b4af27cdf058505fcf9ca92fe1ff70cda404d969767dac57483"
+        },
+        {
+          "value": "tem/tasks",
+          "hash": "8a8f90fe3430b2748d79828b26efb89bf56d011c6ed5bb6805b3f8a044f07364"
+        }
+      ]
+    },
+    {
+      "path": "docs/V2/TRUTH.md",
+      "string_count": 69,
+      "fingerprint": "b51f48c72e7c16fd00e3a77901e84c4806f5cb61923bd48ea31968c5d6f228fe",
+      "strings": [
+        {
+          "value": "- [docs-v2.json](../../app/src/sot/docs-v2.json)",
+          "hash": "54ad3b222e6912630ddec9417026c83a6da4f5541969a4d68b5c2898e8b12cfd"
+        },
+        {
+          "value": "- [repo-boundaries.json](../../app/src/sot/repo-boundaries.json)",
+          "hash": "d0f74f022e61badbb4a1b7c368ac04b06474f0b5705c50ba38f609bdeaa493b4"
+        },
+        {
+          "value": "- [source-of-truth.json](../../app/src/sot/source-of-truth.json)",
+          "hash": "5c4d5b4fb1afd4475688d5cd1553c4c0d81948ce9a6c9633c382117d74b715d7"
+        },
+        {
+          "value": "- [STRING_MATRIX.json](../../app/src/sot/STRING_MATRIX.json)",
+          "hash": "7123836552f27702a766ffa7054b903afba80f0e6f41b9b0d849db397b769f53"
+        },
+        {
+          "value": "- `Archive`: Historical reference only.",
+          "hash": "6faf5f84a9535f82b053acdae6c3721df294933e0145d9c2ad0d1ff893fb5ff9"
+        },
+        {
+          "value": "- `Authoritative Content`: Canonical gameplay content and deterministic interpretation rules",
+          "hash": "937c50d2c13935d0cbf56ad815934290f1f9fb92a223f670e020ed4164b06d30"
+        },
+        {
+          "value": "- `browser-adapter`: Remaining browser path as adapter, not as competing domain truth. Roots: `app/src/main.js`, `app/src/ui`, `app/public`",
+          "hash": "ef2f73e6edc174d63ff0621d9b34d2bef492713c13eb8ebd57d5028dfbd63a88"
+        },
+        {
+          "value": "- `Content-Authoritative`: Authoritative gameplay content, rules and contracts consumed by the kernel.",
+          "hash": "4bd6d8d441a260859120cf000d9a2789176b21086e31392a16fb8a48b6ca1255"
+        },
+        {
+          "value": "- `Deprecated Runtime`: No longer part of mandatory truth or gates",
+          "hash": "6b59498b4cfc42a58eeef2d77e34c65029d38b357bc45b948b289b9f2edea027"
+        },
+        {
+          "value": "- `Deprecated`: Superseded runtime or tooling path retained temporarily.",
+          "hash": "ec6e50a7e9c0301162b4baa0cfee7a69a91794ef4af322da0d0e370b1795510f"
+        },
+        {
+          "value": "- `Documentation V2`: Human-readable truth, atomic planning tasks, string matrix discipline and archive automation",
+          "hash": "bff01da42ae17feb07509616b1426268292c1b8317d1a78c5e2aaf0b99f4beac"
+        },
+        {
+          "value": "- `documentation-v2`: Human-readable truth, atomic planning and archive automation. Roots: `docs/V2`, `tem/tasks`, `app/src/sot/docs-v2.json`",
+          "hash": "51363b93a9ee7d8ec4afd624f3d2b98c2a6ce5afd802507ac5fb6d6896e8f61c"
+        },
+        {
+          "value": "- `gameplay-content`: Authoritative content, rules and world interpretation. Roots: `app/src/game`",
+          "hash": "5101fc52733d3db5f58c03225342d725693e776a2a1434c854fd905d98b3b0da"
+        },
+        {
+          "value": "- `Kernel Core`: Deterministic execution and seed-bound kernel state transitions",
+          "hash": "0208a46f7cb2148e3f5ee8685cff192650bf28768ade47c63020cb753295ea8e"
+        },
+        {
+          "value": "- `Kernel-Authoritative`: Deterministic simulation, state transitions, seed handling and kernel execution truth.",
+          "hash": "38fa1931ad5ccef34ae574bf1895ba7326aeb8f0fdf6b4fb8cfbb54a7791e6dd"
+        },
+        {
+          "value": "- `kernel-core`: Deterministic kernel execution and state transitions. Roots: `app/src/kernel`",
+          "hash": "125b6421a5ce83570afd57e007f61b671fdc15a4e76c8e65945f0b43a557b9d2"
+        },
+        {
+          "value": "- `legacy-cleanup`: Tracked migration residue that must not create unregistered plan drift. Roots: `tem`, `docs/IN PLANUNG`, `legacy/UNVERFID`",
+          "hash": "b5c832165c0ca43618f59b4192afa58971dd6e14521e00ab7894fabbbcbec823"
+        },
+        {
+          "value": "- `Out-of-Scope`: Present in repo but not part of kernel truth or mandatory quality gates.",
+          "hash": "c7224aebb23376389bd6500a9d0092490708a7f57d011188157e4987ab16215a"
+        },
+        {
+          "value": "- `Reproduction Evidence`: Double-run orchestration, evidence generation, comparison and final proof",
+          "hash": "9e5f7d227f3b0cd5156cc35d526c495bcf837a77e61f61b74f740b8a8e4f8643"
+        },
+        {
+          "value": "- `reproduction-evidence`: Double-run proof, evidence validation and final testline consistency. Roots: `dev/scripts`, `dev/tests/modules`, `dev/tools/runtime/verify-testline-integrity.mjs`",
+          "hash": "26c97edbba8cc46930600f8b82825d84d7855d72aa557081ea971f775785d4ee"
+        },
+        {
+          "value": "- `Reproduction/Evidence`: Machine-readable proof artifacts, comparators and evidence contracts.",
+          "hash": "4f2d7aa551207bfd2ee83f6ccf8891291f9f8c447299819a45d35c485c25ee90"
+        },
+        {
+          "value": "- `Test/Gate-Core`: Only the mandatory double-run gates that prove reproduction.",
+          "hash": "98b91e648fc51a1fa0d9e880f01ffb41fbc710048d4194aec245efe21de0d782"
+        },
+        {
+          "value": "- `Transitional`: Active migration residue with planned removal.",
+          "hash": "c60d9e2daacae85ee06f6c5312b216107fd406e1f5504adb3bbb394fba9be104"
+        },
+        {
+          "value": "- Archivierte Tasks liegen unter `tem/tasks/archive`.",
+          "hash": "06d2229fcc45646836fd50cda2d507e2e505926b36d9e84fffa07caee9558246"
+        },
+        {
+          "value": "- Der Guard laeuft ueber `dev/tools/runtime/verify-docs-v2-guards.mjs`.",
+          "hash": "d7fd9af3d9bdbd4a41b3c838ffc58629922f54f35e8237c90423ac14f2316795"
+        },
+        {
+          "value": "- Der Scanner schreibt Evidence nach `runtime/evidence/docs-v2-scan.json`.",
+          "hash": "fe9d465dedc0789a5b8b10df3ffd61fd72000b6c4e160f1ce06372b2607ae77e"
+        },
+        {
+          "value": "- Der Vollrepo-Scanner schreibt Evidence nach `runtime/evidence/docs-v2-coverage.json`.",
+          "hash": "dfe1ece7d98bdfea2377cf6f4d8a9d42c67a4ae56f7f1941638652749952c052"
+        },
+        {
+          "value": "- Die String-Matrix wird ueber `dev/tools/runtime/sync-string-matrix.mjs` synchronisiert.",
+          "hash": "c2e071d7655085f22cb620d868dc29e4ccebc3625172bb75fcee86f8afe8fa33"
+        },
+        {
+          "value": "- Nur atomare Einzel-Tasks duerfen in den offenen Planungspfad.",
+          "hash": "deed90c41b4d7cefe6346fe0704f7b6f965a84508fa76f1bfbba2b2e9ca034ad"
+        },
+        {
+          "value": "- Offene Tasks liegen unter `tem/tasks/open`.",
+          "hash": "c7adfa76a9db1de0745d344372999b30ec094e4083c23171c5812d7a3a1f9c45"
+        },
+        {
+          "value": "app/public",
+          "hash": "b606c9040e250b45c1d4604f2b2a0069ae8e34f2f034a63dd886fa632bf810a5"
+        },
+        {
+          "value": "app/src/game",
+          "hash": "f64efe8c3b4bb124945bb24470ec4d48b0aebf52fdd22cc1841e6bc3a429cc91"
+        },
+        {
+          "value": "app/src/kernel",
+          "hash": "ef220df41af0b89908d71206792d343f54097c41865ebbeb04674b8f1aaf2e13"
+        },
+        {
+          "value": "app/src/ui",
+          "hash": "0fc1f3d4ae543dabfe3f28c7909fc078cc0bf4f8237200ef23504204199ff9fb"
+        },
+        {
+          "value": "Archive",
+          "hash": "66f4804ee23ddc092d1bae43cb88186aa541187fff7c1cc8a4aa17e59a9f4123"
+        },
+        {
+          "value": "Authoritative Content",
+          "hash": "9af6ff59b954ec789e8a574e48229185b815c5bb0aa270ffe7c5bfe5895b4622"
+        },
+        {
+          "value": "browser-adapter",
+          "hash": "ae387bf29055be30380f1f6d71a246350f475f167cd5572d1cf031fcc8badf93"
+        },
+        {
+          "value": "Content-Authoritative",
+          "hash": "9aba9f96264b89d0a886f0fc23cf5829d634ee0ca4aa7a38113bc00e77ee4779"
+        },
+        {
+          "value": "Deprecated",
+          "hash": "6b2e8f83dd8e811ed238eb2d7dec8e948549aa06a20a9ebbe9c2a3a56bb47e94"
+        },
+        {
+          "value": "Deprecated Runtime",
+          "hash": "d27e92d788cc31e00a24c680145b3ffd8fd3f268585168dd037a162717fbb79d"
+        },
+        {
+          "value": "dev/scripts",
+          "hash": "87f6769880982de629de7df4124968f076ded3c1bf1b67ea83bacbe0fbe985a1"
+        },
+        {
+          "value": "dev/tests/modules",
+          "hash": "f3884fe8f51d1d84dc4957e9b60c845e9665bc50b48fef95b02754c5acb81f17"
+        },
+        {
+          "value": "Diese Seite macht die fuehrende SoT menschenlesbar. Sie ersetzt die JSON-Dateien nicht, sondern erklaert sie knapp.",
+          "hash": "9ee0fa7334982bc8e39d0af411e6211ca242528e94804881efa1d269c2b8acda"
+        },
+        {
+          "value": "docs/IN PLANUNG",
+          "hash": "d9a20b02d9196e21f9640b983433e7344b3676ae01d22ebcf26a1663131e5b26"
+        },
+        {
+          "value": "docs/V2",
+          "hash": "f4415004ea829aa1b85585f6a8cb95a8a6cf8898ac0c55d13feb5b71e5796bed"
+        },
+        {
+          "value": "Documentation V2",
+          "hash": "d3e04877006e7627c883d84dbd5cade05f4a4502abd4809fe1d8475c93f020e2"
+        },
+        {
+          "value": "documentation-v2",
+          "hash": "3a9b130de85a343457f54d54460bae921cac9d3e3935f7eaf3feba244fe54139"
+        },
+        {
+          "value": "Doku-2.0-System",
+          "hash": "59bdc583842d950a3d83b13b0a10f6a988fd89ac8ae6ca04837c02d4543079be"
+        },
+        {
+          "value": "Fuehrende Quellen",
+          "hash": "84cd29cded5d6c677497824849f820bd2208e3c3129cf6f3090004e1f9ed6879"
+        },
+        {
+          "value": "gameplay-content",
+          "hash": "bab347fbeed5d73dfaacc4cc838df62e35d54d93bcb9d2627421c8cbec6ad684"
+        },
+        {
+          "value": "Human Truth",
+          "hash": "f00a65385bc06a3cf22ce326aa9c4012dfcc1fb73270e5e6d5225838d1c4ab76"
+        },
+        {
+          "value": "Kernel Core",
+          "hash": "ba0f4a5032a8881393f8b3bd59511f5928e71b6bd8327705c0ea3a29b3d7d430"
+        },
+        {
+          "value": "Kernel-Authoritative",
+          "hash": "ca3ea037c33c599fc79f40a2f908e523684d5f51ade59ad7f53a5dc2836a7e2f"
+        },
+        {
+          "value": "kernel-core",
+          "hash": "f48860f2daf7e7a03ab9827300ab91c865d446de1c12a279339a2fff75c00f4e"
+        },
+        {
+          "value": "Klassen",
+          "hash": "9340ec893243d7dc772f5ad206672a29f6a784ffbf6488b066ef429f0868d35d"
+        },
+        {
+          "value": "legacy-cleanup",
+          "hash": "5dcaeb8204e7e2fb551f87c42d67056b08384cc1feb5b07305051ccec0fd2b01"
+        },
+        {
+          "value": "legacy/UNVERFID",
+          "hash": "1a87fbdaca494d3a11c1cc07c2bd49bd8e8739a7f787d9cd54f2793290993fa3"
+        },
+        {
+          "value": "Out-of-Scope",
+          "hash": "8338e5f43e928d635e6621643b8f31d7067ff8ecd4477e1b784a33d3de74e524"
+        },
+        {
+          "value": "Repo-Grenzen",
+          "hash": "22e4de19e2249ea49d5283fc08968a5e350d14e4599ceef23e37cc819b625422"
+        },
+        {
+          "value": "Reproduction Evidence",
+          "hash": "81b2ad34240e42a506329e9b8c46091aa5e08aebaf55494f42251d041ec69240"
+        },
+        {
+          "value": "reproduction-evidence",
+          "hash": "b6ce72d7942c0fa09963665c3f1c187026566046b6d4dde368d11f088c11ee73"
+        },
+        {
+          "value": "Reproduction/Evidence",
+          "hash": "974518cf37a79a34d3e6b0b23bade14f11aef520b48b85bc1f982dddb247ccc4"
+        },
+        {
+          "value": "Systemplan",
+          "hash": "c726c86ac5ea62909a05376ceee725755afdbea173984c19ec4075df1541993c"
+        },
+        {
+          "value": "tem",
+          "hash": "1f7be6908b217b4af27cdf058505fcf9ca92fe1ff70cda404d969767dac57483"
+        },
+        {
+          "value": "tem/tasks",
+          "hash": "8a8f90fe3430b2748d79828b26efb89bf56d011c6ed5bb6805b3f8a044f07364"
+        },
+        {
+          "value": "tem/tasks/archive",
+          "hash": "99078d78426980ffc97db77acedc3395faaf0255dd5957b6e6ebd3362e29c921"
+        },
+        {
+          "value": "tem/tasks/open",
+          "hash": "822dbf4d39f85ce877b8b9b5769ba33e0130ced023e3ac148502b73676b335be"
+        },
+        {
+          "value": "Test/Gate-Core",
+          "hash": "d686923e31d1536c8f583f8b3535a20515b435a04ab7e58f680e6e5acae1b9cd"
+        },
+        {
+          "value": "Transitional",
+          "hash": "00e65f2763bbf000d59d794513eaf3a9c36ae9c413e0a8d7f4a71373bd6d1d3d"
+        }
+      ]
+    }
+  ]
+}

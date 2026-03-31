@@ -35,13 +35,17 @@
       "name": "Documentation V2",
       "prefixes": [
         "app/src/sot/docs-v2.json",
+        "app/src/sot/STRING_MATRIX.json",
+        "docs/SOT/STRING_MATRIX.md",
         "docs/V2/",
         "tem/tasks/",
         "dev/tools/runtime/docs-v2-shared.mjs",
+        "dev/tools/runtime/probe-docs-v2-adversarial.mjs",
         "dev/tools/runtime/scan-doc-tasks.mjs",
+        "dev/tools/runtime/sync-string-matrix.mjs",
         "dev/tools/runtime/sync-docs-v2.mjs"
       ],
-      "purpose": "Human-readable truth, atomic planning tasks and archive automation"
+      "purpose": "Human-readable truth, atomic planning tasks, string matrix discipline and archive automation"
     },
     {
       "name": "Deprecated Runtime",

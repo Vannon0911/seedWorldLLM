@@ -22,6 +22,7 @@ Dieser Ordner soll nur noch wenige fuehrende Einstiegspunkte haben. Fuehrend sin
 - [app/src/sot/repo-boundaries.json](../app/src/sot/repo-boundaries.json)
 - [app/src/sot/FUNCTION_SOT.json](../app/src/sot/FUNCTION_SOT.json)
 - [app/src/sot/REPO_HYGIENE_MAP.json](../app/src/sot/REPO_HYGIENE_MAP.json)
+- [app/src/sot/STRING_MATRIX.json](../app/src/sot/STRING_MATRIX.json)
 - [app/src/sot/testline-integrity.json](../app/src/sot/testline-integrity.json)
 - [app/src/sot/docs-v2.json](../app/src/sot/docs-v2.json)
 

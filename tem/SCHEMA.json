@@ -1,12 +1,12 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "bb830d5ff5f721de66945e4d7012a9c558db0b4bb9048db456ccae8b6ce773b8",
+  "snapshotId": "48109e6066753043a63f9b44557a135e08a6dce687dace02458f19444bb7538d",
   "controlFiles": [
     "TODO.md",
     "WORKFLOW.md",
     "SCHEMA.json"
   ],
-  "artifactCount": 38,
+  "artifactCount": 39,
   "categories": {
     "planung": [
       "tem/beide-plaene.md",
@@ -47,7 +47,8 @@
       "tem/slices/t03-guardrail-konzept.md"
     ],
     "task-archive": [
-      "tem/tasks/archive/DOC-001.json"
+      "tem/tasks/archive/DOC-001.json",
+      "tem/tasks/archive/DOC-002.json"
     ],
     "task-open": [
       "tem/tasks/open/CF-003.json",
@@ -190,6 +191,11 @@
       "path": "tem/tasks/archive/DOC-001.json",
       "category": "task-archive",
       "sha256": "4da35322f34f3fab6b30273655a2eaecd14880a13cf036109a438c342c323614"
+    },
+    {
+      "path": "tem/tasks/archive/DOC-002.json",
+      "category": "task-archive",
+      "sha256": "b414ccd91b96bd46283fd253cbdd155a1c2006553d7e1747f9f1920217986cb4"
     },
     {
       "path": "tem/tasks/open/CF-003.json",

@@ -59,6 +59,7 @@ async function main() {
 
   await runNodeScript("dev/tools/runtime/sync-tem-control-files.mjs", ["--write"]);
   await runNodeScript("dev/tools/runtime/sync-docs-v2.mjs", ["--write"]);
+  await runNodeScript("dev/tools/runtime/sync-string-matrix.mjs", ["--write"]);
 
   console.log(`[DOCS_V2_SCAN] changed=${changedFiles.length} archived=${archived.length}`);
 }

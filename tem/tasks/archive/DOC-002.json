@@ -1,0 +1,51 @@
+{
+  "schema_version": "2.0.0",
+  "task_id": "DOC-002",
+  "title": "String matrix and adversarial probe enforce Documentation V2 hygiene",
+  "status": "archived",
+  "track": "docs-v2",
+  "source_docs": [
+    "docs/V2/RULES.md",
+    "docs/V2/TRUTH.md"
+  ],
+  "description": "String matrix, adversarial proof and tighter Doku-2.0 hygiene verification in die Pflichtlinie ziehen.",
+  "scope_paths": [
+    "app/src/sot/STRING_MATRIX.json",
+    "docs/SOT/STRING_MATRIX.md",
+    "dev/tools/runtime/sync-string-matrix.mjs",
+    "dev/tools/runtime/probe-docs-v2-adversarial.mjs",
+    "dev/tools/runtime/scan-doc-tasks.mjs",
+    "app/src/sot/docs-v2.json",
+    "dev/tools/runtime/sync-docs-v2.mjs",
+    "package.json"
+  ],
+  "match_policy": "all_scope_paths_touched",
+  "file_path": "tem/tasks/archive/DOC-002.json",
+  "archived_at": "2026-03-31T07:17:51.097Z",
+  "archive_reason": "scope matched current change set",
+  "archive_changed_files": [
+    "app/src/sot/docs-v2.json",
+    "app/src/sot/FUNCTION_SOT.json",
+    "app/src/sot/repo-boundaries.json",
+    "app/src/sot/source-of-truth.json",
+    "app/src/sot/STRING_MATRIX.json",
+    "app/src/sot/testline-integrity.json",
+    "dev/tools/runtime/probe-docs-v2-adversarial.mjs",
+    "dev/tools/runtime/scan-doc-tasks.mjs",
+    "dev/tools/runtime/sync-docs-v2.mjs",
+    "dev/tools/runtime/sync-string-matrix.mjs",
+    "docs/INDEX.md",
+    "docs/SOT/ORIENTATION.md",
+    "docs/SOT/STRING_MATRIX.md",
+    "docs/V2/HOME.md",
+    "docs/V2/PLAN.md",
+    "docs/V2/RULES.md",
+    "docs/V2/SYSTEM_PLAN.md",
+    "docs/V2/TRUTH.md",
+    "package.json",
+    "tem/SCHEMA.json",
+    "tem/tasks/open/DOC-002.json",
+    "tem/TODO.md"
+  ],
+  "archived_from": "tem/tasks/open/DOC-002.json"
+}

@@ -36,6 +36,13 @@ Archivierte Tasks wurden vom Scanner aus dem offenen Planungspfad entfernt, weil
 
 ## Archived Tasks
 
+### DOC-002 String matrix and adversarial probe enforce Documentation V2 hygiene
+
+- JSON: `tem/tasks/archive/DOC-002.json`
+- Archived At: `2026-03-31T07:17:51.097Z`
+- Reason: scope matched current change set
+- Changed Files: `app/src/sot/docs-v2.json`, `app/src/sot/FUNCTION_SOT.json`, `app/src/sot/repo-boundaries.json`, `app/src/sot/source-of-truth.json`, `app/src/sot/STRING_MATRIX.json`, `app/src/sot/testline-integrity.json`, `dev/tools/runtime/probe-docs-v2-adversarial.mjs`, `dev/tools/runtime/scan-doc-tasks.mjs`, `dev/tools/runtime/sync-docs-v2.mjs`, `dev/tools/runtime/sync-string-matrix.mjs`, `docs/INDEX.md`, `docs/SOT/ORIENTATION.md`, `docs/SOT/STRING_MATRIX.md`, `docs/V2/HOME.md`, `docs/V2/PLAN.md`, `docs/V2/RULES.md`, `docs/V2/SYSTEM_PLAN.md`, `docs/V2/TRUTH.md`, `package.json`, `tem/SCHEMA.json`, `tem/tasks/open/DOC-002.json`, `tem/TODO.md`
+
 ### DOC-001 Documentation 2.0 einfuehren
 
 - JSON: `tem/tasks/archive/DOC-001.json`

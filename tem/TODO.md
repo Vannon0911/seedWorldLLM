@@ -52,6 +52,7 @@ Diese Datei wird automatisch aus `tem/` erzeugt. Keine manuelle Pflege.
 
 ### task-archive
 - [ ] tem/tasks/archive/DOC-001.json
+- [ ] tem/tasks/archive/DOC-002.json
 
 ### task-open
 - [ ] tem/tasks/open/CF-003.json
@@ -66,4 +67,4 @@ Diese Datei wird automatisch aus `tem/` erzeugt. Keine manuelle Pflege.
 - [ ] tem/tasks/open/CF-012.json
 
 ## Umfang
-- Gesamtartefakte: 38
+- Gesamtartefakte: 39

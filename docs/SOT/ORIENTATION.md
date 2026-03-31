@@ -30,5 +30,6 @@ npm run check:required
 - Menschenlesbare Fuehrung laeuft primär ueber `docs/V2/`.
 - Browser-Runtime fuehrt nur noch die reduzierte Spielansicht aus.
 - Pflichtqualitaet ist nur noch Doppel-Lauf plus Evidence plus Testline-Schlusstest.
+- Aktive Spiel- und Doku-Strings werden ueber `STRING_MATRIX` mechanisch synchron gehalten.
 - Server-, Patch-, Menue- und Plugin-Reste sind nicht Teil des reproduzierbaren Pflichtpfads.
 - Planung und Archivierung laufen ueber atomare JSON-Tasks unter `tem/tasks/` und die menschenlesbare V2-Doku unter `docs/V2/`.
