@@ -34,11 +34,15 @@ async function main() {
     }
   }
 
-  allFiles.sort(compareAlpha);
+  for (const relFile of docsV2.fullRepoCoverage?.rootFiles || []) {
+    allFiles.push(toPosixPath(relFile));
+  }
+
+  const uniqueFiles = [...new Set(allFiles)].sort(compareAlpha);
   const classified = [];
   const unclassified = [];
 
-  for (const relPath of allFiles) {
+  for (const relPath of uniqueFiles) {
     const bucket = buckets.find((entry) => matchesBucket(relPath, entry));
     if (!bucket) {
       unclassified.push(relPath);
@@ -55,7 +59,7 @@ async function main() {
   await mkdir(path.dirname(evidencePath), { recursive: true });
   await writeJson(evidencePath, {
     generated_at: new Date().toISOString(),
-    scanned_files: allFiles.length,
+    scanned_files: uniqueFiles.length,
     classified_files: classified.length,
     unclassified_files: unclassified,
     buckets: buckets.map((bucket) => ({
@@ -73,7 +77,7 @@ async function main() {
     process.exit(1);
   }
 
-  console.log(`[DOCS_V2_COVERAGE] OK scanned=${allFiles.length} classified=${classified.length}`);
+  console.log(`[DOCS_V2_COVERAGE] OK scanned=${uniqueFiles.length} classified=${classified.length}`);
 }
 
 await main();

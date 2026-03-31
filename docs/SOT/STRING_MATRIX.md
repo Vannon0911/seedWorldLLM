@@ -12,8 +12,8 @@ Diese Matrix erzwingt, dass die aktiven Spiel- und Doku-Strings maschinenlesbar 
 
 ## Summary
 
-- Files: 39
-- Unique Strings: 775
+- Files: 42
+- Unique Strings: 960
 
 ## Files
 
@@ -182,6 +182,11 @@ Diese Matrix erzwingt, dass die aktiven Spiel- und Doku-Strings maschinenlesbar 
 - Strings: 7
 - Fingerprint: `dbe70e14909952c9ad88126c3fa8135a995f68cce8d4d71e71ad54463c028c88`
 
+### docs/V2/ARCHITECTURE_MAP.md
+
+- Strings: 81
+- Fingerprint: `d59ab266d849dd3ec9d4cc1ec26731ff918c3043c4cd4a0c4b2c349c35b78df7`
+
 ### docs/V2/ARCHIVE.md
 
 - Strings: 32
@@ -192,10 +197,20 @@ Diese Matrix erzwingt, dass die aktiven Spiel- und Doku-Strings maschinenlesbar 
 - Strings: 15
 - Fingerprint: `856def86411d25442d690cfc9293cfa1e7a45697bcb090a96520cc666cbe80cd`
 
+### docs/V2/LAST_20_COMMITS.md
+
+- Strings: 78
+- Fingerprint: `4019c8fdabec4fb5eb18c725280c5f0005b857d35d1bdb382887921f9d37124b`
+
 ### docs/V2/PLAN.md
 
 - Strings: 46
 - Fingerprint: `f48d79099a21ee2cecdfa15cb81454d931810ec6d120660f977676bd30cc4f34`
+
+### docs/V2/RELEASE_0.3.1a.md
+
+- Strings: 37
+- Fingerprint: `2cf1768590d1cd7147b71b1ee303841a7f0896ef86dc36ccc4de48c4f5439071`
 
 ### docs/V2/RULES.md
 

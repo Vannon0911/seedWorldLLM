@@ -23,7 +23,7 @@
       "dev/tools/runtime/preflight.mjs"
     ]
   },
-  "generatedAt": "2026-03-31T07:15:28.978Z",
+  "generatedAt": "2026-03-31T07:26:46.926Z",
   "monitoredRoots": [
     "dev/scripts",
     "dev/tests",
@@ -112,13 +112,13 @@
     "dev/tools/runtime/scan-doc-tasks.mjs": "e3f9fcc30ba34833df54ac3b1325595b503b75805fee7f98241391c566ae96d0",
     "dev/tools/runtime/signing-guard.mjs": "729438da9ccfd418cee0c454a1405a298769154318cb4805106a68c934e33a74",
     "dev/tools/runtime/sync-docs-v2.mjs": "97bb0f7980532d0160b8fe1a7549770f7f0d3efca156dd40ac688fbc48e728de",
-    "dev/tools/runtime/sync-string-matrix.mjs": "211d28ebd0ca7da8458a2f65382abff7992ab8e16974c51e63dfec7f27688ce7",
+    "dev/tools/runtime/sync-string-matrix.mjs": "53d21694bb1e9c59f7844ef2c784fd83620a900efb109a0073ad5622316106e5",
     "dev/tools/runtime/sync-tem-control-files.mjs": "1971c8772a1921c39d28f667e38bf938ca284873fb5fe721f9303abc18c39933",
     "dev/tools/runtime/testline-integrity-shared.mjs": "f596b2965464c0d97fd9d25488ec6c1b018422ff404a90ac18d06fa5896b8434",
     "dev/tools/runtime/update-testline-integrity.mjs": "c2aa43eb4794ce02c3486b646ed5fbdab5e3d4ddce4d6773a2693af7859fd0f6",
     "dev/tools/runtime/updateFunctionSot.mjs": "d890220fb349d9a99c3137089adcd12c1e4f601d861ff90ff48b8750830d4dd6",
     "dev/tools/runtime/updateRedActions.mjs": "e45ea2d94e164df28f142edadb3fe12ed2f32098638a5239ca8cf875846bc691",
-    "dev/tools/runtime/verify-docs-v2-coverage.mjs": "368010b9be36742c0a34af77754ac983c53782ad4a6639abbc042913e77be44a",
+    "dev/tools/runtime/verify-docs-v2-coverage.mjs": "121d9e04d2a63b8c63a6bae6635d76c405dafeb104781480b10c47321d1ff658",
     "dev/tools/runtime/verify-docs-v2-guards.mjs": "a0d7ce65d4279b4a875200df022e7512e5593792de8ff3bf01020a004bb024d0",
     "dev/tools/runtime/verify-git-hooks.mjs": "ff1147e050e17bfcd58647d86c35e4c408a14b3fa35794d33b45fe4aaaa7e1ee",
     "dev/tools/runtime/verify-testline-integrity.mjs": "f008b1edd4077d5fcfcfb9acbe9db0948fc2b611ac4a72f905fc902b2a01070b"

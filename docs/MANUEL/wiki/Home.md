@@ -14,9 +14,12 @@ Alles andere ist nachrangig oder archivnah.
 
 ## Start Here
 
-1. [Architecture](Architecture)
-2. [Developer Onboarding](Developer-Onboarding)
-3. [Cleanup and Removal Playbook](Cleanup-and-Removal-Playbook)
+1. [../../V2/RELEASE_0.3.1a.md](../../V2/RELEASE_0.3.1a.md)
+2. [../../V2/ARCHITECTURE_MAP.md](../../V2/ARCHITECTURE_MAP.md)
+3. [../../V2/LAST_20_COMMITS.md](../../V2/LAST_20_COMMITS.md)
+4. [Architecture](Architecture)
+5. [Developer Onboarding](Developer-Onboarding)
+6. [Cleanup and Removal Playbook](Cleanup-and-Removal-Playbook)
 
 ## Fuehrende Referenzen
 

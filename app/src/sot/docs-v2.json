@@ -9,6 +9,10 @@
     "humanDocs": "docs/V2"
   },
   "registeredControlFiles": [
+    "README.md",
+    "CHANGELOG.md",
+    "VERSION",
+    "progress.md",
     "app/src/sot/docs-v2.json",
     "app/src/sot/FUNCTION_SOT.json",
     "app/src/sot/REPO_HYGIENE_MAP.json",
@@ -60,6 +64,12 @@
       "tem",
       "legacy/UNVERFID"
     ],
+    "rootFiles": [
+      "README.md",
+      "CHANGELOG.md",
+      "VERSION",
+      "progress.md"
+    ],
     "evidence": "runtime/evidence/docs-v2-coverage.json",
     "buckets": [
       {
@@ -87,6 +97,10 @@
         "id": "manual-active",
         "class": "Manual-Active",
         "paths": [
+          "README.md",
+          "CHANGELOG.md",
+          "VERSION",
+          "progress.md",
           "docs/INDEX.md",
           "docs/MANUEL/WORKFLOW.md",
           "docs/MANUEL/wiki/Home.md",

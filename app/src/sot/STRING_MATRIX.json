@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "matrix_fingerprint": "7a0ef71bae350b3a1e589ba5c429b6ef40d6a8bbedee67ae7e6f2d6011effaba",
+  "matrix_fingerprint": "87ce8133d52e9287c03014e65af0e6b7290e12a0d7f5ec62b9b1a04b40c5b1cb",
   "scan_roots": [
     "app/src/game",
     "app/src/kernel",
@@ -8,8 +8,8 @@
     "app/public",
     "docs/V2"
   ],
-  "file_count": 39,
-  "unique_string_count": 775,
+  "file_count": 42,
+  "unique_string_count": 960,
   "files": [
     {
       "path": "app/public/game.html",
@@ -3187,6 +3187,337 @@
       ]
     },
     {
+      "path": "docs/V2/ARCHITECTURE_MAP.md",
+      "string_count": 81,
+      "fingerprint": "d59ab266d849dd3ec9d4cc1ec26731ff918c3043c4cd4a0c4b2c349c35b78df7",
+      "strings": [
+        {
+          "value": "- `app/public/`",
+          "hash": "b597736ccfeeaaeca723d7fb41da188ed943b135ea74219808c597d8cc9a7c69"
+        },
+        {
+          "value": "- `app/src/game/`",
+          "hash": "bb5980b7a641f1b68b6f1e1566f0d085220b6e92147e08860f61971a3c71e009"
+        },
+        {
+          "value": "- `app/src/kernel/ActionRegistry.js`",
+          "hash": "e541aa8f5e62fa01c675fee259281d9abd5f06249d9521f173f2f558668fa364"
+        },
+        {
+          "value": "- `app/src/kernel/deterministicKernel.js`",
+          "hash": "2ae7c7496dea097616f8f1c679fadba7d1acbd93149626a7689bdb62ed6d112b"
+        },
+        {
+          "value": "- `app/src/kernel/fingerprint.js`",
+          "hash": "bf941c5ba32b242254d603e069c164376b1473237e35a950b9c770939d481865"
+        },
+        {
+          "value": "- `app/src/kernel/KernelController.js`",
+          "hash": "47328b56fec4dee59500e8118c9843541af8691de7d24c1eadd13ce3575119f2"
+        },
+        {
+          "value": "- `app/src/kernel/KernelRouter.js`",
+          "hash": "832fa26231c8048612b1ac4679ad275205f992672c65aa29a0b8a7cab8c93cb6"
+        },
+        {
+          "value": "- `app/src/kernel/runtimeGuards.js`",
+          "hash": "f88f3e381d8d390b7d6a2e9ebe70847f76378f93278f086f41fa75fa202eaec0"
+        },
+        {
+          "value": "- `app/src/kernel/seedGuard.js`",
+          "hash": "4aea6972dbccc76cc48cf164c2315bca040f4e362676804436faa5713e94d613"
+        },
+        {
+          "value": "- `app/src/main.js`",
+          "hash": "ad8b6d4d88e0f8867b3ebdb8149df21d4cb612ac8b17fbf128e8bac09322c180"
+        },
+        {
+          "value": "- `app/src/sot/docs-v2.json`",
+          "hash": "ce140b64bdc33a82c24add2221d9d5d3c9cc80b20f32b6c2f13fbdfe4370be8f"
+        },
+        {
+          "value": "- `app/src/sot/STRING_MATRIX.json`",
+          "hash": "f63ea563c6a6e1d1515f6e16b1638b7738dedd0fc555ddf7a1838f5a84401a50"
+        },
+        {
+          "value": "- `app/src/ui/`",
+          "hash": "1a85b5603321d63b328606f7c6c474a86fb6e159a1f59501243be7c790f08690"
+        },
+        {
+          "value": "- `dev/scripts/evidence-shared.mjs`",
+          "hash": "ad749e36b1b765b79f562f821fee45d958fcca0096aa18374dc60adb75bacbe7"
+        },
+        {
+          "value": "- `dev/scripts/test-runner.mjs`",
+          "hash": "13075e5d19bfe64b05b258b6d2e0031af0ac7cadc5179de60d4fdd4d975e3e94"
+        },
+        {
+          "value": "- `dev/scripts/verify-evidence.mjs`",
+          "hash": "503f0a14672b11e627782fb6c9dfde87f6ebe80fc579a13bf1e7df393224cfe3"
+        },
+        {
+          "value": "- `dev/tools/runtime/probe-docs-v2-adversarial.mjs`",
+          "hash": "35e687539c679f61711f7039a295df1d44e6f45f1832c8188eeb60e3b4a1fe28"
+        },
+        {
+          "value": "- `dev/tools/runtime/sync-string-matrix.mjs`",
+          "hash": "50414231e0706a33206bb56c7bf8cde4365ef344a6a6a2cd01d9b3e075c46e15"
+        },
+        {
+          "value": "- `dev/tools/runtime/verify-docs-v2-coverage.mjs`",
+          "hash": "7ccf68aaf540d477b1e8a46301747bac95d986db242e9cd773e716a0128a26bd"
+        },
+        {
+          "value": "- `dev/tools/runtime/verify-docs-v2-guards.mjs`",
+          "hash": "fced634b14a2c8738b6fb2cbf8e19e0228d071d1a652cdd3c212e682f3630da8"
+        },
+        {
+          "value": "- `dev/tools/runtime/verify-testline-integrity.mjs`",
+          "hash": "51ca0f9066ba371db019fd977a01fddb03c63ef797ebafd42e1ba18ba59b0b13"
+        },
+        {
+          "value": "- `docs/V2/`",
+          "hash": "5680320fe115b8f6a306bc4719f904ba40144a386d3cf0cde03e738a2c07dc94"
+        },
+        {
+          "value": "- `runtime/evidence/`",
+          "hash": "64a77350f29a234f42923157f527f6fef8f0a6be5c3bb35945536f213d761413"
+        },
+        {
+          "value": "- `tem/tasks/archive/`",
+          "hash": "eb693a48d4bf2e9376e1fd39d9dff4fa30875488140f70052a9811d582e3071c"
+        },
+        {
+          "value": "- `tem/tasks/open/`",
+          "hash": "95422bba82155e8166a3f7245b2ea84a9178daa70b4c7dc53d22cbf053f24863"
+        },
+        {
+          "value": "- Adapter auf Kernel und Gameplay",
+          "hash": "ca9c9d2f312027585643abf5829a62f2df6a0ee9ce01c2b699fedf87b813705a"
+        },
+        {
+          "value": "- Archivierung abgeschlossener Tasks",
+          "hash": "2967efeaf0ff83d1b29a32bfbf599f4567ff16917ea0c36014f17b4ce48f7125"
+        },
+        {
+          "value": "- atomare Planung",
+          "hash": "ea2733861c6c0ae04b3847e1e298baf7d85f6a932636cf728bfbbbe551ac6425"
+        },
+        {
+          "value": "- blockiert rohe Plan-Dateien",
+          "hash": "86b1b480369b405352501f5afdb763a99b9b72cd9f6514eb29518ea6eba388cf"
+        },
+        {
+          "value": "- blockiert unregistrierte Aenderungen",
+          "hash": "90e10a9637dae4232af54762dbfdf0a300781f004c28b5e1e7dc7367f1fbbe12"
+        },
+        {
+          "value": "- Comparator",
+          "hash": "e7f66e940b6990defb36dcb9cc21b0832222938bf656a84f34c464c9cc7b63c9"
+        },
+        {
+          "value": "- Content-Interpretation",
+          "hash": "50cd7c130331f442eae69614c02d4651a4008d851f769b5dd1229117dde24587"
+        },
+        {
+          "value": "- deterministische Ausfuehrung",
+          "hash": "b8a582e533d9f9c6d1894230375e11b09556672737cdfc5d991fb1e2a44f3013"
+        },
+        {
+          "value": "- diffuse Planungsdateien ausserhalb von `tem/tasks/`",
+          "hash": "2d5321593cc01c7104aaa1724e282cda6c456f2610aed6b7338c2b73d0bb4f3a"
+        },
+        {
+          "value": "- Doppel-Lauf-Orchestrierung",
+          "hash": "0390027a048858f6c44475f2a4245e08eb75d991e6d35dc2f037902e806794e2"
+        },
+        {
+          "value": "- finaler Testline-Schlusstest",
+          "hash": "baf60957ae6f89d283be6d9ee62057069816449aba3713aaa5ee9a42a282fb7d"
+        },
+        {
+          "value": "- Guard- und Coverage-SoT fuer den Dokumentationsraum",
+          "hash": "953c038fa6ac89a4567b6aca6d22d671277987b739aeee8a3425a80722d519b1"
+        },
+        {
+          "value": "- Guardrails gegen nichtdeterministische Inputs",
+          "hash": "bbb8b5037b66775bf33d1ed79552ea0b66b824fd0e536b041d455db548ce7852"
+        },
+        {
+          "value": "- haelt aktive Spiel- und Doku-Strings mechanisch synchron",
+          "hash": "4b8af441c83ce382e015f1aca846920e51b7bd1ad6dd3b07ceb475cd67a75b08"
+        },
+        {
+          "value": "- keine fuehrende Wahrheit",
+          "hash": "cb3def38ffe8af7ce017dd29733ac25ee1328660f5a71c9daece686b64053751"
+        },
+        {
+          "value": "- klassifiziert den Vollbestand der Doku-/Plan-/Legacy-Roots",
+          "hash": "59799f33d437a615cc904a9e25c9eeee44d48e58e14e340aa745f7f0b6b10df7"
+        },
+        {
+          "value": "- menschenlesbare Wahrheit",
+          "hash": "17053978f039b6587ebc2b050ef8dabd5ee5be9692a95ea7fc9ea1b07cd2322d"
+        },
+        {
+          "value": "- Patch-/Hotfix-/Remote-Mechanik",
+          "hash": "dc0543e0a7e1f36f50898c76017b73915aabfa8a80c44445375f23f0ad564612"
+        },
+        {
+          "value": "- Patch-Wuensche fuer den Kernel",
+          "hash": "efdda67df19a1a0d5c77932eabdaeb7469b827de41d5f79cb11d2908d752c779"
+        },
+        {
+          "value": "- Playwright-/Browser-Pflichtgates",
+          "hash": "c9a6b91498b0186259f0f394dcf39f2e2c8603de824058be5fd1777bdede6c61"
+        },
+        {
+          "value": "- Preflight- und kosmetische Gruen-Semantik",
+          "hash": "4691bd662acd15aa8f46470000057473b2064002fd6d00e4179e5a986a7ae3f4"
+        },
+        {
+          "value": "- prueft die Guards per adversarial probe",
+          "hash": "7c77a66f637dc705db49a89bb2f5dd719c348f235a1a27beb2ae4748aca3b890"
+        },
+        {
+          "value": "- reproduzierbare Fingerprints",
+          "hash": "712cd37ea775c3692c6d18db1f89cdad2dcfe73e5fd440c0a00211ff4dfdd944"
+        },
+        {
+          "value": "- Run-/Pair-Evidence",
+          "hash": "d536a18aa38cef4d1e32653f19c7c3c679dea48174f585a9fdb30a216d77d7ac"
+        },
+        {
+          "value": "- schlanke Browser-Spielansicht",
+          "hash": "9b28d84a31ba8844d0ef6cb1a15c973a2dce10fbb9cb9f05446a7b2f3f3c65cb"
+        },
+        {
+          "value": "- Seed-Disziplin",
+          "hash": "1c73e43ae9464233329028f873f81ef8db54de40acfe676094588d808016f44b"
+        },
+        {
+          "value": "- Server- und Deployment-Pfade",
+          "hash": "560d8f40eacd693a31ab93bb0eeea4031e519f1c33a06160a5f4b2c4a2c8c269"
+        },
+        {
+          "value": "- Spielregeln",
+          "hash": "ff93a22a88ebde761b3fc8abd7e64f4687a6daa35b9932a26a9f461e3c5195a4"
+        },
+        {
+          "value": "- Weltgenerierung",
+          "hash": "a9b60b0b5009524f878423a915662c671c3c331141506bcd0014cffd7356f36f"
+        },
+        {
+          "value": "1. Content oder Testinput liefert Action und Seed.",
+          "hash": "eb37a19989fddb4f88c975d7d1d772d0af30d303f7eedd3cc6eb6d25cadaa70e"
+        },
+        {
+          "value": "1. Truth Layers",
+          "hash": "ebe4758e3802be81823ad97df3db0d828c8722f1d45e9314851193f2f9b58ae9"
+        },
+        {
+          "value": "2. Documentation and Hygiene",
+          "hash": "a5f5ee01bec8c3e24e86fea8dd06bec7a0570ce69a4ba2b86cc47ef99decb4de"
+        },
+        {
+          "value": "2. Gameplay-Schicht berechnet erlaubte Aenderungen.",
+          "hash": "974643599516e354d5c68118465d73f83e670fbc114848b26d38c3d55fe1cd5c"
+        },
+        {
+          "value": "3. Browser Adapter",
+          "hash": "db810fc073da1471378f1eed6bdeb18a99d3d8b0877e91e8747a638a378570f6"
+        },
+        {
+          "value": "3. Kernel fuehrt deterministisch aus.",
+          "hash": "9f2c9cfee8f2194a67f9f9f2148241f53119948812a0d0765de79ff37cf56bac"
+        },
+        {
+          "value": "4. Evidence-Schicht beweist Reproduktion in zwei Laeufen.",
+          "hash": "e90dc7e5728e6f4d53a1bc76bc227ba190beb1b2db1be6c1034ab1026dc1eb5a"
+        },
+        {
+          "value": "4. Flow Map",
+          "hash": "de3c2202380b1b1fccbc28cdae69c7388619f5668aae873edcd4c5b394e71d2c"
+        },
+        {
+          "value": "5. Doku-2.0-/Hygiene-Schicht blockiert unregistrierte oder unklassifizierte Doku-/Plan-Abweichungen.",
+          "hash": "e3429ceccdb186e5bd61a89c6401e0e7e0b6bef25e2b0632a5ee78629c926552"
+        },
+        {
+          "value": "5. Removed from the Leading Path",
+          "hash": "ebf63a4f2d412f9c9f8b18c746d1fb32662efe8f6e3120690637aede60415524"
+        },
+        {
+          "value": "6. String-Matrix und adversarial probe pruefen, dass Dokumentation und Guardrails nicht nur behauptet, sondern aktiv erzwungen werden.",
+          "hash": "1ad7d6ca7bb55d1ebb207551879b9de3f6dfa5b5828492a9b946883bb9109eb6"
+        },
+        {
+          "value": "app/public/",
+          "hash": "ffe0111c0c506a57be5bbda9f8e01fd4004a0de1bfe420469810ae85de760548"
+        },
+        {
+          "value": "app/src/game/",
+          "hash": "e6694f30f497783658ce71f0f01e7b299e3fd65e00e69905fc2813ce72985cf0"
+        },
+        {
+          "value": "app/src/ui/",
+          "hash": "5464a14b9ca0c105ee703ac7a996e01cbd51acf94251fba81b02e443e6814b21"
+        },
+        {
+          "value": "Architecture Map",
+          "hash": "bd5de2c16a11ec17bc380bc27aaab2f88eadfce15f50148b0626c97368d3d882"
+        },
+        {
+          "value": "Aufgabe:",
+          "hash": "9938af658d729ebcf63017ea2d615adb5d0e748bc7e40650ae18ea1cb10e5a7e"
+        },
+        {
+          "value": "Authoritative Gameplay Content",
+          "hash": "30ef573641ab1be331061120588a4af43225f4b243fbb7f240a89820e41ea7aa"
+        },
+        {
+          "value": "docs/V2/",
+          "hash": "fe0c60bb9f6358a426203530c41e705aadfd2b99695a8a7d968f2893b21a1bf6"
+        },
+        {
+          "value": "Documentation V2",
+          "hash": "d3e04877006e7627c883d84dbd5cade05f4a4502abd4809fe1d8475c93f020e2"
+        },
+        {
+          "value": "Hygiene and Coverage",
+          "hash": "e71b23e7ddec8f47aa2e825a810d6a6616ab885ff5cae7988fc5ee0992d5d8e8"
+        },
+        {
+          "value": "Kernel Core",
+          "hash": "ba0f4a5032a8881393f8b3bd59511f5928e71b6bd8327705c0ea3a29b3d7d430"
+        },
+        {
+          "value": "Reproduction and Evidence",
+          "hash": "fa6190accb27e0b1a3fa62d81078dd2715108c623bed3d1faf7d7598f96c1490"
+        },
+        {
+          "value": "runtime/evidence/",
+          "hash": "6db5d7ec488f3d0461f595dae731ee96306b73c1627958e40a22697936000f03"
+        },
+        {
+          "value": "SeedWorld 0.3.1a ist auf wenige, klare Fluesse reduziert. Diese Karte beschreibt die aktiven Komponenten und ihre Beziehungen.",
+          "hash": "e92b74724b851282452851cff37671b4f201bdc4892ce594756031734444ee7b"
+        },
+        {
+          "value": "tem/tasks/",
+          "hash": "7f9646d5a442766aa5dc4bdad2cb74fe05b7af80846d6e22be182c613c810901"
+        },
+        {
+          "value": "tem/tasks/archive/",
+          "hash": "7a6e6eb79c03e2b303d7ec815696c0e82c4050f9778d5c87121de3691d1b7bc0"
+        },
+        {
+          "value": "tem/tasks/open/",
+          "hash": "01a768144cb906ef50bc4e346ccbcf87588debaeda5b62509a60da43c2e5f99a"
+        }
+      ]
+    },
+    {
       "path": "docs/V2/ARCHIVE.md",
       "string_count": 32,
       "fingerprint": "160db2f1a032e605056f2b742890f2c15b2be2b5fd192c670cd1b8aa49936234",
@@ -3389,6 +3720,325 @@
       ]
     },
     {
+      "path": "docs/V2/LAST_20_COMMITS.md",
+      "string_count": 78,
+      "fingerprint": "4019c8fdabec4fb5eb18c725280c5f0005b857d35d1bdb382887921f9d37124b",
+      "strings": [
+        {
+          "value": "- `12060d2` Sync SoT and active cleanup docs",
+          "hash": "b8bd3b6e66ad5ba3ba1fd0c4ce14f421f0ba229f29865bb510bb6ccd83cafdcb"
+        },
+        {
+          "value": "- `121ecee` Cut dead wrapper and legacy UI stack",
+          "hash": "bcfc70155462c0e7c53d5ebb6b70d444dffcf21d1cd8db3b1221cb7af509cb46"
+        },
+        {
+          "value": "- `206e81c` Tighten project documentation to current core",
+          "hash": "113d11a1ab65408d27df9f68473541ae1c225fdcfe237624cb1488caca330af0"
+        },
+        {
+          "value": "- `234cb67` Sync SoT/docs from code and add legacy audit",
+          "hash": "494542fb84ac97eccdf282a3e22d4787922b0452ae9f61fc84eb210628880abf"
+        },
+        {
+          "value": "- `3a36c5a` Cut browser launcher and menu residue",
+          "hash": "ffa96a4699de0a54d9e35769f36544883c41b6dd100e99a17986730054db0c70"
+        },
+        {
+          "value": "- `4c102cc` Stabilize testline, align canvas-first SoT, and modularize game logic",
+          "hash": "0667ae27914c898d10c8eaf7be2c2ec5935eed9be851511dad26325d1c3c11bb"
+        },
+        {
+          "value": "- `5adc9d8` Migrate project documentation to Documentation V2",
+          "hash": "051666f8e537acf35e329580905747d8c7c36b5f35913f8d35573f2f0ac4821d"
+        },
+        {
+          "value": "- `7703996` Remove unused kernel interface bridge",
+          "hash": "71066216003180c2b02ecb2aaa26224122a9dccf89026ffe841dd41d154b0bf5"
+        },
+        {
+          "value": "- `7d48dec` Reduce UI controller to active game path",
+          "hash": "2773a9f7789ccb6d7fc51bab03f34416bca974224bace08df50d62c4ee2f2856"
+        },
+        {
+          "value": "- `8947967` Prove reproduction with double-run evidence gates",
+          "hash": "cc8400f6e3e1166f4582a1781619c8ae5658eb1db2e2be8b5bc6afb64f865202"
+        },
+        {
+          "value": "- `8b19cc9` Harden Documentation V2 with probes and string matrix",
+          "hash": "548f8ab482aeb0f63f02f0645a3f2722435b7e9b3916284cbc5fab398d76db1e"
+        },
+        {
+          "value": "- `8d41427` Codex lokal (#16)",
+          "hash": "031fa86bd6a0ef0e6104bdb6641ad37a7e59b9e2db0b6e71dc35e5386c7f538e"
+        },
+        {
+          "value": "- `8ec631c` Reduce repo to deterministic kernel core",
+          "hash": "f3b9c5ff3badcef7760f5767144d5dce83115b5e4e9c3063b51ecfef931a7585"
+        },
+        {
+          "value": "- `92a19c8` Enforce full Documentation V2 coverage",
+          "hash": "778d672789e721239ca3838f2a5b5bd079c4e3cddc538c78044ab3fc30a814d4"
+        },
+        {
+          "value": "- `9788bb7` Remove radial build plugin path",
+          "hash": "aea1c8c3472a71043b93c0509211c2bb1f664efa221f7cecb0e21331b7aa5a30"
+        },
+        {
+          "value": "- `9797985` Minimize git hooks to reproduction checks",
+          "hash": "8970642dc026476e0e1196d6b53c479290efc5b8b230b5b96f37adcb17428a73"
+        },
+        {
+          "value": "- `9ff6443` Harden preflight guard and add workflow timeout (#15)",
+          "hash": "c0a90199d5fa717f3a78ebb9db8c47c0c00d8c60742fbfdf89d9607833b84f00"
+        },
+        {
+          "value": "- `a770aeb` Enforce Documentation V2 task and registry guards",
+          "hash": "dc7671f90911b93a30d69e10baa302d28f171f1062e334a76c8d38fabda1dd8d"
+        },
+        {
+          "value": "- `a7d810e` Resolve remaining merge markers and refresh testline baseline",
+          "hash": "0543685193e5d55227a39ae884fd6eb476091d02a24e2025145e4da3c6b5bd13"
+        },
+        {
+          "value": "- `eb3f64e` Minimize git hooks to reproduction checks (#18)",
+          "hash": "d5a3643e2f3358ef777c3cbc303f034e3a7e414b2605a7533a107b88975f0f29"
+        },
+        {
+          "value": "- deterministischer Kern statt Betriebsballast",
+          "hash": "4cc2a9af0b43a4d3ba66840f4f3cdce17fb6f04c9837e34d42f0f7bd96154b17"
+        },
+        {
+          "value": "- Documentation V2 als fuehrende Doku-, Plan- und Archivschicht",
+          "hash": "fe00f690c52a62ec49a18ad28ccedf96b72a9049eb4ccb1625cc83e9f7e8bc65"
+        },
+        {
+          "value": "- Documentation V2: `docs/V2/`, `tem/tasks/`, `app/src/sot/docs-v2.json`",
+          "hash": "229591a8e7e2ae0c4df47e36449d1ab0c83c323f39e95a9533fd0f8b92242b34"
+        },
+        {
+          "value": "- Evidence/Testline: `dev/scripts/` und `dev/tools/runtime/verify-testline-integrity.mjs`",
+          "hash": "7232fcfb9707636e91b20067437bf419ef25e7812ac5133c6fbe8080e9f6ed9e"
+        },
+        {
+          "value": "- Gameplay/Content: `app/src/game/`",
+          "hash": "8c5a5e8e7bc9268132f2e22517b07e654db87571a7ee91991e41718a3685e5a3"
+        },
+        {
+          "value": "- Hygiene/Strings/Probe: `verify-docs-v2-guards.mjs`, `verify-docs-v2-coverage.mjs`, `probe-docs-v2-adversarial.mjs`, `sync-string-matrix.mjs`",
+          "hash": "5b75942e6d3f911d4eed674d0ce56b65d3bac0aec4afa3267af14a5db3619d02"
+        },
+        {
+          "value": "- Kernel: `app/src/kernel/`",
+          "hash": "97519ff6b09350e5c3af5ab1bb1242ba24acf0effc583225c73eeb1343c54e98"
+        },
+        {
+          "value": "- Projekthygiene als erzwungenes System statt als Wunsch",
+          "hash": "7cd63d10978aef282e7cd0895e2ab649159d4d1bc3608fd8af3cf62dc9fc6d9b"
+        },
+        {
+          "value": "- radikal verkleinerter Browser-/UI-Pfad",
+          "hash": "0fe20f4c3aaf5a87cf08037010df765f6e9a536b9b416df808bd47663325be56"
+        },
+        {
+          "value": "- reproduzierbare Evidence statt kosmetischer Gruen-Signale",
+          "hash": "d5906b6922800255169493b5d69eec9abc546d882e2baa2e3040a43bd33a2619"
+        },
+        {
+          "value": "12060d2",
+          "hash": "c1d0139a3067c723e4ad2aacb4ead61d552527293b69f2c237b6320ef09169fc"
+        },
+        {
+          "value": "121ecee",
+          "hash": "619ed28a3ef65f9502f71065d9012e5ecb6c0428c703caa65543e255532d5dcb"
+        },
+        {
+          "value": "206e81c",
+          "hash": "840b4ca0a820e645314f5dc5492f0c8e14bf6420b37351b614f090cf38f31cdb"
+        },
+        {
+          "value": "234cb67",
+          "hash": "ffe0377a35c7f1d5e75327c5934fe539cefc9a501234d35f2193bb6c62011af1"
+        },
+        {
+          "value": "3a36c5a",
+          "hash": "4add716c361c58226a4e78957ef87ffa4fbf9da2c08b7d6fdd966763409e525d"
+        },
+        {
+          "value": "4c102cc",
+          "hash": "b098553f0444efac79f39f1cf7b41f669f8e80c153ec5c3b4bf394c87250208d"
+        },
+        {
+          "value": "5adc9d8",
+          "hash": "251c335736507d37a8a48f993525b5bf6a352b9774b07d4de5b147268e0349b7"
+        },
+        {
+          "value": "7d48dec",
+          "hash": "18f50716d6d071d22f77508099a1edf08732b1aa8951d63677ab700f69119699"
+        },
+        {
+          "value": "8b19cc9",
+          "hash": "a17ad0d14c457b1230331a9b33cc3f390cc5408d777be7ec61a869805b0e8d1e"
+        },
+        {
+          "value": "8d41427",
+          "hash": "c91d134511812c6098eb4a9757f12709102c50da48963c913300c5d7613d7563"
+        },
+        {
+          "value": "8ec631c",
+          "hash": "9fcb69fbd7158db1291e00de9f2ca4fe15e278b9191e4a245002f895c7aac37d"
+        },
+        {
+          "value": "92a19c8",
+          "hash": "c8d83dc67a9503ff38dfe3fb043e69fa452e4584893a2107f9a91f3c1ee15e9a"
+        },
+        {
+          "value": "9788bb7",
+          "hash": "c424888a2dc46e5854cc8ae0b22e1e6273aa853d5c97d5569c23bb5e16be401c"
+        },
+        {
+          "value": "9ff6443",
+          "hash": "5b69ec0798ee4fdd951db59dd238e3791e5ca6e2b33ffb9c1dfe6d760cdc5c8e"
+        },
+        {
+          "value": "a770aeb",
+          "hash": "bb5e39819fb8a48057297eec15b617f867e0d7c48939c01fefe7ec54738474d8"
+        },
+        {
+          "value": "a7d810e",
+          "hash": "62162c7589f9a53334914700bb7a3b42247549c1c9fe04dcc3b2912a6028a334"
+        },
+        {
+          "value": "Aktiver Pfad verkleinert",
+          "hash": "44784daaf069a7e9e12b43cc9aa4ba41d738dca98df8fd9de69691b7a8545209"
+        },
+        {
+          "value": "app/src/game/",
+          "hash": "e6694f30f497783658ce71f0f01e7b299e3fd65e00e69905fc2813ce72985cf0"
+        },
+        {
+          "value": "app/src/kernel/",
+          "hash": "20eeb1a3a509ccf8f2f85c8ee8dc92095929a3beb453cfec156b57be00ea3a74"
+        },
+        {
+          "value": "Blockiert rohe Planung ausserhalb atomarer JSON-Tasks und stoppt unregistrierte neue Dateien.",
+          "hash": "9067c8be650e7807f7d893e64c999c1debe5c514d1d1065f8eabaf0e94e753d7"
+        },
+        {
+          "value": "Commit-Linie",
+          "hash": "8b1be5e9c510a3f91095fc9d92e6ed7da9ca921219837a1649a5da2e24ccb552"
+        },
+        {
+          "value": "dev/scripts/",
+          "hash": "1436e901544c1b6003f5e987c835eb42532142aa79568dccb87afbc93350ba4b"
+        },
+        {
+          "value": "Diese Seite erklaert die letzten 20 Commits von SeedWorld 0.3.1a in einer Form, die fuer Maintainer und Leser schnell erfassbar bleibt.",
+          "hash": "562d9a611455c456a49675f2ecdf7f143684a0bbb03d2ba17b1ddde9b732aa11"
+        },
+        {
+          "value": "Diese vier Commits sind heute nicht mehr der Fuehrungskern, aber sie markieren die Anlaufphase vor der harten Reduktion.",
+          "hash": "0727b0a22483e4c0d2c921b5ebce7f966123e88006b18f2e169146db9d6f1d08"
+        },
+        {
+          "value": "docs/V2/",
+          "hash": "fe0c60bb9f6358a426203530c41e705aadfd2b99695a8a7d968f2893b21a1bf6"
+        },
+        {
+          "value": "Dokumentation, Hygiene und Verifikation",
+          "hash": "2b4bad07505a9b6c9c37a7fd422cca0f29d64edb80790f02d6885422fa4c9eb8"
+        },
+        {
+          "value": "eb3f64e",
+          "hash": "f2a9255d7a4289d68e79392b46dc29274053e30709d3f40840ffde4d38304c4b"
+        },
+        {
+          "value": "Entfernt eine tote Kernel-Bruecke.",
+          "hash": "2c9b3670440e98ee7987f066db08c3053e58efe0a8d62333bcb954a3dfee0486"
+        },
+        {
+          "value": "Entfernt einen global gekoppelten Pluginpfad und reduziert Nebenlogik.",
+          "hash": "d4365c046f3af2bd88b350bb1fb484f63de345fa548ee2c5e9cacc5851b798cc"
+        },
+        {
+          "value": "Entfernt Menue- und Launcher-Reste.",
+          "hash": "4ac032701f9f256397fa5e2233fa4d0d6ab351da4c38a782d327013406b90b55"
+        },
+        {
+          "value": "Fuehrt adversarial probe und String-Matrix ein. Das System prueft jetzt aktiv, ob rohe Plan-Dateien und unklassifizierte Artefakte wirklich blockiert werden.",
+          "hash": "e1536f6c2a5d695bcb6d6324e5d8624f0caebc595428f4e3f8d8eccd9e879b85"
+        },
+        {
+          "value": "Fuehrt den harten Doppel-Lauf-Evidence-Pfad ein.",
+          "hash": "448e0d03b1da8cdaefbd081145a63fabcb61d939cadf11e33bfeacf65fa95e28"
+        },
+        {
+          "value": "Fuehrt einen Vollrepo-Scanner fuer Doku-/Plan-/Legacy-Bereiche ein und verlangt vollstaendige Klassifikation.",
+          "hash": "2c3b407e826b920ba4ce6c9712d56f5448bc0ca16dd89149df28ba4a3d313d34"
+        },
+        {
+          "value": "Historischer Vorlauf der jetzigen Linie",
+          "hash": "f20d4b610b7cc908c4159afa2291022d46f87173875d966aab6afabe2fff7470"
+        },
+        {
+          "value": "Hooks fuehren nur noch die neue Kern-Qualitaetslinie aus.",
+          "hash": "3007bb423dd9e515fe1f418537b4311e2ffdd52682af9853b1cc5e7371445c3b"
+        },
+        {
+          "value": "Last 20 Commits",
+          "hash": "c2b2f8df33148bd7de46abfb82989a5e571a1c75dd7d01ac361fa499f67cbcf0"
+        },
+        {
+          "value": "Leitmotive",
+          "hash": "f3a33c869249ad52b407bec873388dd075f3aaf56116dd180ad27ec703286cd1"
+        },
+        {
+          "value": "Loescht tote Wrapper- und Legacy-UI-Controller.",
+          "hash": "378c2d7a31ab3b4bcf40aedde08c4054c12a6fddbf51fa98a89c4bb09441a91a"
+        },
+        {
+          "value": "Macht `docs/V2/` zur fuehrenden menschenlesbaren Projektflaeche.",
+          "hash": "9f65b7347f8e7ed5bd79268f4c95f998afe1dcaf95e4ec498f95ab7e86aa6454"
+        },
+        {
+          "value": "Macht den UI-Pfad deutlich kleiner und konzentriert ihn auf die aktive Spielansicht.",
+          "hash": "c84c5509d6688b209498c476df208c6ea72fc4f67ad7db94952e42609df90fe2"
+        },
+        {
+          "value": "Merge der Hook-Reduktion auf die reproduzierbare Pflichtlinie.",
+          "hash": "30981349c20e6121b7892b3cd149af7bb98275ce5893d41395ffcbf9d9bb21fe"
+        },
+        {
+          "value": "Raeumt Restmarker weg und stabilisiert die Testline-Basis.",
+          "hash": "d345897a346f1f7b9edadb72718ac468156a15dc0cf635fca06f5b5d2d92398b"
+        },
+        {
+          "value": "Reproduktionsbeweis und Testlinie",
+          "hash": "754bd3e9301a15991691f274902dd525a9111f2afa8dbaf39ec6591bd7de8360"
+        },
+        {
+          "value": "Schlaegt den großen Scope-Schnitt: nur noch Kernel, Reproduktion, Spielinhalte.",
+          "hash": "4fc0ead7078e9bf40c7212d97faf91163811f14e90d97e2022eacc13e36339fa"
+        },
+        {
+          "value": "Synchronisiert Function-SoT, Hygiene-Map und aktive Cleanup-Doku.",
+          "hash": "c681b132cc3491722926e87c1bd9270df8cdd1b763c9094bc4adbba3c933afbc"
+        },
+        {
+          "value": "Technische Kernkomponenten",
+          "hash": "a6e51d1e72058189b8f0db42c5ed966294d5c489a3df5546a03066cc2c107553"
+        },
+        {
+          "value": "tem/tasks/",
+          "hash": "7f9646d5a442766aa5dc4bdad2cb74fe05b7af80846d6e22be182c613c810901"
+        },
+        {
+          "value": "Zieht die fuehrende Doku auf den reduzierten Kernzustand.",
+          "hash": "1f542c866ee3cd4f924be7ac2edd5fdd92e12e8c780d8ec02e37c05d676fa672"
+        }
+      ]
+    },
+    {
       "path": "docs/V2/PLAN.md",
       "string_count": 46,
       "fingerprint": "f48d79099a21ee2cecdfa15cb81454d931810ec6d120660f977676bd30cc4f34",
@@ -3576,6 +4226,161 @@
         {
           "value": "Planning Path",
           "hash": "40a46e098c452d144c193d2a2cc1f5ec67d703e9fce93a95b786fbe7f2bc9df6"
+        }
+      ]
+    },
+    {
+      "path": "docs/V2/RELEASE_0.3.1a.md",
+      "string_count": 37,
+      "fingerprint": "2cf1768590d1cd7147b71b1ee303841a7f0896ef86dc36ccc4de48c4f5439071",
+      "strings": [
+        {
+          "value": "- [ARCHITECTURE_MAP](./ARCHITECTURE_MAP.md)",
+          "hash": "d78c91bdf50255ea9e09a611c13cd95f89016993bc05376143cabf46eeef660e"
+        },
+        {
+          "value": "- [ARCHIVE](./ARCHIVE.md)",
+          "hash": "a239b745b7f72556d8abb206021680de3897c5816bba2332a6d069037be8d38c"
+        },
+        {
+          "value": "- [HOME](./HOME.md)",
+          "hash": "1b31483bf8f1b768f29196c4f84dce9a4800e2cb6b930ea1292b42ef94d6740a"
+        },
+        {
+          "value": "- [LAST_20_COMMITS](./LAST_20_COMMITS.md)",
+          "hash": "f2a74401aac6ca93b01e7222a5de39b0fa2ac6fc69fb646638fc70d0923cbccf"
+        },
+        {
+          "value": "- [PLAN](./PLAN.md)",
+          "hash": "aac3913e0f373feeb396d3a6e06ad912c78854d88289923c7d50a727732e26b9"
+        },
+        {
+          "value": "- [RULES](./RULES.md)",
+          "hash": "f34cbc0ab506bb8b2c5d7d84d9a8a5a70b7fd95fa2eba2efa23d12200ea36ff4"
+        },
+        {
+          "value": "- [SYSTEM_PLAN](./SYSTEM_PLAN.md)",
+          "hash": "b98e25bb8eab796cb3d218a64b2785225b28de019373a75230625a8f8a911ecb"
+        },
+        {
+          "value": "- [TRUTH](./TRUTH.md)",
+          "hash": "714e9480199495111a46ff029a1177cf8c0b6f8cc72f54d6b34779b8912bbce6"
+        },
+        {
+          "value": "- Adversarial Probe",
+          "hash": "1da356a949d6a88cc617b96d3285e80d179cc03bda58ff3babdc465f09c92062"
+        },
+        {
+          "value": "- autoritative Spielinhalte",
+          "hash": "708690a4af6536b02d8864866167a16297a7ad74541ee6dc9f8668b286bf8ed3"
+        },
+        {
+          "value": "- deterministischer Kernel",
+          "hash": "ea268a28eb0db16010803a90e6f9023d1633b56946687d68db34c6c487a7fc92"
+        },
+        {
+          "value": "- Documentation V2 als fuehrende Doku-, Plan- und Archivschicht",
+          "hash": "fe00f690c52a62ec49a18ad28ccedf96b72a9049eb4ccb1625cc83e9f7e8bc65"
+        },
+        {
+          "value": "- Documentation V2 fuehrt jetzt Wahrheit, Plan und Archiv zusammen.",
+          "hash": "0d1e938c5546dc7d2b013f266513793e3b8837600ae3d06795b1c3fcbc30fbaf"
+        },
+        {
+          "value": "- Documentation-V2-Verification",
+          "hash": "d387eceb1c5d2c804b3132184d5ea339ba87186b911ed65a9d347d113b8561fe"
+        },
+        {
+          "value": "- Doppel-Lauf-Tests",
+          "hash": "2cefef8da9ed2581c3ec719ee79f289ab3079984258e408325bf124be1d6647a"
+        },
+        {
+          "value": "- Ein adversarial probe versucht das System gezielt zu brechen und verlangt, dass die Blocker wirklich greifen.",
+          "hash": "9430e7da4eace2332ad5ae9df287224e57e241fb5d0180ddc7add52ef71f0b1d"
+        },
+        {
+          "value": "- Ein Guard blockiert rohe Plan-Dateien und unregistrierte Aenderungen.",
+          "hash": "d92823917c8355d2a804870d76330b11f27c9f3e2e15635cda8cedf41dafed56"
+        },
+        {
+          "value": "- Ein Vollrepo-Scanner prueft, dass alle Doku-/Plan-/Legacy-Dateien klassifiziert sind.",
+          "hash": "b697fa36b6571c63022ea9c4b75ccefd08be464c051cc148ba82b37a95d74ebd"
+        },
+        {
+          "value": "- Eine String-Matrix haelt aktive Spiel- und Doku-Strings synchron.",
+          "hash": "4a04c6013ae99d6a1f1bd9c27ab4732c49fb45ce28668fa8e55144b62a35a239"
+        },
+        {
+          "value": "- Evidence-Verification",
+          "hash": "9e5f0e532ad4ba054cf01d1ca76c55de919200648d97a34c2fd9f0e80ffe6413"
+        },
+        {
+          "value": "- mechanisch erzwungene Projekthygiene",
+          "hash": "d87285aa68c01cc3e64ddcd0cd82ca946b6dafa78d8372e99e8eb16e00aa2983"
+        },
+        {
+          "value": "- Open Tasks leben nur noch als atomare JSON-Tasks.",
+          "hash": "a712ea2d1cf77c74cabb92ca0b2581e996e0dbcb4222a16eda2b92456783d3f2"
+        },
+        {
+          "value": "- reproduzierbare Doppel-Lauf-Evidence",
+          "hash": "6e62bd618a6d945d8ef10f27309eb1f8a2bfc3ffb866d509f69decbed4c1fbb2"
+        },
+        {
+          "value": "- String-Matrix-Verification",
+          "hash": "c5172f313b3314ee15f0af3b529505baeb74022773bfc9bfaaa7e6f311ff4a59"
+        },
+        {
+          "value": "- Testline-Integrity",
+          "hash": "1c73f3327e1dd8735b34a1db6ab338b965e6aade66cc6e001d6ae276c4da6635"
+        },
+        {
+          "value": "- Vollrepo-Coverage",
+          "hash": "933679c7fb33549e29a3a1d2a36114ca2580b5ded80bb4bf1577c01ec3a6c6f0"
+        },
+        {
+          "value": "```bash",
+          "hash": "ad332335cfaa348c5bd715c3479844622270d5f7389ae070b81b135d521a221a"
+        },
+        {
+          "value": "bash\nnpm run check:required\n",
+          "hash": "2a49390f1ba2f5c32c93cf466e32cf57f80c2f1f0ce94cf7d10bde88b7fac853"
+        },
+        {
+          "value": "Diese Linie umfasst jetzt:",
+          "hash": "c453dcb19253b5b58015d6f3c11655ad92fe7aba8af52bff5b271475f9d396f1"
+        },
+        {
+          "value": "Kernreferenzen",
+          "hash": "c9721f020da3d9331b3bc8dedbaf1e5d6ed5c6825c5515723396f42cecc1b9b1"
+        },
+        {
+          "value": "npm run check:required",
+          "hash": "4da806eea700170da0f3d6118674983166f152e386989c95a53c0a198586ed7e"
+        },
+        {
+          "value": "Pflichtlinie",
+          "hash": "aae02b7e02c701a296dac9ecb9be5f8e3f0fca2ca3a73cc1c2b3bd7e6f5852e8"
+        },
+        {
+          "value": "Release 0.3.1a",
+          "hash": "c6555f037796aeb5575c056ab4492f4ba783873754a855fa8cd8ec5259ceec90"
+        },
+        {
+          "value": "Release 0.3.1a schliesst die Reduktion von SeedWorld auf den deterministischen Kern nicht nur technisch, sondern auch dokumentarisch und hygienisch ab.",
+          "hash": "8d7fa0429a1d489e1f6754d2511b696ece40a4abd3d158a396671487ad3769dd"
+        },
+        {
+          "value": "Release-Fokus",
+          "hash": "d3c7da099dd3ae194e8eb00a2f035bc39e9577962e0f936141ab78fef78ec1f8"
+        },
+        {
+          "value": "Warum dieses Release wichtig ist",
+          "hash": "0b86fe244352fa5541779a3fd2ebb7fe16f08944ad897bd85c455e661e275bf5"
+        },
+        {
+          "value": "Was neu ist",
+          "hash": "86bd82d4650cf6b652f3a00299a6b79e0de3483345ff9a2f578e3aa939e39263"
         }
       ]
     },
