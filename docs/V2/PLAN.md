@@ -49,15 +49,6 @@ Offene Planung liegt nur noch als atomare Einzel-Tasks vor. Ein Task bleibt offe
 - Scope: `app/src/ui/RenderManager.js`, `app/src/ui/UIController.js`, `app/public/game.html`
 - Description: SVG nur noch fuer unvermeidliche Linien- oder Pulseffekte behalten und Layer-Reihenfolge absichern.
 
-### CF-008 Pointer-Hit-Testing auf screenToTile umstellen
-
-- JSON: `tem/tasks/open/CF-008.json`
-- Track: `canvas-migration`
-- Match: `all_scope_paths_touched`
-- Source: `docs/V2/SYSTEM_PLAN.md`
-- Scope: `app/src/ui/RenderManager.js`, `app/src/ui/UIController.js`
-- Description: Interaktion nicht mehr ueber DOM-Rechtecke, sondern ueber Geometrie aus dem Renderpfad berechnen.
-
 ### CF-009 DOM-Grid abbauen
 
 - JSON: `tem/tasks/open/CF-009.json`
@@ -66,15 +57,6 @@ Offene Planung liegt nur noch als atomare Einzel-Tasks vor. Ein Task bleibt offe
 - Source: `docs/V2/SYSTEM_PLAN.md`
 - Scope: `app/src/ui/TileGridRenderer.js`, `app/public/game.html`, `app/src/ui/tileGrid.css`
 - Description: DOM soll nur noch HUD oder Panel tragen, nicht mehr die Tile-Flaeche selbst.
-
-### CF-010 Debug-State um Canvas-Sicht erweitern
-
-- JSON: `tem/tasks/open/CF-010.json`
-- Track: `canvas-migration`
-- Match: `all_scope_paths_touched`
-- Source: `docs/V2/SYSTEM_PLAN.md`
-- Scope: `app/src/ui/UIController.js`, `app/src/ui/RenderManager.js`
-- Description: Debug- oder Textausgaben sollen die echte Canvas-Sicht und Geometrie mit abbilden.
 
 ### CF-011 Canvas-Deckungsgleichheit per Tests absichern
 
@@ -210,15 +192,6 @@ Offene Planung liegt nur noch als atomare Einzel-Tasks vor. Ein Task bleibt offe
 - Source: `docs/V2/SYSTEM_PLAN.md`
 - Scope: `dev/tools/runtime/docs-v2-shared.mjs`, `dev/tools/runtime/governance-findings-shared.mjs`, `dev/tools/runtime/governance-llm-verify.mjs`, `dev/tools/runtime/governance-subagent-verify.mjs`, `dev/tools/runtime/run-required-checks.mjs`, `dev/tools/runtime/governance-modularity-verify.mjs`, `runtime/evidence/governance-modularity.json`
 - Description: Uebergrosse Governance-Dateien muessen in stabile Teilmodule aufgeteilt werden; verify darf weder Ausnahmen noch Size-Bypass akzeptieren.
-
-### RT-014 Kanonisches Weltmodell fuer Volume/Block/Chunk einfuehren
-
-- JSON: `tem/tasks/open/RT-014.json`
-- Track: `red-team-hardening`
-- Match: `all_scope_paths_touched`
-- Source: `docs/V2/SYSTEM_PLAN.md`
-- Scope: `app/src/game/worldGen.js`, `app/src/game/worldState.js`, `app/src/ui/UIController.js`
-- Description: Fuehrt volume/blocks/chunks als kanonische Weltstruktur ein und markiert world.tiles explizit als Legacy-/Debug-Projektion.
 
 ### RT-015 Hash- und Versionsvertrag fuer World/Render fixieren
 

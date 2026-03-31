@@ -1,55 +1,45 @@
 {
-  "generated_at": "2026-03-31T19:14:56.784Z",
+  "generated_at": "2026-03-31T19:40:03.951Z",
   "changed_files": [
-    ".github/workflows/required-checks.yml",
     "app/src/game/worldGen.js",
+    "app/src/game/worldState.js",
     "app/src/kernel/KernelController.js",
     "app/src/sot/llm-read-contract.v1.json",
-    "app/src/sot/REPO_HYGIENE_MAP.json",
-    "app/src/sot/STRING_MATRIX.json",
     "app/src/sot/sub-agent-manifest.v1.json",
     "app/src/sot/testline-integrity.json",
     "app/src/ui/RenderManager.js",
     "app/src/ui/TileGridRenderer.js",
+    "app/src/ui/UIController.js",
     "dev/tests/modules/10.determinism-seed-proof-suite.module.mjs",
-    "dev/tools/runtime/governance-policy-verify.mjs",
     "dev/tools/runtime/preflight-mutation-guard.mjs",
-    "dev/tools/runtime/signing-guard.mjs",
-    "docs/SOT/REPO_HYGIENE_MAP.md",
-    "docs/SOT/STRING_MATRIX.md",
-    "docs/V2/ARCHIVE.md",
-    "docs/V2/HOME.md",
-    "docs/V2/PLAN.md",
-    "docs/V2/SYSTEM_PLAN.md",
     "package.json",
-    "tem/SCHEMA.json",
-    "tem/slices/gov-008-render-plan-gate.md",
-    "tem/slices/gov-009-preset-registry.md",
-    "tem/slices/gov-010-render-evidence-manifest.md",
-    "tem/slices/leg-003-tilegrid-debug-only.md",
-    "tem/slices/rt-014-canonical-world-model.md",
-    "tem/slices/rt-015-world-render-hash-contract.md",
-    "tem/slices/rt-016-world-sampler-contract.md",
-    "tem/slices/rt-017-block-chunk-compiler.md",
-    "tem/slices/rt-018-biome-on-block-layer.md",
-    "tem/slices/rt-019-chunk-offscreen-worker.md",
-    "tem/slices/rt-020-dirty-chunk-rerender.md",
-    "tem/tasks/archive/GOV-005.json",
-    "tem/tasks/archive/LEG-002.json",
-    "tem/tasks/open/GOV-005.json",
-    "tem/tasks/open/GOV-008.json",
-    "tem/tasks/open/GOV-009.json",
-    "tem/tasks/open/GOV-010.json",
-    "tem/tasks/open/LEG-003.json",
-    "tem/tasks/open/RT-014.json",
-    "tem/tasks/open/RT-015.json",
-    "tem/tasks/open/RT-016.json",
-    "tem/tasks/open/RT-017.json",
-    "tem/tasks/open/RT-018.json",
-    "tem/tasks/open/RT-019.json",
-    "tem/tasks/open/RT-020.json",
-    "tem/TODO.md",
-    "tem/traceability-map.md"
+    "tem/tasks/archive/LEG-002.json"
   ],
-  "archived_tasks": []
+  "archived_tasks": [
+    {
+      "task_id": "CF-008",
+      "archived_path": "tem/tasks/archive/CF-008.json",
+      "touched_paths": [
+        "app/src/ui/RenderManager.js",
+        "app/src/ui/UIController.js"
+      ]
+    },
+    {
+      "task_id": "CF-010",
+      "archived_path": "tem/tasks/archive/CF-010.json",
+      "touched_paths": [
+        "app/src/ui/RenderManager.js",
+        "app/src/ui/UIController.js"
+      ]
+    },
+    {
+      "task_id": "RT-014",
+      "archived_path": "tem/tasks/archive/RT-014.json",
+      "touched_paths": [
+        "app/src/game/worldGen.js",
+        "app/src/game/worldState.js",
+        "app/src/ui/UIController.js"
+      ]
+    }
+  ]
 }

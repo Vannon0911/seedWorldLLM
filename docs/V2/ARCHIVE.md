@@ -26,6 +26,27 @@ Archivierte Tasks wurden vom Scanner aus dem offenen Planungspfad entfernt, weil
 
 ## Archived Tasks
 
+### RT-014 Kanonisches Weltmodell fuer Volume/Block/Chunk einfuehren
+
+- JSON: `tem/tasks/archive/RT-014.json`
+- Archived At: `2026-03-31T19:40:03.947Z`
+- Reason: scope matched current change set
+- Changed Files: `app/src/game/worldGen.js`, `app/src/game/worldState.js`, `app/src/kernel/KernelController.js`, `app/src/sot/llm-read-contract.v1.json`, `app/src/sot/sub-agent-manifest.v1.json`, `app/src/sot/testline-integrity.json`, `app/src/ui/RenderManager.js`, `app/src/ui/TileGridRenderer.js`, `app/src/ui/UIController.js`, `dev/tests/modules/10.determinism-seed-proof-suite.module.mjs`, `dev/tools/runtime/preflight-mutation-guard.mjs`, `package.json`, `tem/tasks/archive/LEG-002.json`
+
+### CF-010 Debug-State um Canvas-Sicht erweitern
+
+- JSON: `tem/tasks/archive/CF-010.json`
+- Archived At: `2026-03-31T19:40:03.941Z`
+- Reason: scope matched current change set
+- Changed Files: `app/src/game/worldGen.js`, `app/src/game/worldState.js`, `app/src/kernel/KernelController.js`, `app/src/sot/llm-read-contract.v1.json`, `app/src/sot/sub-agent-manifest.v1.json`, `app/src/sot/testline-integrity.json`, `app/src/ui/RenderManager.js`, `app/src/ui/TileGridRenderer.js`, `app/src/ui/UIController.js`, `dev/tests/modules/10.determinism-seed-proof-suite.module.mjs`, `dev/tools/runtime/preflight-mutation-guard.mjs`, `package.json`, `tem/tasks/archive/LEG-002.json`
+
+### CF-008 Pointer-Hit-Testing auf screenToTile umstellen
+
+- JSON: `tem/tasks/archive/CF-008.json`
+- Archived At: `2026-03-31T19:40:03.934Z`
+- Reason: scope matched current change set
+- Changed Files: `app/src/game/worldGen.js`, `app/src/game/worldState.js`, `app/src/kernel/KernelController.js`, `app/src/sot/llm-read-contract.v1.json`, `app/src/sot/sub-agent-manifest.v1.json`, `app/src/sot/testline-integrity.json`, `app/src/ui/RenderManager.js`, `app/src/ui/TileGridRenderer.js`, `app/src/ui/UIController.js`, `dev/tests/modules/10.determinism-seed-proof-suite.module.mjs`, `dev/tools/runtime/preflight-mutation-guard.mjs`, `package.json`, `tem/tasks/archive/LEG-002.json`
+
 ### GOV-005 Signed-Commit Policy auf Push-Range verallgemeinern
 
 - JSON: `tem/tasks/archive/GOV-005.json`

@@ -62,6 +62,8 @@ Diese Datei wird automatisch aus `tem/` erzeugt. Keine manuelle Pflege.
 - [ ] tem/testline-missing-systems.md
 
 ### task-archive
+- [ ] tem/tasks/archive/CF-008.json
+- [ ] tem/tasks/archive/CF-010.json
 - [ ] tem/tasks/archive/CF-013.json
 - [ ] tem/tasks/archive/DOC-001.json
 - [ ] tem/tasks/archive/DOC-002.json
@@ -89,6 +91,7 @@ Diese Datei wird automatisch aus `tem/` erzeugt. Keine manuelle Pflege.
 - [ ] tem/tasks/archive/RT-010.json
 - [ ] tem/tasks/archive/RT-011.json
 - [ ] tem/tasks/archive/RT-012.json
+- [ ] tem/tasks/archive/RT-014.json
 
 ### task-open
 - [ ] tem/tasks/open/CF-003.json
@@ -96,9 +99,7 @@ Diese Datei wird automatisch aus `tem/` erzeugt. Keine manuelle Pflege.
 - [ ] tem/tasks/open/CF-005.json
 - [ ] tem/tasks/open/CF-006.json
 - [ ] tem/tasks/open/CF-007.json
-- [ ] tem/tasks/open/CF-008.json
 - [ ] tem/tasks/open/CF-009.json
-- [ ] tem/tasks/open/CF-010.json
 - [ ] tem/tasks/open/CF-011.json
 - [ ] tem/tasks/open/CF-012.json
 - [ ] tem/tasks/open/GOV-001.json
@@ -114,7 +115,6 @@ Diese Datei wird automatisch aus `tem/` erzeugt. Keine manuelle Pflege.
 - [ ] tem/tasks/open/RT-001.json
 - [ ] tem/tasks/open/RT-004.json
 - [ ] tem/tasks/open/RT-013.json
-- [ ] tem/tasks/open/RT-014.json
 - [ ] tem/tasks/open/RT-015.json
 - [ ] tem/tasks/open/RT-016.json
 - [ ] tem/tasks/open/RT-017.json

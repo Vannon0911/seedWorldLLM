@@ -1,5 +1,6 @@
 import { isDeepStrictEqual } from "node:util";
 import path from "node:path";
+import { writeFile } from "node:fs/promises";
 import { readJson } from "./docs-v2-shared.mjs";
 import { compareAlpha, listFilesRecursive, toPosixPath } from "./runtime-shared.mjs";
 
@@ -72,6 +73,7 @@ function classify(relPath, owners) {
 }
 
 async function main() {
+  const writeMode = process.argv.includes("--write");
   const boundaries = await readJson(path.join(root, "app", "src", "sot", "repo-boundaries.json"));
   const owners = boundaries.owners || [];
   const files = [];
@@ -141,6 +143,13 @@ async function main() {
     unclassified_files: unclassified
   };
   const evidencePath = path.join(root, evidenceRel);
+  if (writeMode) {
+    await writeFile(
+      evidencePath,
+      `${JSON.stringify({ generated_at: new Date().toISOString(), ...expectedEvidence }, null, 2)}\n`,
+      "utf8"
+    );
+  }
   const issues = [];
   let evidence = null;
   try {

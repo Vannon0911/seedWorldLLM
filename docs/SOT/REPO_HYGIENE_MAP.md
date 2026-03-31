@@ -45,6 +45,7 @@
 - app/src/game/gameProgress.js
 - app/src/game/gameStateReducer.js
 - app/src/game/worldGen.js
+- app/src/game/worldState.js
 - app/src/kernel/ActionRegistry.js
 - app/src/kernel/deterministicKernel.js
 - app/src/kernel/GateManager.js
@@ -70,6 +71,7 @@
 - dev/tools/runtime/function-sot-shared.mjs
 - dev/tools/runtime/governance-findings-materialize.mjs
 - dev/tools/runtime/governance-findings-shared.mjs
+- dev/tools/runtime/governance-modularity-sync.mjs
 - dev/tools/runtime/governance-verify.mjs
 - dev/tools/runtime/installGitHooks.mjs
 - dev/tools/runtime/llm-entry.mjs
@@ -114,6 +116,7 @@
 - dev/tools/runtime/evidence-lock.mjs
 - dev/tools/runtime/governance-findings-materialize.mjs
 - dev/tools/runtime/governance-findings-shared.mjs
+- dev/tools/runtime/governance-modularity-sync.mjs
 - dev/tools/runtime/governance-verify.mjs
 - dev/tools/runtime/llm-entry.mjs
 - dev/tools/runtime/llm-override.mjs

@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "matrix_fingerprint": "89b11f7ec1166a5e63ebfd4c11a48fbbb2b29c49af2d516fd86dae022f591a6d",
+  "matrix_fingerprint": "7f8b41bb8be88efbccc8c39640c8032463f62678b76ebebb14c6b18294748db5",
   "scan_roots": [
     "app/src/game",
     "app/src/kernel",
     "app/src/ui",
     "app/public"
   ],
-  "file_count": 34,
-  "unique_string_count": 559,
+  "file_count": 35,
+  "unique_string_count": 566,
   "files": [
     {
       "path": "app/public/game.html",
@@ -1474,12 +1474,20 @@
     },
     {
       "path": "app/src/game/worldGen.js",
-      "string_count": 21,
-      "fingerprint": "02a0c70c2ce08c6516cc50b95691d8183bc2bbaeed61627a56aa2537c4267802",
+      "string_count": 24,
+      "fingerprint": "db474a7e9a9e501f929bf26b78dfd121c2c55f601623a2edff3eb35ebf91d8d3",
       "strings": [
         {
           "value": "[WORLD_GEN] world muss Objekt sein.",
           "hash": "fc39c8d298cfad900599868c254e8cf8560f4bc33743392c26e404b9d56ef008"
+        },
+        {
+          "value": "[WORLD_GEN] world.blocks muss Array sein.",
+          "hash": "abd351ec11ce8e1e90dfae7b44ea58cd24fbb3f7012eb3abb1407eb7cb9933e8"
+        },
+        {
+          "value": "[WORLD_GEN] world.chunks muss Array sein.",
+          "hash": "961fb2f2bb0d3dcd57259075b51055573f17ddf995b8c046a1ee613a46ab7dfc"
         },
         {
           "value": "[WORLD_GEN] world.meta fehlt.",
@@ -1504,6 +1512,10 @@
         {
           "value": "[WORLD_GEN] world.tiles muss Array sein.",
           "hash": "72fdd628ad6dc99f801c60433fa0c8edc5104a9aa48e3fff51dc6539a0f6caae"
+        },
+        {
+          "value": "[WORLD_GEN] world.volume fehlt.",
+          "hash": "ab46033264dcefb10a30728dc2e6571fa5ce765ceed0bb131252ec4fec570c53"
         },
         {
           "value": "${anchorX + cell.x}:${anchorY + cell.y}",
@@ -1560,6 +1572,33 @@
         {
           "value": "worldgen.v2.minimalist",
           "hash": "7cb60ca8b7a1c62b60677f0043239b8b38d7ba2d4ce194280458a7493fa6d068"
+        }
+      ]
+    },
+    {
+      "path": "app/src/game/worldState.js",
+      "string_count": 5,
+      "fingerprint": "1909133435e6c5c89765f5e4b2275a9fa5e58524c2894e4317c473b53f28b5d3",
+      "strings": [
+        {
+          "value": "chunk:0:0:0",
+          "hash": "79e87d24aa3712c17e104b3d8a5fd04645e9f7cb5ca66943877eb750bb0b3630"
+        },
+        {
+          "value": "legacy_debug_projection",
+          "hash": "1f51e50d14ed6246634d376568ef55f1c82b37926d5837dc029c69b9377ee007"
+        },
+        {
+          "value": "object",
+          "hash": "2958d416d08aa5a472d7b509036cb7eafd542add84527e66a145ea64cb4cdc75"
+        },
+        {
+          "value": "volume-blocks-chunks.v1",
+          "hash": "cfd8880950ac19475a4d1447dec8e82be61ecfdefd514438235dd8b54da51ae7"
+        },
+        {
+          "value": "world-volume.v1",
+          "hash": "14f8f727616a34561741d59d7607f3b804a12a99eadda30569f0f2bed2cd15d2"
         }
       ]
     },

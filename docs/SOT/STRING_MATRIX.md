@@ -11,8 +11,8 @@ Diese Matrix erzwingt, dass die aktiven Spiel- und Doku-Strings maschinenlesbar 
 
 ## Summary
 
-- Files: 34
-- Unique Strings: 559
+- Files: 35
+- Unique Strings: 566
 
 ## Files
 
@@ -88,8 +88,13 @@ Diese Matrix erzwingt, dass die aktiven Spiel- und Doku-Strings maschinenlesbar 
 
 ### app/src/game/worldGen.js
 
-- Strings: 21
-- Fingerprint: `02a0c70c2ce08c6516cc50b95691d8183bc2bbaeed61627a56aa2537c4267802`
+- Strings: 24
+- Fingerprint: `db474a7e9a9e501f929bf26b78dfd121c2c55f601623a2edff3eb35ebf91d8d3`
+
+### app/src/game/worldState.js
+
+- Strings: 5
+- Fingerprint: `1909133435e6c5c89765f5e4b2275a9fa5e58524c2894e4317c473b53f28b5d3`
 
 ### app/src/kernel/ActionRegistry.js
 

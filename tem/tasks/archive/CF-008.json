@@ -1,0 +1,35 @@
+{
+  "schema_version": "2.0.0",
+  "task_id": "CF-008",
+  "title": "Pointer-Hit-Testing auf screenToTile umstellen",
+  "status": "archived",
+  "track": "canvas-migration",
+  "source_docs": [
+    "docs/V2/SYSTEM_PLAN.md"
+  ],
+  "description": "Interaktion nicht mehr ueber DOM-Rechtecke, sondern ueber Geometrie aus dem Renderpfad berechnen.",
+  "scope_paths": [
+    "app/src/ui/RenderManager.js",
+    "app/src/ui/UIController.js"
+  ],
+  "match_policy": "all_scope_paths_touched",
+  "file_path": "tem/tasks/archive/CF-008.json",
+  "archived_at": "2026-03-31T19:40:03.934Z",
+  "archive_reason": "scope matched current change set",
+  "archive_changed_files": [
+    "app/src/game/worldGen.js",
+    "app/src/game/worldState.js",
+    "app/src/kernel/KernelController.js",
+    "app/src/sot/llm-read-contract.v1.json",
+    "app/src/sot/sub-agent-manifest.v1.json",
+    "app/src/sot/testline-integrity.json",
+    "app/src/ui/RenderManager.js",
+    "app/src/ui/TileGridRenderer.js",
+    "app/src/ui/UIController.js",
+    "dev/tests/modules/10.determinism-seed-proof-suite.module.mjs",
+    "dev/tools/runtime/preflight-mutation-guard.mjs",
+    "package.json",
+    "tem/tasks/archive/LEG-002.json"
+  ],
+  "archived_from": "tem/tasks/open/CF-008.json"
+}

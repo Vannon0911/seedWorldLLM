@@ -14,7 +14,7 @@ Dies ist der laufende Systemplan fuer Documentation 2.0. Er deckt die aktiven Be
 
 - Truth: Authoritative content, rules and world interpretation.
 - Roots: `app/src/game`
-- Open Tasks: `RT-014`, `RT-015`, `RT-016`, `RT-017`, `RT-018`, `RT-020`
+- Open Tasks: `RT-015`, `RT-016`, `RT-017`, `RT-018`, `RT-020`
 
 ### reproduction-evidence
 
@@ -26,7 +26,7 @@ Dies ist der laufende Systemplan fuer Documentation 2.0. Er deckt die aktiven Be
 
 - Truth: Remaining browser path as adapter, not as competing domain truth.
 - Roots: `app/src/main.js`, `app/src/ui`, `app/public`
-- Open Tasks: `CF-003`, `CF-004`, `CF-005`, `CF-006`, `CF-007`, `CF-008`, `CF-009`, `CF-010`, `CF-012`, `LEG-003`, `RT-014`
+- Open Tasks: `CF-003`, `CF-004`, `CF-005`, `CF-006`, `CF-007`, `CF-009`, `CF-012`, `LEG-003`
 
 ### documentation-v2
 

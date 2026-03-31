@@ -1,8 +1,9 @@
 {
+  "generated_at": "2026-03-31T20:00:21.214Z",
   "schema_version": 2,
-  "scanned_count": 112,
-  "scanned_files": 112,
-  "classified_count": 112,
+  "scanned_count": 114,
+  "scanned_files": 114,
+  "classified_count": 114,
   "classified_items": [
     {
       "path": ".githooks/pre-commit",
@@ -91,6 +92,11 @@
     },
     {
       "path": "app/src/game/worldGen.js",
+      "owner": "Authoritative Content",
+      "matched_prefix": "app/src/game/"
+    },
+    {
+      "path": "app/src/game/worldState.js",
       "owner": "Authoritative Content",
       "matched_prefix": "app/src/game/"
     },
@@ -298,6 +304,11 @@
       "path": "dev/tools/runtime/governance-llm-verify.mjs",
       "owner": "Governance Control Plane",
       "matched_prefix": "dev/tools/runtime/governance-llm-verify.mjs"
+    },
+    {
+      "path": "dev/tools/runtime/governance-modularity-sync.mjs",
+      "owner": "Reproduction Evidence",
+      "matched_prefix": "dev/tools/runtime/"
     },
     {
       "path": "dev/tools/runtime/governance-modularity-verify.mjs",
@@ -572,11 +583,11 @@
     },
     {
       "owner": "Authoritative Content",
-      "count": 13
+      "count": 14
     },
     {
       "owner": "Reproduction Evidence",
-      "count": 47
+      "count": 48
     },
     {
       "owner": "Governance Control Plane",
@@ -588,6 +599,5 @@
     }
   ],
   "ambiguous_files": [],
-  "unclassified_files": [],
-  "generated_at": "2026-03-31T13:01:04.006Z"
+  "unclassified_files": []
 }

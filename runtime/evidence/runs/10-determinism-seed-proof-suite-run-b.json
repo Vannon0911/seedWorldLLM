@@ -5,11 +5,11 @@
   "seed": "suite-10-determinism-seed-proof-seed",
   "seed_source": "test-vector",
   "content_revision": {
-    "fingerprint": "e902928aebaf43b14748de47adda86a561cee7bc4b6492b87815eb66867988dd",
+    "fingerprint": "ee61ca8d23e52904b6a5bc6c404a161b6c974a80bc6bbdf48ff06ad5c0ebe38e",
     "files": [
       {
         "path": "app/src/game/worldGen.js",
-        "hash": "8fad9fc6b771c7c03b2fbf9c479c3232d2d99421799f1e4a74015425812bd805"
+        "hash": "510127a78415d81e95342eee2c4551cca8441c9a52bc4af090620bb39349e4bd"
       }
     ]
   },
@@ -38,7 +38,7 @@
       }
     ]
   },
-  "timestamp": "2026-03-31T19:15:42.465Z",
+  "timestamp": "2026-03-31T19:53:45.956Z",
   "deterministic_fingerprint": "f1909fce3387de5caa944741ea069bc9652ff599af81bfdd71252bcab43244f1",
   "output_hashes": {
     "payload": "f1909fce3387de5caa944741ea069bc9652ff599af81bfdd71252bcab43244f1"

@@ -1,6 +1,7 @@
 import { MS_PER_TICK } from "./IconAnimations.js";
 import { TileGridRenderer } from "./TileGridRenderer.js";
 import { generateWorld } from "../game/worldGen.js";
+import { ensureCanonicalWorldModel } from "../game/worldState.js";
 import { DEFAULT_GRID_BOUNDS, DEFAULT_TILE_SIZE } from "./RenderManager.js";
 
 const DEFAULT_STATE = Object.freeze({
@@ -92,6 +93,7 @@ export class UIController {
   }
 
   bootstrap() {
+    this.currentState = this.#normalizeWorldState(this.currentState);
     this.#ensureWorldState();
     this.#syncRenderGridFromState(this.currentState);
     this.#bindViewport();
@@ -156,6 +158,7 @@ export class UIController {
   #ensureWorldState() {
     const world = this.currentState?.world;
     if (world && Array.isArray(world.tiles) && world.tiles.length > 0) {
+      this.currentState = this.#normalizeWorldState(this.currentState);
       return;
     }
 
@@ -174,6 +177,14 @@ export class UIController {
         world: generateWorld(payload)
       });
     }
+    this.currentState = this.#normalizeWorldState(this.currentState);
+  }
+
+  #normalizeWorldState(state) {
+    const nextState = isPlainObject(state) ? clone(state) : clone(DEFAULT_STATE);
+    const world = isPlainObject(nextState.world) ? nextState.world : {};
+    nextState.world = ensureCanonicalWorldModel(world);
+    return nextState;
   }
 
   #startTickScheduler() {

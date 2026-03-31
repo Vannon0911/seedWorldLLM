@@ -1,6 +1,6 @@
+import { ensureCanonicalWorldModel } from "./worldState.js";
 const DEFAULT_CHUNK_SIZE = 16;
-const DEFAULT_GENERATOR_ID = "worldgen.v1.voronoi-noise";
-const DEFAULT_BIOMES = Object.freeze(["meadow", "forest", "scrub", "steppe"]);
+const DEFAULT_GENERATOR_ID = "worldgen.v2.minimalist";
 
 function assert(condition, message) {
   if (!condition) {
@@ -55,112 +55,7 @@ function hashToUnit(value) {
   return (value >>> 0) / 4294967295;
 }
 
-function valueNoise2D(seedInt, x, y, frequency = 0.08) {
-  const fx = x * frequency;
-  const fy = y * frequency;
-  const ix = Math.floor(fx);
-  const iy = Math.floor(fy);
-  const tx = fx - ix;
-  const ty = fy - iy;
-
-  function corner(cx, cy) {
-    return hashToUnit(hashInts(seedInt, cx, cy, 11));
-  }
-
-  const c00 = corner(ix, iy);
-  const c10 = corner(ix + 1, iy);
-  const c01 = corner(ix, iy + 1);
-  const c11 = corner(ix + 1, iy + 1);
-
-  const sx = tx * tx * (3 - 2 * tx);
-  const sy = ty * ty * (3 - 2 * ty);
-  const nx0 = c00 + (c10 - c00) * sx;
-  const nx1 = c01 + (c11 - c01) * sx;
-  return nx0 + (nx1 - nx0) * sy;
-}
-
-function createVoronoiSites(seedInt, width, height, count) {
-  const sites = [];
-  for (let i = 0; i < count; i += 1) {
-    const sx = Math.floor(hashToUnit(hashInts(seedInt, i, 1, 71)) * width);
-    const sy = Math.floor(hashToUnit(hashInts(seedInt, i, 2, 73)) * height);
-    const biomeIndex = hashInts(seedInt, i, 3, 79) % DEFAULT_BIOMES.length;
-    sites.push({
-      x: clamp(sx, 0, Math.max(0, width - 1)),
-      y: clamp(sy, 0, Math.max(0, height - 1)),
-      biome: DEFAULT_BIOMES[biomeIndex]
-    });
-  }
-  return sites;
-}
-
-function classifyBiomeFromSites(x, y, sites, noiseValue) {
-  let best = null;
-  let second = null;
-
-  for (const site of sites) {
-    const dx = x - site.x;
-    const dy = y - site.y;
-    const dist = dx * dx + dy * dy;
-    if (!best || dist < best.dist) {
-      second = best;
-      best = { site, dist };
-    } else if (!second || dist < second.dist) {
-      second = { site, dist };
-    }
-  }
-
-  if (!best) {
-    return "meadow";
-  }
-
-  if (!second) {
-    return best.site.biome;
-  }
-
-  const boundaryFactor = Math.abs(second.dist - best.dist) / Math.max(1, second.dist + best.dist);
-  if (boundaryFactor < 0.12 && noiseValue > 0.6) {
-    return second.site.biome;
-  }
-
-  return best.site.biome;
-}
-
-function createLakeMask(seedInt, width, height) {
-  const side = hashInts(seedInt, width, height, 41) % 4;
-  const radius = Math.max(2, Math.round(Math.min(width, height) * 0.16));
-  const inset = 1;
-
-  let cx = 0;
-  let cy = 0;
-
-  if (side === 0) {
-    cx = inset + 1;
-    cy = Math.round(height * 0.32);
-  } else if (side === 1) {
-    cx = width - inset - 2;
-    cy = Math.round(height * 0.68);
-  } else if (side === 2) {
-    cx = Math.round(width * 0.3);
-    cy = inset + 1;
-  } else {
-    cx = Math.round(width * 0.7);
-    cy = height - inset - 2;
-  }
-
-  cx = clamp(cx, 0, Math.max(0, width - 1));
-  cy = clamp(cy, 0, Math.max(0, height - 1));
-
-  return function isLakeTile(x, y) {
-    const dx = x - cx;
-    const dy = y - cy;
-    const nx = (dx * dx) / (radius * radius);
-    const ny = (dy * dy) / ((radius * 0.65) * (radius * 0.65));
-    return nx + ny <= 1;
-  };
-}
-
-function createTileBase({ x, y, biome }) {
+function createTileBase({ x, y }) {
   return {
     x,
     y,
@@ -168,8 +63,6 @@ function createTileBase({ x, y, biome }) {
     outputText: "",
     isActive: false,
     isEmpty: true,
-    biome,
-    terrain: biome,
     resource: "none"
   };
 }
@@ -181,12 +74,12 @@ function createTerrainStamps() {
       width: 3,
       height: 2,
       cells: [
-        { x: 0, y: 0, resource: "ore", terrain: "rock" },
-        { x: 1, y: 0, resource: "ore", terrain: "rock" },
-        { x: 2, y: 0, resource: "none", terrain: "rock" },
-        { x: 0, y: 1, resource: "none", terrain: "rock" },
-        { x: 1, y: 1, resource: "ore", terrain: "rock" },
-        { x: 2, y: 1, resource: "none", terrain: "rock" }
+        { x: 0, y: 0, resource: "ore" },
+        { x: 1, y: 0, resource: "ore" },
+        { x: 2, y: 0, resource: "none" },
+        { x: 0, y: 1, resource: "none" },
+        { x: 1, y: 1, resource: "ore" },
+        { x: 2, y: 1, resource: "none" }
       ]
     },
     {
@@ -194,62 +87,15 @@ function createTerrainStamps() {
       width: 2,
       height: 3,
       cells: [
-        { x: 0, y: 0, resource: "coal", terrain: "rock" },
-        { x: 1, y: 0, resource: "none", terrain: "rock" },
-        { x: 0, y: 1, resource: "coal", terrain: "rock" },
-        { x: 1, y: 1, resource: "coal", terrain: "rock" },
-        { x: 0, y: 2, resource: "none", terrain: "rock" },
-        { x: 1, y: 2, resource: "coal", terrain: "rock" }
-      ]
-    },
-    {
-      id: "meadow-clear-a",
-      width: 3,
-      height: 3,
-      cells: [
-        { x: 0, y: 0, terrain: "meadow" },
-        { x: 1, y: 0, terrain: "meadow" },
-        { x: 2, y: 0, terrain: "meadow" },
-        { x: 0, y: 1, terrain: "meadow" },
-        { x: 1, y: 1, terrain: "meadow" },
-        { x: 2, y: 1, terrain: "meadow" },
-        { x: 0, y: 2, terrain: "meadow" },
-        { x: 1, y: 2, terrain: "meadow" },
-        { x: 2, y: 2, terrain: "meadow" }
+        { x: 0, y: 0, resource: "coal" },
+        { x: 1, y: 0, resource: "none" },
+        { x: 0, y: 1, resource: "coal" },
+        { x: 1, y: 1, resource: "coal" },
+        { x: 0, y: 2, resource: "none" },
+        { x: 1, y: 2, resource: "coal" }
       ]
     }
   ]);
-}
-
-function stampEligibility(stamp, anchorX, anchorY, width, height, tileMap) {
-  if (anchorX < 0 || anchorY < 0 || anchorX + stamp.width > width || anchorY + stamp.height > height) {
-    return false;
-  }
-
-  for (const cell of stamp.cells) {
-    const key = `${anchorX + cell.x}:${anchorY + cell.y}`;
-    const tile = tileMap.get(key);
-    if (!tile || tile.biome === "water") {
-      return false;
-    }
-  }
-  return true;
-}
-
-function applyStamp(stamp, anchorX, anchorY, tileMap) {
-  for (const cell of stamp.cells) {
-    const key = `${anchorX + cell.x}:${anchorY + cell.y}`;
-    const tile = tileMap.get(key);
-    if (!tile) {
-      continue;
-    }
-    if (typeof cell.resource === "string") {
-      tile.resource = cell.resource;
-    }
-    if (typeof cell.terrain === "string") {
-      tile.terrain = cell.terrain;
-    }
-  }
 }
 
 function applyDeterministicStamps(seedInt, width, height, tiles) {
@@ -270,11 +116,23 @@ function applyDeterministicStamps(seedInt, width, height, tiles) {
     if (placements.some((x) => x.key === key)) {
       continue;
     }
-    if (!stampEligibility(stamp, anchorX, anchorY, width, height, tileMap)) {
+    
+    // Eligibility check is now just bounds-check (since no water/obstacles exist)
+    if (anchorX + stamp.width > width || anchorY + stamp.height > height) {
       continue;
     }
 
-    applyStamp(stamp, anchorX, anchorY, tileMap);
+    // Apply stamp
+    for (const cell of stamp.cells) {
+      const t = tileMap.get(`${anchorX + cell.x}:${anchorY + cell.y}`);
+      if (t) {
+        t.resource = cell.resource;
+        if (cell.resource !== "none") {
+          t.type = "mine"; // Auto-convert resource tiles to mine for voxel viz
+        }
+      }
+    }
+
     placements.push({
       key,
       stampId: stamp.id,
@@ -297,55 +155,26 @@ export function generateWorld(options = {}) {
   const chunkSize = clamp(toInt(options.chunkSize, DEFAULT_CHUNK_SIZE), 4, 64);
   const seedInt = hashString(seed);
 
-  const siteCount = clamp(Math.round((width * height) / 42), 5, 18);
-  const sites = createVoronoiSites(seedInt, width, height, siteCount);
-  const isLakeTile = createLakeMask(seedInt, width, height);
   const tiles = [];
-
   for (let y = 0; y < height; y += 1) {
     for (let x = 0; x < width; x += 1) {
-      if (isLakeTile(x, y)) {
-        tiles.push(
-          createTileBase({
-            x,
-            y,
-            biome: "water"
-          })
-        );
-        continue;
-      }
-
-      const noiseA = valueNoise2D(seedInt ^ 0x4f1bbcdc, x, y, 0.085);
-      const noiseB = valueNoise2D(seedInt ^ 0x8a5c31ef, x + 100, y + 100, 0.16);
-      const noiseBlend = noiseA * 0.7 + noiseB * 0.3;
-      const biome = classifyBiomeFromSites(x, y, sites, noiseBlend);
-
-      const tile = createTileBase({ x, y, biome });
-      if (biome === "forest" && noiseBlend > 0.58) {
-        tile.terrain = "trees";
-      } else if (biome === "scrub" && noiseBlend < 0.38) {
-        tile.terrain = "dry";
-      } else if (biome === "steppe" && noiseBlend < 0.33) {
-        tile.terrain = "dust";
-      }
-
-      tiles.push(tile);
+      tiles.push(createTileBase({ x, y }));
     }
   }
 
   const stampPlacements = applyDeterministicStamps(seedInt, width, height, tiles);
-  return {
+  const rawWorld = {
     seed,
     size: { width, height },
     tiles,
     meta: {
-      version: 1,
+      version: 2,
       generatorId: DEFAULT_GENERATOR_ID,
       chunkSize,
-      siteCount,
       stampPlacements
     }
   };
+  return ensureCanonicalWorldModel(rawWorld);
 }
 
 export function buildWorldFromState(state = {}, fallbackSeed = "seedworld-default") {
@@ -367,4 +196,7 @@ export function validateWorldShape(world) {
   assert(Number.isInteger(world.size.height) && world.size.height > 0, "[WORLD_GEN] world.size.height ungueltig.");
   assert(Array.isArray(world.tiles), "[WORLD_GEN] world.tiles muss Array sein.");
   assert(isPlainObject(world.meta), "[WORLD_GEN] world.meta fehlt.");
+  assert(isPlainObject(world.volume), "[WORLD_GEN] world.volume fehlt.");
+  assert(Array.isArray(world.blocks), "[WORLD_GEN] world.blocks muss Array sein.");
+  assert(Array.isArray(world.chunks), "[WORLD_GEN] world.chunks muss Array sein.");
 }

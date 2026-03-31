@@ -5,7 +5,7 @@
   "seed": "suite-20-gameplay-state-seed",
   "seed_source": "test-vector",
   "content_revision": {
-    "fingerprint": "54324e1158e974c7a1446cc95e040031a2cfef081448da1514841932f5dde10a",
+    "fingerprint": "a57e5b119eb2c49a2fcd7921a709a5f4a61c82e3fbed0fd8ea4f9cbcf39a78f6",
     "files": [
       {
         "path": "app/src/game/contracts/ActionSchema.md",
@@ -21,7 +21,7 @@
       },
       {
         "path": "app/src/game/worldGen.js",
-        "hash": "8fad9fc6b771c7c03b2fbf9c479c3232d2d99421799f1e4a74015425812bd805"
+        "hash": "510127a78415d81e95342eee2c4551cca8441c9a52bc4af090620bb39349e4bd"
       }
     ]
   },
@@ -42,10 +42,10 @@
       }
     ]
   },
-  "timestamp": "2026-03-31T19:15:42.567Z",
-  "deterministic_fingerprint": "853614f194099fa8f29b100a7fe38fa06575940e5bce7856424c2e7b118fd1d9",
+  "timestamp": "2026-03-31T19:53:46.108Z",
+  "deterministic_fingerprint": "dcdccb8ff36994177265f9654af17b279de956e0a22c6cab7dcd1b1b48437eba",
   "output_hashes": {
-    "payload": "853614f194099fa8f29b100a7fe38fa06575940e5bce7856424c2e7b118fd1d9"
+    "payload": "dcdccb8ff36994177265f9654af17b279de956e0a22c6cab7dcd1b1b48437eba"
   },
   "output_snapshots": {
     "worldSeed": "suite-20-gameplay-state-seed",
@@ -79,7 +79,11 @@
           "anchorX": 6,
           "anchorY": 1
         }
-      ]
+      ],
+      "canonicalWorldModel": "volume-blocks-chunks.v1",
+      "blockSpanTiles": 8,
+      "chunkSpanBlocks": 16,
+      "tilesRole": "legacy_debug_projection"
     }
   },
   "status": "PASS_REPRODUCED",

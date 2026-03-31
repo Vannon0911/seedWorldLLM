@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-03-31T19:07:25.007Z",
+  "generated_at": "2026-03-31T20:00:18.793Z",
   "schema_version": 1,
-  "scanned_count": 81,
+  "scanned_count": 83,
   "scanned_files": [
     {
       "path": "app/src/game/actions/buildAction.js",
@@ -95,12 +95,21 @@
     },
     {
       "path": "app/src/game/worldGen.js",
-      "lines": 198,
-      "bytes": 5746,
+      "lines": 203,
+      "bytes": 6105,
       "limit_lines": 500,
       "limit_bytes": 20000,
       "allowlisted": true,
       "sunset_date": "2026-05-31"
+    },
+    {
+      "path": "app/src/game/worldState.js",
+      "lines": 74,
+      "bytes": 2329,
+      "limit_lines": 260,
+      "limit_bytes": 20000,
+      "allowlisted": false,
+      "sunset_date": null
     },
     {
       "path": "app/src/kernel/ActionRegistry.js",
@@ -329,8 +338,8 @@
     },
     {
       "path": "dev/tools/runtime/governance-coverage-verify.mjs",
-      "lines": 193,
-      "bytes": 5626,
+      "lines": 202,
+      "bytes": 5913,
       "limit_lines": 260,
       "limit_bytes": 20000,
       "allowlisted": false,
@@ -367,6 +376,15 @@
       "path": "dev/tools/runtime/governance-llm-verify.mjs",
       "lines": 153,
       "bytes": 5346,
+      "limit_lines": 260,
+      "limit_bytes": 20000,
+      "allowlisted": false,
+      "sunset_date": null
+    },
+    {
+      "path": "dev/tools/runtime/governance-modularity-sync.mjs",
+      "lines": 18,
+      "bytes": 563,
       "limit_lines": 260,
       "limit_bytes": 20000,
       "allowlisted": false,

@@ -30,6 +30,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Fail-closed sync drift preflight
+        run: |
+          npm run repo:hygiene:sync
+          npm run governance:modularity:sync
+          npm run governance:coverage:sync
+          git diff --exit-code -- app/src/sot/REPO_HYGIENE_MAP.json app/src/sot/STRING_MATRIX.json docs/SOT/REPO_HYGIENE_MAP.md docs/SOT/STRING_MATRIX.md runtime/evidence/redundancy-report.json runtime/evidence/governance-modularity.json runtime/evidence/governance-coverage.json
+
       - name: Bootstrap signing verification key
         run: |
           gpg --batch --keyserver keyserver.ubuntu.com --recv-keys F14A6FC849CF906ED7518584D7EA78B1F7778AFD

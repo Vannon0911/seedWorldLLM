@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "46f83111d018d4b974e44b3220f57d56be63c3688bf061d04c11221536290146",
+  "snapshotId": "ee3465d426e294c42c6af46b8626aa66acef9e22a96caa9cb77f1a3d39868db3",
   "controlFiles": [
     "TODO.md",
     "WORKFLOW.md",
@@ -58,6 +58,8 @@
       "tem/slices/t03-guardrail-konzept.md"
     ],
     "task-archive": [
+      "tem/tasks/archive/CF-008.json",
+      "tem/tasks/archive/CF-010.json",
       "tem/tasks/archive/CF-013.json",
       "tem/tasks/archive/DOC-001.json",
       "tem/tasks/archive/DOC-002.json",
@@ -84,7 +86,8 @@
       "tem/tasks/archive/RT-009.json",
       "tem/tasks/archive/RT-010.json",
       "tem/tasks/archive/RT-011.json",
-      "tem/tasks/archive/RT-012.json"
+      "tem/tasks/archive/RT-012.json",
+      "tem/tasks/archive/RT-014.json"
     ],
     "task-open": [
       "tem/tasks/open/CF-003.json",
@@ -92,9 +95,7 @@
       "tem/tasks/open/CF-005.json",
       "tem/tasks/open/CF-006.json",
       "tem/tasks/open/CF-007.json",
-      "tem/tasks/open/CF-008.json",
       "tem/tasks/open/CF-009.json",
-      "tem/tasks/open/CF-010.json",
       "tem/tasks/open/CF-011.json",
       "tem/tasks/open/CF-012.json",
       "tem/tasks/open/GOV-001.json",
@@ -110,7 +111,6 @@
       "tem/tasks/open/RT-001.json",
       "tem/tasks/open/RT-004.json",
       "tem/tasks/open/RT-013.json",
-      "tem/tasks/open/RT-014.json",
       "tem/tasks/open/RT-015.json",
       "tem/tasks/open/RT-016.json",
       "tem/tasks/open/RT-017.json",
@@ -299,6 +299,16 @@
       "sha256": "805d07d3cddc213cc0756c20d125b007a2d00e6dce850cec5da75d2696f4c64e"
     },
     {
+      "path": "tem/tasks/archive/CF-008.json",
+      "category": "task-archive",
+      "sha256": "9f717108f46b68b86b5aedf678be86a3cdc796c13bff006904f551be7b069a08"
+    },
+    {
+      "path": "tem/tasks/archive/CF-010.json",
+      "category": "task-archive",
+      "sha256": "c23f6d12c8d8e29d9451f918572f5a068a9654dbbffea831db8ff5904643622d"
+    },
+    {
       "path": "tem/tasks/archive/CF-013.json",
       "category": "task-archive",
       "sha256": "a0408c8b6cdd7244d7a09dc535a88d06922efb0f622fbea1432ec03383c00191"
@@ -434,6 +444,11 @@
       "sha256": "0d91582d91cc24d5b7868c2434c37026c39ee00da3e418b73f62165cf93ef3e5"
     },
     {
+      "path": "tem/tasks/archive/RT-014.json",
+      "category": "task-archive",
+      "sha256": "fc50c2fa6f7b98ed817b835294092ef96ef1ef1d6f34723197ef69a4c6d6dcde"
+    },
+    {
       "path": "tem/tasks/open/CF-003.json",
       "category": "task-open",
       "sha256": "23b241ea247af742ce2aaf3a587494f7226ffd658f15a96fdb7aa11a31e72bb5"
@@ -459,19 +474,9 @@
       "sha256": "03728911c209f159a8aeaed0bd11a2e5dafe6c1842b2262dd2d8066bb428767e"
     },
     {
-      "path": "tem/tasks/open/CF-008.json",
-      "category": "task-open",
-      "sha256": "6c6c9b431c0f868354877419cd1c0bb7ea01a68bc90adbf443006d9e6f727592"
-    },
-    {
       "path": "tem/tasks/open/CF-009.json",
       "category": "task-open",
       "sha256": "f57577b009224306f691cde1f84bc55b77d0c3486ca4846c26c6078b651839e8"
-    },
-    {
-      "path": "tem/tasks/open/CF-010.json",
-      "category": "task-open",
-      "sha256": "b6ad3a712546596693e889de1ceebdf32d9b57174fe19a5c3a076438f5356189"
     },
     {
       "path": "tem/tasks/open/CF-011.json",
@@ -547,11 +552,6 @@
       "path": "tem/tasks/open/RT-013.json",
       "category": "task-open",
       "sha256": "410553b153784699e126cb142a726856ce595645a9796db4ad92bdb0734438ec"
-    },
-    {
-      "path": "tem/tasks/open/RT-014.json",
-      "category": "task-open",
-      "sha256": "84666f33372c9ed9a45b25aab69da114dd0c5b5b53cda1d40978e717da94e2e6"
     },
     {
       "path": "tem/tasks/open/RT-015.json",

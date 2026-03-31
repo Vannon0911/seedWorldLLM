@@ -120,8 +120,8 @@
     }
   ],
   "fileCounts": {
-    "allFiles": 102,
-    "codeFiles": 90
+    "allFiles": 104,
+    "codeFiles": 92
   },
   "unownedFiles": [],
   "unreachableCode": [
@@ -136,6 +136,7 @@
     "app/src/game/gameProgress.js",
     "app/src/game/gameStateReducer.js",
     "app/src/game/worldGen.js",
+    "app/src/game/worldState.js",
     "app/src/kernel/ActionRegistry.js",
     "app/src/kernel/deterministicKernel.js",
     "app/src/kernel/GateManager.js",
@@ -161,6 +162,7 @@
     "dev/tools/runtime/function-sot-shared.mjs",
     "dev/tools/runtime/governance-findings-materialize.mjs",
     "dev/tools/runtime/governance-findings-shared.mjs",
+    "dev/tools/runtime/governance-modularity-sync.mjs",
     "dev/tools/runtime/governance-verify.mjs",
     "dev/tools/runtime/installGitHooks.mjs",
     "dev/tools/runtime/llm-entry.mjs",
@@ -205,6 +207,7 @@
     "dev/tools/runtime/evidence-lock.mjs",
     "dev/tools/runtime/governance-findings-materialize.mjs",
     "dev/tools/runtime/governance-findings-shared.mjs",
+    "dev/tools/runtime/governance-modularity-sync.mjs",
     "dev/tools/runtime/governance-verify.mjs",
     "dev/tools/runtime/llm-entry.mjs",
     "dev/tools/runtime/llm-override.mjs",
@@ -279,6 +282,7 @@
     "app/src/game/gameProgress.js": 1,
     "app/src/game/gameStateReducer.js": 1,
     "app/src/game/worldGen.js": 2,
+    "app/src/game/worldState.js": 1,
     "app/src/kernel/ActionRegistry.js": 1,
     "app/src/kernel/deterministicKernel.js": 0,
     "app/src/kernel/fingerprint.js": 4,
@@ -318,7 +322,8 @@
     "dev/tools/runtime/governance-findings-shared.mjs": 0,
     "dev/tools/runtime/governance-findings-verify.mjs": 0,
     "dev/tools/runtime/governance-llm-verify.mjs": 0,
-    "dev/tools/runtime/governance-modularity-verify.mjs": 0,
+    "dev/tools/runtime/governance-modularity-sync.mjs": 0,
+    "dev/tools/runtime/governance-modularity-verify.mjs": 1,
     "dev/tools/runtime/governance-policy-verify.mjs": 0,
     "dev/tools/runtime/governance-subagent-verify.mjs": 0,
     "dev/tools/runtime/governance-verify.mjs": 0,
@@ -386,7 +391,10 @@
     "app/src/game/gameStateReducer.js": [
       "app/src/game/gameInput.js"
     ],
-    "app/src/game/worldGen.js": [],
+    "app/src/game/worldGen.js": [
+      "app/src/game/worldState.js"
+    ],
+    "app/src/game/worldState.js": [],
     "app/src/kernel/ActionRegistry.js": [],
     "app/src/kernel/deterministicKernel.js": [
       "app/src/kernel/fingerprint.js",
@@ -487,6 +495,9 @@
       "dev/tools/runtime/docs-v2-shared.mjs",
       "dev/tools/runtime/llm-governance/shared.mjs",
       "dev/tools/runtime/llm-read-shared.mjs"
+    ],
+    "dev/tools/runtime/governance-modularity-sync.mjs": [
+      "dev/tools/runtime/governance-modularity-verify.mjs"
     ],
     "dev/tools/runtime/governance-modularity-verify.mjs": [
       "dev/tools/runtime/docs-v2-shared.mjs",
