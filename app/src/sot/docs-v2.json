@@ -42,7 +42,14 @@
     "dev/tools/runtime/scan-doc-tasks.mjs",
     "dev/tools/runtime/sync-docs-v2.mjs",
     "dev/tools/runtime/sync-tem-control-files.mjs",
-    "dev/tools/runtime/updateRedActions.mjs"
+    "dev/tools/runtime/updateRedActions.mjs",
+    "dev/tools/runtime/installGitHooks.mjs",
+    "dev/tools/runtime/run-required-checks.mjs",
+    ".githooks/pre-commit",
+    ".githooks/pre-push",
+    ".github/workflows/required-checks.yml",
+    ".github/workflows/release.yml",
+    ".github/rulesets/main-protection.json"
   ],
   "humanPlanViews": [
     "docs/V2/HOME.md",

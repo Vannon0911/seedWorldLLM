@@ -30,5 +30,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Prove deterministic reproduction
-        run: npm run check:required
+      - name: Prove deterministic reproduction (verify-only)
+        run: npm run check:required:verify-only
+
+      - name: Upload required-check report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: required-check-report
+          path: runtime/evidence/required-check-report.json

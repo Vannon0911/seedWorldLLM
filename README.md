@@ -11,20 +11,16 @@ Aktueller Release-Stand: `0.3.1a`
 ## Pflichtpfad
 
 ```bash
-npm test
-npm run evidence:verify
-npm run testline:verify
-npm run strings:verify
-npm run docs:v2:verify
-npm run docs:v2:coverage
-npm run docs:v2:probe
+npm run check:required
+npm run check:required:verify-only
 
 # oder als Gesamtlinie
-npm run check:required
+npm run check:advisory
 ```
 
-Ein gueltiger Erfolg ist nur `PASS_REPRODUCED`.
-Ein einzelner gruener Lauf ohne Gegenlauf gilt nicht als Qualitaetsbeweis.
+`check:required` ist der kanonische Green-Path mit teilautomatischem Sync fuer deterministische Artefakte.
+`check:required:verify-only` ist fail-closed (kein Auto-Write) fuer pre-push/CI/release.
+Ein gueltiger Erfolg ist nur `PASS_REPRODUCED` plus belegbare Evidence-Artefakte.
 
 ## Repo-Kern
 
@@ -33,6 +29,7 @@ Ein einzelner gruener Lauf ohne Gegenlauf gilt nicht als Qualitaetsbeweis.
 - `dev/tests/modules/` doppelte Reproduktionssuiten
 - `dev/scripts/` Run-/Pair-Evidence und Comparator
 - `dev/tools/runtime/verify-testline-integrity.mjs` finaler Schlusstest
+- `dev/tools/runtime/run-required-checks.mjs` kanonischer Gate-Runner + Proof-Report
 - `docs/V2/` fuehrende Doku-, Plan- und Archivschicht
 - `app/src/sot/STRING_MATRIX.json` maschinenlesbare String-Disziplin fuer aktive Spiel- und Doku-Pfade
 

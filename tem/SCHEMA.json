@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "b03eac8986f3aa215ca540c513977549441d4b1d58e6949d2ad38dc5d63b8053",
+  "snapshotId": "6adc96adaff0cff1ce8fbe2f9b2dbe959df466b7eb3517469757816602b6d52f",
   "controlFiles": [
     "TODO.md",
     "WORKFLOW.md",
@@ -71,202 +71,202 @@
     {
       "path": "tem/beide-plaene.md",
       "category": "planung",
-      "sha256": "7c3ff0773563f3b3dee6a8fc4f5c180e55d63596822521bdb92013b6b8b165f8"
+      "sha256": "ea59d8f40ffd5f5d2f5c2a4454aff846578b88c1f12c83bc87ee44f17e305d9c"
     },
     {
       "path": "tem/cf-001-architektur-notiz.md",
       "category": "planung",
-      "sha256": "18a06f8e0b728f42c63a0dd7daa66bfc9f500c6f096d1e763cd3f12befa6e435"
+      "sha256": "b792a4ed696f13f421be5c572abf3cacd6bb9b3ec9c2dd30cd447f2a7ba7e985"
     },
     {
       "path": "tem/check-justification/cf-002.md",
       "category": "check-justification",
-      "sha256": "e7636b053f46ae724892ab6e03a7af8aa319c6c91720bb83349fb25f1ef33c78"
+      "sha256": "f3d064990ee71b83f54dbebf938f59239b12e08f1df8370dc88347fa8434a6e2"
     },
     {
       "path": "tem/check-justification/summary.md",
       "category": "check-justification",
-      "sha256": "1b58002120d80600d4bae6662f758b04d63911b5b4c8e4281f1ea6d6a83394c8"
+      "sha256": "0ee6d64e539ed381855b4242e4f2aa5c28fd2edcb68b999267ec0f3a0d590f1d"
     },
     {
       "path": "tem/gpg-signing-runbook.md",
       "category": "operativ",
-      "sha256": "60c8a9fbcc6495147ce4430ada9b807a4524332b4571dd60c703bc617cb91989"
+      "sha256": "fdf839c22e1d70991d93d56cbf640df342df23cd3dc910528da66a4876f5aee0"
     },
     {
       "path": "tem/langfristiger-bug-plan.md",
       "category": "reports-findings",
-      "sha256": "c74d1b39e3c7e8f0a11f625188d2a0f587eda500173ba68be81f8513a19226ce"
+      "sha256": "c44896611294479a786d5b5f5edd53d5cd20d27364e8f37c1c4377cc93aa61d7"
     },
     {
       "path": "tem/md-worklog.md",
       "category": "operativ",
-      "sha256": "f90ada016608ae6fc03b76db8209824770aa1948955874ca98eb5f3d0c756508"
+      "sha256": "a1c89fb560950c4d81552791bc5fd3cd553e575d7f4ca04b6f43fe3781fe8038"
     },
     {
       "path": "tem/nitpick-check-report.md",
       "category": "reports-findings",
-      "sha256": "ca1ee54f7e87e413715007ae9c5ecd7045c5e3925809a4e81280d507d363ea56"
+      "sha256": "8477dafef1967a60c3418213b34aa07d5aee964be08f8cb3bff8592eeec91549"
     },
     {
       "path": "tem/rebuttals/cf-001-rebuttal.md",
       "category": "rebuttals",
-      "sha256": "72cbaed29c306d0ea395f2a238accb85c8bce34814b0559d60798feef487673c"
+      "sha256": "809457a0793d0c823941e2feaa645b1f404e034e4bc23625cd744671208818d3"
     },
     {
       "path": "tem/rebuttals/cf-002-rebuttal.md",
       "category": "rebuttals",
-      "sha256": "ee4624ce494b59fed5faa3d2efffe14ad76e40b0fae170488c1df2abb246634e"
+      "sha256": "04960de2aa17864677a23712757962a51083d09a3b086b3c033fbcd40f516ccc"
     },
     {
       "path": "tem/rebuttals/t01-rebuttal.md",
       "category": "rebuttals",
-      "sha256": "25264bdd876c7e9e7620b53e71967a8c01253cb6a2ba9603533a1679ae20ddff"
+      "sha256": "298fe2cc20579d062625d0ab41e9b79c4c3120b5be0b3b85b093363aec5e75d7"
     },
     {
       "path": "tem/rebuttals/t02-rebuttal.md",
       "category": "rebuttals",
-      "sha256": "5e052a0076ac5a5e46252b45aa15e27d75032c7a5f34316187815776b672c33f"
+      "sha256": "33cc1eabc5777fb3fd35f8a33491f86458b20536d454598b1d0f3a11244a7e09"
     },
     {
       "path": "tem/rebuttals/t03-rebuttal.md",
       "category": "rebuttals",
-      "sha256": "a0ed135a91f9f5e34e5936943b621fbed004a538353ab0585e07c19f883c7f06"
+      "sha256": "2dbe19de4085bcc2c1b5a7a8ad290ea5d5533ecc6963d6cff007208bff1c715d"
     },
     {
       "path": "tem/repair-check-cf002.md",
       "category": "reports-findings",
-      "sha256": "5451a74e7a545c8acd770d2e23621065839be5e563cc9de14e94e3e70a3810a6"
+      "sha256": "4a7a7047564068356284608119072eaf4ee3883cca1c395b78aee1d68e25117a"
     },
     {
       "path": "tem/reported-bugs.md",
       "category": "reports-findings",
-      "sha256": "f94539bc4e8caa35114527ed9d162a4820f76f6b64053478c163c731346a61cf"
+      "sha256": "f3804cf4943028202e2ac66418cd11ed37e864b92262b3b125dbba5d8e7edeb1"
     },
     {
       "path": "tem/slices/cf-003-canvas-render-loop.md",
       "category": "implementierungs-slices",
-      "sha256": "85c146e607b5aedcef988d6d85623ebffdd15771127b59099dfb04d7f5367e3c"
+      "sha256": "1c8d824f43f9294ac501c576ac1615b97f686e5a4a0921760891ac77e09fd543"
     },
     {
       "path": "tem/slices/cf-004-tile-dom-to-canvas.md",
       "category": "implementierungs-slices",
-      "sha256": "d70378f9a23c4b0a47da5a58a89c5e58b51596817a77ca381956725ee646ce9e"
+      "sha256": "0cc0160e3c233ae924092e0c0e9aeafcd308e747ebeb1664c3bb6583afe6e200"
     },
     {
       "path": "tem/slices/evidence-remediation-jszip.md",
       "category": "implementierungs-slices",
-      "sha256": "24a884a29c242a8483a4f3c84596ea1fd86fdd7e08342fe42e3fff3b6ecd5296"
+      "sha256": "1a52810b42bc88579e571a61336adfcc577ad0aee25b09cd3a3d632e8da3155a"
     },
     {
       "path": "tem/slices/integration-summary.md",
       "category": "implementierungs-slices",
-      "sha256": "150a8a6a9de1a459b1519ee677d953769e9eacad09a3bb3db1ed8371cd745763"
+      "sha256": "0c4beb37058a590c892cac06b0b840d9276fbd6e36bcc0d03a46f7febbd54590"
     },
     {
       "path": "tem/slices/remaining-task-stubs.md",
       "category": "implementierungs-slices",
-      "sha256": "d616aa9976a5022840b44795ebbebd4e9292112713a8df8e5430cad36b479acb"
+      "sha256": "40437e5e709aa4da42aa9f16335475d19cafe1704d3b4870d233756b8733e3b8"
     },
     {
       "path": "tem/slices/t02-kanonische-api-matrix.md",
       "category": "implementierungs-slices",
-      "sha256": "ae6b95f79f69387c0e6f4918541ac6195f71eab18553f39decc28c17b06979f1"
+      "sha256": "7ff354221da43db5e0700bce018b49719f3240e66fdf65176a92936078613978"
     },
     {
       "path": "tem/slices/t03-guardrail-konzept.md",
       "category": "implementierungs-slices",
-      "sha256": "2e4c20629fbe986f8e9e0f61e8356d9a5f3b2b6a09accf6cb06fb1600c172d59"
+      "sha256": "b5db788d1d93e1ae143567f449f5406028e545301cfadae734aa3e6af4be2af6"
     },
     {
       "path": "tem/sot-doc-validity-report.md",
       "category": "reports-findings",
-      "sha256": "a66de3cae78cb6abad48cbbdcb3393b3bdc9348908832f450f9ec38c3e403722"
+      "sha256": "4b866d57554d6533f76ae6d4c3f466ace320593914e39c2c3a0e57fe2411a10b"
     },
     {
       "path": "tem/t01-legacy-wrapper-inventur.md",
       "category": "planung",
-      "sha256": "653c786eca69c5b967d86e155813d01e3fab04b8f26ec58b193dcfc4c8f9a41d"
+      "sha256": "805d07d3cddc213cc0756c20d125b007a2d00e6dce850cec5da75d2696f4c64e"
     },
     {
       "path": "tem/tasks/archive/CF-013.json",
       "category": "task-archive",
-      "sha256": "c6231608ffbc4d2d420b1d8b4403e3e3b8ad7dd2118a115f4381d0311fa828f8"
+      "sha256": "a0408c8b6cdd7244d7a09dc535a88d06922efb0f622fbea1432ec03383c00191"
     },
     {
       "path": "tem/tasks/archive/DOC-001.json",
       "category": "task-archive",
-      "sha256": "4da35322f34f3fab6b30273655a2eaecd14880a13cf036109a438c342c323614"
+      "sha256": "0e8c8abd1c6e7e3a791d4129197f7e95e65e71d1794693b14f5035e76f233809"
     },
     {
       "path": "tem/tasks/archive/DOC-002.json",
       "category": "task-archive",
-      "sha256": "b414ccd91b96bd46283fd253cbdd155a1c2006553d7e1747f9f1920217986cb4"
+      "sha256": "a5f0eb759baf22e0bcc66dc7f09185218923c9a9a22d2edb4c2c914be9be463e"
     },
     {
       "path": "tem/tasks/open/CF-003.json",
       "category": "task-open",
-      "sha256": "703fb3c0c48fec898acd2b74a89a396e31e9ff8ad14efbbd3be72f589630ebcb"
+      "sha256": "23b241ea247af742ce2aaf3a587494f7226ffd658f15a96fdb7aa11a31e72bb5"
     },
     {
       "path": "tem/tasks/open/CF-004.json",
       "category": "task-open",
-      "sha256": "8253516c169a22d9be623a38729b84e1688fd3ed50f2070ac846cbea6541f0a0"
+      "sha256": "9831e17a96f22c90f27496ecd692f75c84caf24bf8004732fe2f19f010ec7e8d"
     },
     {
       "path": "tem/tasks/open/CF-005.json",
       "category": "task-open",
-      "sha256": "8e39fb25e0a6f5640343b5c34b58fafa5cf5f12a300cd6be7c0a5ab958f92b7b"
+      "sha256": "d58d38c27b4214d0b3044fbd57839614de1ebe91401c351ec41473c4492bcebd"
     },
     {
       "path": "tem/tasks/open/CF-006.json",
       "category": "task-open",
-      "sha256": "481087129f0cdf3788d6c3c3077e26e85174b2c05d2a65b005faa9661400d746"
+      "sha256": "91ef8e46d7e583aad445060a235daeba24e3d9d54b4ae60b3e2e1cc8ca119ec3"
     },
     {
       "path": "tem/tasks/open/CF-007.json",
       "category": "task-open",
-      "sha256": "a095203f01268daeaa4f9f7d49fd8167ab959995b02aec30c9a8580828883c9e"
+      "sha256": "03728911c209f159a8aeaed0bd11a2e5dafe6c1842b2262dd2d8066bb428767e"
     },
     {
       "path": "tem/tasks/open/CF-008.json",
       "category": "task-open",
-      "sha256": "0845299d8aec2305c0f9fed07a251b7fa8cf1d4f56570d98a2a885bbe26d0a0e"
+      "sha256": "6c6c9b431c0f868354877419cd1c0bb7ea01a68bc90adbf443006d9e6f727592"
     },
     {
       "path": "tem/tasks/open/CF-009.json",
       "category": "task-open",
-      "sha256": "5816d378342973fa7b50ed728eaf5bfd1d948b239dbe304908e6b5f145651f4f"
+      "sha256": "f57577b009224306f691cde1f84bc55b77d0c3486ca4846c26c6078b651839e8"
     },
     {
       "path": "tem/tasks/open/CF-010.json",
       "category": "task-open",
-      "sha256": "c23fcbaeea837622cd13726f289595714d6394ebb7f58b8daa047662b008f450"
+      "sha256": "b6ad3a712546596693e889de1ceebdf32d9b57174fe19a5c3a076438f5356189"
     },
     {
       "path": "tem/tasks/open/CF-011.json",
       "category": "task-open",
-      "sha256": "6cd7dce5afde031f20546be449ed8463da6918654e014d2493f73a3b3be694a9"
+      "sha256": "3193f29fa6ea2dcb57fd481dfde194c7f5fdde826d4ac0747279fc1187bbf8d2"
     },
     {
       "path": "tem/tasks/open/CF-012.json",
       "category": "task-open",
-      "sha256": "470f79a0f9a292491e57f30fed8738abb1e1cbb0682baefbd0ccee201a856929"
+      "sha256": "af6ca003c3023fe97e5ed3e803b246d01aaad235ff2cc6e3aa8d3c6c6943dbfb"
     },
     {
       "path": "tem/test-evidence-report.md",
       "category": "reports-findings",
-      "sha256": "77b815def0443fddfe9c1bf05b9d4f6d6612c3dd178684fb394406b626315ba2"
+      "sha256": "acc0daf669aa9e4d887a7a967d44c3985e78327bb5db7502d5f06c8cdf52d6f3"
     },
     {
       "path": "tem/testline-missing-systems.md",
       "category": "sonstiges",
-      "sha256": "580474d3c14768729a147872c97084a834f615abbe6eac7266ff72980daa89bb"
+      "sha256": "4326df235127a8e59908aea88c12ff073a106dafe5464c60a8263233db313c33"
     },
     {
       "path": "tem/traceability-map.md",
       "category": "reports-findings",
-      "sha256": "8af1b61b397614cfdbbd965689f31b11e80e57834f195ecfa711130264a43a9b"
+      "sha256": "473f2cdfc6b00746be938430cb2f03d4eeb0b1c8d1596269f1e4cc868e7825da"
     }
   ]
 }

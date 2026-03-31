@@ -70,6 +70,7 @@
 - dev/tools/runtime/repo-hygiene-verify.mjs
 - dev/tools/runtime/repo-hygiene-why.mjs
 - dev/tools/runtime/report-untested-systems.mjs
+- dev/tools/runtime/run-required-checks.mjs
 - dev/tools/runtime/runtime-shared.mjs
 - dev/tools/runtime/scan-doc-tasks.mjs
 - dev/tools/runtime/signing-guard.mjs
@@ -113,6 +114,7 @@
 - dev/tools/runtime/repo-hygiene-verify.mjs
 - dev/tools/runtime/repo-hygiene-why.mjs
 - dev/tools/runtime/report-untested-systems.mjs
+- dev/tools/runtime/run-required-checks.mjs
 - dev/tools/runtime/scan-doc-tasks.mjs
 - dev/tools/runtime/signing-guard.mjs
 - dev/tools/runtime/sync-docs-v2.mjs

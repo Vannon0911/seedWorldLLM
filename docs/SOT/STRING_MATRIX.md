@@ -134,7 +134,7 @@ Diese Matrix erzwingt, dass die aktiven Spiel- und Doku-Strings maschinenlesbar 
 ### app/src/kernel/KernelRouter.js
 
 - Strings: 11
-- Fingerprint: `4473687bbc585c068764067dbc82906f061cfbad7c91d6a6cfa47346d1c5cf24`
+- Fingerprint: `08a2c4170cef8cde4714a766885de7ab6097a64b7286c323c91977a42be526eb`
 
 ### app/src/kernel/PatchOrchestrator.js
 

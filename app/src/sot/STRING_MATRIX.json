@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "matrix_fingerprint": "ce45fd20f36b79f2bb919b7c0b39e504ab5581c5361dc054909ee81fc7b7518a",
+  "matrix_fingerprint": "97134b0bcd5223863a835a50ec8f563ee6390158ebae7f02d3da9647da11229d",
   "scan_roots": [
     "app/src/game",
     "app/src/kernel",
@@ -2486,19 +2486,19 @@
     {
       "path": "app/src/kernel/KernelRouter.js",
       "string_count": 11,
-      "fingerprint": "4473687bbc585c068764067dbc82906f061cfbad7c91d6a6cfa47346d1c5cf24",
+      "fingerprint": "08a2c4170cef8cde4714a766885de7ab6097a64b7286c323c91977a42be526eb",
       "strings": [
         {
-          "value": ")\n          .join(\", \")}",
-          "hash": "b092042fec25c9a451a058bde1c2853da2dcc42cae6aa79ff231848324bba403"
+          "value": ")\r\n          .join(\", \")}",
+          "hash": "c23fe502b6030f58dbf002f5476779e14b4ea7c415bffa24c4eb8471fed2544e"
         },
         {
           "value": "[KERNEL_ROUTER] Cross-domain call blocked: ${sourceDomain} -> ${domain}",
           "hash": "7786a4ac5101bb19a5da7864e88817893a9045d86b81be56dac59240da4efd60"
         },
         {
-          "value": "[KERNEL_ROUTER] Domain isolation violations detected: ${violations\n          .map((entry) => ",
-          "hash": "7942b8d9b968cf2a0594b1bf27505a19ee801acfd912f938f82c534096963195"
+          "value": "[KERNEL_ROUTER] Domain isolation violations detected: ${violations\r\n          .map((entry) => ",
+          "hash": "483ec7af651362da45d856853671d675ff6b031977e9ee04a98669523f3be483"
         },
         {
           "value": "[KERNEL_ROUTER] Invalid domain: ${domain}",

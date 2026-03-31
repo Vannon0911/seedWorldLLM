@@ -54,9 +54,9 @@ do
   fi
 done
 
-echo "[hook:pre-push] verify hook sync + reproduced evidence line"
+echo "[hook:pre-push] verify hook sync + fail-closed proof gate"
 npm run hooks:verify
-npm run check:required
+npm run check:required:verify-only
 `;
 }
 

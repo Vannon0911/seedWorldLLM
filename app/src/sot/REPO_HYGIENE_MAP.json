@@ -77,8 +77,8 @@
     }
   ],
   "fileCounts": {
-    "allFiles": 69,
-    "codeFiles": 67
+    "allFiles": 70,
+    "codeFiles": 68
   },
   "unownedFiles": [],
   "unreachableCode": [
@@ -131,6 +131,7 @@
     "dev/tools/runtime/repo-hygiene-verify.mjs",
     "dev/tools/runtime/repo-hygiene-why.mjs",
     "dev/tools/runtime/report-untested-systems.mjs",
+    "dev/tools/runtime/run-required-checks.mjs",
     "dev/tools/runtime/runtime-shared.mjs",
     "dev/tools/runtime/scan-doc-tasks.mjs",
     "dev/tools/runtime/signing-guard.mjs",
@@ -174,6 +175,7 @@
     "dev/tools/runtime/repo-hygiene-verify.mjs",
     "dev/tools/runtime/repo-hygiene-why.mjs",
     "dev/tools/runtime/report-untested-systems.mjs",
+    "dev/tools/runtime/run-required-checks.mjs",
     "dev/tools/runtime/scan-doc-tasks.mjs",
     "dev/tools/runtime/signing-guard.mjs",
     "dev/tools/runtime/sync-docs-v2.mjs",
@@ -266,6 +268,7 @@
     "dev/tools/runtime/repo-hygiene-verify.mjs": 0,
     "dev/tools/runtime/repo-hygiene-why.mjs": 0,
     "dev/tools/runtime/report-untested-systems.mjs": 0,
+    "dev/tools/runtime/run-required-checks.mjs": 0,
     "dev/tools/runtime/runtime-shared.mjs": 12,
     "dev/tools/runtime/scan-doc-tasks.mjs": 0,
     "dev/tools/runtime/signing-guard.mjs": 0,
@@ -397,6 +400,7 @@
     "dev/tools/runtime/report-untested-systems.mjs": [
       "dev/tools/runtime/runtime-shared.mjs"
     ],
+    "dev/tools/runtime/run-required-checks.mjs": [],
     "dev/tools/runtime/runtime-shared.mjs": [],
     "dev/tools/runtime/scan-doc-tasks.mjs": [
       "dev/tools/runtime/docs-v2-shared.mjs"
