@@ -1,5 +1,7 @@
 # Kernel Governance
 
+Archivstatus: historische Governance-Seite. Fuehrend sind jetzt `docs/V2/RULES.md` und `docs/V2/TRUTH.md`.
+
 Tags: `governance` `kernel` `fail-closed` `security`
 
 ## Objectives

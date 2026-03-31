@@ -1,5 +1,7 @@
 # Patch Flow
 
+Archivstatus: historische Patch-Prozess-Seite ausserhalb des aktuellen Pflichtkerns. Fuehrend ist `docs/V2/RULES.md`.
+
 Tags: `patching` `pipeline` `locks` `policy-gates`
 
 ## Canonical entrypoint

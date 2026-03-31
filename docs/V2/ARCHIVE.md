@@ -1,5 +1,37 @@
 # Archive
 
+Archivierte oder ausserhalb des Pflichtkerns liegende Dokumentationsbereiche sind explizit klassifiziert und werden nicht mehr als fuehrende Wahrheit behandelt.
+
+## Klassifizierte Archive / Out-of-Scope
+
+### tem-legacy-reference
+
+- Class: `Archive`
+- Paths: `tem/beide-plaene.md`, `tem/cf-001-architektur-notiz.md`, `tem/check-justification/`, `tem/gpg-signing-runbook.md`, `tem/langfristiger-bug-plan.md`, `tem/md-worklog.md`, `tem/nitpick-check-report.md`, `tem/rebuttals/`, `tem/repair-check-cf002.md`, `tem/reported-bugs.md`, `tem/slices/`, `tem/sot-doc-validity-report.md`, `tem/t01-legacy-wrapper-inventur.md`, `tem/test-evidence-report.md`, `tem/testline-missing-systems.md`, `tem/traceability-map.md`
+
+### docs-planning-archive
+
+- Class: `Archive`
+- Paths: `docs/IN PLANUNG/`
+
+### docs-llm-out-of-scope
+
+- Class: `Out-of-Scope`
+- Paths: `docs/LLM/`
+
+### manual-legacy-archive
+
+- Class: `Archive`
+- Paths: `docs/MANUEL/deployment/DEPLOYMENT.md`, `docs/MANUEL/wiki/Kernel-Governance.md`, `docs/MANUEL/wiki/Patch-Flow.md`
+
+### legacy-unverfid-archive
+
+- Class: `Archive`
+- Paths: `legacy/UNVERFID/`
+
+
+# Archive
+
 Archivierte Tasks wurden vom Scanner aus dem offenen Planungspfad entfernt, weil ihr deklarierter Scope im Aenderungssatz getroffen wurde.
 
 ## Archived Tasks

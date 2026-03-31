@@ -34,6 +34,24 @@ function addRegistered(set, relPath) {
   }
 }
 
+function addBucketPaths(set, bucket) {
+  for (const relPath of bucket?.paths || []) {
+    addRegistered(set, relPath);
+  }
+}
+
+function isRegisteredPath(relPath, registered) {
+  if (registered.has(relPath)) {
+    return true;
+  }
+  for (const candidate of registered) {
+    if (candidate.endsWith("/") && relPath.startsWith(candidate)) {
+      return true;
+    }
+  }
+  return false;
+}
+
 async function main() {
   const docsV2 = await readJson(path.join(root, "app", "src", "sot", "docs-v2.json"));
   const [openTasks, archivedTasks] = await Promise.all([loadOpenTasks(root), loadArchivedTasks(root)]);
@@ -45,6 +63,9 @@ async function main() {
   }
   for (const relPath of docsV2.generatedDocs || []) {
     addRegistered(registered, relPath);
+  }
+  for (const bucket of docsV2.fullRepoCoverage?.buckets || []) {
+    addBucketPaths(registered, bucket);
   }
   for (const task of [...openTasks, ...archivedTasks]) {
     addRegistered(registered, task.file_path);
@@ -58,7 +79,7 @@ async function main() {
   }
 
   const planViolations = changedFiles.filter((relPath) => isPlanCandidate(relPath, docsV2));
-  const unregistered = changedFiles.filter((relPath) => !registered.has(relPath));
+  const unregistered = changedFiles.filter((relPath) => !isRegisteredPath(relPath, registered));
 
   if (planViolations.length > 0 || unregistered.length > 0) {
     if (planViolations.length > 0) {

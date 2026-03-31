@@ -16,3 +16,4 @@ Documentation 2.0 verbindet drei Dinge in einem System: menschenlesbare Wahrheit
 - Task-Schema: `2.0.0`
 - SoT-Review: `2026-03-31`
 - Harte Guards: rohe Plan-Dateien blocken, unregistrierte neue Dateien blocken
+- Vollrepo-Coverage: alle Dateien unter den Doku-/Plan-Roots muessen klassifiziert sein

@@ -7,10 +7,11 @@
     "test": "node dev/scripts/test-runner.mjs && node dev/tools/runtime/verify-docs-v2-guards.mjs && node dev/tools/runtime/scan-doc-tasks.mjs",
     "evidence:verify": "node dev/scripts/verify-evidence.mjs",
     "testline:verify": "node dev/tools/runtime/verify-testline-integrity.mjs",
-    "check:required": "npm test && npm run evidence:verify && npm run testline:verify && npm run docs:v2:verify",
+    "check:required": "npm test && npm run evidence:verify && npm run testline:verify && npm run docs:v2:verify && npm run docs:v2:coverage",
     "docs:v2:sync": "node dev/tools/runtime/sync-docs-v2.mjs --write",
     "docs:v2:verify": "node dev/tools/runtime/sync-docs-v2.mjs",
     "docs:v2:guard": "node dev/tools/runtime/verify-docs-v2-guards.mjs",
+    "docs:v2:coverage": "node dev/tools/runtime/verify-docs-v2-coverage.mjs",
     "hooks:install": "node dev/tools/runtime/installGitHooks.mjs",
     "hooks:verify": "node dev/tools/runtime/verify-git-hooks.mjs"
   },

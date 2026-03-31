@@ -37,6 +37,7 @@ Documentation 2.0 verbindet drei Dinge in einem System: menschenlesbare Wahrheit
 - Task-Schema: \`${TASK_SCHEMA_VERSION}\`
 - SoT-Review: \`${sot.lastReviewed}\`
 - Harte Guards: rohe Plan-Dateien blocken, unregistrierte neue Dateien blocken
+- Vollrepo-Coverage: alle Dateien unter den Doku-/Plan-Roots muessen klassifiziert sein
 `;
 }
 
@@ -74,6 +75,7 @@ function renderTruth(sourceOfTruth, repoBoundaries, docsV2) {
   lines.push(`- Archivierte Tasks liegen unter \`${docsV2.roots.archiveTasks}\`.`);
   lines.push(`- Der Scanner schreibt Evidence nach \`${docsV2.scanner.evidence}\`.`);
   lines.push(`- Der Guard laeuft ueber \`${docsV2.guards.entry}\`.`);
+  lines.push(`- Der Vollrepo-Scanner schreibt Evidence nach \`${docsV2.fullRepoCoverage.evidence}\`.`);
   lines.push("- Nur atomare Einzel-Tasks duerfen in den offenen Planungspfad.");
   lines.push("");
   lines.push("## Systemplan");
@@ -153,6 +155,7 @@ function renderRules(docsV2) {
     "- Keine Testline ohne `docs:v2:guard` vor dem Scanner.",
     "- Erledigte atomare Tasks werden vom Scanner nach `tem/tasks/archive/` verschoben.",
     "- Menschenlesbare Fuehrungsseiten werden nur aus der Doku-2.0-SoT erzeugt.",
+    "- Keine Datei unter den Doku-/Plan-/Legacy-Roots darf unklassifiziert bleiben.",
     "",
     "## Guard Entry",
     "",
@@ -160,8 +163,36 @@ function renderRules(docsV2) {
     "",
     "## Scanner Entry",
     "",
-    `- \`${docsV2.scanner.entry}\``
+    `- \`${docsV2.scanner.entry}\``,
+    "",
+    "## Coverage Entry",
+    "",
+    "- `dev/tools/runtime/verify-docs-v2-coverage.mjs`"
   ];
+  return `${lines.join("\n")}\n`;
+}
+
+function renderArchiveBuckets(docsV2) {
+  const lines = [
+    "# Archive",
+    "",
+    "Archivierte oder ausserhalb des Pflichtkerns liegende Dokumentationsbereiche sind explizit klassifiziert und werden nicht mehr als fuehrende Wahrheit behandelt.",
+    "",
+    "## Klassifizierte Archive / Out-of-Scope",
+    ""
+  ];
+
+  for (const bucket of docsV2.fullRepoCoverage?.buckets || []) {
+    if (!["Archive", "Out-of-Scope"].includes(bucket.class)) {
+      continue;
+    }
+    lines.push(`### ${bucket.id}`);
+    lines.push("");
+    lines.push(`- Class: \`${bucket.class}\``);
+    lines.push(`- Paths: ${(bucket.paths || []).map((item) => `\`${item}\``).join(", ")}`);
+    lines.push("");
+  }
+
   return `${lines.join("\n")}\n`;
 }
 
@@ -225,7 +256,7 @@ async function main() {
   const systemPlan = renderSystemPlan(docsV2, openTasks);
   const rules = renderRules(docsV2);
   const plan = renderPlan(openTasks);
-  const archive = renderArchive(archivedTasks);
+  const archive = `${renderArchiveBuckets(docsV2)}\n${renderArchive(archivedTasks)}`;
 
   await syncOrVerify(path.join(docsV2Root(root), "HOME.md"), home);
   await syncOrVerify(path.join(docsV2Root(root), "TRUTH.md"), truth);

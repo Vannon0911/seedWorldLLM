@@ -33,6 +33,7 @@ Diese Seite macht die fuehrende SoT menschenlesbar. Sie ersetzt die JSON-Dateien
 - Archivierte Tasks liegen unter `tem/tasks/archive`.
 - Der Scanner schreibt Evidence nach `runtime/evidence/docs-v2-scan.json`.
 - Der Guard laeuft ueber `dev/tools/runtime/verify-docs-v2-guards.mjs`.
+- Der Vollrepo-Scanner schreibt Evidence nach `runtime/evidence/docs-v2-coverage.json`.
 - Nur atomare Einzel-Tasks duerfen in den offenen Planungspfad.
 
 ## Systemplan
